@@ -1,0 +1,126 @@
+.header {
+    background: #2C323D;
+    color: #ccc;
+}
+.header .container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.header a { color: #ddd; }
+.header a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.header .logo {
+    font-size: 20px;
+    line-height: 34px;
+    margin-left: 20px;
+}
+.header .search-form {
+    margin-right: 20px;
+}
+
+.menu {
+    margin: 40px 20px;
+    padding: 0;
+    list-style: none;
+}
+.menu .pages {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menu li { line-height: 30px; }
+.menu .category-title {
+    margin: 25px 0 10px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.menu a {
+    display: inline-block;
+    color: #888;
+    line-height: 20px;
+}
+.menu a:hover {
+    color: #444;
+    text-decoration: none;
+}
+.menu .active a {
+    font-weight: bold;
+    color: #444;
+}
+
+.page-home .header .search-form { display: none; }
+.home-search { text-align: center; }
+
+.home-categories .panel { margin: 2em 0; }
+.home-categories .panel-heading {
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+}
+
+.content {
+    color: #555;
+    margin: 40px 20px;
+    padding: 40px;
+    border: 1px solid #e9e9e9;
+    -webkit-box-shadow: 0 1px 50px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 50px rgba(0,0,0,0.1);
+}
+.content .title { margin: 0 0 30px 0; }
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 { color: #222; }
+.content p,
+.content ul,
+.content ol,
+.content pre,
+.content blockquote,
+.content table,
+.content iframe { margin-bottom: 1em; }
+.content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    padding: 4px;
+    border: 1px solid #D6D6D6;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.content code {
+    background-color: #FFFDDC;
+    color: #555;
+}
+.content pre {
+    background: #FFFDDC;
+    border: 0;
+}
+.content pre code { color: #657B83; }
+.content .hljs { background: none; }
+.content .page-meta {
+    font-size: 85%;
+    color: #999;
+    margin-top: 50px;
+}
+.content .page-meta a {
+    color: #999;
+    border-bottom: 1px dotted #999;
+}
+.content .page-meta a:hover {
+    color: #428BCA;
+    text-decoration: none;
+}
+
+.footer .copyright {
+    font-size: 85%;
+    color: #999;
+    margin: 0 20px 40px 0;
+}

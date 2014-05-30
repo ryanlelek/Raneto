@@ -1,0 +1,46 @@
+{
+  "name": "raneto",
+  "version": "0.1.0",
+  "description": "Markdown powered Knowledgebase",
+  "author": "Gilbert Pellegrom <gilbert@pellegrom.me>",
+  "license": "MIT",
+  "keywords": [
+    "raneto",
+    "knowledgebase",
+    "markdown"
+  ],
+  "repository"  : {
+    "type": "git",
+    "url": "https://github.com/gilbitron/Raneto.git"
+  },
+  "bugs"        : "https://github.com/gilbitron/Raneto/issues",
+  "contributors": "https://github.com/gilbitron/Raneto/graphs/contributors",
+  "licenses"    : [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE"
+    }
+  ],
+  "main": "./app",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "engines": {
+    "node": "~0.10.0"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "debug": "~0.7.4",
+    "express": "~4.2.0",
+    "glob": "^4.0.0",
+    "hogan-express": "^0.5.2",
+    "lunr": "^0.5.3",
+    "marked": "^0.3.2",
+    "moment": "^2.6.0",
+    "morgan": "~1.0.0",
+    "static-favicon": "~1.0.0",
+    "underscore": "^1.6.0",
+    "underscore.string": "^2.3.3"
+  }
+}

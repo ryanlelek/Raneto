@@ -1,0 +1,39 @@
+<div class="home-search jumbotron row">
+	<form class="search-form form-inline" role="form">
+		<div class="form-group">
+			<label class="sr-only" for="home-search">Search the knowledge base</label>
+			<input type="search" class="form-control input-lg" name="search" id="home-search" size="50" placeholder="Search the knowledge base">
+			<button type="submit" class="btn btn-primary btn-lg">Search</button>
+		</div>
+	</form>
+</div>
+<div class="home-categories row">
+	{{#pages}}
+		{{#is_index}}
+			{{#files.length}}
+			<div class="col-sm-6 col-md-4">
+				<div class="panel panel-default {{class}}">
+					<h2 class="panel-heading">Main Articles</h2>
+					<ul class="list-group pages">
+						{{#files}}
+							<li class="list-group-item page"><a href="/{{slug}}">{{title}}</a></li>
+						{{/files}}
+					</ul>
+				</div>
+			</div>
+			{{/files.length}}
+		{{/is_index}}
+		{{^is_index}}
+		<div class="col-sm-6 col-md-4">
+			<div class="panel panel-default {{class}}">
+				<h2 class="panel-heading">{{title}}</h2>
+				<ul class="list-group pages">
+					{{#files}}
+						<li class="list-group-item page"><a href="/{{slug}}">{{title}}</a></li>
+					{{/files}}
+				</ul>
+			</div>
+		</div>
+		{{/is_index}}
+	{{/pages}}
+</div>

@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-sm-3">
+
+        <ul class="menu">
+        {{#pages}}
+            {{#is_index}}
+                {{#files}}
+                    <li class="page{{#active}} active{{/active}}"><a href="/{{slug}}">{{title}}</a></li>
+                {{/files}}
+            {{/is_index}}
+            {{^is_index}}
+            <li class="category">
+                <h5 class="category-title">{{title}}</h5>
+                <ul class="pages">
+                {{#files}}
+                    <li class="page{{#active}} active{{/active}}"><a href="/{{slug}}">{{title}}</a></li>
+                {{/files}}
+                </ul>
+            </li>
+            {{/is_index}}
+        {{/pages}}
+        </ul>
+
+    </div>
+    <div class="col-sm-9">
+
+        <section class="content">
+            {{#meta.title}}<h1 class="title">{{meta.title}}</h1>{{/meta.title}}
+
+            {{{ content }}}
+
+            <div class="page-meta clearfix">
+                {{#config.support_email}}
+                <div class="contact-support pull-left">
+                    <span class="glyphicon glyphicon-envelope"></span> Still need help? <a href="mailto:{{config.support_email}}">Get in touch!</a>
+                </div>
+                {{/config.support_email}}
+                <div class="last-updated pull-right">
+                    Last updated on {{last_modified}}
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
