@@ -1,0 +1,4 @@
+*** Raneto Changelog ***
+
+2014.05.30 - version 0.1.0
+ * Initial release
