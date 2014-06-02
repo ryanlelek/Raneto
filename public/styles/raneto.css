@@ -124,3 +124,7 @@
     color: #999;
     margin: 0 20px 40px 0;
 }
+
+.error {
+    padding: 0 20px;
+}

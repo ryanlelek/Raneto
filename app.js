@@ -57,11 +57,9 @@ app.all('*', function(req, res, next){
         } else {
             fs.readFile(filePath, 'utf8', function(err, content) {
                 if(err){
-                    res.status(404);
-                    return res.render('error', {
-                        message: 'Not Found',
-                        error: {}
-                    });
+                    err.status = '404';
+                    err.message = 'Whoops. Looks like this page doesn\'t exist.';
+                    return next(err);
                 }
 
                 // File info
@@ -88,32 +86,31 @@ app.all('*', function(req, res, next){
 	}
 });
 
-/// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
 // development error handler
 // will print stacktrace
-//if (app.get('env') === 'development') {
+if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
+            config: config,
+            status: err.status,
             message: err.message,
-            error: err
+            error: err,
+            body_class: 'page-error'
         });
     });
-//}
+}
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
+        config: config,
+        status: err.status,
         message: err.message,
-        error: {}
+        error: {},
+        body_class: 'page-error'
     });
 });
 
