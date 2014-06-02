@@ -1,5 +1,6 @@
 /*
 Title: Contributing to Raneto
+Sort: 2
 */
 
 Want to report a bug, request a feature, contribute or translate Raneto? At the moment everything can be

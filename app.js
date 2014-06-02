@@ -32,7 +32,7 @@ app.all('*', function(req, res, next){
             searchResults.push(raneto.getPage(__dirname +'/content/'+ result.ref, config));
         });
 
-        var pageListSearch = raneto.getPages('');
+        var pageListSearch = raneto.getPages('', config);
         return res.render('search', {
             config: config,
             pages: pageListSearch,
@@ -46,7 +46,7 @@ app.all('*', function(req, res, next){
         if(slug == '/') slug = '/index';
 
         var filePath = __dirname +'/content'+ slug +'.md',
-            pageList = raneto.getPages(slug);
+            pageList = raneto.getPages(slug, config);
 
         if(slug == '/index' && !fs.existsSync(filePath)){
             return res.render('home', {

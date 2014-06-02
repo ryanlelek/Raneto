@@ -47,9 +47,10 @@ var raneto = {
 	},
 
 	getPage: function(path, config) {
-		var file = fs.readFileSync(path);
-		if(file){
-			var slug = path.replace(__dirname +'/content/', '').trim();
+		try {
+			var file = fs.readFileSync(path),
+				slug = path.replace(__dirname +'/content/', '').trim();
+
 			if(slug.indexOf('index.md') > -1){
 				slug = slug.replace('index.md', '');
 			}
@@ -67,11 +68,14 @@ var raneto = {
 				'excerpt': _s.prune(_s.stripTags(_s.unescapeHTML(html)), config.excerpt_length)
 			};
 		}
+		catch(e){}
 		return null;
 	},
 
-	getPages: function(activeSlug) {
-		var files = glob.sync(__dirname +'/content/**/*'),
+	getPages: function(activeSlug, config) {
+		var page_sort_meta = config.page_sort_meta || '',
+			category_sort = config.category_sort || false,
+			files = glob.sync(__dirname +'/content/**/*'),
 			filesProcessed = [];
 
 		filesProcessed.push({
@@ -79,6 +83,7 @@ var raneto = {
 			title: '',
 			is_index: true,
 			class: 'category-index',
+			sort: 0,
 			files: []
 		});
 
@@ -87,18 +92,32 @@ var raneto = {
 				stat = fs.lstatSync(filePath);
 
 			if(stat.isDirectory()){
+				var sort = 0;
+				if(category_sort){
+					try {
+						var sortFile = fs.readFileSync(__dirname +'/content/'+ shortPath +'/sort');
+						sort = parseInt(sortFile.toString('utf-8'), 10);
+					}
+					catch(e){
+						console.log(e);
+					}
+				}
+
 				filesProcessed.push({
 					slug: shortPath,
 					title: _s.titleize(_s.humanize(path.basename(shortPath))),
 					is_index: false,
 					class: 'category-'+ raneto.cleanString(shortPath.replace(/\//g, ' ')),
+					sort: sort,
 					files: []
 				});
 			}
 			if(stat.isFile() && path.extname(shortPath) == '.md'){
-				var file = fs.readFileSync(filePath);
-				if(file){
-					var slug = shortPath;
+				try {
+					var file = fs.readFileSync(filePath),
+						slug = shortPath,
+						pageSort = 0;
+
 					if(shortPath.indexOf('index.md') > -1){
 						slug = slug.replace('index.md', '');
 					}
@@ -107,14 +126,23 @@ var raneto = {
 					var dir = path.dirname(shortPath),
 						meta = raneto.processMeta(file.toString('utf-8'));
 
+					if(page_sort_meta && meta[page_sort_meta]) pageSort = parseInt(meta[page_sort_meta], 10);
+
 					var val = _.find(filesProcessed, function(item){ return item.slug == dir; });
 					val.files.push({
 						slug: slug,
 						title: meta.title ? meta.title : 'Untitled',
-						active: (activeSlug.trim() == '/'+ slug)
+						active: (activeSlug.trim() == '/'+ slug),
+						sort: pageSort
 					});
 				}
+				catch(e){}
 			}
+		});
+
+		filesProcessed = _.sortBy(filesProcessed, function(cat){ return cat.sort; });
+		filesProcessed.forEach(function(category){
+			category.files = _.sortBy(category.files, function(file){ return file.sort; });
 		});
 
 		return filesProcessed;
@@ -128,10 +156,10 @@ var raneto = {
 		});
 
 		files.forEach(function(filePath){
-			var shortPath = filePath.replace(__dirname +'/content/', '').trim(),
-				file = fs.readFileSync(filePath);
+			try {
+				var shortPath = filePath.replace(__dirname +'/content/', '').trim(),
+					file = fs.readFileSync(filePath);
 
-			if(file){
 				var meta = raneto.processMeta(file.toString('utf-8'));
 				idx.add({
 					'id': shortPath,
@@ -139,6 +167,7 @@ var raneto = {
 					'body': file.toString('utf-8')
 				});
 			}
+			catch(e){}
 		});
 
 		return idx.search(query);

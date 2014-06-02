@@ -49,10 +49,12 @@ The `pages` array has a structure similar to the following:
 * `title`: The category title
 * `is_index`: True for the top level files (ie not in a category)
 * `class`: CSS class
+* `sort`: The sort index for this category
 * `files[]`: Array of pages in this category
 	* `slug`: The page slug
 	* `title`: The page title
 	* `active`: True if the current page is "active"
+	* `sort`: The sort index for this page
 
 The `searchResults` array contains items which include:
 
