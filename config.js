@@ -7,7 +7,7 @@ var config = {
 	// Used for the "Get in touch" page footer link
 	support_email: '',
 	// Footer copyright content
-	copyright: 'Copyright &copy; Raneto',
+	copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - <a href="http://raneto.com">Powered by Raneto</a>',
 	// Excerpt length (used in search)
 	excerpt_length: 400
 

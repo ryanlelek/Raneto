@@ -1,5 +1,8 @@
 *** Raneto Changelog ***
 
+2014.06.02 - version 0.1.2
+ * [Changed] Changed default copyright in config.js
+
 2014.06.02 - version 0.1.1
  * [New] Added favicon
  * [Fixed] Error page
