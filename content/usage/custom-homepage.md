@@ -1,6 +1,6 @@
 /*
 Title: Custom Homepage
-Sort: 5
+Sort: 6
 */
 
 Be default Raneto shows a Knowledgebase homepage which lists your articles (and categories) and has

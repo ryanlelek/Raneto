@@ -43,7 +43,7 @@ app.all('*', function(req, res, next){
     }
 	else if(req.params[0]){
         var slug = req.params[0];
-        if(slug == '/') slug = '/index';
+        if(/\/$/.test(slug)) slug += 'index';
 
         var filePath = __dirname +'/content'+ slug +'.md',
             pageList = raneto.getPages(slug, config);
