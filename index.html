@@ -1,86 +1,83 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Raneto by gilbitron</title>
+    <title>Raneto - A free, open, simple Markdown powered Knowledgebase for Nodejs</title>
+    <meta name="description" content="Raneto is an open source Knowledgebase platform that uses static Markdown files to power your Knowledgebase.">
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Raneto</h1>
-        <p>Markdown powered Knowledgebase</p>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-3892196-63', 'raneto.com');
+    ga('send', 'pageview');
+    </script>
+</head>
+<body>
 
-        <p class="view"><a href="https://github.com/gilbitron/Raneto">View the Project on GitHub <small>gilbitron/Raneto</small></a></p>
+    <header class="header">
+        <span class="logo">Raneto</span>
+        <h1>Markdown powered Knowledgebase for Nodejs</h1>
+        <p>Raneto is an open source Knowledgebase platform that uses static Markdown files to power your Knowledgebase.</p>
+        <img src="images/raneto.png" alt="Raneto" />
+    </header>
 
+    <section class="content">
 
-        <ul>
-          <li><a href="https://github.com/gilbitron/Raneto/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/gilbitron/Raneto/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/gilbitron/Raneto">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="raneto" class="anchor" href="#raneto"><span class="octicon octicon-link"></span></a>Raneto</h1>
+        <div class="row cf">
+            <div class="col">
+                <h2>Simple</h2>
+                <p>Create and manage an entire knowledgebase using your favorite text editor.</p>
+            </div>
+            <div class="col">
+                <h2>Flat</h2>
+                <p>Raneto is a "flat file" CMS, meaning no database woe's, no MySQL queries, nothing.</p>
+            </div>
+            <div class="col last">
+                <h2>Fast</h2>
+                <p>Node is fast + Raneto is seriously lightweight + Raneto has no database = super fast.</p>
+            </div>
+        </div>
 
-<p>Raneto is a free, open, simple Markdown powered Knowledgebase for Nodejs.</p>
+        <div class="row cf">
+            <div class="other-features">
+                <h3>Other Features</h3>
+                <ul>
+                    <li><a href="http://mustache.github.io" target="_blank">Mustache</a> for easy templating</li>
+                    <li>Responsive default template (powered by <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>)</li>
+                    <li><a href="http://highlightjs.org" target="_blank">Highlight.js</a> code syntax highlighting</li>
+                    <li>Full-text search powered by <a href="http://lunrjs.com" target="_blank">Lunr</a></li>
+                    <li><a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">GitHub Flavored Markdown</a></li>
+                </ul>
+            </div>
 
-<h2>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+            <div class="get-started">
+                <h3>Get Started</h3>
+                <ul>
+                    <li class="download"><a href="https://github.com/gilbitron/Raneto/releases">Download Raneto &rarr;</a></li>
+                    <li><a href="http://docs.raneto.com">View Demo &amp; Docs</a></li>
+                    <li><a href="http://docs.raneto.com/contributing">Contribute to Raneto</a></li>
+                    <li><a href="https://raw.githubusercontent.com/gilbitron/Raneto/master/changelog.txt" target="_blank">View Changelog</a></li>
+                </ul>
+            </div>
+        </div>
 
-<ul>
-<li>
-<a href="http://nodejs.org">Node.js</a> <strong>v0.10+</strong>
-</li>
-</ul><h2>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+    </section>
 
-<ol>
-<li>Download the latest version of Raneto from the <a href="https://github.com/gilbitron/Raneto/releases">releases page</a>
-</li>
-<li>Create a new directory where you would like to run the app, and un-zip the package to that location</li>
-<li>Fire up a Terminal, the Node Command Prompt or shell and change directory to the root of the Raneto application (where app.js and config.js are)</li>
-<li>run <code>npm install</code> to install the node dependencies</li>
-<li>To start Raneto, run <code>npm start</code>
-</li>
-<li>Visit <code>http://localhost:3000</code> in your web browser</li>
-</ol><p>Note: When running on a live site you'll want to set the <code>PORT</code> env variable to <code>80</code> so you don't need to add <code>:3000</code> to the URL.</p>
+    <footer class="footer">
+        <div class="inner cf">
+            <p class="left">Raneto was made by <a href="http://gilbert.pellegrom.me">Gilbert Pellegrom</a> from
+            <a href="http://dev7studios.com">Dev7studios</a>.</p>
+            <p class="right">Released under the MIT license.</p>
+        </div>
+    </footer>
 
-<h2>
-<a name="demo--docs" class="anchor" href="#demo--docs"><span class="octicon octicon-link"></span></a>Demo &amp; Docs</h2>
-
-<p>See <a href="http://docs.raneto.com">http://docs.raneto.com</a></p>
-
-<h2>
-<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
-
-<p>Raneto was created by <a href="http://gilbert.pellegrom.me">Gilbert Pellegrom</a> from
-<a href="http://dev7studios.com">Dev7studios</a>. Released under the <a href="https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE">MIT license</a>.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/gilbitron">gilbitron</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-3892196-63");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-
-  </body>
+</body>
 </html>
