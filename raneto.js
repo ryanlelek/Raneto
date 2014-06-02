@@ -10,6 +10,8 @@ var raneto = {
 
 	metaRegex: /^\/\*([\s\S]*?)\*\//i,
 
+	allowedImageTypes: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+
 	cleanString: function(str, underscore){
 		var u = underscore || false;
 		if(u){
@@ -118,6 +120,7 @@ var raneto = {
 					files: []
 				});
 			}
+
 			if(stat.isFile() && path.extname(shortPath) == '.md'){
 				try {
 					var file = fs.readFileSync(filePath),

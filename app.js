@@ -5,7 +5,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     fs = require('fs'),
-	marked = require('marked'),
+    marked = require('marked'),
     moment = require('moment'),
     raneto = require('./raneto'),
     config = require('./config'),
@@ -41,12 +41,22 @@ app.all('*', function(req, res, next){
             body_class: 'page-search'
         });
     }
-	else if(req.params[0]){
+    else if(req.params[0]){
         var slug = req.params[0];
+        var filePath, pageList;
+
+        //We're serving an image here, withoud preprocessing
+        if (raneto.allowedImageTypes.indexOf(path.extname(slug)) >= 0) {
+            filePath = __dirname +'/content'+ slug;
+            res.sendfile(filePath);
+            return true;
+        }
+
+        //if not an image, we'll process as markdown page
         if(slug == '/') slug = '/index';
 
-        var filePath = __dirname +'/content'+ slug +'.md',
-            pageList = raneto.getPages(slug, config);
+        filePath = __dirname +'/content'+ slug +'.md';
+        pageList = raneto.getPages(slug, config);
 
         if(slug == '/index' && !fs.existsSync(filePath)){
             return res.render('home', {
@@ -81,9 +91,9 @@ app.all('*', function(req, res, next){
                 });
             });
         }
-	} else {
-		next();
-	}
+    } else {
+        next();
+    }
 });
 
 // development error handler
