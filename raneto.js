@@ -93,6 +93,12 @@ var raneto = {
 
 			if(stat.isDirectory()){
 				var sort = 0;
+
+				//ignore directories that has an ignore file under it
+				if (fs.existsSync(__dirname +'/content/'+ shortPath +'/ignore')) {
+					return true;
+				}
+
 				if(category_sort){
 					try {
 						var sortFile = fs.readFileSync(__dirname +'/content/'+ shortPath +'/sort');
