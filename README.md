@@ -23,7 +23,7 @@ Note: When running on a live site you'll want to set the `PORT` env variable to 
 Demo & Docs
 -----------
 
-See http://raneto.dev7studios.com
+See http://docs.raneto.com
 
 Credits
 -------
