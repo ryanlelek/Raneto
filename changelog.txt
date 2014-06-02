@@ -1,4 +1,8 @@
 *** Raneto Changelog ***
 
+2014.06.02 - version 0.1.1
+ * [New] Added favicon
+ * [Fixed] Error page
+
 2014.05.30 - version 0.1.0
  * Initial release
