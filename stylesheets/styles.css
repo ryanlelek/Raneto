@@ -143,6 +143,33 @@ blockquote {
 	border-left: 5px solid #ddd;
 }
 
+input,
+textarea,
+select,
+button {
+	font: 14px/1.6em "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 5px 10px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	outline: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: #999;
+}
+button {
+	border: 0;
+	padding: 6px 15px;
+	background: #289912;
+	color: #fff;
+}
+button:hover { background: #3baf1e; }
+
 .cf:before,
 .cf:after {
     content: " ";
@@ -217,6 +244,19 @@ blockquote {
 .content .get-started .download a {
     font-weight: bold;
     color: #289912;
+}
+.content .subscribe {
+	background: #eee;
+	line-height: 34px;
+	padding: 20px 30px;
+	margin: 0 auto;
+	border-radius: 4px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.content .subscribe form {
+	float: right;
 }
 
 .footer {
