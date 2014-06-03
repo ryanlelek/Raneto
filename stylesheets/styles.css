@@ -146,7 +146,8 @@ blockquote {
 input,
 textarea,
 select,
-button {
+button,
+.btn {
 	font: 14px/1.6em "Helvetica Neue", Helvetica, Arial, sans-serif;
 	padding: 5px 10px;
 	background: #fff;
@@ -162,13 +163,20 @@ textarea:focus,
 select:focus {
 	border-color: #999;
 }
-button {
+button,
+.btn {
 	border: 0;
 	padding: 6px 15px;
 	background: #289912;
 	color: #fff;
 }
-button:hover { background: #3baf1e; }
+a.btn {
+	display: inline-block;
+	color: #fff;
+	text-decoration: none;
+}
+button:hover,
+.btn:hover { background: #3baf1e; }
 
 .cf:before,
 .cf:after {
@@ -276,6 +284,15 @@ button:hover { background: #3baf1e; }
 .footer p { margin: 0; }
 .footer .left { float: left; }
 .footer .right { float: right; }
+.footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.footer li { display: inline; }
+.footer li a {
+	margin-left: 20px;
+}
 
 @media only screen and (max-width : 480px) {
     .content .col,
