@@ -14,6 +14,16 @@ is as follows:
 
 Remember you will need to restart the app after changing the template.
 
+## Public Files
+
+All static files in Raneto (images, CSS, Javascript files etc.) are served from the `public` folder. This
+is so that no one can access any other files in the install. Only files in the `public` folder are available
+to the public.
+
+It's worth noting that when customising Raneto you should always make your own files rather than customising
+the existing Raneto files, so that your changes don't get lost when you
+[update Raneto](%base_url%/updates/updating-raneto).
+
 ## Template Variables
 
 Below are a list of template variables available to use in their respective templates:
