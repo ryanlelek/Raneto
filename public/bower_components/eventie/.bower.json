@@ -1,0 +1,20 @@
+{
+  "name": "eventie",
+  "version": "1.0.5",
+  "main": "eventie.js",
+  "description": "event binding helper",
+  "ignore": [
+    "component.json",
+    "test"
+  ],
+  "homepage": "https://github.com/desandro/eventie",
+  "_release": "1.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.5",
+    "commit": "546e3c8582ca5e2dca2e9134b9ec53149cf46ecd"
+  },
+  "_source": "git://github.com/desandro/eventie.git",
+  "_target": ">=1.0.3 <2.0",
+  "_originalSource": "eventie"
+}

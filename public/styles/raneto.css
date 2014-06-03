@@ -53,11 +53,17 @@
 .page-home .header .search-form { display: none; }
 .home-search { text-align: center; }
 
-.home-categories .panel { margin: 2em 0; }
+.home-categories { margin: 0 10px; }
 .home-categories .panel-heading {
     font-size: 100%;
     font-weight: normal;
     margin: 0;
+}
+.home-categories .panel-heading,
+.home-categories .panel .page {
+    text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .content {
@@ -127,4 +133,9 @@
 
 .error {
     padding: 0 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .home-search .form-group { margin-bottom: 0; }
+    #home-search { margin-bottom: 10px; }
 }

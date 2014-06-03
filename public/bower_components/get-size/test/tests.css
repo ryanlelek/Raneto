@@ -1,0 +1,95 @@
+body {
+  font-family: sans-serif;
+  width: 400px;
+  padding: 20px;
+}
+
+.container {
+  width: 400px;
+  height: 200px;
+  background: #333;
+  margin-bottom: 20px;
+}
+
+.box {
+  background: #0AE;
+  color: #F90;
+  border-color: #F90;
+}
+
+/* align to right side */
+#qunit {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  margin-left: 440px;
+  margin-right: 10px;
+}
+
+
+/* Boxes
+------------------------- */
+
+#ex2 .box {
+  height: 100%;
+}
+
+#ex3 .box {
+  width: 50%;
+  height: 50%;
+}
+
+#ex4 .box,
+#ex5 .box {
+  width: 200px;
+  height: 100px;
+  border: 10px solid;
+}
+
+
+#ex5 .box {
+  margin: 10px 20px 30px 40px;
+}
+
+#ex6 .box {
+  width: 200px;
+  height: 100px;
+  padding: 10px 20px 30px 40px;
+}
+
+#ex7 .box {
+  height: 100px;
+  padding: 10px 20px 30px 40px;
+}
+
+#ex8 .box {
+  position: relative;
+  width: 66.6666%;
+  height: 66.666%;
+}
+
+/* border box */
+#ex9 .box {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  border-style: solid;
+  border-width: 10px 20px 30px 40px;
+  padding: 10px 20px 30px 40px;
+}
+
+#hidden .box {
+  display: none;
+  width: 200px;
+  height: 100px;
+  padding: 10px 20px 30px 40px;
+  margin: 10px 20px 30px 40px;
+}
+
+#percent .box {
+  width: 200px;
+  height: 100px;
+  margin-top: 20%;
+  margin-left: 10%;
+}

@@ -1,0 +1,41 @@
+{
+  "name": "matches-selector",
+  "version": "1.0.2",
+  "description": "matchesSelector helper",
+  "main": "matches-selector.js",
+  "devDependencies": {
+    "qunit": "1.x"
+  },
+  "homepage": "https://github.com/desandro/matches-selector",
+  "authors": [
+    "David DeSandro"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "DOM",
+    "matchesSelector"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "component.json",
+    "package.json"
+  ],
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.2",
+    "commit": "6ef41a78872f70f2636c7cdc6c0f99c14fa83902"
+  },
+  "_source": "git://github.com/desandro/matches-selector.git",
+  "_target": ">=1 <2",
+  "_originalSource": "desandro/matches-selector"
+}

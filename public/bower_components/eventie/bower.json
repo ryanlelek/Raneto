@@ -1,0 +1,10 @@
+{
+  "name": "eventie",
+  "version": "1.0.5",
+  "main": "eventie.js",
+  "description": "event binding helper",
+  "ignore": [
+    "component.json",
+    "test"
+  ]
+}

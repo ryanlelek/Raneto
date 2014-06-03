@@ -15,6 +15,14 @@
 
         }
 
+        if($('.home-categories').length){
+            $('.home-categories').masonry({
+                columnWidth: '.col',
+                itemSelector: '.col',
+                transitionDuration: 0
+            });
+        }
+
     });
 
 })(jQuery, hljs);
