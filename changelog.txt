@@ -1,5 +1,9 @@
 *** Raneto Changelog ***
 
+2014.06.03 - version 0.3.0
+ * [New] Added masonry layout functionality to homepage
+ * [New] Added commercial licensing
+
 2014.06.02 - version 0.2.0
  * [New] Added page and category sorting functionality
  * [Fixed] Added better handling of file reading errors in raneto.js
