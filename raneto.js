@@ -88,7 +88,8 @@ var raneto = {
 		});
 
 		files.forEach(function(filePath){
-			var shortPath = filePath.replace(__dirname +'/content/', '').trim(),
+            var dir = __dirname.replace(/\\/g, "/") + '/content/';
+            var shortPath = filePath.replace(dir, '').trim(),
 				stat = fs.lstatSync(filePath);
 
 			if(stat.isDirectory()){
