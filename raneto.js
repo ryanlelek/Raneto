@@ -3,8 +3,10 @@ var path = require('path'),
 	glob = require('glob'),
 	_ = require('underscore'),
 	_s = require('underscore.string'),
+	moment = require('moment'),
 	marked = require('marked'),
-	lunr = require('lunr');
+	lunr = require('lunr'),
+	config = require('./config');
 
 var raneto = {
 
@@ -41,12 +43,12 @@ var raneto = {
 		return markdownContent.replace(raneto.metaRegex, '').trim();
 	},
 
-	processVars: function(markdownContent, config) {
+	processVars: function(markdownContent) {
 		if(typeof config.base_url !== 'undefined') markdownContent = markdownContent.replace(/\%base_url\%/g, config.base_url);
 		return markdownContent;
 	},
 
-	getPage: function(path, config) {
+	getPage: function(path) {
 		try {
 			var file = fs.readFileSync(path),
 				slug = path.replace(__dirname +'/content/', '').trim();
@@ -58,7 +60,7 @@ var raneto = {
 
 			var meta = raneto.processMeta(file.toString('utf-8')),
 				content = raneto.stripMeta(file.toString('utf-8'));
-			content = raneto.processVars(content, config);
+			content = raneto.processVars(content);
 			var html = marked(content);
 
 			return {
@@ -72,7 +74,7 @@ var raneto = {
 		return null;
 	},
 
-	getPages: function(activeSlug, config) {
+	getPages: function(activeSlug) {
 		var page_sort_meta = config.page_sort_meta || '',
 			category_sort = config.category_sort || false,
 			files = glob.sync(__dirname +'/content/**/*'),
@@ -171,6 +173,78 @@ var raneto = {
 		});
 
 		return idx.search(query);
+	},
+
+	handleRequest: function(req, res, next) {
+		if(req.query.search){
+			var searchResults = raneto.search(req.query.search);
+			searchResults.forEach(function(result){
+				searchResults.push(raneto.getPage(__dirname +'/content/'+ result.ref));
+			});
+
+			var pageListSearch = raneto.getPages('');
+			return res.render('search', {
+				config: config,
+				pages: pageListSearch,
+				search: req.query.search,
+				searchResults: searchResults,
+				body_class: 'page-search'
+			});
+		}
+		else if(req.params[0]){
+			var slug = req.params[0];
+			if(slug == '/') slug = '/index';
+
+			var filePath = __dirname +'/content'+ slug +'.md',
+				pageList = raneto.getPages(slug);
+
+			if(slug == '/index' && !fs.existsSync(filePath)){
+				return res.render('home', {
+					config: config,
+					pages: pageList,
+					body_class: 'page-home'
+				});
+			} else {
+				fs.readFile(filePath, 'utf8', function(err, content) {
+					if(err){
+						err.status = '404';
+						err.message = 'Whoops. Looks like this page doesn\'t exist.';
+						return next(err);
+					}
+
+					// File info
+					var stat = fs.lstatSync(filePath);
+					// Meta
+					var meta = raneto.processMeta(content);
+					content = raneto.stripMeta(content);
+					// Content
+					content = raneto.processVars(content);
+					var html = marked(content);
+
+					return res.render('page', {
+						config: config,
+						pages: pageList,
+						meta: meta,
+						content: html,
+						body_class: 'page-'+ raneto.cleanString(slug.replace(/\//g, ' ')),
+						last_modified: moment(stat.mtime).format('Do MMM YYYY')
+					});
+				});
+			}
+		} else {
+			next();
+		}
+	},
+
+	handleError: function(err, req, res, next) {
+		res.status(err.status || 500);
+		res.render('error', {
+			config: config,
+			status: err.status,
+			message: err.message,
+			error: {},
+			body_class: 'page-error'
+		});
 	}
 
 };
