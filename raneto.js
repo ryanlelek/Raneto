@@ -10,6 +10,8 @@ var raneto = {
 
 	metaRegex: /^\/\*([\s\S]*?)\*\//i,
 
+	allowedImageTypes: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+
 	cleanString: function(str, underscore){
 		var u = underscore || false;
 		if(u){
@@ -93,6 +95,12 @@ var raneto = {
 
 			if(stat.isDirectory()){
 				var sort = 0;
+
+				//ignore directories that has an ignore file under it
+				if (fs.existsSync(__dirname +'/content/'+ shortPath +'/ignore')) {
+					return true;
+				}
+
 				if(category_sort){
 					try {
 						var sortFile = fs.readFileSync(__dirname +'/content/'+ shortPath +'/sort');
@@ -112,6 +120,7 @@ var raneto = {
 					files: []
 				});
 			}
+
 			if(stat.isFile() && path.extname(shortPath) == '.md'){
 				try {
 					var file = fs.readFileSync(filePath),
