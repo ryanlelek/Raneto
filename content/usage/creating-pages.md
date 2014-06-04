@@ -48,5 +48,8 @@ moment only a title is required but you can also add a description which will be
 	Description: Optional description for search engines
 	*/
 
-You can also use the *&#37;base_url&#37;* variable in your Markdown pages which will be replaced with the base URL
+You can also use certain variables in your Markdown pages which will be replaced with the values
 you set in [your config](%base_url%/usage/configuration).
+
+* *&#37;base_url&#37;*: The base URL of your site
+* *&#37;image_url&#37;*: The base URL of your images folder (`public/images`)
