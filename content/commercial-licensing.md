@@ -13,9 +13,11 @@ license must be purchased for every top level domain.
 Licenses last for one year and can be renewed at a discounted rate. We offer a 30-day, money back refund
 policy.
 
+For complete details regards commercial licensing, please refer to our EULA below. 
+
 ## End User License Agreement
 This End User License Agreement (the "Agreement") is a binding legal agreement between you and Dev7studios Ltd
-(the "Author"). By installing or using the Raneto (the "Software"), you agree to be bound by the terms of
+(the "Author"). By installing or using Raneto (the "Software"), you agree to be bound by the terms of
 this Agreement. If you do not agree to the Agreement, do not download, install, or use the Software.
 Installation or use of the Software signifies that you have read, understood, and agreed to be bound
 by the Agreement.
