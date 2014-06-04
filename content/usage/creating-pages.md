@@ -40,13 +40,16 @@ Pages are created using Markdown. If you are new to Markdown please refer to the
 [syntax guide](http://daringfireball.net/projects/markdown/syntax) for more information. Pages can also
 contain regular HTML.
 
-At the top of a page you must place a block comment to specify certain attributes of the page. For the
-moment only a title is required but you can also add a description which will be used by search engines.
+At the top of a page you can place a block comment to specify certain attributes of the page. For example
+you can specify the page title or a description to be used by search engines. Specifying page meta is
+optional.
 
 	/*
 	Title: My Page Title
 	Description: Optional description for search engines
 	*/
+
+Note that if no meta title is specified the filename will be used to generate a page title.
 
 You can also use certain variables in your Markdown pages which will be replaced with the values
 you set in [your config](%base_url%/usage/configuration).
