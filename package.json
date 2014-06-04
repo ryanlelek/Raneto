@@ -39,6 +39,7 @@
     "marked": "^0.3.2",
     "moment": "^2.6.0",
     "morgan": "~1.0.0",
+    "raneto-core": "^0.1.0",
     "static-favicon": "~1.0.0",
     "underscore": "^1.6.0",
     "underscore.string": "^2.3.3",
