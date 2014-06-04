@@ -9,13 +9,13 @@
     "knowledgebase",
     "markdown"
   ],
-  "repository"  : {
+  "repository": {
     "type": "git",
     "url": "https://github.com/gilbitron/Raneto.git"
   },
-  "bugs"        : "https://github.com/gilbitron/Raneto/issues",
+  "bugs": "https://github.com/gilbitron/Raneto/issues",
   "contributors": "https://github.com/gilbitron/Raneto/graphs/contributors",
-  "licenses"    : [
+  "licenses": [
     {
       "type": "MIT",
       "url": "https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE"
@@ -41,6 +41,7 @@
     "morgan": "~1.0.0",
     "static-favicon": "~1.0.0",
     "underscore": "^1.6.0",
-    "underscore.string": "^2.3.3"
+    "underscore.string": "^2.3.3",
+    "validator": "^3.13.0"
   }
 }

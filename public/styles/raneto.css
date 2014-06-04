@@ -131,6 +131,8 @@
     margin: 0 20px 40px 0;
 }
 
+.page-excerpt .search-query { background: #FFFDDC; }
+
 .error {
     padding: 0 20px;
 }

@@ -6,6 +6,7 @@ var path = require('path'),
 	moment = require('moment'),
 	marked = require('marked'),
 	lunr = require('lunr'),
+	validator = require('validator'),
 	config = require('./config');
 
 var raneto = {
@@ -45,8 +46,7 @@ var raneto = {
 
 	processVars: function(markdownContent) {
 		if(typeof config.base_url !== 'undefined') markdownContent = markdownContent.replace(/\%base_url\%/g, config.base_url);
-		if (typeof config.image_url !== 'undefined') markdownContent = markdownContent.replace(/\%image_url\%/g,
-				config.image_url);
+		if (typeof config.image_url !== 'undefined') markdownContent = markdownContent.replace(/\%image_url\%/g, config.image_url);
 		return markdownContent;
 	},
 
@@ -179,16 +179,19 @@ var raneto = {
 
 	handleRequest: function(req, res, next) {
 		if(req.query.search){
-			var searchResults = raneto.search(req.query.search);
+			var searchQuery = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim();
+			var searchResults = raneto.search(searchQuery);
 			searchResults.forEach(function(result){
-				searchResults.push(raneto.getPage(__dirname +'/content/'+ result.ref));
+				var page = raneto.getPage(__dirname +'/content/'+ result.ref);
+				page.excerpt = page.excerpt.replace(new RegExp('('+ searchQuery +')', 'gim'), '<span class="search-query">$1</span>');
+				searchResults.push(page);
 			});
 
 			var pageListSearch = raneto.getPages('');
 			return res.render('search', {
 				config: config,
 				pages: pageListSearch,
-				search: req.query.search,
+				search: searchQuery,
 				searchResults: searchResults,
 				body_class: 'page-search'
 			});
