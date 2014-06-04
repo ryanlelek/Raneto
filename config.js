@@ -21,7 +21,9 @@ var config = {
 
 	// Should categories be sorted numerically (true) or alphabetically (false)
 	// If true category folders need to contain a "sort" file with an integer value
-	category_sort: true
+	category_sort: true,
+
+	image_url: '/images'
 
 };
 

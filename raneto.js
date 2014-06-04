@@ -45,6 +45,8 @@ var raneto = {
 
 	processVars: function(markdownContent) {
 		if(typeof config.base_url !== 'undefined') markdownContent = markdownContent.replace(/\%base_url\%/g, config.base_url);
+		if (typeof config.image_url !== 'undefined') markdownContent = markdownContent.replace(/\%image_url\%/g,
+				config.image_url);
 		return markdownContent;
 	},
 
