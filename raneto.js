@@ -50,10 +50,10 @@ var raneto = {
 		return markdownContent;
 	},
 
-	getPage: function(path) {
+	getPage: function(filePath) {
 		try {
-			var file = fs.readFileSync(path),
-				slug = path.replace(__dirname.replace(/\\/g, '/') +'/content/', '').trim();
+			var file = fs.readFileSync(filePath),
+				slug = filePath.replace(__dirname.replace(/\\/g, '/') +'/content/', '').trim();
 
 			if(slug.indexOf('index.md') > -1){
 				slug = slug.replace('index.md', '');
@@ -67,7 +67,7 @@ var raneto = {
 
 			return {
 				'slug': slug,
-				'title': meta.title ? meta.title : 'Untitled',
+				'title': meta.title ? meta.title : _s.titleize(_s.humanize(path.basename(slug))),
 				'body': html,
 				'excerpt': _s.prune(_s.stripTags(_s.unescapeHTML(html)), config.excerpt_length)
 			};
@@ -135,7 +135,7 @@ var raneto = {
 					var val = _.find(filesProcessed, function(item){ return item.slug == dir; });
 					val.files.push({
 						slug: slug,
-						title: meta.title ? meta.title : 'Untitled',
+						title: meta.title ? meta.title : _s.titleize(_s.humanize(path.basename(slug))),
 						active: (activeSlug.trim() == '/'+ slug),
 						sort: pageSort
 					});
@@ -167,7 +167,7 @@ var raneto = {
 				var meta = raneto.processMeta(file.toString('utf-8'));
 				idx.add({
 					'id': shortPath,
-					'title': meta.title ? meta.title : 'Untitled',
+					'title': meta.title ? meta.title : _s.titleize(_s.humanize(path.basename(shortPath.replace('.md', '').trim()))),
 					'body': file.toString('utf-8')
 				});
 			}
@@ -222,6 +222,7 @@ var raneto = {
 					// Meta
 					var meta = raneto.processMeta(content);
 					content = raneto.stripMeta(content);
+					if(!meta.title) meta.title = _s.titleize(_s.humanize(path.basename(filePath.replace('.md', '').trim())));
 					// Content
 					content = raneto.processVars(content);
 					var html = marked(content);
