@@ -24,8 +24,11 @@ var config = {
 	category_sort: true,
 
 	// The base URL of your images folder (can use %image_url% in Markdown files)
-	image_url: '/images'
+	image_url: '/images',
 
+	// Specify the absolute path of your content folder where all your '.md' files are located
+	// eg: /home/user/my-content
+	content_dir: 'content'
 };
 
 module.exports = config;

@@ -50,10 +50,23 @@ var raneto = {
 		return markdownContent;
 	},
 
+	normalizePath: function(filePath) {
+		var normalizedPath = filePath.replace(/\\/g, '/');
+		return /\/$/.test(normalizedPath) ? normalizedPath : normalizedPath + '/';
+	},
+
+	contentDir: function() {
+		if (config.content_dir === 'content') {
+			return raneto.normalizePath(__dirname +'/content/');
+		}
+
+		return raneto.normalizePath(config.content_dir);
+	},
+
 	getPage: function(filePath) {
 		try {
 			var file = fs.readFileSync(filePath),
-				slug = filePath.replace(__dirname.replace(/\\/g, '/') +'/content/', '').trim();
+				slug = filePath.replace(raneto.contentDir(), '').trim();
 
 			if(slug.indexOf('index.md') > -1){
 				slug = slug.replace('index.md', '');
@@ -79,7 +92,7 @@ var raneto = {
 	getPages: function(activeSlug) {
 		var page_sort_meta = config.page_sort_meta || '',
 			category_sort = config.category_sort || false,
-			files = glob.sync(__dirname +'/content/**/*'),
+			files = glob.sync(raneto.contentDir() + '/**/*'),
 			filesProcessed = [];
 
 		filesProcessed.push({
@@ -92,14 +105,14 @@ var raneto = {
 		});
 
 		files.forEach(function(filePath){
-            var shortPath = filePath.replace(__dirname.replace(/\\/g, '/') + '/content/', '').trim(),
+            var shortPath = filePath.replace(raneto.contentDir(), '').trim(),
 				stat = fs.lstatSync(filePath);
 
 			if(stat.isDirectory()){
 				var sort = 0;
 				if(category_sort){
 					try {
-						var sortFile = fs.readFileSync(__dirname.replace(/\\/g, '/') +'/content/'+ shortPath +'/sort');
+						var sortFile = fs.readFileSync(raneto.contentDir() + shortPath +'/sort');
 						sort = parseInt(sortFile.toString('utf-8'), 10);
 					}
 					catch(e){
@@ -133,6 +146,7 @@ var raneto = {
 					if(page_sort_meta && meta[page_sort_meta]) pageSort = parseInt(meta[page_sort_meta], 10);
 
 					var val = _.find(filesProcessed, function(item){ return item.slug == dir; });
+
 					val.files.push({
 						slug: slug,
 						title: meta.title ? meta.title : _s.titleize(_s.humanize(path.basename(slug))),
@@ -153,7 +167,7 @@ var raneto = {
 	},
 
 	search: function(query) {
-		var files = glob.sync(__dirname +'/content/**/*.md');
+		var files = glob.sync(raneto.contentDir() + '/**/*.md');
 		var idx = lunr(function(){
 			this.field('title', { boost: 10 });
 			this.field('body');
@@ -161,7 +175,7 @@ var raneto = {
 
 		files.forEach(function(filePath){
 			try {
-				var shortPath = filePath.replace(__dirname.replace(/\\/g, '/') +'/content/', '').trim(),
+				var shortPath = filePath.replace(raneto.contentDir(), '').trim(),
 					file = fs.readFileSync(filePath);
 
 				var meta = raneto.processMeta(file.toString('utf-8'));
@@ -182,7 +196,7 @@ var raneto = {
 			var searchQuery = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim();
 			var searchResults = raneto.search(searchQuery);
 			searchResults.forEach(function(result){
-				var page = raneto.getPage(__dirname.replace(/\\/g, '/') +'/content/'+ result.ref);
+				var page = raneto.getPage(raneto.contentDir() + result.ref);
 				page.excerpt = page.excerpt.replace(new RegExp('('+ searchQuery +')', 'gim'), '<span class="search-query">$1</span>');
 				searchResults.push(page);
 			});
@@ -200,7 +214,7 @@ var raneto = {
 			var slug = req.params[0];
 			if(slug == '/') slug = '/index';
 
-			var filePath = __dirname.replace(/\\/g, '/') +'/content'+ slug +'.md',
+			var filePath = raneto.contentDir() + slug + '.md',
 				pageList = raneto.getPages(slug);
 
 			if(slug == '/index' && !fs.existsSync(filePath)){
