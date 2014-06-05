@@ -25,6 +25,11 @@ Demo & Docs
 
 See http://docs.raneto.com
 
+Contribute
+----------
+
+See http://docs.raneto.com/contributing
+
 Credits
 -------
 
