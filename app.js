@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+if(config.content_dir) raneto.contentDir = config.content_dir;
+
 app.all('*', function(req, res, next) {
     if(req.query.search){
         var searchQuery = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim();

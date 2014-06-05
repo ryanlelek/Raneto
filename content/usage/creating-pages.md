@@ -8,9 +8,9 @@ There are several important aspects to your files that you need to pay attention
 
 ## File Location
 
-All of your Markdown files must go in the `content` folder in the root of the application. You can add as
-many sub-folders as you like in the content folder, but only `.md` files within the `content` folder
-(or sub-folders) will be recognised.
+All of your Markdown files must go in the `content` folder in the root of the application (this can be
+configured in `config.js`). You can add as many sub-folders as you like in the content folder, but only
+`.md` files within the `content` folder (or sub-folders) will be recognised.
 
 You can use sub-folders as a way of creating "categories" of pages. For example if you create a sub-folder
 called `using-my-product` all of the pages inside that folder will appear under the **Using My Product**
