@@ -30,6 +30,11 @@ Contribute
 
 See http://docs.raneto.com/contributing
 
+Showcase
+--------
+
+Using Raneto in the wild? We'd love to see it. Add your site to the [Raneto Showcase](https://github.com/gilbitron/Raneto/wiki/Raneto-Showcase).
+
 Credits
 -------
 
