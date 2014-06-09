@@ -51,10 +51,9 @@ app.all('*', function(req, res, next) {
         var slug = req.params[0];
         if(slug == '/') slug = '/index';
 
-        var pageList = raneto.getPages(slug);
-
-        var filePath = path.normalize(raneto.config.content_dir + slug);
-        if (!fs.existsSync(filePath)) filePath += '.md';
+        var pageList = raneto.getPages(slug),
+            filePath = path.normalize(raneto.config.content_dir + slug);
+        if(!fs.existsSync(filePath)) filePath += '.md';
 
         if(slug == '/index' && !fs.existsSync(filePath)){
             return res.render('home', {
@@ -70,11 +69,10 @@ app.all('*', function(req, res, next) {
                     return next(err);
                 }
 
-                // File info
-                var stat = fs.lstatSync(filePath);
-
-                //process markdown files
-                if (path.extname(filePath) == '.md') {
+                // Process Markdown files
+                if(path.extname(filePath) == '.md'){
+                    // File info
+                    var stat = fs.lstatSync(filePath);
                     // Meta
                     var meta = raneto.processMeta(content);
                     content = raneto.stripMeta(content);
@@ -92,7 +90,7 @@ app.all('*', function(req, res, next) {
                         last_modified: moment(stat.mtime).format('Do MMM YYYY')
                     });
                 } else {
-                    //serve static file
+                    // Serve static file
                     res.sendfile(filePath);
                 }
             });

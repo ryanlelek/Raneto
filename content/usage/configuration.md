@@ -17,6 +17,7 @@ support_email: 'support@example.com',
 copyright: 'Copyright &copy; Example Site',
 // Excerpt length (used in search)
 excerpt_length: 400
+// ...
 ```
 
 Feel free to edit these variables as you wish. Each variable comes with an explanation as to what it does.
