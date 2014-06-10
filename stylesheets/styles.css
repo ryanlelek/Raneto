@@ -196,6 +196,7 @@ button:hover,
     text-align: center;
     padding: 40px 20px 0;
 }
+.page-pricing .header { padding-bottom: 10px; }
 .header .logo {
     display: inline-block;
     font-size: 35px;
@@ -253,7 +254,7 @@ button:hover,
     font-weight: bold;
     color: #289912;
 }
-.content .subscribe {
+.content .hosting {
 	background: #eee;
 	line-height: 34px;
 	padding: 20px 30px;
@@ -263,9 +264,58 @@ button:hover,
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.content .subscribe form {
+.content .hosting .btn {
 	float: right;
 }
+.content .subscribe {
+	text-align: center;
+}
+
+.pricing-table {
+	width: 100%;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 1em;
+}
+.pricing-table th,
+.pricing-table td { padding: 10px 15px; }
+.pricing-table td {
+	border-left: 1px solid #eee;
+	vertical-align: middle;
+}
+.pricing-table tr td:last-child { border-right: 1px solid #eee;}
+.pricing-table th {
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	color: #666;
+}
+.pricing-table .price-row td {
+	background: #A0BA5E;
+	color: rgba(255,255,255,0.6);
+	text-align: center;
+	padding: 20px 0;
+	vertical-align: bottom;
+}
+.pricing-table .price-row td.free {
+	background: #E3EDF2;
+	color: #999;
+}
+.pricing-table .price-row .dollar {
+	font-size: 35px;
+	line-height: 50px;
+	vertical-align: top;
+}
+.pricing-table .price-row .price {
+	font-size: 50px;
+	line-height: 50px;
+	margin-left: 3px;
+	color: #fff;
+}
+.pricing-table .price-row .timeframe {
+	display: block;
+}
+p.enterprise { text-align: center; }
 
 .footer {
     position: relative;
