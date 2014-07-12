@@ -1,5 +1,5 @@
 <div class="home-search jumbotron row">
-	<form class="search-form form-inline" role="form" action="/">
+	<form class="search-form form-inline" role="form" action="{{config.base_url}}/">
 		<div class="form-group">
 			<label class="sr-only" for="home-search">Search the knowledge base</label>
 			<input type="search" class="form-control input-lg" name="search" id="home-search" size="50" placeholder="Search the knowledge base">
@@ -16,7 +16,7 @@
 					<h2 class="panel-heading">Main Articles</h2>
 					<ul class="list-group pages">
 						{{#files}}
-							<li class="list-group-item page"><a href="/{{slug}}">{{title}}</a></li>
+							<li class="list-group-item page"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
 						{{/files}}
 					</ul>
 				</div>
@@ -29,7 +29,7 @@
 				<h2 class="panel-heading">{{title}}</h2>
 				<ul class="list-group pages">
 					{{#files}}
-						<li class="list-group-item page"><a href="/{{slug}}">{{title}}</a></li>
+						<li class="list-group-item page"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
 					{{/files}}
 				</ul>
 			</div>
