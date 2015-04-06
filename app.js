@@ -32,8 +32,86 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Setup config
 extend(raneto.config, config);
 
+app.post("/rn-edit", function(req, res, next){
+    var filePath = path.normalize(raneto.config.content_dir + req.body.file);
+    if(!fs.existsSync(filePath)) filePath += '.md';
+    fs.writeFile(filePath, req.body.content, function(err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                status: 1,
+                message: err
+            });
+            return;
+        }
+
+        res.json({
+            status: 0,
+            message: "Page Saved"
+        });
+    }); 
+});
+app.post("/rn-delete", function(req, res, next){  
+    var filePath = path.normalize(raneto.config.content_dir + req.body.file);
+    if(!fs.existsSync(filePath)) filePath += '.md';
+    fs.rename(filePath, filePath + ".del", function(err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                status: 1,
+                message: err
+            });
+            return;
+        }
+
+        res.json({
+            status: 0,
+            message: "Page Deleted"
+        });
+    }); 
+});
+app.post("/rn-add-category", function(req, res, next){
+    var filePath = path.normalize(raneto.config.content_dir + req.body.category);
+    fs.mkdir(filePath, function(err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                status: 1,
+                message: err
+            });
+            return;
+        }
+
+        res.json({
+            status: 0,
+            message: "Category Created"
+        });
+    }); 
+});
+app.post("/rn-add-page", function(req, res, next){
+    var filePath = path.normalize(raneto.config.content_dir + req.body.category + "/" + req.body.name + ".md");
+    fs.open(filePath, "a", function(err, fd) {
+        
+        fs.close(fd);
+        if(err) {
+            console.log(err);
+            res.json({
+                status: 1,
+                message: err
+            });
+            return;
+        }
+
+        res.json({
+            status: 0,
+            message: "Page Created"
+        });
+    }); 
+
+});
 // Handle all requests
-app.all('*', function(req, res, next) {
+app.get('*', function(req, res, next) {
+    var suffix = "\edit";
     if(req.query.search){
         var searchQuery = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim(),
             searchResults = raneto.doSearch(searchQuery),
@@ -52,7 +130,12 @@ app.all('*', function(req, res, next) {
         if(slug == '/') slug = '/index';
 
         var pageList = raneto.getPages(slug),
-            filePath = path.normalize(raneto.config.content_dir + slug);
+            filePath = path.normalize(raneto.config.content_dir + slug),
+            filePathOrig = filePath;
+            
+        if(filePath.indexOf(suffix, filePath.length - suffix.length) !== -1){
+            filePath = filePath.slice(0, - suffix.length - 1);
+        }
         if(!fs.existsSync(filePath)) filePath += '.md';
 
         if(slug == '/index' && !fs.existsSync(filePath)){
@@ -62,38 +145,70 @@ app.all('*', function(req, res, next) {
                 body_class: 'page-home'
             });
         } else {
-            fs.readFile(filePath, 'utf8', function(err, content) {
-                if(err){
-                    err.status = '404';
-                    err.message = 'Whoops. Looks like this page doesn\'t exist.';
-                    return next(err);
-                }
 
-                // Process Markdown files
-                if(path.extname(filePath) == '.md'){
-                    // File info
-                    var stat = fs.lstatSync(filePath);
-                    // Meta
-                    var meta = raneto.processMeta(content);
-                    content = raneto.stripMeta(content);
-                    if(!meta.title) meta.title = raneto.slugToTitle(filePath);
-                    // Content
-                    content = raneto.processVars(content);
-                    var html = marked(content);
+            if(filePathOrig.indexOf(suffix, filePathOrig.length - suffix.length) !== -1){
+               
+                 fs.readFile(filePath, 'utf8', function(err, content) {
+                    if(err){
+                        err.status = '404';
+                        err.message = 'Whoops. Looks like this page doesn\'t exist.';
+                        return next(err);
+                    }
+                    if(path.extname(filePath) == '.md'){
+                        // File info
+                        var stat = fs.lstatSync(filePath);
+                        // Meta
+                        var meta = raneto.processMeta(content);
+                        content = raneto.stripMeta(content);
+                        if(!meta.title) meta.title = raneto.slugToTitle(filePath);
+                        // Content
+                        content = raneto.processVars(content);
+                        var html = content;
 
-                    return res.render('page', {
-                        config: config,
-                        pages: pageList,
-                        meta: meta,
-                        content: html,
-                        body_class: 'page-'+ raneto.cleanString(slug),
-                        last_modified: moment(stat.mtime).format('Do MMM YYYY')
-                    });
-                } else {
-                    // Serve static file
-                    res.sendfile(filePath);
-                }
-            });
+                        return res.render('edit', {
+                            config: config,
+                            pages: pageList,
+                            meta: meta,
+                            content: html,
+                            body_class: 'page-'+ raneto.cleanString(slug),
+                            last_modified: moment(stat.mtime).format('Do MMM YYYY')
+                        });
+                    }
+                 });
+            } else {
+                fs.readFile(filePath, 'utf8', function(err, content) {
+                    if(err){
+                        err.status = '404';
+                        err.message = 'Whoops. Looks like this page doesn\'t exist.';
+                        return next(err);
+                    }
+
+                    // Process Markdown files
+                    if(path.extname(filePath) == '.md'){
+                        // File info
+                        var stat = fs.lstatSync(filePath);
+                        // Meta
+                        var meta = raneto.processMeta(content);
+                        content = raneto.stripMeta(content);
+                        if(!meta.title) meta.title = raneto.slugToTitle(filePath);
+                        // Content
+                        content = raneto.processVars(content);
+                        var html = marked(content);
+
+                        return res.render('page', {
+                            config: config,
+                            pages: pageList,
+                            meta: meta,
+                            content: html,
+                            body_class: 'page-'+ raneto.cleanString(slug),
+                            last_modified: moment(stat.mtime).format('Do MMM YYYY')
+                        });
+                    } else {
+                        // Serve static file
+                        res.sendfile(filePath);
+                    }
+                });
+            }
         }
     } else {
         next();

@@ -1,7 +1,10 @@
 <div class="row">
     <div class="col-sm-3">
-
+        
         <ul class="menu">
+        <li>
+            <input id="newCategory" type="text" class="form-control" placeholder="Add Category"/> 
+        </li>
         {{#pages}}
             {{#is_index}}
                 {{#files}}
@@ -10,7 +13,7 @@
             {{/is_index}}
             {{^is_index}}
             <li class="category">
-                <h5 class="category-title">{{title}}</h5>
+                <h5 class="category-title">{{title}} <a class="add-page" data-toggle="modal" data-target="#addModal"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a></h5>
                 <ul class="pages">
                 {{#files}}
                     <li class="page{{#active}} active{{/active}}"><a href="/{{slug}}">{{title}}</a></li>
@@ -25,6 +28,15 @@
     <div class="col-sm-9">
 
         <section class="content">
+            <div class="btn-group btn-group-sm pull-right">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Actions <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a class="goto-edit">Edit</a></li>
+                <li><a data-toggle="modal" data-target="#deleteModal" >Delete</a></li>
+              </ul>
+            </div>
             {{#meta.title}}<h1 class="title">{{meta.title}}</h1>{{/meta.title}}
 
             {{{ content }}}

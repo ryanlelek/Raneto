@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/bower_components/highlightjs/styles/solarized_light.css">
 	<link rel="stylesheet" href="/styles/raneto.css">
+    <link rel="stylesheet" href="/styles/ghostdown.css">
 
 	{{{config.analytics}}}
 </head>
@@ -41,6 +42,48 @@
 	<div class="container-fluid">
 		{{{ yield }}}
 	</div>
+    
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete this page?</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">No</button> 
+                    <button class="btn btn-primary" id="delete-page-confirm" type="button">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Add New Page</h4>
+                </div>
+                <div class="modal-body">
+                    
+                      <div class="form-group">
+                        <label for="page-name" class="control-label">Page Name:</label>
+                        <input type="text" class="form-control" id="page-name">
+                      </div>
+                    
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button> 
+                    <button class="btn btn-primary" id="add-page-confirm" type="button">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<footer class="footer">
 		<div class="container-fluid">
@@ -58,6 +101,7 @@
 	<script src="/bower_components/fitvids/jquery.fitvids.js"></script>
 	<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
 	<script src="/scripts/raneto.js"></script>
+    <script src="/scripts/ghostdown.js"></script>
 
 </body>
 </html>
