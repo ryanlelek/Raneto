@@ -45,7 +45,7 @@
         });
         $("#add-page-confirm").click(function(){
             $('#addModal').modal('hide');
-            name = $("#page-name").val().replace(" ", "-")
+            name = $("#page-name").val().replace(/\s+/g, "-")
             $.post(
                 "/rn-add-page", 
                 {
@@ -70,7 +70,8 @@
                 .end()
                 .text()
                 .trim()
-                .toLowerCase();
+                .toLowerCase()
+                .replace(/\s+/g, "-");
                 
             current_category = text;
         });
@@ -79,7 +80,11 @@
                 $.post(
                     "/rn-add-category",
                     {
-                        "category": $(this).val()
+                        "category": $(this)
+                            .val()
+                            .trim()
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")
                     },
                     function(data){
                          location.reload();
