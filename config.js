@@ -10,7 +10,7 @@ var config = {
 	support_email: '',
 
 	// Footer copyright content
-	copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - <a href="http://raneto.com">Powered by Raneto</a>',
+	copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - <a href="http://raneto.com">顺顺留学</a>',
 
 	// Excerpt length (used in search)
 	excerpt_length: 400,
