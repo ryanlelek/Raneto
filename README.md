@@ -40,3 +40,9 @@ Credits
 
 Raneto was created by [Gilbert Pellegrom](http://gilbert.pellegrom.me) from
 [Dev7studios](http://dev7studios.com). Released under the [MIT license](https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE).
+
+### changelog
+1. 修改了package.json，使支持中文搜索
+2. 修改了favicon
+3. 修改了footer链接
+4. layout页面增加了nofollow
