@@ -37,7 +37,7 @@
     "extend": "^1.2.1",
     "glob": "^4.0.0",
     "hogan-express": "^0.5.2",
-    "lunr": "^0.5.3",
+    "lunr": "git@github.com:shunshunedu/lunr.js.git",
     "marked": "^0.3.2",
     "moment": "^2.6.0",
     "morgan": "~1.0.0",
