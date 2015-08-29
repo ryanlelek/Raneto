@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var debug = require('debug')('raneto');
-var app = require('../app');
+var app = require('../server');
 
 app.set('port', process.env.PORT || 3000);
 

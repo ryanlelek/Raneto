@@ -15,24 +15,25 @@ var express = require('express'),
     app = express();
 
 // Setup views
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 app.set('layout', 'layout');
 app.set('view engine', 'html');
 app.enable('view cache');
 app.engine('html', require('hogan-express'));
 
 // Setup Express
-app.use(favicon(__dirname +'/public/favicon.ico'));
+app.use(favicon(__dirname +'../public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Setup config
 extend(raneto.config, config);
 
 // Handle all requests
+app.use('/auth', require('./auth'));
 app.all('*', function(req, res, next) {
     if(req.query.search){
         var searchQuery = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim(),
