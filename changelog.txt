@@ -1,5 +1,12 @@
 *** Raneto Changelog ***
 
+
+2015.08.28 - version 0.6.1
+* [New] 修改了package.json，使支持中文搜索
+* [Changed] 修改了favicon
+* [Changed] 修改了footer链接
+* [Changed] layout页面增加了nofollow
+
 2014.06.09 - version 0.6.0
  * [Changed] Static files (e.g. images) can now be served from the content folder
  * [Changed] Removed commercial licensing
