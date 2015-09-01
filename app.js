@@ -79,6 +79,9 @@ app.all('*', function(req, res, next) {
                     if(!meta.title) meta.title = raneto.slugToTitle(filePath);
                     // Content
                     content = raneto.processVars(content);
+                    marked.setOptions({
+                    	langPrefix: ''
+                    });
                     var html = marked(content);
 
                     return res.render('page', {
