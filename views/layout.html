@@ -19,11 +19,12 @@
 	<header class="header">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-3">
 
 					<a href="/" class="logo">{{config.site_title}}</a>
 
 				</div>
+
 				<div class="col-sm-6">
 
 					<form class="search-form form-inline pull-right" role="form" action="/">
@@ -34,6 +35,21 @@
 					</form>
 
 				</div>
+
+        <div class="col-sm-3">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/">主页</a></li>
+                <li><a href="javascript:void(0);">全屏现实</a></li>
+                <li><a href="/auth/updatePass">修改密码</a></li>
+                <li><a href="/auth/loginout">退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
 			</div>
 		</div>
 	</header>
@@ -57,6 +73,7 @@
 	<script src="/bower_components/highlightjs/highlight.pack.js"></script>
 	<script src="/bower_components/fitvids/jquery.fitvids.js"></script>
 	<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+  <script src="/scripts/jquery.form.js"></script>
 	<script src="/scripts/raneto.js"></script>
 
 </body>

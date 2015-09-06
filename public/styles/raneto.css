@@ -141,3 +141,10 @@
     .home-search .form-group { margin-bottom: 0; }
     #home-search { margin-bottom: 10px; }
 }
+
+
+
+/*add extends*/
+.help-block{color:red !important;}
+.forget-pass,.update-pass,.back-login,.lb-tips{color:#3C1C1C !important;text-decoration: underline;cursor:pointer;}
+.form-register,.form-forgot{display:none;}

@@ -1,5 +1,46 @@
-<form action="/auth/local/" method="post">
-  <input type="text" name="username" placeholder="请输入用户名">
-  <input type="password" name="password" placeholder="请输入密码">
-  <input type="submit" value="提交">
-</form>
+
+<div class="panel col-xs-8 col-xs-offset-2">
+  <h1 class="text-center form-title">登陆</h1>
+  <span id="helpBlock" class="help-block">输入提示信息位置</span>
+
+  <form action="/auth" method="post" class="form-login">
+    <div class="form-group">
+      <label for="inputLoginEmail">邮箱</label>
+      <input type="email" name="email" class="form-control" id="inputLoginEmail" placeholder="邮箱">
+    </div>
+    <div class="form-group">
+      <label for="inputLoginPass">密码</label>
+      <input type="password" name="pass" class="form-control" id="inputLoginPass" placeholder="密码">
+    </div>
+    <button type="submit" class="btn btn-default">登陆</button>
+    <label class="label lb-tips">还没有账号？<a href="javascript:void(0);" class="signup">注册</a></label>
+    <label class="label forget-pass">忘记密码</label>
+  </form>
+
+  <form action="/auth/signup" method="post" class="form-register">
+    <div class="form-group">
+      <label for="inputRegisterEmail">邮箱</label>
+      <input type="email" name="email" class="form-control" id="inputRegisterEmail" placeholder="邮箱">
+    </div>
+    <div class="form-group">
+      <label for="inputRegisterPass">密码</label>
+      <input type="password" name="pass" class="form-control" id="inputRegisterPass" placeholder="密码">
+    </div>
+    <div class="form-group">
+      <label for="inputRegisterRepPass">重复密码</label>
+      <input type="password" name="repPass" class="form-control" id="inputRegisterRepPass" placeholder="密码">
+    </div>
+    <button type="submit" class="btn btn-default">注册</button>
+    <label class="label back-login">返回登陆</label>
+  </form>
+
+  <form action="/auth/forgotPass" class="form-forgot" method="post">
+    <div class="form-group">
+      <label for="inputForgetEmail">注册邮箱</label>
+      <input type="email" name="email" class="form-control" id="inputForgetEmail" placeholder="注册邮箱">
+    </div>
+    <button type="submit" class="btn btn-default">发送邮件</button>
+    <label class="label back-login">返回登陆</label>
+  </form>
+</div>
+

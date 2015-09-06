@@ -1,0 +1,10 @@
+{
+  "appenders": [
+    {
+      "type": "dateFile",
+      "filename": "logs/log4js/app",
+      "pattern": "-yyyy-MM-dd.log",
+      "alwaysIncludePattern": true
+    }
+  ]
+}

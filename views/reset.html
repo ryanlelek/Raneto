@@ -1,0 +1,19 @@
+<div class="panel col-xs-8 col-xs-offset-2">
+  <h1 class="text-center form-title">找回密码</h1>
+  <span id="helpBlock" class="help-block"></span>
+
+  <form action="/reset_pass" class="form-reset" method="post">
+    <input type="email" name="email" class="form-control" value="{{email}}" style="display: none;">
+    <div class="form-group">
+      <label>邮箱</label>
+      <input type="email" class="form-control" value="{{email}}" disabled>
+    </div>
+    <div class="form-group">
+      <label for="inputRestPass">新密码</label>
+      <input type="password" name="pass" class="form-control" id="inputRestPass" placeholder="新密码">
+    </div>
+    <button type="submit" class="btn btn-default">修改</button>
+    <label class="label"><a href="/auth">去登陆</a></label>
+  </form>
+</div>
+
