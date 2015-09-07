@@ -60,13 +60,13 @@
         return value.length <= maxLen;
       },
       emailRegExp: function (value, exp) {
-        //return true;
         return exp.test(value);
       },
       equal: function (val1, val2) {
         return val1.trim() === val2.trim();
       }
     };
+
     var addValidate = function (ele, obj) {
       var ssh = true;
       for (var key in obj) {
@@ -79,32 +79,34 @@
       return ssh;
     };
 
+
     $('form[class="form-register"]').ajaxForm({
       beforeSubmit: function (a, f, o) {
         var email = $('#inputRegisterEmail'),
           pass = $('#inputRegisterPass'),
           repPass = $('#inputRegisterRepPass');
 
-        var f1 = addValidate(email, {
+        var isEmailValidate = addValidate(email, {
           notNull: true,
           maxLength: 30,
           emailRegExp: /^\w+@shunshunliuxue.com$/
         });
-        var f2 = addValidate(pass, {
+        var isPassValidate = addValidate(pass, {
           notNull: true,
           maxLength: 15,
           minLength: 6
         });
-        var f3 = addValidate(repPass, {
+        var isRepPassValidate = addValidate(repPass, {
           notNull: true,
           maxLength: 15,
           minLength: 6,
           equal: pass.val()
         });
-        if (f1 && f2 && f3) {
+
+        if (isEmailValidate && isPassValidate && isRepPassValidate) {
           return true;
         } else {
-          tips.text('信息错误，请检查！');
+          tips.text('邮箱或密码错误，请重新输入！');
           return false;
         }
       },
@@ -132,7 +134,7 @@
         if (f1 && f2) {
           return true;
         } else {
-          tips.text('信息错误，请检查！');
+          tips.text('邮箱或密码错误，请重新输入！');
           return false;
         }
       },
@@ -171,7 +173,7 @@
         if (f1 && f2 && f3) {
           return true;
         } else {
-          tips.text('信息错误，请检查！');
+          tips.text('密码错误，请重新输入！');
           return false;
         }
       },
@@ -185,15 +187,15 @@
       beforeSubmit: function (a, f, o) {
         var email = $('#inputForgetEmail');
 
-        var f1 = addValidate(email, {
+        var isEmailValidate = addValidate(email, {
           notNull: true,
           maxLength: 30,
           emailRegExp: /^\w+@shunshunliuxue.com$/
         });
-        if (f1) {
+        if (isEmailValidate) {
           return true;
         } else {
-          tips.text('信息错误，请检查！');
+          tips.text('邮箱输入错误！');
           return false;
         }
       },
@@ -206,13 +208,12 @@
     $('form[class="form-reset"]').ajaxForm({
       beforeSubmit: function (a, f, o) {
         var pass = $('#inputRestPass');
-
-        var f1 = addValidate(pass, {
+        var isPassValidate = addValidate(pass, {
           notNull: true,
-          maxLength: 30,
+          maxLength: 15,
           minLength: 6
         });
-        if (f1) {
+        if (isPassValidate) {
           return true;
         } else {
           tips.text('密码格式错误！');

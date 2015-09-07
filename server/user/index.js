@@ -15,4 +15,3 @@ UserDao.extends = {
 };
 
 module.exports = UserDao;
-

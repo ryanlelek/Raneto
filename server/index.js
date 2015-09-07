@@ -1,17 +1,16 @@
-var express = require('express'),
-  path = require('path'),
-  fs = require('fs'),
-  favicon = require('static-favicon'),
-  logger = require('morgan'),
-  cookieParser = require('cookie-parser'),
-  bodyParser = require('body-parser'),
-  session = require('express-session'),
+var express      = require('express'),
+    path         = require('path'),
+    fs           = require('fs'),
+    favicon      = require('static-favicon'),
+    logger       = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser   = require('body-parser'),
+    session      = require('express-session'),
+    config       = require('./config'),
+    app          = express();
 
-  config = require('./config'),
-  app = express();
-
-var User = require('../models').User;
-var webRouter = require('../routers/webRouter');
+var User       = require('../models').User;
+var webRouter  = require('../routers/webRouter');
 var MongoStore = require('connect-mongo')(session);
 
 // Setup views
@@ -22,45 +21,32 @@ app.enable('view cache');
 app.engine('html', require('hogan-express'));
 
 // Setup Express
-app.use(favicon(__dirname +'../public/favicon.ico'));
+app.use(favicon(__dirname + '../public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser(config.session_secret));
 //app.use(cookieParser());
 app.use(session({
-  secret: config.session_secret,
-  store: new MongoStore({
-    url: config.mongodb.db
-  }),
-  resave: true,
-  saveUninitialized: true,
-  cookie: {maxAge: 1000 * 60 * 60}
+  secret            : config.session_secret,
+  store             : new MongoStore({url : config.mongodb.db}),
+  resave            : true,
+  saveUninitialized : true,
+  cookie            : {maxAge : 1000 * 60 * 60}
 }));
 app.use(express.static(path.join(__dirname, '../public')));
-
-
-// Setup config
-
-
-// Handle all requests
-//app.use('/', require('./auth'));
-
-
-app.use('/',webRouter);
+app.use('/', webRouter);
 
 // Handle any errors
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
-    config: config,
-    status: err.status,
-    message: err.message,
-    error: {},
-    body_class: 'page-error'
+    config     : config,
+    status     : err.status,
+    message    : err.message,
+    error      : {},
+    body_class : 'page-error'
   });
 });
-
-
 
 module.exports = app;

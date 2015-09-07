@@ -1,17 +1,18 @@
 var mailer = require('nodemailer');
 var config = require('../server/config');
-//var log4js = require('./logger');
+var log4js = require('./logger');
 var util = require('util');
 
 var transport = mailer.createTransport(config.mail_opts);
 var ROOT_URL = 'http://' + config.host;
 
 var sendMail = function (mailObj) {
-  console.log('xxxxxxemail......'+mailObj.html);
-  transport.sendMail(mailObj, function (err) {
+  transport.sendMail(mailObj, function (err,info) {
     if (err) {
-      //log4js.error('send mail error: ', error);
+      log4js.error('send mail error: ', error);
       console.log(err);
+    }else{
+      console.log(info.response);
     }
   });
 };

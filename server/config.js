@@ -42,10 +42,10 @@ var config = {
     db_name: 'raneto_dev'
   },
   mail_opts: {
-    service: 'shunshunliuxue',
+    service: 'icloud',
     auth: {
-      user: 'noodleswang@shunshunliuxue.com',
-      pass: 'noodles123'
+      user: 'boatwww@icloud.com',
+      pass: 'Vendetta0114'
     }
   }
 

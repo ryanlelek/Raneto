@@ -1,6 +1,4 @@
-/**
- * Created by noodles on 15/9/2.
- */
+
 var express = require('express');
 var site = require('../server/site');
 var auth = require('../server/auth/auth.service');

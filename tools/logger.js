@@ -1,6 +1,6 @@
 var log4js = require('log4js');
 log4js.configure('./tools/log4js.json',{});
-var logger = log4js.getLogger('z-seek');
+var logger = log4js.getLogger('shunshunliuxue');
 
 exports.info = function (message) {
     console.log(message);
