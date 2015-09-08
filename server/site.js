@@ -1,3 +1,5 @@
+'use strict';
+
 var UserModel = require('../models').User;
 var userDao   = require('./user');
 var normal    = require('../tools/normal');
@@ -46,10 +48,11 @@ exports.activeEmail = function (req, res, next) {
     if (sepTime > 1000 * 60 * 60 * 24) {
       return res.send('链接超时，请重新发起激活。');
     }
-    userDao.update({email : email}, {isActive : 1}, {}, function (err, bk) {
+    userDao.update({email : email}, {isActive : 1}, {}, function (err) {
       if (err) return next(err);
       res.writeHeader(200, {'Content-Type' : 'text/html;charset=UTF-8'});
-      return res.send("<html><head><title>激活邮箱</title></head><body><p>验证成功，3秒后自动跳转到登陆界面！<a href='/auth/login'>手动跳转</a></p><script>setInterval(function(){location.href='/auth/login'},3000);</script></body></html>")    });
+      return res.send('<html><head><title>激活邮箱</title></head><body><p>验证成功，3秒后自动跳转到登陆界面！<a href="/auth/login">手动跳转</a></p><script>setInterval(function(){location.href="/auth/login"},3000);</script></body></html>');
+    });
   });
 };
 
@@ -86,7 +89,7 @@ exports.showResetPass = function (req, res, next) {
     res.render('reset', {
       email : email
     });
-  })
+  });
 };
 
 /**
@@ -96,7 +99,7 @@ exports.resetPass = function (req, res, next) {
   var email  = req.body.email;
   var pass   = req.body.pass;
   var errObj = {errcode : 1, msg : ''};
-  if (!email || !validator.isEmail(email) || email != req.session._resetPassForEmail) {
+  if (!email || !validator.isEmail(email) || email !== req.session._resetPassForEmail) {
     errObj.msg = '提交信息错误！';
     return res.json(errObj);
   }
@@ -107,7 +110,7 @@ exports.resetPass = function (req, res, next) {
   //update pass
   normal.hashPass(pass, function (err, hash_pass) {
     if (err) return next(err);
-    userDao.update({email : email}, {password : hash_pass}, {}, function (err, bk) {
+    userDao.update({email : email}, {password : hash_pass}, {}, function (err) {
       if (err) return next(err);
       res.json({
         errcode : 0,
@@ -120,10 +123,10 @@ exports.resetPass = function (req, res, next) {
 /**
  * 登陆 / get
  */
-exports.showAuth = function (req, res, next) {
+exports.showAuth = function (req, res) {
   req.session._loginReferer = req.headers.referer || '/';
-  console.log('req.headers.referer........'+req.headers.referer);
-  console.log('........url'+req.url);
+  console.log('req.headers.referer........' + req.headers.referer);
+  console.log('........url' + req.url);
   res.render('auth-local');
 };
 
@@ -163,7 +166,7 @@ exports.auth = function (req, res, next) {
   });
 
   userDao.getByQuery({email : email}, {}, {}, function (err, models) {
-    if (err) return callback(err);
+    if (err) return next(err);
     var _user = models[0] || null;
     if (!_user) {
       errObj.msg = '邮箱不存在';
@@ -175,7 +178,7 @@ exports.auth = function (req, res, next) {
     }
 
     userDao.extends.comparePassword(password, _user.password, function (err, isMatch) {
-      if (err) return callback(err);
+      if (err) return next(err);
       if (!isMatch) {
         errObj.msg = '密码不正确';
         return ep.emit('login_error');
@@ -233,7 +236,7 @@ exports.signup = function (req, res, next) {
         return ep.emit('take_err');
       }
       var _user = new UserModel({email : email, password : hash_pass});
-      _user.save(function (err, user) {
+      _user.save(function (err) {
         if (err)console.log(err);
       });
       mail.sendActiveMail(email, cryptoer.md5(email + config.session_secret), cryptoer.aesEncrypt(email, config.session_secret));
@@ -273,7 +276,7 @@ exports.forgotPass = function (req, res, next) {
       errObj.msg = '邮箱未激活！';
       return ep.emit('take_err');
     }
-    userDao.update({email : email}, {'meta.updateAt' : Date.now()}, {}, function (err, bk) {
+    userDao.update({email : email}, {'meta.updateAt' : Date.now()}, {}, function (err) {
       if (err) console.log(err);
     });
     //发送邮件
@@ -282,10 +285,10 @@ exports.forgotPass = function (req, res, next) {
       errcode : 0,
       msg     : '欢迎使用 ' + config.site_title + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来重置密码。'
     });
-  })
+  });
 };
 
-exports.showUp = function (req, res, next) {
+exports.showUp = function (req, res) {
   res.render('modify-pass');
 };
 
@@ -296,9 +299,9 @@ exports.showUp = function (req, res, next) {
 exports.updatePass = function (req, res, next) {
   var bodyObj = req.body;
 
-  var oldPass = validator.trim(bodyObj['oldPass']).toLowerCase() || '',
-      newPass = validator.trim(bodyObj['newPass']).toLowerCase() || '',
-      repPass = validator.trim(bodyObj['newRepPass']).toLowerCase() || '';
+  var oldPass = validator.trim(bodyObj.oldPass).toLowerCase() || '',
+      newPass = validator.trim(bodyObj.newPass).toLowerCase() || '',
+      repPass = validator.trim(bodyObj.newRepPass).toLowerCase() || '';
   var ep      = new eventproxy();
   ep.fail(next);
 
@@ -322,7 +325,7 @@ exports.updatePass = function (req, res, next) {
     },
     //compare twice pass
     comparePass     : ['getUserHashPass', function (callback, data) {
-      userDao.extends.comparePassword(oldPass, data['getUserHashPass'], function (err, isMatch) {
+      userDao.extends.comparePassword(oldPass, data.getUserHashPass, function (err, isMatch) {
         if (isMatch) {
           normal.hashPass(newPass, function (err, hashP) {
             callback(err, hashP);
@@ -333,9 +336,9 @@ exports.updatePass = function (req, res, next) {
       });
     }],
     updateUserPass  : ['comparePass', function (callback, data) {
-      var hashNewPass = data['comparePass'];
+      var hashNewPass = data.comparePass;
       if (hashNewPass) {
-        userDao.update({_id : _id}, {password : hashNewPass}, {}, function (err, bk) {
+        userDao.update({_id : _id}, {password : hashNewPass}, {}, function (err) {
           if (err) return next(err);
           errObj.errcode = 0;
           errObj.msg     = '修改成功！';
@@ -372,13 +375,13 @@ exports.list = function (req, res, next) {
   }
   else if (req.params[0]) {
     var slug = req.params[0];
-    if (slug == '/') slug = '/index';
+    if (slug === '/') slug = '/index';
 
     var pageList = raneto.getPages(slug),
         filePath = path.normalize(raneto.config.content_dir + slug);
     if (!fs.existsSync(filePath)) filePath += '.md';
 
-    if (slug == '/index' && !fs.existsSync(filePath)) {
+    if (slug === '/index' && !fs.existsSync(filePath)) {
       return res.render('home', {
         config     : config,
         pages      : pageList,
@@ -393,7 +396,7 @@ exports.list = function (req, res, next) {
         }
 
         // Process Markdown files
-        if (path.extname(filePath) == '.md') {
+        if (path.extname(filePath) === '.md') {
           // File info
           var stat = fs.lstatSync(filePath);
           // Meta
@@ -423,7 +426,7 @@ exports.list = function (req, res, next) {
   }
 };
 
-exports.loginout = function (req, res, next) {
+exports.loginout = function (req, res) {
   req.session.destroy();
   res.clearCookie(config.auth_cookie_name, {path : '/'});
   res.redirect('/');

@@ -1,3 +1,4 @@
+'use strict';
 
 var CommonDao = require('../../tools/dao');
 var UserModel = require('../../models/index').User;

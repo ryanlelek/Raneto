@@ -30,7 +30,7 @@ var config = {
   content_dir : './content/',
 
   // Add your analytics tracking code (including script tags)
-  analytics : "",
+  analytics : '',
 
   salt_factor      : 10,
   session_secret   : 'shunshun_doc',

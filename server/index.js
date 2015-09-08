@@ -1,6 +1,7 @@
+'use strict';
+
 var express      = require('express'),
     path         = require('path'),
-    fs           = require('fs'),
     favicon      = require('static-favicon'),
     logger       = require('morgan'),
     cookieParser = require('cookie-parser'),
@@ -9,7 +10,6 @@ var express      = require('express'),
     config       = require('./config'),
     app          = express();
 
-var User       = require('../models').User;
 var webRouter  = require('../routers/webRouter');
 var mdRouter   = require('../routers/mdRouter');
 var MongoStore = require('connect-mongo')(session);
@@ -40,7 +40,7 @@ app.use('/auth', webRouter);
 app.use('/', mdRouter);
 
 // Handle any errors
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   res.status(err.status || 500);
   res.render('error', {
     config     : config,

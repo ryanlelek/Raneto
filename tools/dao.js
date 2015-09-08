@@ -25,7 +25,7 @@ CommonDao.prototype.create = function (doc, callback) {
  */
 CommonDao.prototype.getById = function (id, callback) {
   this.model.findOne({_id: id}, function (error, model) {
-    if (error) return callback(err, null);
+    if (error) return callback(error, null);
     return callback(null, model);
   });
 };
@@ -47,7 +47,7 @@ CommonDao.prototype.getByQuery = function (query, fileds, opt, callback) {
 CommonDao.prototype.getAll = function (callback) {
   this.model.find({}, function (error, models) {
     if (error) return callback(error, null);
-    return callback(null, model);
+    return callback(null, models);
   });
 };
 /*

@@ -1,5 +1,7 @@
 (function ($, hljs) {
 
+  'use strict';
+
   $(document).ready(function () {
 
     if ($('.content').length) {
@@ -39,10 +41,10 @@
           var args = Array.prototype.slice.call(arguments);
           args[args.length] = args[0]==='register'?obj.parent():obj;
           obj.click(function () {
-            func.apply(obj,args)
+            func.apply(obj,args);
           });
-        }
-      }
+        };
+      };
     };
     beBind($('.back-login'))(commonFunc)('login', '登陆');
     beBind($('.signup'))(commonFunc)('register','账号注册');
@@ -81,7 +83,7 @@
 
 
     $('form[class="form-register"]').ajaxForm({
-      beforeSubmit: function (a, f, o) {
+      beforeSubmit: function () {
         var email = $('#inputRegisterEmail'),
           pass = $('#inputRegisterPass'),
           repPass = $('#inputRegisterRepPass');
@@ -117,7 +119,7 @@
     });
 
     $('form[class="form-login"]').ajaxForm({
-      beforeSubmit: function (a, f, o) {
+      beforeSubmit: function () {
         var email = $('#inputLoginEmail'),
           pass = $('#inputLoginPass');
 
@@ -149,7 +151,7 @@
     });
 
     $('form[class="form-update"]').ajaxForm({
-      beforeSubmit: function (a, f, o) {
+      beforeSubmit: function () {
         var oldPass = $('#inputUpOldPass'),
           newPass = $('#inputUpNewPass'),
           newRepPass = $('#inputUpRepPass');
@@ -184,7 +186,7 @@
     });
 
     $('form[class="form-forgot"]').ajaxForm({
-      beforeSubmit: function (a, f, o) {
+      beforeSubmit: function () {
         var email = $('#inputForgetEmail');
 
         var isEmailValidate = addValidate(email, {
@@ -206,7 +208,7 @@
     });
 
     $('form[class="form-reset"]').ajaxForm({
-      beforeSubmit: function (a, f, o) {
+      beforeSubmit: function () {
         var pass = $('#inputRestPass');
         var isPassValidate = addValidate(pass, {
           notNull: true,
