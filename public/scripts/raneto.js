@@ -121,17 +121,17 @@
         var email = $('#inputLoginEmail'),
           pass = $('#inputLoginPass');
 
-        var f1 = addValidate(email, {
+        var isEmail = addValidate(email, {
           notNull: true,
           maxLength: 30,
           emailRegExp: /^\w+@shunshunliuxue.com$/
         });
-        var f2 = addValidate(pass, {
+        var isPass = addValidate(pass, {
           notNull: true,
           maxLength: 15,
           minLength: 6
         });
-        if (f1 && f2) {
+        if (isEmail && isPass) {
           return true;
         } else {
           tips.text('邮箱或密码错误，请重新输入！');
@@ -154,23 +154,23 @@
           newPass = $('#inputUpNewPass'),
           newRepPass = $('#inputUpRepPass');
 
-        var f1 = addValidate(oldPass, {
+        var isOldPass = addValidate(oldPass, {
           notNull: true,
           maxLength: 15,
           minLength: 6
         });
-        var f2 = addValidate(newPass, {
+        var isNewPass = addValidate(newPass, {
           notNull: true,
           maxLength: 15,
           minLength: 6
         });
-        var f3 = addValidate(newRepPass, {
+        var isRepPass = addValidate(newRepPass, {
           notNull: true,
           maxLength: 15,
           minLength: 6,
           equal: newPass.val()
         });
-        if (f1 && f2 && f3) {
+        if (isOldPass && isNewPass && isRepPass) {
           return true;
         } else {
           tips.text('密码错误，请重新输入！');
