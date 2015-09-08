@@ -36,25 +36,20 @@ exports.activeEmail = function (req, res, next) {
     if (!_user) {
       return next(new Error('***active_account*** not have such user: ' + email));
     }
-    var bk_msg = {errcode : 1, msg : '信息有误，帐号无法被激活。'};
     if (!_user || cryptoer.md5(email + config.session_secret) !== key) {
-      return res.json(bk_msg);
+      return res.send('信息有误，帐号无法被激活。');
     }
     if (_user.isActive) {
-      bk_msg.msg = '您的帐号已经是激活状态。';
-      return res.json(bk_msg);
+      return res.send('您的帐号已经是激活状态。');
     }
     var sepTime = new Date() - _user.meta.createAt;
     if (sepTime > 1000 * 60 * 60 * 24) {
-      bk_msg.msg = '链接超时，请重新发起激活。';
-      res.json(bk_msg);
+      return res.send('链接超时，请重新发起激活。');
     }
     userDao.update({email : email}, {isActive : 1}, {}, function (err, bk) {
       if (err) return next(err);
       res.writeHeader(200, {'Content-Type' : 'text/html;charset=UTF-8'});
-      //<script>setInterval(function(){location.href='/auth'},3000);</script>
-      res.write("<html><head><title>激活邮箱</title></head><body><p>验证成功，3秒后自动跳转到登陆界面！<a href='/auth'>手动跳转</a></p></body></html>")
-    });
+      return res.send("<html><head><title>激活邮箱</title></head><body><p>验证成功，3秒后自动跳转到登陆界面！<a href='/auth/login'>手动跳转</a></p><script>setInterval(function(){location.href='/auth/login'},3000);</script></body></html>")    });
   });
 };
 
@@ -126,6 +121,9 @@ exports.resetPass = function (req, res, next) {
  * 登陆 / get
  */
 exports.showAuth = function (req, res, next) {
+  req.session._loginReferer = req.headers.referer || '/';
+  console.log('req.headers.referer........'+req.headers.referer);
+  console.log('........url'+req.url);
   res.render('auth-local');
 };
 
@@ -258,6 +256,12 @@ exports.forgotPass = function (req, res, next) {
     errObj.msg = '邮箱不正确！';
     return res.json(errObj);
   }
+  var ep = new eventproxy();
+  ep.fail(next);
+  ep.on('take_err', function () {
+    res.json(errObj);
+  });
+
   userDao.getByQuery({email : email}, {}, {}, function (err, _ms) {
     if (err) return next(err);
     if (_ms.length <= 0) {

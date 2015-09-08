@@ -148,3 +148,5 @@
 .help-block{color:red !important;}
 .forget-pass,.update-pass,.back-login,.lb-tips{color:#3C1C1C !important;text-decoration: underline;cursor:pointer;}
 .form-register,.form-forgot{display:none;}
+/*a.added-user-center:hover{background-color:rgb(44,50,61) !important;}*/
+.nav>li>a:hover, .nav>li>a:focus{background-color:rgb(44,50,61) !important;}

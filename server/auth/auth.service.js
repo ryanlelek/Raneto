@@ -1,11 +1,13 @@
 'use strict';
 
-/*var mongoose = require('mongoose');
+/*
+var mongoose = require('mongoose');
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var compose = require('composable-middleware');
-var User = _u.getModel("user");*/
+var User = _u.getModel("user");
+*/
 
 var config = require('../config');
 
@@ -13,8 +15,8 @@ var config = require('../config');
 exports.loginRequired = function (req, res, next) {
   //delete req.session.session_user;
   if(!req.session || !req.session.session_user){
-    req.session._loginReferer = req.headers.referer || '/';
-    res.redirect('/auth');
+    var msg = "<html><head><title>没有登陆</title></head><body><p>还没登陆，3秒自动跳转，也可以点我！<a href='/auth/login'>登陆</a></p><script>setInterval(function(){location.href='/auth/login'},3000);</script></body></html>"
+    return res.status(403).send(msg);
   }else{
     next();
   }
@@ -25,6 +27,7 @@ function generateSession(user, res) {
     {path: '/', maxAge: config.cookieMaxAge, signed: true, httpOnly: true});
 }
 exports.generateSession = generateSession;
+
 /**
  * Attaches the user object to the request if authenticated
  * Otherwise returns 403
@@ -118,7 +121,6 @@ function verifyTokenCookie() {
     });
 }
 exports.verifyTokenCookie = verifyTokenCookie;
-
 exports.isAuthenticated = isAuthenticated;
 exports.hasRole = hasRole;
 exports.signToken = signToken;

@@ -11,6 +11,7 @@ var express      = require('express'),
 
 var User       = require('../models').User;
 var webRouter  = require('../routers/webRouter');
+var mdRouter   = require('../routers/mdRouter');
 var MongoStore = require('connect-mongo')(session);
 
 // Setup views
@@ -35,7 +36,8 @@ app.use(session({
   cookie            : {maxAge : 1000 * 60 * 60}
 }));
 app.use(express.static(path.join(__dirname, '../public')));
-app.use('/', webRouter);
+app.use('/auth', webRouter);
+app.use('/', mdRouter);
 
 // Handle any errors
 app.use(function (err, req, res, next) {

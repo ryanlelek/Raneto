@@ -4,7 +4,7 @@ var config = {
   site_title: '顺顺文档',
 
   // The base URL of your site (can use %base_url% in Markdown files)
-  base_url: '/list',
+  base_url: '/',
 
   // Used for the "Get in touch" page footer link
   support_email: '',
@@ -36,16 +36,18 @@ var config = {
   session_secret: 'shunshun_doc',
   auth_cookie_name: 'shunshun',
   cookieMaxAge: 1000 * 60 * 60 * 24,
-  host: '127.0.0.1:3000',
+  host: 'http://wiki.shunshunliuxue.com',//'127.0.0.1:3000',
   mongodb: {
     db: 'mongodb://127.0.0.1/raneto_dev',
     db_name: 'raneto_dev'
   },
   mail_opts: {
-    service: 'icloud',
+    /*service: 'smtp.qq',*/
+    host:'smtp.exmail.qq.com',
+    port:25,
     auth: {
-      user: 'boatwww@icloud.com',
-      pass: 'Vendetta0114'
+      user: 'wenda@shunshunliuxue.com',
+      pass: 'shunshun123'
     }
   }
 

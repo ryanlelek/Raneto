@@ -9,22 +9,22 @@ var router = express.Router();
 
 //router.get('/',auth.loginRequired,site.list);
 
-router.get(['/','/list/*'],auth.loginRequired,site.list);
+//router.get(['/','/list/*'],auth.loginRequired,site.list);
 
 router.get('/active_account',site.activeEmail);//验证邮箱
 router.get('/reset_pass',site.showResetPass);
 router.post('/reset_pass',site.resetPass);
 
 //user
-router.get('/auth',site.showAuth);
-router.post('/auth',site.auth); //login
+router.get('/login',site.showAuth);
+router.post('/login',site.auth); //login
 
-router.get('/auth/updatePass',auth.loginRequired,site.showUp);
-router.post('/auth/updatePass',auth.loginRequired,site.updatePass);
+router.get('/updatePass',auth.loginRequired,site.showUp);
+router.post('/updatePass',auth.loginRequired,site.updatePass);
 
-router.post('/auth/forgotPass',site.forgotPass);
-router.post('/auth/signup',site.signup);
-router.get('/auth/loginout',site.loginout);
+router.post('/forgotPass',site.forgotPass);
+router.post('/signup',site.signup);
+router.get('/loginout',site.loginout);
 
 
 module.exports = router;
