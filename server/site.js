@@ -132,8 +132,8 @@ exports.showAuth = function (req, res) {
  * @type {string[]}
  */
 var notRefer = [
-  '/active_account',
-  '/reset_pass',
+  '/auth/active_account',
+  '/auth/reset_pass',
   '/auth/updatePass',
   '/auth/loginout'
 ];
