@@ -51,7 +51,7 @@ exports.activeEmail = function (req, res, next) {
     userDao.update({email : email}, {isActive : 1}, {}, function (err) {
       if (err) return next(err);
       res.writeHeader(200, {'Content-Type' : 'text/html;charset=UTF-8'});
-      return res.send('<html><head><title>激活邮箱</title></head><body><p>验证成功，3秒后自动跳转到登陆界面！<a href="/auth/login">手动跳转</a></p><script>setInterval(function(){location.href="/auth/login"},3000);</script></body></html>');
+      return res.end('<html><head><title>激活邮箱</title></head><body><p>验证成功，3秒后自动跳转到登陆界面！<a href="/auth/login">手动跳转</a></p><script>setInterval(function(){location.href="/auth/login"},3000);</script></body></html>');
     });
   });
 };
