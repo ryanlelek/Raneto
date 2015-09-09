@@ -120,7 +120,7 @@ exports.resetPass = function (req, res, next) {
 };
 
 /**
- * 登陆 / get
+ * 登录 / get
  */
 exports.showAuth = function (req, res) {
   req.session._loginReferer = req.headers.referer || '/';
@@ -139,7 +139,7 @@ var notRefer = [
 ];
 
 /**
- * 登陆 / post
+ * 登录 / post
  */
 exports.auth = function (req, res, next) {
   var _body    = req.body;

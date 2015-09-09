@@ -46,7 +46,7 @@
         };
       };
     };
-    beBind($('.back-login'))(commonFunc)('login', '登陆');
+    beBind($('.back-login'))(commonFunc)('login', '登录');
     beBind($('.signup'))(commonFunc)('register','账号注册');
     beBind($('.forget-pass'))(commonFunc)('forgot','找回密码');
     beBind($('.update-pass'))(commonFunc)('update','修改密码');
