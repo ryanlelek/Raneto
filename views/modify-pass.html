@@ -1,0 +1,22 @@
+
+<div class="panel col-xs-8 col-xs-offset-2">
+  <h1 class="text-center form-title">修改密码</h1>
+  <span id="helpBlock" class="help-block"></span>
+
+  <form action="/auth/updatePass" class="form-update" method="post">
+    <div class="form-group">
+      <label for="inputUpOldPass">原密码</label>
+      <input type="password" name="oldPass" class="form-control" id="inputUpOldPass" placeholder="原密码">
+    </div>
+    <div class="form-group">
+      <label for="inputUpNewPass">新密码</label>
+      <input type="password" name="newPass" class="form-control" id="inputUpNewPass" placeholder="新密码">
+    </div>
+    <div class="form-group">
+      <label for="inputUpRepPass">重复新密码</label>
+      <input type="password" name="newRepPass" class="form-control" id="inputUpRepPass" placeholder="重复新密码">
+    </div>
+    <button type="submit" class="btn btn-default">修改</button>
+  </form>
+</div>
+

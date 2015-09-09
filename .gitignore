@@ -1,7 +1,6 @@
 # Logs
 logs
 *.log
-
 # Runtime data
 pids
 *.pid
@@ -25,3 +24,25 @@ node_modules
 # Misc
 *.pages
 *.pdf
+
+#  ----- add ------
+.cov
+.monitor
+npm-debug.log
+newrelic_agent.log
+
+*.min.*.js
+*.min.*.css
+assets.json
+.idea
+
+# Ignore Mac OS desktop services store
+.DS_Store
+
+# Ignore Windows desktop setting file
+desktop.ini
+
+# sublime
+*.sublime-project
+*.sublime-workspace
+*.swp
