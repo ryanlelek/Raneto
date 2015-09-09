@@ -36,10 +36,6 @@ newrelic_agent.log
 assets.json
 .idea
 
-content
-.editorconfig
-.gitmodules
-
 # Ignore Mac OS desktop services store
 .DS_Store
 
