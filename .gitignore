@@ -48,3 +48,4 @@ desktop.ini
 *.swp
 
 .gitmodules
+server/config.js
