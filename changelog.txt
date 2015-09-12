@@ -1,5 +1,8 @@
 *** Raneto Changelog ***
 
+2015.09.12
+* [New] Added .travis.yml
+* [Changed] Added mocha and should in package.json/devDependency
 2015.09.06
 * [New] Added reset.html,modify-pass.html
 * [New] Added tools,logs and router
