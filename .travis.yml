@@ -6,3 +6,11 @@ node_js:
 before_script:
   - 'npm install'
   - 'cp server/config.sample.js server/config.js'
+notifications:
+  - webhooks:
+    urls:
+      - http://hooks.shunshunliuxue.com/travisci
+      - http://hooks.shunshunliuxue.com/events
+    on_success: always # default: always
+    on_failure: always # default: always
+    on_start: always # default: always
