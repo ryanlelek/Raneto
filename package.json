@@ -55,7 +55,7 @@
     "glob": "^4.0.0",
     "hogan-express": "^0.5.2",
     "log4js": "^0.6.26",
-    "lunr": "git@github.com:shunshunedu/lunr.js.git",
+    "lunr": "https://github.com/shunshunedu/lunr.js.git",
     "marked": "^0.3.2",
     "moment": "^2.6.0",
     "mongoose": "^4.1.6",
