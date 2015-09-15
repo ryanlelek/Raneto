@@ -1,5 +1,23 @@
 *** Raneto Changelog ***
 
+2015.09.12
+* [New] Added .travis.yml
+* [Changed] Added mocha and should in package.json/devDependency
+2015.09.06
+* [New] Added reset.html,modify-pass.html
+* [New] Added tools,logs and router
+* [New] Added test and coverage
+* [Changed] Changed config and server.index
+* [Changed] Changed layout.html add user center
+
+
+
+2015.08.28 - version 0.6.1
+* [New] 修改了package.json，使支持中文搜索
+* [Changed] 修改了favicon
+* [Changed] 修改了footer链接
+* [Changed] layout页面增加了nofollow
+
 2014.06.09 - version 0.6.0
  * [Changed] Static files (e.g. images) can now be served from the content folder
  * [Changed] Removed commercial licensing

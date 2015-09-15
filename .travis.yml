@@ -1,0 +1,16 @@
+language: node_js
+services:
+  - mongodb
+node_js:
+  - '0.12.5'
+before_script:
+  - 'npm install'
+  - 'cp server/config.sample.js server/config.js'
+#notifications:
+#  - webhooks:
+#    urls:
+#      - http://devops.shunshunliuxue.com/travisci
+#      - http://devops.shunshunliuxue.com/events
+#    on_success: always # default: always
+#    on_failure: always # default: always
+#    on_start: always # default: always
