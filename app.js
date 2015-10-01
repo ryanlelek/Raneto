@@ -32,6 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Setup config
 extend(raneto.config, config);
 
+if (config.authentication === true){
+    app.use(require('basic-auth-connect')(config.credentials.username, config.credentials.password));
+}
+
 // Handle all requests
 app.all('*', function(req, res, next) {
     if(req.query.search){
