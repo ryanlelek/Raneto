@@ -84,13 +84,14 @@ app.all('*', function(req, res, next) {
                     // Content
                     content = raneto.processVars(content);
                     var html = marked(content);
+                    var template = meta.template || 'page';
 
-                    return res.render('page', {
+                    return res.render(template, {
                         config: config,
                         pages: pageList,
                         meta: meta,
                         content: html,
-                        body_class: 'page-'+ raneto.cleanString(slug),
+                        body_class: template + '-' + raneto.cleanString(slug),
                         last_modified: moment(stat.mtime).format('Do MMM YYYY')
                     });
                 } else {
