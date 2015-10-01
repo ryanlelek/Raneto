@@ -60,10 +60,12 @@ app.all('*', function(req, res, next) {
         if(!fs.existsSync(filePath)) filePath += '.md';
 
         if(slug == '/index' && !fs.existsSync(filePath)){
+            var stat = fs.lstatSync('./views/home.html');
             return res.render('home', {
                 config: config,
                 pages: pageList,
-                body_class: 'page-home'
+                body_class: 'page-home',
+                last_modified: moment(stat.mtime).format('Do MMM YYYY')
             });
         } else {
             fs.readFile(filePath, 'utf8', function(err, content) {
