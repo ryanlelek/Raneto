@@ -30,8 +30,15 @@ var config = {
 	content_dir: './content/',
 
 	// Add your analytics tracking code (including script tags)
-	analytics: ""
+	analytics: "",
 
+	// Set to true to enable authentication
+	authentication: false,
+
+	credentials: {
+		username: 'admin',
+		password: 'password'
+	}
 };
 
 module.exports = config;
