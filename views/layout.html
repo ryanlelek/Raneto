@@ -7,10 +7,10 @@
 	{{#meta.description}}<meta name="description" content="{{meta.description}}">{{/meta.description}}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/bower_components/highlightjs/styles/solarized_light.css">
-	<link rel="stylesheet" href="/styles/raneto.css">
+	<link rel="shortcut icon" href="{{config.base_url}}/favicon.ico">
+	<link rel="stylesheet" href="{{config.base_url}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{config.base_url}}/bower_components/highlightjs/styles/solarized_light.css">
+	<link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
 
 	{{{config.analytics}}}
 </head>
@@ -21,7 +21,7 @@
 			<div class="row">
 				<div class="col-sm-6">
 
-					<a href="/" class="logo">{{config.site_title}}</a>
+					<a href="{{config.base_url}}/" class="logo">{{config.site_title}}</a>
 
 				</div>
 				<div class="col-sm-6">
@@ -52,12 +52,12 @@
 		</div>
 	</footer>
 
-	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="/bower_components/highlightjs/highlight.pack.js"></script>
-	<script src="/bower_components/fitvids/jquery.fitvids.js"></script>
-	<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
-	<script src="/scripts/raneto.js"></script>
+	<script src="{{config.base_url}}/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="{{config.base_url}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="{{config.base_url}}/bower_components/highlightjs/highlight.pack.js"></script>
+	<script src="{{config.base_url}}/bower_components/fitvids/jquery.fitvids.js"></script>
+	<script src="{{config.base_url}}/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+	<script src="{{config.base_url}}/scripts/raneto.js"></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
         {{#pages}}
             {{#is_index}}
                 {{#files}}
-                    <li class="page{{#active}} active{{/active}}"><a href="/{{slug}}">{{title}}</a></li>
+                    <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
                 {{/files}}
             {{/is_index}}
             {{^is_index}}
@@ -13,7 +13,7 @@
                 <h5 class="category-title">{{title}}</h5>
                 <ul class="pages">
                 {{#files}}
-                    <li class="page{{#active}} active{{/active}}"><a href="/{{slug}}">{{title}}</a></li>
+                    <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
                 {{/files}}
                 </ul>
             </li>
