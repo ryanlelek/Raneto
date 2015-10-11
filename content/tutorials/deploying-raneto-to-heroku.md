@@ -21,14 +21,14 @@ First you need to open a command shell in the root of your Raneto install. You t
 using the `heroku login` command. You will be asked to setup some `ssh` keys if you haven't done so already.
 Just follow the instructions.
 
-	$ heroku login
-	Enter your Heroku credentials.
-	Email: zeke@example.com
-	Password:
-	Could not find an existing public key.
-	Would you like to generate one? [Yn]
-	Generating new SSH public key.
-	Uploading ssh public key /Users/adam/.ssh/id_rsa.pub
+    $ heroku login
+    Enter your Heroku credentials.
+    Email: zeke@example.com
+    Password:
+    Could not find an existing public key.
+    Would you like to generate one? [Yn]
+    Generating new SSH public key.
+    Uploading ssh public key /Users/adam/.ssh/id_rsa.pub
 
 ## Create a Procfile
 
@@ -45,9 +45,9 @@ Heroku works by deploying a Git repository to their servers. So we need to make 
 Git repository. This also means you will need to commit any changes you make to Git before deploying
 them to Heroku. Thankfully this is easy to setup.
 
-	$ git init
-	$ git add .
-	$ git commit -m "init"
+    $ git init
+    $ git add .
+    $ git commit -m "init"
 
 Remeber you will need to `git commit` any future changes you make before deployment.
 
@@ -55,10 +55,10 @@ Remeber you will need to `git commit` any future changes you make before deploym
 
 First we need to create the app in Heroku by running:
 
-	$ heroku create
-	Creating sharp-rain-871... done, stack is cedar
-	http://sharp-rain-871.herokuapp.com/ | git@heroku.com:sharp-rain-871.git
-	Git remote heroku added
+    $ heroku create
+    Creating sharp-rain-871... done, stack is cedar
+    http://sharp-rain-871.herokuapp.com/ | git@heroku.com:sharp-rain-871.git
+    Git remote heroku added
 
 Heroku will assign you a random subdomain that your app will be available at.
 
@@ -76,8 +76,8 @@ needs to be run this one time.
 
 You can now visit your live Raneto install in the browser by running the `heroku open` command.
 
-	$ heroku open
-	Opening sharp-rain-871... done
+    $ heroku open
+    Opening sharp-rain-871... done
 
 ## Further Reading
 
