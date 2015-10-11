@@ -27,7 +27,7 @@
     "postinstall": "npm update"
   },
   "engines": {
-    "node": "~0.10.0"
+    "node": ">=0.10.x"
   },
   "dependencies": {
     "basic-auth-connect": "~1.0.0",
