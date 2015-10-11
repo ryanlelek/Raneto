@@ -45,7 +45,7 @@
     "raneto-core"        : "0.2.0",
     "serve-favicon"      : "2.3.0",
     "underscore"         : "1.8.3",
-    "underscore.string"  : "2.4.0",
+    "underscore.string"  : "3.2.2",
     "validator"          : "3.43.0"
   },
   "devDependencies" : {
