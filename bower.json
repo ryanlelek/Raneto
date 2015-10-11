@@ -13,7 +13,7 @@
   "dependencies" : {
     "bootstrap"   : "3.3.5",
     "fitvids"     : "1.1.0",
-    "highlightjs" : "8.0.0",
+    "highlightjs" : "8.8.0",
     "jquery"      : "2.1.1",
     "masonry"     : "3.1.5"
   },
