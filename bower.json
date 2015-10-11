@@ -11,7 +11,7 @@
     "public/"
   ],
   "dependencies" : {
-    "bootstrap"          : "3.1.1",
+    "bootstrap"          : "3.3.5",
     "doc-ready"          : "1.0.3",
     "eventEmitter"       : "4.2.7",
     "eventie"            : "1.0.5",
