@@ -23,7 +23,7 @@
   ],
   "main": "./app",
   "scripts": {
-    "start": "DEBUG=raneto node server.js",
+    "start": "DEBUG=raneto node ./example/server.js",
     "postinstall": "npm update && ./node_modules/.bin/bower install"
   },
   "engines": {
