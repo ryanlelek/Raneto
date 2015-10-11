@@ -142,8 +142,7 @@ function initialize (config) {
 
       var slug = req.params[0];
       if (slug === '/') { slug = '/index'; }
-console.log('X', raneto.config.content_dir);
-console.log('Y', path.normalize(raneto.config.content_dir + slug));
+
       var pageList     = raneto.getPages(slug);
       var filePath     = path.normalize(raneto.config.content_dir + slug);
       var filePathOrig = filePath;
