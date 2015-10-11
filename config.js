@@ -32,6 +32,7 @@ module.exports = {
 
   // Specify the path of your content folder where all your '.md' files are located
   content_dir: './content/',
+  public_dir: './public/',
 
   // Add your analytics tracking code (including script tags)
   analytics: '',
