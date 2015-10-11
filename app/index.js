@@ -44,80 +44,86 @@ function initialize (config) {
   // Setup config
   extend(raneto.config, config);
 
+  // HTTP Basic Authentication
   if (config.authentication === true) {
     app.use(basic_auth(config.credentials.username, config.credentials.password));
   }
 
-  app.post('/rn-edit', function (req, res, next) {
-    var filePath = path.normalize(raneto.config.content_dir + req.body.file);
-    if (!fs.existsSync(filePath)) { filePath += '.md'; }
-    fs.writeFile(filePath, req.body.content, function (err) {
-      if (err) {
-        console.log(err);
-        return res.json({
-          status  : 1,
-          message : err
-        });
-      }
-      res.json({
-        status  : 0,
-        message : 'Page Saved'
-      });
-    });
-  });
+  // Online Editor Routes
+  if (config.allow_editing === true) {
 
-  app.post('/rn-delete', function (req, res, next) {
-    var filePath = path.normalize(raneto.config.content_dir + req.body.file);
-    if (!fs.existsSync(filePath)) { filePath += '.md'; }
-    fs.rename(filePath, filePath + '.del', function (err) {
-      if (err) {
-        console.log(err);
-        return res.json({
-          status: 1,
-          message: err
+    app.post('/rn-edit', function (req, res, next) {
+      var filePath = path.normalize(raneto.config.content_dir + req.body.file);
+      if (!fs.existsSync(filePath)) { filePath += '.md'; }
+      fs.writeFile(filePath, req.body.content, function (err) {
+        if (err) {
+          console.log(err);
+          return res.json({
+            status  : 1,
+            message : err
+          });
+        }
+        res.json({
+          status  : 0,
+          message : 'Page Saved'
         });
-      }
-      res.json({
-        status: 0,
-        message: 'Page Deleted'
       });
     });
-  });
 
-  app.post('/rn-add-category', function (req, res, next) {
-    var filePath = path.normalize(raneto.config.content_dir + req.body.category);
-    fs.mkdir(filePath, function (err) {
-      if (err) {
-        console.log(err);
-        return res.json({
-          status  : 1,
-          message : err
+    app.post('/rn-delete', function (req, res, next) {
+      var filePath = path.normalize(raneto.config.content_dir + req.body.file);
+      if (!fs.existsSync(filePath)) { filePath += '.md'; }
+      fs.rename(filePath, filePath + '.del', function (err) {
+        if (err) {
+          console.log(err);
+          return res.json({
+            status: 1,
+            message: err
+          });
+        }
+        res.json({
+          status: 0,
+          message: 'Page Deleted'
         });
-      }
-      res.json({
-        status  : 0,
-        message : 'Category Created'
       });
     });
-  });
 
-  app.post('/rn-add-page', function (req, res, next) {
-    var filePath = path.normalize(raneto.config.content_dir + req.body.category + '/' + req.body.name + '.md');
-    fs.open(filePath, 'a', function (err, fd) {
-      fs.close(fd);
-      if (err) {
-        console.log(err);
-        return res.json({
-          status  : 1,
-          message : err
+    app.post('/rn-add-category', function (req, res, next) {
+      var filePath = path.normalize(raneto.config.content_dir + req.body.category);
+      fs.mkdir(filePath, function (err) {
+        if (err) {
+          console.log(err);
+          return res.json({
+            status  : 1,
+            message : err
+          });
+        }
+        res.json({
+          status  : 0,
+          message : 'Category Created'
         });
-      }
-      res.json({
-        status  : 0,
-        message : 'Page Created'
       });
     });
-  });
+
+    app.post('/rn-add-page', function (req, res, next) {
+      var filePath = path.normalize(raneto.config.content_dir + req.body.category + '/' + req.body.name + '.md');
+      fs.open(filePath, 'a', function (err, fd) {
+        fs.close(fd);
+        if (err) {
+          console.log(err);
+          return res.json({
+            status  : 1,
+            message : err
+          });
+        }
+        res.json({
+          status  : 0,
+          message : 'Page Created'
+        });
+      });
+    });
+
+  }
 
   // Handle all requests
   app.get('*', function (req, res, next) {
