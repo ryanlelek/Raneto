@@ -8,7 +8,7 @@ var fs           = require('fs');
 var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
+var body_parser  = require('body-parser');
 var _s           = require('underscore.string');
 var moment       = require('moment');
 var marked       = require('marked');
@@ -35,8 +35,8 @@ app.engine('html', hogan);
 // Setup Express
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(body_parser.json());
+app.use(body_parser.urlencoded({ extended : false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
