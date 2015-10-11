@@ -22,6 +22,9 @@ build/Release
 # Dependency directory
 node_modules
 
+# Bower Components (Installed Automatically)
+public/bower_components/
+
 # Misc
 *.pages
 *.pdf

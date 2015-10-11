@@ -1,0 +1,29 @@
+{
+  "name"         : "raneto",
+  "version"      : "7.0.0",
+  "description"  : "Markdown powered Knowledgebase",
+  "homepage"     : "https://github.com/gilbitron/Raneto",
+  "author"       : "Ryan Lelek <ryanlelek@gmail.com>",
+  "main"         : [],
+  "keywords"     : [],
+  "ignore"       : [
+    "node_modules/",
+    "public/"
+  ],
+  "dependencies" : {
+    "bootstrap"          : "3.1.1",
+    "doc-ready"          : "1.0.3",
+    "eventEmitter"       : "4.2.7",
+    "eventie"            : "1.0.5",
+    "fitvids"            : "1.1.0",
+    "get-size"           : "1.1.7",
+    "get-style-property" : "1.0.3",
+    "highlightjs"        : "8.0.0",
+    "jquery"             : "2.1.1",
+    "jquery-bridget"     : "1.0.1",
+    "masonry"            : "3.1.5",
+    "matches-selector"   : "1.0.2",
+    "outlayer"           : "1.2.0"
+  },
+  "private" : true
+}
