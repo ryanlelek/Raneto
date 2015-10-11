@@ -23,7 +23,7 @@
   ],
   "main": "./app",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node server.js",
     "postinstall": "npm update"
   },
   "engines": {
