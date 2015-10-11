@@ -44,7 +44,7 @@
     "moment"             : "2.10.6",
     "morgan"             : "1.0.1",
     "raneto-core"        : "0.2.0",
-    "static-favicon"     : "1.0.2",
+    "serve-favicon"      : "2.3.0",
     "underscore"         : "1.8.3",
     "underscore.string"  : "2.4.0",
     "validator"          : "3.43.0"
