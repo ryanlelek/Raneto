@@ -13,7 +13,7 @@ module.exports = {
   // Used for the "Get in touch" page footer link
   support_email: '',
 
-  // Footer copyright content
+  // Footer Text / Copyright
   copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - <a href="http://raneto.com">Powered by Raneto</a>',
 
   // Excerpt length (used in search)
@@ -32,7 +32,9 @@ module.exports = {
   theme_name : 'default',
 
   // Specify the path of your content folder where all your '.md' files are located
-  content_dir : __dirname + '/content/',
+  // Fix: Needs trailing slash for now!
+  // Fix: Cannot be an absolute path
+  content_dir : 'content/',
 
   // Where is the public directory or document root?
   public_dir  : __dirname + '/../public/',
