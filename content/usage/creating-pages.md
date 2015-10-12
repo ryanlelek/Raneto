@@ -44,10 +44,10 @@ At the top of a page you can place a block comment to specify certain attributes
 you can specify the page title or a description to be used by search engines. Specifying page meta is
 optional.
 
-	/*
-	Title: My Page Title
-	Description: Optional description for search engines
-	*/
+    /*
+    Title: My Page Title
+    Description: Optional description for search engines
+    */
 
 Note that if no meta title is specified the filename will be used to generate a page title.
 

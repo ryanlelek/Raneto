@@ -3,7 +3,7 @@ Title: Customizing the Template
 */
 
 Templating in Raneto is powered by [Mustache](http://mustache.github.io). All of the template views can
-be found in the `views` folder. Feel free to customize the template as you wish. The template structure
+be found in the `themes/default/` folder. Feel free to customize the template as you wish. The template structure
 is as follows:
 
 * `layout.html`: The parent template. You'll probably want to customize this first
@@ -61,10 +61,10 @@ The `pages` array has a structure similar to the following:
 * `class`: CSS class
 * `sort`: The sort index for this category
 * `files[]`: Array of pages in this category
-	* `slug`: The page slug
-	* `title`: The page title
-	* `active`: True if the current page is "active"
-	* `sort`: The sort index for this page
+* `slug`: The page slug
+* `title`: The page title
+* `active`: True if the current page is "active"
+* `sort`: The sort index for this page
 
 The `searchResults` array contains items which include:
 

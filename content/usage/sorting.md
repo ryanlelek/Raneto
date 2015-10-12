@@ -10,10 +10,10 @@ follow the instructions below.
 
 To manually sort pages you have to add a `Sort` item to the page meta. For example:
 
-	/*
-	Title: Sorting
-	Sort: 4
-	*/
+    /*
+    Title: Sorting
+    Sort: 4
+    */
 
 The value of `Sort` should be an index integer. This page will now appear after any other pages with
 a sort index of `3` or less, and before any pages with a sort index on `5` or more. If a page doesn't

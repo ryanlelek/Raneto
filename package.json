@@ -23,29 +23,32 @@
   ],
   "main": "./app",
   "scripts": {
-    "start": "node ./bin/www",
-    "postinstall": "npm update"
+    "start": "DEBUG=raneto node ./example/server.js",
+    "postinstall": "npm update && ./node_modules/.bin/bower install"
   },
   "engines": {
-    "node": "~0.10.0"
+    "node": ">=0.10.x"
   },
   "dependencies": {
-    "basic-auth-connect": "~1.0.0",
-    "body-parser": "~1.0.0",
-    "cookie-parser": "~1.0.1",
-    "debug": "~0.7.4",
-    "express": "~4.2.0",
-    "extend": "^1.2.1",
-    "glob": "^4.0.0",
-    "hogan-express": "^0.5.2",
-    "lunr": "^0.5.3",
-    "marked": "^0.3.2",
-    "moment": "^2.6.0",
-    "morgan": "~1.0.0",
-    "raneto-core": "0.x",
-    "static-favicon": "~1.0.0",
-    "underscore": "^1.6.0",
-    "underscore.string": "^2.3.3",
-    "validator": "^3.13.0"
+    "basic-auth-connect" : "1.0.0",
+    "body-parser"        : "1.14.1",
+    "bower"              : "1.5.3",
+    "cookie-parser"      : "1.4.0",
+    "debug"              : "2.2.0",
+    "express"            : "4.13.3",
+    "extend"             : "3.0.0",
+    "hogan-express"      : "0.5.2",
+    "lunr"               : "0.5.12",
+    "marked"             : "0.3.5",
+    "moment"             : "2.10.6",
+    "morgan"             : "1.6.1",
+    "raneto-core"        : "0.2.0",
+    "serve-favicon"      : "2.3.0",
+    "underscore"         : "1.8.3",
+    "underscore.string"  : "3.2.2",
+    "validator"          : "4.1.0"
+  },
+  "devDependencies" : {
+    "jshint" : "2.8.0"
   }
 }

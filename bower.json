@@ -1,0 +1,21 @@
+{
+  "name"         : "raneto",
+  "version"      : "0.7.1",
+  "description"  : "Markdown powered Knowledgebase",
+  "homepage"     : "https://github.com/gilbitron/Raneto",
+  "author"       : "Ryan Lelek <ryanlelek@gmail.com>",
+  "main"         : [],
+  "keywords"     : [],
+  "ignore"       : [
+    "node_modules/",
+    "public/"
+  ],
+  "dependencies" : {
+    "bootstrap"   : "3.3.5",
+    "fitvids"     : "1.1.0",
+    "highlightjs" : "8.8.0",
+    "jquery"      : "2.1.4",
+    "masonry"     : "3.3.2"
+  },
+  "private" : true
+}

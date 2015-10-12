@@ -1,0 +1,63 @@
+
+<div class="row">
+  <div class="col-sm-3">
+
+    <ul class="menu">
+      {{#config.allow_editing}}
+        <li><input id="newCategory" type="text" class="form-control" placeholder="Add Category"/></li>
+      {{/config.allow_editing}}
+      {{#pages}}
+        {{#is_index}}
+          {{#files}}
+            <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+          {{/files}}
+        {{/is_index}}
+        {{^is_index}}
+          <li class="category">
+            <h5 class="category-title">{{title}} {{#config.allow_editing}}<a class="add-page" data-toggle="modal" data-target="#addModal"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/config.allow_editing}}</h5>
+            <ul class="pages">
+              {{#files}}
+                <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{/files}}
+            </ul>
+          </li>
+        {{/is_index}}
+      {{/pages}}
+    </ul>
+
+  </div>
+  <div class="col-sm-9">
+
+    <section class="content">
+
+      {{#config.allow_editing}}
+        <div class="btn-group btn-group-sm pull-right">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            Actions <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a class="goto-edit">Edit</a></li>
+            <li><a data-toggle="modal" data-target="#deleteModal">Delete</a></li>
+          </ul>
+        </div>
+      {{/config.allow_editing}}
+
+      {{#meta.title}}<h1 class="title">{{meta.title}}</h1>{{/meta.title}}
+
+      {{{content}}}
+
+      <div class="page-meta clearfix">
+        {{#config.support_email}}
+          <div class="contact-support pull-left">
+            <span class="glyphicon glyphicon-envelope"></span> Still need help? <a href="mailto:{{config.support_email}}">Get in touch!</a>
+          </div>
+        {{/config.support_email}}
+        <div class="last-updated pull-right">
+          Last updated on {{last_modified}}
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>

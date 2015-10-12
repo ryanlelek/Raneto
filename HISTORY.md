@@ -1,0 +1,69 @@
+
+# Raneto Changelog
+
+2015.10.10 / v0.7.0
+===================
+
+  * **[New]** Added online editing of pages
+    - contributed by **@matthiassb**
+  * **[New]** Added HTTP Basic authentication
+    - contributed by **@eighteyes**
+  * **[New]** Added custom template layouts
+    - contributed by **@zulfajuniadi**
+  * **[Fixed]** Highlight.js language detection
+    - contributed by **@thurloat**
+  * **[Fixed]** Mobile design layout
+    - contributed by **@adimitrov**
+  * **[Fixed]** Added config.base_url in front of all assets
+    - contributed by **@valeriangalliat**
+
+2014.06.09 / v0.6.0
+==========================
+
+  * **[Changed]** Static files (e.g. images) can now be served from the content folder
+  * **[Changed]** Removed commercial licensing
+
+2014.06.05 / v0.5.0
+==========================
+
+  * **[New]** Changed app structure (now using raneto-core)
+  * **[New]** Added a content_dir config option
+  * **[New]** Added an analytics config option
+
+2014.06.04 / v0.4.0
+==========================
+
+  * **[New]** Added %image_url% support to Markdown files
+  * **[New]** Search queries are now highlighted in search results
+  * **[Changed]** Fallback to generating title from filename if no meta title is set
+  * **[Changed]** Moved route and error handlers to raneto.js
+  * **[Changed]** Make search use "/" URL
+  * **[Fixed]** Fixed __dirname paths in Windows
+
+2014.06.03 / v0.3.0
+==========================
+
+  * **[New]** Added masonry layout functionality to homepage
+  * **[New]** Added commercial licensing
+
+2014.06.02 / v0.2.0
+==========================
+
+  * **[New]** Added page and category sorting functionality
+  * **[Fixed]** Added better handling of file reading errors in raneto.js
+
+2014.06.02 / v0.1.2
+==========================
+
+  * **[Changed]** Changed default copyright in config.js
+
+2014.06.02 / v0.1.1
+==========================
+
+  * **[New]** Added favicon
+  * **[Fixed]** Error page
+
+2014.05.30 / v0.1.0
+==========================
+
+  * Initial release
