@@ -27,7 +27,7 @@ function initialize (config) {
   app.set('port', process.env.PORT || 3000);
 
   // Setup Views
-  app.set('views', path.join(__dirname, 'themes', 'default', 'templates'));
+  app.set('views', path.join(__dirname, '..', 'themes', 'default', 'templates'));
   app.set('layout', 'layout');
   app.set('view engine', 'html');
   app.enable('view cache');
@@ -160,7 +160,7 @@ function initialize (config) {
 
       if (slug === '/index' && !fs.existsSync(filePath)) {
 
-        var stat = fs.lstatSync(path.join(__dirname, 'themes', 'default', 'templates') + '/home.html');
+        var stat = fs.lstatSync(path.join(__dirname, '..', 'themes', 'default', 'templates') + '/home.html');
         return res.render('home', {
           config        : config,
           pages         : pageList,
