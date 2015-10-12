@@ -28,14 +28,19 @@ module.exports = {
   category_sort: true,
 
   // Which Theme to Use?
+  theme_dir  : __dirname + '/../themes/',
   theme_name : 'default',
 
-  // The base URL of your images folder (can use %image_url% in Markdown files)
-  image_url: '/images',
-
   // Specify the path of your content folder where all your '.md' files are located
-  content_dir: './example/content/',
-  public_dir: './public/',
+  content_dir : __dirname + '/content/',
+
+  // Where is the public directory or document root?
+  public_dir  : __dirname + '/../public/',
+
+  // The base URL of your images folder,
+  // Relative to config.public_dir
+  // (can use %image_url% in Markdown files)
+  image_url: '/images',
 
   // Add your analytics tracking code (including script tags)
   analytics: '',
