@@ -27,6 +27,9 @@ module.exports = {
   // If true category folders need to contain a "sort" file with an integer value
   category_sort: true,
 
+  // Which Theme to Use?
+  theme_name : 'default',
+
   // The base URL of your images folder (can use %image_url% in Markdown files)
   image_url: '/images',
 
