@@ -30,25 +30,25 @@
     "node": ">=0.10.x"
   },
   "dependencies": {
-    "basic-auth-connect" : "1.0.0",
-    "body-parser"        : "1.14.1",
-    "bower"              : "1.5.3",
-    "cookie-parser"      : "1.4.0",
-    "debug"              : "2.2.0",
-    "express"            : "4.13.3",
-    "extend"             : "3.0.0",
-    "hogan-express"      : "0.5.2",
-    "lunr"               : "0.5.12",
-    "marked"             : "0.3.5",
-    "moment"             : "2.10.6",
-    "morgan"             : "1.6.1",
-    "raneto-core"        : "0.2.0",
-    "serve-favicon"      : "2.3.0",
-    "underscore"         : "1.8.3",
-    "underscore.string"  : "3.2.2",
-    "validator"          : "4.1.0"
+    "basic-auth-connect": "1.0.0",
+    "body-parser": "1.14.1",
+    "bower": "1.5.3",
+    "cookie-parser": "1.4.0",
+    "debug": "2.2.0",
+    "express": "4.13.3",
+    "extend": "3.0.0",
+    "hogan-express": "0.5.2",
+    "lunr": "0.5.12",
+    "marked": "0.3.5",
+    "moment": "2.10.6",
+    "morgan": "1.6.1",
+    "raneto-core": "0.2.0",
+    "serve-favicon": "2.3.0",
+    "underscore": "1.8.3",
+    "underscore.string": "3.2.2",
+    "validator": "4.1.0"
   },
-  "devDependencies" : {
-    "jshint" : "2.8.0"
+  "devDependencies": {
+    "jshint": "2.8.0"
   }
 }
