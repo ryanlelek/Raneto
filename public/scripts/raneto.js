@@ -18,8 +18,7 @@
       $(".content table").addClass("table");
 
       // FitVids
-      $(".content").fitVids();
-
+      fitvids(".content");
     }
 
     // Deal with Home Categories
