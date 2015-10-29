@@ -38,6 +38,7 @@
     "express": "4.13.3",
     "extend": "3.0.0",
     "fitvids": "1.0.2",
+    "gulp": "3.9.0",
     "highlightjs": "8.7.0",
     "hogan-express": "0.5.2",
     "jquery": "2.1.4",
@@ -53,7 +54,6 @@
     "validator": "4.1.0"
   },
   "devDependencies": {
-    "gulp": "3.9.0",
     "gulp-shell": "0.5.0",
     "jshint": "2.8.0"
   }
