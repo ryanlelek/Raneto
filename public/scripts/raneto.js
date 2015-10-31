@@ -107,7 +107,7 @@
       file_arr.pop();
       $("#entry-markdown").next(".CodeMirror")[0].CodeMirror.save();
       $.post("/rn-edit", {
-        file    : file_arr.join("/"),
+        file    : decodeURI(file_arr.join("/")),
         content : $("#entry-markdown").val()
       }, function (data) {
         switch (data.status) {
