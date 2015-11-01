@@ -108,7 +108,7 @@ function initialize (config) {
     });
 
     app.post('/rn-add-page', function (req, res, next) {
-      var filePath = path.normalize(raneto.config.content_dir + req.body.category + '/' + req.body.name + '.md');
+      var filePath = path.normalize(raneto.config.content_dir + (!!req.body.category ? req.body.category + '/' : '') + req.body.name + '.md');
       fs.open(filePath, 'a', function (err, fd) {
         fs.close(fd);
         if (err) {
