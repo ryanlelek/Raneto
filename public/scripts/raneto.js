@@ -55,7 +55,7 @@
     $("#delete-page-confirm").click(function () {
       $("#deleteModal").modal("hide");
       $.post("/rn-delete", {
-        file : window.location.pathname
+        file : decodeURI(window.location.pathname)
       }, function (data) {
         switch (data.status) {
           case 0:
