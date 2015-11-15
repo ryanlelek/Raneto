@@ -27,7 +27,7 @@
     "postinstall": "npm update && ./node_modules/gulp/bin/gulp.js"
   },
   "engines": {
-    "node": "4.2.1"
+    "node": ">=4.0.0"
   },
   "dependencies": {
     "basic-auth-connect": "1.0.0",

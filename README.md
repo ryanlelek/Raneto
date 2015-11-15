@@ -6,7 +6,7 @@ Raneto
 Requirements
 ------------
 
-* [Node.js](http://nodejs.org) **v4.2.1**
+* [Node.js](http://nodejs.org) **v4.0.0** (or later)
 
 Install
 -------
