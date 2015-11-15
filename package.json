@@ -55,6 +55,7 @@
     "validator": "4.1.0"
   },
   "devDependencies": {
-    "jshint": "2.8.0"
+    "jshint": "2.8.0",
+    "mocha": "2.3.3"
   }
 }
