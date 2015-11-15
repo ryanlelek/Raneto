@@ -45,7 +45,7 @@
       }, function (data) {
         switch (data.status) {
           case 0:
-            window.location = "/" + current_category + "/" + name + "/edit";
+            window.location = [current_category, name, "edit"].join("/");
             break;
         }
       });
@@ -76,7 +76,7 @@
                     .trim()
                     .toLowerCase()
                     .replace(/\s+/g, "-");
-      current_category = text;
+      current_category = text != "main-articles" ? text : "";
     });
 
     // New Category
