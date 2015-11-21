@@ -24,6 +24,7 @@
   "main": "./app",
   "scripts": {
     "start": "DEBUG=raneto node example/server.js",
+    "start_win": "set DEBUG=raneto&&node example/server.js",
     "postinstall": "npm update && npm run gulp",
     "gulp": "gulp"
   },
