@@ -23,8 +23,9 @@
   ],
   "main": "./app",
   "scripts": {
-    "start": "DEBUG=raneto node ./example/server.js",
-    "postinstall": "npm update && ./node_modules/gulp/bin/gulp.js"
+    "start": "DEBUG=raneto node example/server.js",
+    "postinstall": "npm update && npm run gulp",
+    "gulp": "gulp"
   },
   "engines": {
     "node": ">=4.0.0"
