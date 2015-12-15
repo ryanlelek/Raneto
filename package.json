@@ -71,13 +71,5 @@
     "jshint": "2.8.0",
     "mocha": "2.3.3",
     "supertest": "1.1.0"
-  },
-  "gitHead": "eac40d52756c4bfd0469fd552ec87f950cc33cc0",
-  "readme": "Raneto\n======\n\n[Raneto](http://raneto.com) is a free, open, simple Markdown powered Knowledgebase for Nodejs. [Find out more &rarr;](http://docs.raneto.com/what-is-raneto)\n\nRequirements\n------------\n\n* [Node.js](http://nodejs.org) **v4.0.0** (or later)\n\nInstall\n-------\n\n```sh\n$ npm install -g raneto\n```\n\nInstall from Source\n-------\n\n1. Download the latest version of Raneto from the [releases page](https://github.com/gilbitron/Raneto/releases)\n2. Create a new directory where you would like to run the app, and un-zip the package to that location\n3. Fire up a Terminal, the Node Command Prompt or shell and change directory to the root of the Raneto application (where app.js and config.js are)\n4. run `npm install` to install the node dependencies\n5. To start Raneto, run `npm start`\n6. Visit `http://localhost:3000` in your web browser\n\nNote: When running on a live site you'll want to set the `PORT` env variable to `80` so you don't need to add `:3000` to the URL.\n\nDemo & Docs\n-----------\n\nSee http://docs.raneto.com\n\nContribute\n----------\n\nSee http://docs.raneto.com/contributing\n\nShowcase\n--------\n\nUsing Raneto in the wild? We'd love to see it. Add your site to the [Raneto Showcase](https://github.com/gilbitron/Raneto/wiki/Raneto-Showcase).\n\nCredits\n-------\n\nRaneto was created by [Gilbert Pellegrom](http://gilbert.pellegrom.me) from\n[Dev7studios](http://dev7studios.com). Released under the [MIT license](https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE).\n",
-  "readmeFilename": "README.md",
-  "homepage": "https://github.com/gilbitron/Raneto#readme",
-  "_id": "raneto@0.7.1",
-  "_shasum": "54acd47362f311ecd53c59437df353d684c8303b",
-  "_from": "git+https://github.com/matthiassb/Raneto.git",
-  "_resolved": "git+https://github.com/matthiassb/Raneto.git#eac40d52756c4bfd0469fd552ec87f950cc33cc0"
+  }
 }
