@@ -10,7 +10,12 @@ var libDirectories = [
   'node_modules/masonry-layout'
 ]
 var dest = 'public/lib';
-fs.mkdirSync(dest);
+
+try {
+  fs.mkdirSync(dest);
+} catch(e){
+  //directory already created
+}
 
 async.each(libDirectories, function(directory, callback) {
   ncp(directory, dest + "/" + directory.split("/")[1], function (err) {
