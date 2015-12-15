@@ -7,7 +7,8 @@ var libDirectories = [
   'node_modules/fitvids',
   'node_modules/highlightjs',
   'node_modules/jquery',
-  'node_modules/masonry-layout'
+  'node_modules/masonry-layout',
+  'node_modules/sweetalert'
 ]
 var dest = 'public/lib';
 
