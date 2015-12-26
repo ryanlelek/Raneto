@@ -15,7 +15,7 @@ var marked        = require('marked');
 var validator     = require('validator');
 var extend        = require('extend');
 var hogan         = require('hogan-express');
-var basic_auth    = require('basic-auth-connect');
+var session       = require('express-session');
 var raneto        = require('raneto-core');
 
 function initialize (config) {
@@ -46,9 +46,43 @@ function initialize (config) {
   // Setup config
   extend(raneto.config, config);
 
-  // HTTP Basic Authentication
+  // HTTP Authentication
   if (config.authentication === true) {
-    app.use(basic_auth(config.credentials.username, config.credentials.password));
+    app.use(session(
+      {
+        secret: "changeme",
+        name: "raneto.sid",
+        resave: false,
+        saveUninitialized: false
+      }
+    ));
+
+    app.post('/rn-login', function (req, res, next) {
+      if(req.param('username') === config.credentials.username
+        && req.param('password') === config.credentials.password)
+      {
+        req.session.loggedIn = true;
+        res.json({
+          status  : 1,
+          message : 'Login Successful'
+        });
+      } else {
+        res.json({
+          status  : 0,
+          message : 'Invalid Username/Password Combination'
+        });
+      }
+    });
+
+    app.get("/login", function(req, res, next){
+      return res.render('login', {
+        layout : null
+      });
+    });
+    app.get("/logout", function(req, res, next){
+      req.session.loggedIn = false;
+      res.redirect("/login");
+    });
   }
 
   // Online Editor Routes
@@ -127,11 +161,12 @@ function initialize (config) {
 
   }
 
-  // Handle all requests
-  app.get('*', function (req, res, next) {
-
-    var suffix = 'edit';
-
+  // Router for / and /index with or without search parameter
+  app.get("/:var(index)?", function(req, res, next){
+    if (config.authentication === true && !req.session.loggedIn) {
+      res.redirect("/login");
+      return;
+    }
     if (req.query.search) {
 
       var searchQuery    = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim();
@@ -146,8 +181,8 @@ function initialize (config) {
         body_class: 'page-search'
       });
 
-    } else if (req.params[0]) {
-
+    } else {
+      var suffix = 'edit';
       var slug = req.params[0];
       if (slug === '/') { slug = '/index'; }
 
@@ -158,110 +193,118 @@ function initialize (config) {
       if (filePath.indexOf(suffix, filePath.length - suffix.length) !== -1) {
         filePath = filePath.slice(0, - suffix.length - 1);
       }
+      var stat = fs.lstatSync(path.join(config.theme_dir, config.theme_name, 'templates', 'home.html'));
+
+      return res.render('home', {
+        config        : config,
+        pages         : pageList,
+        body_class    : 'page-home',
+        last_modified : moment(stat.mtime).format('Do MMM YYYY')
+      });
+    }
+  });
+
+  app.get(/^([^.]*)/, function (req, res, next) {
+    if (config.authentication === true && !req.session.loggedIn) {
+      res.redirect("/login");
+      return;
+    }
+    var suffix = 'edit';
+
+     if (req.params[0]) {
+
+      var slug = req.params[0];
+
+      var pageList     = raneto.getPages(slug);
+      var filePath     = path.normalize(raneto.config.content_dir + slug);
+      var filePathOrig = filePath;
+
+      if (filePath.indexOf(suffix, filePath.length - suffix.length) !== -1) {
+        filePath = filePath.slice(0, - suffix.length - 1);
+      }
       if (!fs.existsSync(filePath)) { filePath += '.md'; }
 
-      if (slug === '/index' && !fs.existsSync(filePath)) {
+      if (filePathOrig.indexOf(suffix, filePathOrig.length - suffix.length) !== -1) {
 
-        var stat = fs.lstatSync(path.join(config.theme_dir, config.theme_name, 'templates', 'home.html'));
-        return res.render('home', {
-          config        : config,
-          pages         : pageList,
-          body_class    : 'page-home',
-          last_modified : moment(stat.mtime).format('Do MMM YYYY')
+        fs.readFile(filePath, 'utf8', function (err, content) {
+          if (err) {
+            err.status = '404';
+            err.message = 'Whoops. Looks like this page doesn\'t exist.';
+            return next(err);
+          }
+
+          if (path.extname(filePath) === '.md') {
+
+            // File info
+            var stat = fs.lstatSync(filePath);
+            // Meta
+            var meta = raneto.processMeta(content);
+            content = raneto.stripMeta(content);
+            if (!meta.title) { meta.title = raneto.slugToTitle(filePath); }
+
+            // Content
+            content      = raneto.processVars(content);
+            var html     = content;
+            var template = meta.template || 'page';
+
+            return res.render('edit', {
+              config: config,
+              pages: pageList,
+              meta: meta,
+              content: html,
+              body_class: template + '-' + raneto.cleanString(slug),
+              last_modified: moment(stat.mtime).format('Do MMM YYYY')
+            });
+
+          }
         });
 
       } else {
 
-        if (filePathOrig.indexOf(suffix, filePathOrig.length - suffix.length) !== -1) {
+        fs.readFile(filePath, 'utf8', function (err, content) {
 
-          fs.readFile(filePath, 'utf8', function (err, content) {
-            if (err) {
-              err.status = '404';
-              err.message = 'Whoops. Looks like this page doesn\'t exist.';
-              return next(err);
-            }
+          if (err) {
+            err.status = '404';
+            err.message = 'Whoops. Looks like this page doesn\'t exist.';
+            return next(err);
+          }
 
-            if (path.extname(filePath) === '.md') {
+          // Process Markdown files
+          if (path.extname(filePath) === '.md') {
 
-              // File info
-              var stat = fs.lstatSync(filePath);
-              // Meta
-              var meta = raneto.processMeta(content);
-              content = raneto.stripMeta(content);
-              if (!meta.title) { meta.title = raneto.slugToTitle(filePath); }
+            // File info
+            var stat = fs.lstatSync(filePath);
 
-              // Content
-              content      = raneto.processVars(content);
-              var html     = content;
-              var template = meta.template || 'page';
+            // Meta
+            var meta = raneto.processMeta(content);
+            content = raneto.stripMeta(content);
+            if (!meta.title) { meta.title = raneto.slugToTitle(filePath); }
 
-              return res.render('edit', {
-                config: config,
-                pages: pageList,
-                meta: meta,
-                content: html,
-                body_class: template + '-' + raneto.cleanString(slug),
-                last_modified: moment(stat.mtime).format('Do MMM YYYY')
-              });
+            // Content
+            content = raneto.processVars(content);
+            // BEGIN: DISPLAY, NOT EDIT
+            marked.setOptions({
+              langPrefix: ''
+            });
+            var html = marked(content);
+            // END: DISPLAY, NOT EDIT
+            var template = meta.template || 'page';
 
-            }
-          });
+            return res.render(template, {
+              config: config,
+              pages: pageList,
+              meta: meta,
+              content: html,
+              body_class: template + '-' + raneto.cleanString(slug),
+              last_modified: moment(stat.mtime).format('Do MMM YYYY')
+            });
 
-        } else {
-
-          fs.readFile(filePath, 'utf8', function (err, content) {
-
-            if (err) {
-              err.status = '404';
-              err.message = 'Whoops. Looks like this page doesn\'t exist.';
-              return next(err);
-            }
-
-            // Process Markdown files
-            if (path.extname(filePath) === '.md') {
-
-              // File info
-              var stat = fs.lstatSync(filePath);
-
-              // Meta
-              var meta = raneto.processMeta(content);
-              content = raneto.stripMeta(content);
-              if (!meta.title) { meta.title = raneto.slugToTitle(filePath); }
-
-              // Content
-              content = raneto.processVars(content);
-              // BEGIN: DISPLAY, NOT EDIT
-              marked.setOptions({
-                langPrefix: ''
-              });
-              var html = marked(content);
-              // END: DISPLAY, NOT EDIT
-              var template = meta.template || 'page';
-
-              return res.render(template, {
-                config: config,
-                pages: pageList,
-                meta: meta,
-                content: html,
-                body_class: template + '-' + raneto.cleanString(slug),
-                last_modified: moment(stat.mtime).format('Do MMM YYYY')
-              });
-
-            } else {
-              // Serve static file
-              res.sendfile(filePath);
-            }
-
-          });
-
-        }
-
+          }
+        });
       }
-
     } else {
       next();
     }
-
   });
 
   // Error-Handling Middleware
