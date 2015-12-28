@@ -55,6 +55,7 @@
     "masonry-layout": "3.3.2",
     "moment": "2.10.6",
     "morgan": "1.6.1",
+    "pm2": "^0.15.10",
     "raneto-core": "0.2.0",
     "serve-favicon": "2.3.0",
     "underscore": "1.8.3",
