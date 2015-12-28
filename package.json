@@ -21,9 +21,7 @@
       "url": "https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE"
     }
   ],
-  "bin": {
-    "raneto": "./bin/raneto.js"
-  },
+  "bin": "./bin/raneto",
   "main": "./app",
   "scripts": {
     "start": "DEBUG=raneto node example/server.js",
