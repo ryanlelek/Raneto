@@ -21,6 +21,7 @@
       "url": "https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE"
     }
   ],
+  "bin": "./bin/raneto",
   "main": "./app",
   "scripts": {
     "start": "DEBUG=raneto node example/server.js",
@@ -32,9 +33,11 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
+    "always-tail": "^0.2.0",
     "basic-auth-connect": "1.0.0",
     "body-parser": "1.14.1",
     "bootstrap": "3.3.5",
+    "commander": "^2.9.0",
     "cookie-parser": "1.4.0",
     "debug": "2.2.0",
     "express": "4.13.3",
@@ -50,6 +53,7 @@
     "masonry-layout": "3.3.2",
     "moment": "2.10.6",
     "morgan": "1.6.1",
+    "pm2": "^0.15.10",
     "raneto-core": "0.2.0",
     "serve-favicon": "2.3.0",
     "underscore": "1.8.3",

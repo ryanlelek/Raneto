@@ -11,6 +11,13 @@ Requirements
 Install
 -------
 
+```sh
+$ npm install -g raneto
+```
+
+Install from Source
+-------
+
 1. Download the latest version of Raneto from the [releases page](https://github.com/gilbitron/Raneto/releases)
 2. Create a new directory where you would like to run the app, and un-zip the package to that location
 3. Fire up a Terminal, the Node Command Prompt or shell and change directory to the root of the Raneto application (where app.js and config.js are)
