@@ -10,6 +10,8 @@ gulp.task('copy_libs', function() {
     'node_modules/highlightjs/**/*',
     'node_modules/jquery/**/*',
     'node_modules/masonry-layout/**/*',
+    'node_modules/sweetalert/**/*',
+    'node_modules/jquery.backstretch/**/*',
   ];
 
   var dest = 'public/lib';

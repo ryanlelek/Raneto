@@ -27,6 +27,11 @@
           <a href="{{config.base_url}}/" class="logo">{{config.site_title}}</a>
         </div>
         <div class="col-sm-6">
+          <form class="form-inline pull-right">
+            {{#config.authentication}}
+            &nbsp;<a href="/logout" class="btn btn-info">Logout</a>
+            {{/config.authentication}}
+          </form>
           <form class="search-form form-inline pull-right" action="{{config.base_url}}/">
             <div class="form-group">
               <label class="sr-only" for="search">Search</label>
