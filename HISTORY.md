@@ -1,6 +1,25 @@
 
 # Raneto Changelog
 
+2015.12.29 / v0.8.0
+===================
+
+  * **[Fixed]** URI Decoding with non-Latin characters
+    - contributed by **@yaruson**
+  * **[Fixed]** Windows compatability (use `npm run start_win`)
+  * **[New]** Added Login Page to replace HTTP Basic Auth
+    - contributed by **@matthiassb**
+  * **[New]** Added ability to run Raneto as a PM2 service
+    - contributed by **@matthiassb**
+  * **[New]** Main Articles is now a category editable in the UI
+    - contributed by **@yaruson**
+  * **[New]** Using NPM for client-side libraries
+    - contributed by **@sbussard**
+  * **[Upgraded]** Improved Live Editor layout
+    - contributed by **@draptik**
+  * **[Removed]** Bower for client-side libraries
+    - contributed by **@sbussard**
+
 2015.10.11 / v0.7.1
 ===================
 
