@@ -8,31 +8,32 @@ Requirements
 
 * [Node.js](http://nodejs.org) **v4.0.0** (or later)
 
-Install
--------
-
-```sh
-$ npm install -g raneto
-```
-
-Install from Source
--------
-
-1. Download the latest version of Raneto from the [releases page](https://github.com/gilbitron/Raneto/releases)
-2. Create a new directory where you would like to run the app, and un-zip the package to that location
-3. Fire up a Terminal, the Node Command Prompt or shell and change directory to the root of the Raneto application (where app.js and config.js are)
-4. run `npm install` to install the node dependencies
-5. To start Raneto, run `npm start` (or `npm run start_win` on Windows)
-
-Accessing Raneto
-----------------
-
-Visit `http://localhost:3000` in your web browser.
-
 Demo & Docs
 -----------
 
-See http://docs.raneto.com
+See [http://docs.raneto.com](http://docs.raneto.com)
+
+Install
+-------
+
+It is recommended to create a new Git repository to store your documentation files and then install Raneto as a dependency into it.  
+See the `example/` directory for how this implementation works.
+
+1. Switch to your existing or new project directory
+2. Add Raneto to your project via NPM's package.json file or downloading the latest version from the [releases page](https://github.com/gilbitron/Raneto/releases)
+3. In a terminal, run `npm install` to install the node dependencies
+4. To start Raneto, run `npm start` (or `npm run start_win` on Windows)
+5. Visit `http://localhost:3000` in your web browser
+
+Running as a Service
+--------------------
+
+You can run Raneto easily in the background on your local or production machines with PM2.
+
+1. Install Raneto globally with `npm install -g raneto`
+2. Edit the configuration file in your global NPM `node_modules/` directory (locate with `which raneto` on *NIX)
+3. Run Raneto with `raneto start` and access logs with `raneto logs`
+4. When finished, run `raneto stop`
 
 Production Notes
 ----------------
@@ -50,7 +51,7 @@ You can change the port anytime by setting the environment variable in your prop
 Contribute
 ----------
 
-See http://docs.raneto.com/contributing
+See [http://docs.raneto.com/contributing](http://docs.raneto.com/contributing)
 
 Showcase
 --------
