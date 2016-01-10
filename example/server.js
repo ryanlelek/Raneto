@@ -7,10 +7,11 @@ var debug = require('debug')('raneto');
 
 // Here is where we load Raneto.
 // When you are in your own project repository,
-// Raneto is installed via NPM and loaded as:
-var raneto = require('raneto');
-// If you want to use the local file (for development), use instead:
-// var raneto = require('../app/index.js');
+// Raneto should be installed via NPM and loaded as:
+// var raneto = require('raneto');
+//
+// For development purposes, we load it this way in this example:
+var raneto = require('../app/index.js');
 
 // Then, we load our configuration file
 // This can be done inline, with a JSON file,
