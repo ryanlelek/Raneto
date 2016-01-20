@@ -2,7 +2,7 @@
 'use strict';
 
 // Exports
-module.exports = {
+var config = module.exports = {
 
   // Your site title (format: page_title - site_title)
   site_title: 'Raneto Docs',
@@ -55,6 +55,10 @@ module.exports = {
   credentials    : {
     username : 'admin',
     password : 'password'
-  }
+  },
 
+  locale: 'en'
 };
+
+// load translations
+config.lang = require('../public/translations/' + config.locale + '.json');
