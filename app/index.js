@@ -26,6 +26,9 @@ function initialize (config) {
   // Setup Port
   app.set('port', process.env.PORT || 3000);
 
+  // set locale as date and time format
+  moment.locale(config.locale);
+
   // Setup Views
   if (!config.theme_dir)  { config.theme_dir  = path.join(__dirname, '..', 'themes'); }
   if (!config.theme_name) { config.theme_name = 'default'; }
@@ -64,19 +67,20 @@ function initialize (config) {
         req.session.loggedIn = true;
         res.json({
           status  : 1,
-          message : 'Login Successful'
+          message : config.lang.api.loginSuccessful
         });
       } else {
         res.json({
           status  : 0,
-          message : 'Invalid Username/Password Combination'
+          message : config.lang.api.invalidCredentials
         });
       }
     });
 
     app.get("/login", function(req, res, next){
       return res.render('login', {
-        layout : null
+        layout : null,
+        lang   : config.lang
       });
     });
     app.get("/logout", function(req, res, next){
@@ -101,7 +105,7 @@ function initialize (config) {
         }
         res.json({
           status  : 0,
-          message : 'Page Saved'
+          message : config.lang.api.pageSaved
         });
       });
     });
@@ -119,7 +123,7 @@ function initialize (config) {
         }
         res.json({
           status: 0,
-          message: 'Page Deleted'
+          message: config.lang.api.pageDeleted
         });
       });
     });
@@ -136,7 +140,7 @@ function initialize (config) {
         }
         res.json({
           status  : 0,
-          message : 'Category Created'
+          message : config.lang.api.categoryCreated
         });
       });
     });
@@ -154,7 +158,7 @@ function initialize (config) {
         }
         res.json({
           status  : 0,
-          message : 'Page Created'
+          message : config.lang.api.pageCreated
         });
       });
     });
@@ -178,7 +182,8 @@ function initialize (config) {
         pages: pageListSearch,
         search: searchQuery,
         searchResults: searchResults,
-        body_class: 'page-search'
+        body_class: 'page-search',
+        lang: config.lang
       });
 
     } else {
@@ -199,7 +204,8 @@ function initialize (config) {
         config        : config,
         pages         : pageList,
         body_class    : 'page-home',
-        last_modified : moment(stat.mtime).format('Do MMM YYYY')
+        last_modified : moment(stat.mtime).format('Do MMM YYYY'),
+        lang          : config.lang
       });
     }
   });
@@ -229,7 +235,7 @@ function initialize (config) {
         fs.readFile(filePath, 'utf8', function (err, content) {
           if (err) {
             err.status = '404';
-            err.message = 'Whoops. Looks like this page doesn\'t exist.';
+            err.message = config.lang.error['404'];
             return next(err);
           }
 
@@ -253,7 +259,8 @@ function initialize (config) {
               meta: meta,
               content: html,
               body_class: template + '-' + raneto.cleanString(slug),
-              last_modified: moment(stat.mtime).format('Do MMM YYYY')
+              last_modified: moment(stat.mtime).format('Do MMM YYYY'),
+              lang: config.lang
             });
 
           }
@@ -265,7 +272,7 @@ function initialize (config) {
 
           if (err) {
             err.status = '404';
-            err.message = 'Whoops. Looks like this page doesn\'t exist.';
+            err.message = config.lang.error['404'];
             return next(err);
           }
 
@@ -296,7 +303,8 @@ function initialize (config) {
               meta: meta,
               content: html,
               body_class: template + '-' + raneto.cleanString(slug),
-              last_modified: moment(stat.mtime).format('Do MMM YYYY')
+              last_modified: moment(stat.mtime).format('Do MMM YYYY'),
+              lang: config.lang
             });
 
           }
@@ -309,11 +317,13 @@ function initialize (config) {
 
   // Error-Handling Middleware
   app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
+    var status = err.status || 500;
+
+    res.status(status);
     res.render('error', {
       config     : config,
       status     : err.status,
-      message    : err.message,
+      message    : config.lang.error[status] || err.message,
       error      : {},
       body_class : 'page-error'
     });
