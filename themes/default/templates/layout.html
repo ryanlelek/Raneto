@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{config.locale}}">
 <head>
 
   <meta charset="utf-8">
@@ -29,13 +29,13 @@
         <div class="col-sm-6">
           <form class="form-inline pull-right">
             {{#config.authentication}}
-            &nbsp;<a href="/logout" class="btn btn-info">Logout</a>
+            &nbsp;<a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a>
             {{/config.authentication}}
           </form>
           <form class="search-form form-inline pull-right" action="{{config.base_url}}/">
             <div class="form-group">
-              <label class="sr-only" for="search">Search</label>
-              <input type="search" class="form-control" name="search" id="search" size="30" value="{{search}}" placeholder="Search">
+              <label class="sr-only" for="search">{{lang.global.search}}</label>
+              <input type="search" class="form-control" name="search" id="search" size="30" value="{{search}}" placeholder="{{lang.global.search}}">
             </div>
           </form>
         </div>
@@ -64,20 +64,20 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="{{lang.global.close}}">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title">Add New Page</h4>
+            <h4 class="modal-title">{{lang.global.addPage}}</h4>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="page-name" class="control-label">Page Name:</label>
+              <label for="page-name" class="control-label">{{lang.global.pageName}}:</label>
               <input type="text" class="form-control" id="page-name">
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-            <button class="btn btn-primary" id="add-page-confirm" type="button">Save</button>
+            <button class="btn btn-default" data-dismiss="modal" type="button">{{lang.global.cancel}}</button>
+            <button class="btn btn-primary" id="add-page-confirm" type="button">{{lang.global.save}}</button>
           </div>
         </div>
       </div>
@@ -88,11 +88,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
-            <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete this page?</h4>
+            <h4 class="modal-title" id="myModalLabel">{{lang.global.reallyDeletePage}}</h4>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-default" data-dismiss="modal" type="button">No</button>
-            <button class="btn btn-primary" id="delete-page-confirm" type="button">Yes</button>
+            <button class="btn btn-default" data-dismiss="modal" type="button">{{lang.global.no}}</button>
+            <button class="btn btn-primary" id="delete-page-confirm" type="button">{{lang.global.yes}}</button>
           </div>
         </div>
       </div>
