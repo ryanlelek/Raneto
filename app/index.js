@@ -191,7 +191,7 @@ function initialize (config) {
         search: searchQuery,
         searchResults: searchResults,
         body_class: 'page-search',
-        loggedIn: (req.session.loggedIn)
+        loggedIn: (config.authentication ? req.session.loggedIn : false)
       });
 
     } else {
@@ -213,7 +213,7 @@ function initialize (config) {
         pages         : pageList,
         body_class    : 'page-home',
         last_modified : moment(stat.mtime).format('Do MMM YYYY'),
-        loggedIn      : (req.session.loggedIn)
+        loggedIn: (config.authentication ? req.session.loggedIn : false)
       });
     }
   });
@@ -269,7 +269,7 @@ function initialize (config) {
               content: html,
               body_class: template + '-' + raneto.cleanString(slug),
               last_modified: moment(stat.mtime).format('Do MMM YYYY'),
-              loggedIn: (req.session.loggedIn)
+              loggedIn: (config.authentication ? req.session.loggedIn : false)
             });
 
           }
@@ -313,7 +313,7 @@ function initialize (config) {
               content: html,
               body_class: template + '-' + raneto.cleanString(slug),
               last_modified: moment(stat.mtime).format('Do MMM YYYY'),
-              loggedIn: (req.session.loggedIn)
+              loggedIn: (config.authentication ? req.session.loggedIn : false)
             });
 
           }
@@ -333,7 +333,7 @@ function initialize (config) {
       message    : err.message,
       error      : {},
       body_class : 'page-error',
-      loggedIn: (req.session.loggedIn)
+      loggedIn   : (config.authentication ? req.session.loggedIn : false)
     });
   });
 
