@@ -29,7 +29,12 @@
         <div class="col-sm-6">
           <form class="form-inline pull-right">
             {{#config.authentication}}
-            &nbsp;<a href="/logout" class="btn btn-info">Logout</a>
+              {{#loggedIn}}
+              &nbsp;<a href="{{config.base_url}}/logout" class="btn btn-info">Logout</a>
+              {{/loggedIn}}
+              {{^loggedIn}}
+              &nbsp;<a href="{{config.base_url}}/login" class="btn btn-info">Login</a>
+              {{/loggedIn}}
             {{/config.authentication}}
           </form>
           <form class="search-form form-inline pull-right" action="{{config.base_url}}/">
@@ -58,7 +63,8 @@
   </footer>
 
   {{#config.allow_editing}}
-
+  {{#loggedIn}}
+  
     <!-- Modal: Add Page -->
     <div class="modal fade" id="addModal" tabindex="-1">
       <div class="modal-dialog">
@@ -97,7 +103,8 @@
         </div>
       </div>
     </div>
-
+  
+  {{/loggedIn}}
   {{/config.allow_editing}}
 
   <!-- JavaScript -->

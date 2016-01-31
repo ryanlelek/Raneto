@@ -48,6 +48,8 @@
             window.location = [current_category, name, "edit"].join("/");
             break;
         }
+      }).fail(function(data) {
+        if (data.status === 403) window.location = '/login';
       });
     });
 
@@ -62,6 +64,8 @@
             window.location = "/";
             break;
         }
+      }).fail(function(data) {
+        if (data.status === 403) window.location = '/login';
       });
     });
 
@@ -89,7 +93,9 @@
                             .replace(/\s+/g, "-")
         }, function (data) {
           location.reload();
-        });
+        }).fail(function(data) {
+        if (data.status === 403) window.location = '/login';
+      });
       }
     });
 
@@ -128,6 +134,8 @@
             });
             break;
         }
+      }).fail(function(data) {
+        if (data.status === 403) window.location = '/login';
       });
     });
 
