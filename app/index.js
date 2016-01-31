@@ -16,6 +16,7 @@ var validator     = require('validator');
 var extend        = require('extend');
 var hogan         = require('hogan-express');
 var session       = require('express-session');
+var sanitize      = require('sanitize-filename');
 var raneto        = require('raneto-core');
 
 function initialize (config) {
@@ -109,7 +110,14 @@ function initialize (config) {
   if (config.allow_editing === true) {
 
     app.post('/rn-edit', isAuthenticated, function (req, res, next) {
-      var filePath = path.normalize(raneto.config.content_dir + req.body.file);
+      var req_file     = req.body.file.split('/');
+      var fileCategory = '';
+      var fileName     = '/' + sanitize(req_file[1]);
+      if (req_file.length > 2) {
+        fileCategory   = '/' + sanitize(req_file[1]);
+        fileName       = '/' + sanitize(req_file[2]);
+      }
+      var filePath     = path.normalize(raneto.config.content_dir + fileCategory + fileName);
       if (!fs.existsSync(filePath)) { filePath += '.md'; }
       fs.writeFile(filePath, req.body.content, function (err) {
         if (err) {
@@ -127,7 +135,14 @@ function initialize (config) {
     });
 
     app.post('/rn-delete', isAuthenticated, function (req, res, next) {
-      var filePath = path.normalize(raneto.config.content_dir + req.body.file);
+      var req_file     = req.body.file.split('/');
+      var fileCategory = '';
+      var fileName     = '/' + sanitize(req_file[1]);
+      if (req_file.length > 2) {
+        fileCategory   = '/' + sanitize(req_file[1]);
+        fileName       = '/' + sanitize(req_file[2]);
+      }
+      var filePath     = path.normalize(raneto.config.content_dir + fileCategory + fileName);
       if (!fs.existsSync(filePath)) { filePath += '.md'; }
       fs.rename(filePath, filePath + '.del', function (err) {
         if (err) {
@@ -145,7 +160,8 @@ function initialize (config) {
     });
 
     app.post('/rn-add-category', isAuthenticated, function (req, res, next) {
-      var filePath = path.normalize(raneto.config.content_dir + req.body.category);
+      var fileCategory = '/' + sanitize(req.body.category);
+      var filePath     = path.normalize(raneto.config.content_dir + fileCategory);
       fs.mkdir(filePath, function (err) {
         if (err) {
           console.log(err);
@@ -162,7 +178,12 @@ function initialize (config) {
     });
 
     app.post('/rn-add-page', isAuthenticated, function (req, res, next) {
-      var filePath = path.normalize(raneto.config.content_dir + (!!req.body.category ? req.body.category + '/' : '') + req.body.name + '.md');
+      var fileCategory = '';
+      if (req.body.category) {
+        fileCategory   = '/' + sanitize(req.body.category);
+      }
+      var fileName     = '/' + sanitize(req.body.name + '.md');
+      var filePath     = path.normalize(raneto.config.content_dir + fileCategory + fileName);
       fs.open(filePath, 'a', function (err, fd) {
         fs.close(fd);
         if (err) {

@@ -44,8 +44,15 @@
         category : current_category
       }, function (data) {
         switch (data.status) {
+
           case 0:
-            window.location = [current_category, name, "edit"].join("/");
+            var redirect = [""];
+            if (current_category !== "") {
+              redirect.push(current_category);
+            }
+            redirect.push(name);
+            redirect.push("edit");
+            window.location = redirect.join("/");
             break;
         }
       }).fail(function(data) {
