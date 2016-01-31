@@ -5,17 +5,17 @@
     <ul class="menu">
       {{#loggedIn}}
         {{#config.allow_editing}}
-          <li><input id="newCategory" type="text" class="form-control" placeholder="Add Category"/></li>
+          <li><input id="newCategory" type="text" class="form-control" placeholder="{{lang.page.addCategory}}"/></li>
         {{/config.allow_editing}}
       {{/loggedIn}}
       
       {{#pages}}
         <li class="category">
           {{#is_index}}
-            <h5 class="category-title">Main Articles {{#loggedIn}}{{#config.allow_editing}}<a class="add-page" data-toggle="modal" data-target="#addModal"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/config.allow_editing}}{{/loggedIn}}</h5>
+            <h5 class="category-title">Main Articles {{#loggedIn}}{{#config.allow_editing}}<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/config.allow_editing}}{{/loggedIn}}</h5>
           {{/is_index}}
           {{^is_index}}
-              <h5 class="category-title">{{title}} {{#loggedIn}}{{#config.allow_editing}}<a class="add-page" data-toggle="modal" data-target="#addModal"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/config.allow_editing}}{{/loggedIn}}</h5>
+            <h5 class="category-title">{{title}} {{#loggedIn}}{{#config.allow_editing}}<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/config.allow_editing}}{{/loggedIn}}</h5>
           {{/is_index}}
           <ul class="pages">
             {{#files}}
@@ -35,11 +35,11 @@
       {{#config.allow_editing}}
         <div class="btn-group btn-group-sm pull-right">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            Actions <span class="caret"></span>
+            {{lang.page.actions}} <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a class="goto-edit">Edit</a></li>
-            <li><a data-toggle="modal" data-target="#deleteModal">Delete</a></li>
+            <li><a class="goto-edit">{{lang.page.editPage}}</a></li>
+            <li><a data-toggle="modal" data-target="#deleteModal">{{lang.page.deletePage}}</a></li>
           </ul>
         </div>
       {{/config.allow_editing}}
@@ -52,11 +52,11 @@
       <div class="page-meta clearfix">
         {{#config.support_email}}
           <div class="contact-support pull-left">
-            <span class="glyphicon glyphicon-envelope"></span> Still need help? <a href="mailto:{{config.support_email}}">Get in touch!</a>
+            <span class="glyphicon glyphicon-envelope"></span> {{lang.page.needHelp}} <a href="mailto:{{config.support_email}}">{{lang.page.getInTouch}}</a>
           </div>
         {{/config.support_email}}
         <div class="last-updated pull-right">
-          Last updated on {{last_modified}}
+          {{lang.global.lastUpdated}} {{last_modified}}
         </div>
       </div>
 

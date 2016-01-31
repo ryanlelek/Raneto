@@ -1,0 +1,63 @@
+{
+  "global": {
+    "yes"             : "Ja",
+    "no"              : "Nein",
+    "search"          : "Suchen",
+    "cancel"          : "Abbrechen",
+    "save"            : "Speichern",
+    "close"           : "Schließen",
+    "lastUpdated"     : "Zuletzt aktualisiert am",
+
+    "pageName"        : "Artikelname",
+    "addPage"         : "Artikel hinzufügen",
+    "reallyDeletePage": "Sind Sie sicher, dass Sie diesen Artikel löschen möchten?",
+    "mainArticles"    : "Hauptartikel"
+  },
+
+  "api": {
+    "loginSuccessful"   : "Anmeldung erfolgreich",
+    "invalidCredentials": "Ungültige Zugangsdaten",
+    "pageSaved"         : "Artikel gespeichert",
+    "pageDeleted"       : "Seite gelöscht",
+    "categoryCreated"   : "Kategorie angelegt",
+    "pageCreated"       : "Artikel angelegt"
+  },
+
+  "error": {
+    "404": "Ups. Sieht so aus als würde diese Seite nicht existieren."
+  },
+
+  "edit": {
+    "preview"      : "Vorschau",
+    "editor"       : "Editor",
+    "pageSaved"    : "Artikel erfolgreich gespeichert",
+    "pageSaveError": "Fehler beim Speichern des Artikels"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "Suchbegriff eingeben..."
+  },
+
+  "login": {
+    "login"   : "Anmelden",
+    "logout"  : "Abmelden",
+    "username": "Benutzername",
+    "password": "Passwort"
+  },
+
+  "page": {
+    "addCategory": "Kategorie hinzufügen",
+    "addPage"    : "Artikel hinzufügen",
+    "deletePage" : "Löschen",
+    "editPage"   : "Bearbeiten",
+    "actions"    : "Aktionen",
+
+    "needHelp"   : "Brauchen Sie weitere Hilfe?",
+    "getInTouch" : "Schreiben Sie uns!"
+  },
+
+  "search": {
+    "resultsFor"  : "Suchergebnisse für",
+    "noResultsFor": "Keine Ergebnisse für"
+  }
+}

@@ -12,16 +12,16 @@
       <div class="alert alert-success" id="edit-status" style="display: none;" role="alert"></div>
       
       <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
-        <button type="button" class="btn btn-primary close-edit">Close</button>
-        <button type="button" class="btn btn-success save-page">Save</button>
+        <button type="button" class="btn btn-primary close-edit">{{lang.global.close}}</button>
+        <button type="button" class="btn btn-success save-page">{{lang.global.save}}</button>
       </div>
-      <h3>Editor</h3>
+      <h3>{{lang.global.editor}}</h3>
 
       <textarea id="entry-markdown">{{{content}}}</textarea>
       
       <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
-        <button type="button" class="btn btn-primary close-edit">Close</button>
-        <button type="button" class="btn btn-success save-page">Save</button>
+        <button type="button" class="btn btn-primary close-edit">{{lang.global.close}}</button>
+        <button type="button" class="btn btn-success save-page">{{lang.global.save}}</button>
       </div>
     </section>
 
@@ -29,13 +29,13 @@
   <div class="col-sm-6">
 
     <section class="content">
-      <h3>Preview</h3>
+      <h3>{{lang.edit.preview}}</h3>
       <div class="entry-preview-content">
         <div class="rendered-markdown"></div>
       </div>
       <div class="page-meta clearfix">
         <div class="last-updated pull-right">
-          Last updated on {{last_modified}}
+          {{lang.global.lastUpdated}} {{last_modified}}
         </div>
       </div>
     </section>
