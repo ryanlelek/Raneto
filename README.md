@@ -43,7 +43,7 @@ This requires root privileges and is not recommended.
 
 Instead it is preferred to use a reverse proxy for security reasons.
 Heroku and other services handle this aspect for you, but you can implement your own reverse proxy with Nginx or Apache.
-If you want an example with Nginx, please submit an issue.
+**See the "Related Projects" section for deployment scripts to use on your own servers**
 
 You can change the port anytime by setting the environment variable in your propfile, or running in-line as below:
 `$ PORT=1234 npm start`
@@ -57,6 +57,10 @@ Showcase
 --------
 
 Using Raneto in the wild? We'd love to see it. Add your site to the [Raneto Showcase](https://github.com/gilbitron/Raneto/wiki/Raneto-Showcase).
+
+Related Projects
+----------------
+- [Deploy Raneto to your servers with Ansible](https://github.com/ryanlelek/raneto-devops) (@ryanlelek)
 
 Credits
 -------
