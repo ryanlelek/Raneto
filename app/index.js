@@ -210,6 +210,16 @@ function initialize (config) {
       var searchResults  = raneto.doSearch(searchQuery);
       var pageListSearch = raneto.getPages('');
 
+      // TODO: Move to Raneto Core
+      // Loop through Results and Extract Category
+      searchResults.forEach(function (result) {
+        result.category = null;
+        var split = result.slug.split('/');
+        if (split.length > 1) {
+          result.category = split[0];
+        }
+      });
+
       return res.render('search', {
         config: config,
         pages: pageListSearch,
