@@ -57,7 +57,14 @@ var config = module.exports = {
     password : 'password'
   },
 
-  locale: 'en'
+  locale: 'en',
+
+  // Edit Home Page title, description, etc.
+  home_meta : {
+    //title       : 'Custom Home Title',
+    //description : 'Custom Home Description'
+  }
+
 };
 
 // load translations
