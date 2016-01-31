@@ -26,7 +26,7 @@
   <div class="col-sm-9">
 
     <section class="content search">
-      <h3 class="title">Search results for: {{search}}</h3>
+      <h3 class="title">{{lang.search.resultsFor}}: {{search}}</h3>
       {{#searchResults.length}}
         {{#searchResults}}
           <div class="page">
@@ -36,7 +36,7 @@
         {{/searchResults}}
       {{/searchResults.length}}
       {{^searchResults.length}}
-        <p class="nothing-found">Nothing found for "{{search}}"</p>
+        <p class="nothing-found">{{lang.search.noResultsFor}} "{{search}}"</p>
       {{/searchResults.length}}
     </section>
 

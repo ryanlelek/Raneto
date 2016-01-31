@@ -2,9 +2,9 @@
 <div class="home-search jumbotron row">
   <form class="search-form form-inline" action="{{config.base_url}}/">
     <div class="form-group">
-      <label class="sr-only" for="home-search">Search the knowledge base</label>
-      <input type="search" class="form-control input-lg" name="search" id="home-search" size="50" placeholder="Search the knowledge base">
-      <button type="submit" class="btn btn-primary btn-lg">Search</button>
+      <label class="sr-only" for="home-search">{{lang.home.searchKnowledgeBase}}</label>
+      <input type="search" class="form-control input-lg" name="search" id="home-search" size="50" placeholder="{{lang.home.searchKnowledgeBase}}">
+      <button type="submit" class="btn btn-primary btn-lg">{{lang.global.search}}</button>
     </div>
   </form>
 </div>
@@ -15,7 +15,7 @@
       {{#files.length}}
         <div class="col col-sm-4 col-xs-12">
           <div class="panel panel-default {{class}}">
-            <h2 class="panel-heading">Main Articles</h2>
+            <h2 class="panel-heading">{{lang.global.mainArticles}}</h2>
             <ul class="list-group pages">
               {{#files}}
                 <li class="list-group-item page"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>

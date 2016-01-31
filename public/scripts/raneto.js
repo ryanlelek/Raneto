@@ -107,6 +107,9 @@
       window.location = the_arr.join("/");
     });
 
+    // get translations first, then register save handlers
+    $.getJSON('/translations/' + $('html').prop('lang') + '.json', null, function(lang) {
+
     // Save Page
     $(".save-page").click(function () {
       var file_arr = window.location.pathname.split("/");
@@ -119,7 +122,7 @@
         switch (data.status) {
           case 0:
             $("#edit-status").slideUp(function () {
-              $("#edit-status").text("Page Successfully Saved");
+              $("#edit-status").text(lang.edit.pageSaved);
               $("#edit-status").removeClass();
               $("#edit-status").addClass("alert alert-success");
               $("#edit-status").slideDown();
@@ -127,7 +130,7 @@
             break;
           case 1:
             $("#edit-status").slideUp(function () {
-              $("#edit-status").text("Error Saving Page");
+              $("#edit-status").text(lang.edit.pageSaveError);
               $("#edit-status").removeClass();
               $("#edit-status").addClass("alert alert-warning");
               $("#edit-status").slideDown();
@@ -137,6 +140,7 @@
       }).fail(function(data) {
         if (data.status === 403) window.location = '/login';
       });
+    });
     });
 
   });
