@@ -61,6 +61,7 @@ Using Raneto in the wild? We'd love to see it. Add your site to the [Raneto Show
 Related Projects
 ----------------
 - [Deploy Raneto to your servers with Ansible](https://github.com/ryanlelek/raneto-devops) (@ryanlelek)
+- [Run Raneto in a Vagrant container](https://github.com/draptik/vagrant-raneto) (@draptik)
 
 Credits
 -------
