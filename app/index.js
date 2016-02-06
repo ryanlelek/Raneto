@@ -19,6 +19,16 @@ var session       = require('express-session');
 var sanitize      = require('sanitize-filename');
 var raneto        = require('raneto-core');
 
+function remove_image_content_directory (config, pageList) {
+  var i;
+  for (i = 0; i < pageList.length; i++) {
+    if (pageList[i].slug === config.image_url.replace(/\//g, '')) {
+      pageList.splice(i, 1);
+    }
+  }
+  return pageList;
+}
+
 function initialize (config) {
 
   // New Express App
@@ -209,7 +219,7 @@ function initialize (config) {
 
       var searchQuery    = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim();
       var searchResults  = raneto.doSearch(searchQuery);
-      var pageListSearch = raneto.getPages('');
+      var pageListSearch = remove_image_content_directory(config, raneto.getPages(''));
 
       // TODO: Move to Raneto Core
       // Loop through Results and Extract Category
@@ -236,7 +246,7 @@ function initialize (config) {
       var slug = req.params[0];
       if (slug === '/') { slug = '/index'; }
 
-      var pageList     = raneto.getPages(slug);
+      var pageList     = remove_image_content_directory(config, raneto.getPages(slug));
       var filePath     = path.normalize(raneto.config.content_dir + slug);
       var filePathOrig = filePath;
 
@@ -264,7 +274,7 @@ function initialize (config) {
 
       var slug = req.params[0];
 
-      var pageList     = raneto.getPages(slug);
+      var pageList     = remove_image_content_directory(config, raneto.getPages(slug));
       var filePath     = path.normalize(raneto.config.content_dir + slug);
       var filePathOrig = filePath;
 
