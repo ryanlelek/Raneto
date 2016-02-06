@@ -23,7 +23,7 @@ function initialize (config) {
 
   // New Express App
   var app = express();
-  
+
   // empty authorization middleware in case we don't need authentication at all
   var isAuthenticated = function(req, res, next) {
         return next();
@@ -51,6 +51,7 @@ function initialize (config) {
   app.use(body_parser.urlencoded({ extended : false }));
   app.use(cookie_parser());
   app.use(express.static(config.public_dir));
+  app.use(config.image_url, express.static(path.normalize(config.content_dir + config.image_url)));
 
   // Setup config
   extend(raneto.config, config);
@@ -93,7 +94,7 @@ function initialize (config) {
       req.session.loggedIn = false;
       res.redirect("/login");
     });
-    
+
     // Authentication Middleware
     isAuthenticated = function(req, res, next) {
       if (! req.session.loggedIn) {
