@@ -19,22 +19,13 @@ var session       = require('express-session');
 var sanitize      = require('sanitize-filename');
 var raneto        = require('raneto-core');
 
-function remove_image_content_directory (config, pageList) {
-  var i;
-  for (i = 0; i < pageList.length; i++) {
-    if (pageList[i].slug === config.image_url.replace(/\//g, '')) {
-      pageList.splice(i, 1);
-    }
-  }
-  return pageList;
-}
-
 function initialize (config) {
 
   // Setup config
   extend(raneto.config, config);
 
   // Load Files
+  var remove_image_content_directory = require('./functions/remove_image_content_directory.js');
   var authenticate      = require('./middleware/authenticate.js')  (config);
   var error_handler     = require('./middleware/error_handler.js') (config);
   var route_login       = require('./routes/login.route.js')       (config);
