@@ -32,8 +32,9 @@ function remove_image_content_directory (config, pageList) {
 function initialize (config) {
 
   // Load Files
-  var error_handler = require('./middleware/error_handler.js') (config);
-  var route_login   = require('./routes/login.route.js')       (config);
+  var error_handler    = require('./middleware/error_handler.js') (config);
+  var route_login      = require('./routes/login.route.js')       (config);
+  var route_login_page = require('./routes/login_page.route.js')  (config);
 
   // New Express App
   var app = express();
@@ -82,13 +83,7 @@ function initialize (config) {
     ));
 
     app.post('/rn-login', route_login);
-
-    app.get("/login", function(req, res, next){
-      return res.render('login', {
-        layout : null,
-        lang   : config.lang
-      });
-    });
+    app.get('/login',     route_login_page);
     app.get("/logout", function(req, res, next){
       req.session.loggedIn = false;
       res.redirect("/login");
