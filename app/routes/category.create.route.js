@@ -2,16 +2,16 @@
 'use strict';
 
 // Modules
-var path     = require('path');
-var fs       = require('fs');
-var sanitize = require('sanitize-filename');
+var fs           = require('fs');
+var get_filepath = require('../functions/get_filepath.js');
 
 function route_category_create (config, raneto) {
   return function (req, res, next) {
 
-    var fileCategory = '/' + sanitize(req.body.category);
-    var filePath     = path.normalize(raneto.config.content_dir + fileCategory);
-    fs.mkdir(filePath, function (error) {
+    fs.mkdir(get_filepath({
+      content  : raneto.config.content_dir,
+      category : req.body.category
+    }), function (error) {
       if (error) {
         return res.json({
           status  : 1,
