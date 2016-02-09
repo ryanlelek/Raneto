@@ -11,11 +11,14 @@ function route_home (config, raneto) {
   return function (req, res, next) {
 
     var suffix = 'edit';
-    var slug   = req.params[0];
-    if (slug === '/') { slug = '/index'; }
+    var slug = '/index';
 
     var pageList     = remove_image_content_directory(config, raneto.getPages(slug));
     var filePath     = path.normalize(raneto.config.content_dir + slug);
+
+    if (fs.existsSync(filePath + '.md')) {
+      return next();
+    }
 
     if (filePath.indexOf(suffix, filePath.length - suffix.length) !== -1) {
       filePath = filePath.slice(0, - suffix.length - 1);

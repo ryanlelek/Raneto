@@ -16,6 +16,7 @@ function route_wildcard (config, raneto) {
 
     var suffix = 'edit';
     var slug   = req.params[0];
+    if (slug === '/') { slug = '/index'; }
 
     var pageList     = remove_image_content_directory(config, raneto.getPages(slug));
     var filePath     = path.normalize(raneto.config.content_dir + slug);
