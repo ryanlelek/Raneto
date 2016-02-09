@@ -56,7 +56,7 @@
             break;
         }
       }).fail(function(data) {
-        if (data.status === 403) window.location = '/login';
+        if (data.status === 403) { window.location = "/login"; }
       });
     });
 
@@ -72,7 +72,7 @@
             break;
         }
       }).fail(function(data) {
-        if (data.status === 403) window.location = '/login';
+        if (data.status === 403) { window.location = "/login"; }
       });
     });
 
@@ -87,7 +87,7 @@
                     .trim()
                     .toLowerCase()
                     .replace(/\s+/g, "-");
-      current_category = text != "main-articles" ? text : "";
+      current_category = text !== "main-articles" ? text : "";
     });
 
     // New Category
@@ -101,7 +101,7 @@
         }, function (data) {
           location.reload();
         }).fail(function(data) {
-        if (data.status === 403) window.location = '/login';
+        if (data.status === 403) { window.location = "/login"; }
       });
       }
     });
@@ -115,39 +115,40 @@
     });
 
     // get translations first, then register save handlers
-    $.getJSON('/translations/' + $('html').prop('lang') + '.json', null, function(lang) {
+    $.getJSON("/translations/" + $("html").prop("lang") + ".json", null, function (lang) {
 
-    // Save Page
-    $(".save-page").click(function () {
-      var file_arr = window.location.pathname.split("/");
-      file_arr.pop();
-      $("#entry-markdown").next(".CodeMirror")[0].CodeMirror.save();
-      $.post("/rn-edit", {
-        file    : decodeURI(file_arr.join("/")),
-        content : $("#entry-markdown").val()
-      }, function (data) {
-        switch (data.status) {
-          case 0:
-            $("#edit-status").slideUp(function () {
-              $("#edit-status").text(lang.edit.pageSaved);
-              $("#edit-status").removeClass();
-              $("#edit-status").addClass("alert alert-success");
-              $("#edit-status").slideDown();
-            });
-            break;
-          case 1:
-            $("#edit-status").slideUp(function () {
-              $("#edit-status").text(lang.edit.pageSaveError);
-              $("#edit-status").removeClass();
-              $("#edit-status").addClass("alert alert-warning");
-              $("#edit-status").slideDown();
-            });
-            break;
-        }
-      }).fail(function(data) {
-        if (data.status === 403) window.location = '/login';
+      // Save Page
+      $(".save-page").click(function () {
+        var file_arr = window.location.pathname.split("/");
+        file_arr.pop();
+        $("#entry-markdown").next(".CodeMirror")[0].CodeMirror.save();
+        $.post("/rn-edit", {
+          file    : decodeURI(file_arr.join("/")),
+          content : $("#entry-markdown").val()
+        }, function (data) {
+          switch (data.status) {
+            case 0:
+              $("#edit-status").slideUp(function () {
+                $("#edit-status").text(lang.edit.pageSaved);
+                $("#edit-status").removeClass();
+                $("#edit-status").addClass("alert alert-success");
+                $("#edit-status").slideDown();
+              });
+              break;
+            case 1:
+              $("#edit-status").slideUp(function () {
+                $("#edit-status").text(lang.edit.pageSaveError);
+                $("#edit-status").removeClass();
+                $("#edit-status").addClass("alert alert-warning");
+                $("#edit-status").slideDown();
+              });
+              break;
+          }
+        }).fail(function(data) {
+          if (data.status === 403) { window.location = "/login"; }
+        });
       });
-    });
+
     });
 
   });
