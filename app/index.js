@@ -32,7 +32,8 @@ function remove_image_content_directory (config, pageList) {
 function initialize (config) {
 
   // Load Files
-  var error_handler = require('./middleware/error_handler.js')(config);
+  var error_handler = require('./middleware/error_handler.js') (config);
+  var route_login   = require('./routes/login.route.js')       (config);
 
   // New Express App
   var app = express();
@@ -80,22 +81,7 @@ function initialize (config) {
       }
     ));
 
-    app.post('/rn-login', function (req, res, next) {
-      if(req.param('username') === config.credentials.username
-        && req.param('password') === config.credentials.password)
-      {
-        req.session.loggedIn = true;
-        res.json({
-          status  : 1,
-          message : config.lang.api.loginSuccessful
-        });
-      } else {
-        res.json({
-          status  : 0,
-          message : config.lang.api.invalidCredentials
-        });
-      }
-    });
+    app.post('/rn-login', route_login);
 
     app.get("/login", function(req, res, next){
       return res.render('login', {
