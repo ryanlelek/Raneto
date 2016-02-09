@@ -26,13 +26,14 @@ function initialize (config) {
 
   // Load Files
   var remove_image_content_directory = require('./functions/remove_image_content_directory.js');
-  var authenticate      = require('./middleware/authenticate.js')  (config);
-  var error_handler     = require('./middleware/error_handler.js') (config);
-  var route_login       = require('./routes/login.route.js')       (config);
-  var route_login_page  = require('./routes/login_page.route.js')  (config);
-  var route_logout      = require('./routes/logout.route.js');
-  var route_page_edit   = require('./routes/page.edit.route.js')   (config, raneto);
-  var route_page_delete = require('./routes/page.delete.route.js') (config, raneto);
+  var authenticate          = require('./middleware/authenticate.js')  (config);
+  var error_handler         = require('./middleware/error_handler.js') (config);
+  var route_login           = require('./routes/login.route.js')       (config);
+  var route_login_page      = require('./routes/login_page.route.js')  (config);
+  var route_logout          = require('./routes/logout.route.js');
+  var route_page_edit       = require('./routes/page.edit.route.js')   (config, raneto);
+  var route_page_delete     = require('./routes/page.delete.route.js') (config, raneto);
+  var route_category_create = require('./routes/category.create.route.js') (config, raneto);
 
   // New Express App
   var app = express();
@@ -77,26 +78,9 @@ function initialize (config) {
   // Online Editor Routes
   if (config.allow_editing === true) {
 
-    app.post('/rn-edit',   authenticate, route_page_edit);
-    app.post('/rn-delete', authenticate, route_page_delete);
-
-    app.post('/rn-add-category', authenticate, function (req, res, next) {
-      var fileCategory = '/' + sanitize(req.body.category);
-      var filePath     = path.normalize(raneto.config.content_dir + fileCategory);
-      fs.mkdir(filePath, function (err) {
-        if (err) {
-          console.log(err);
-          return res.json({
-            status  : 1,
-            message : err
-          });
-        }
-        res.json({
-          status  : 0,
-          message : config.lang.api.categoryCreated
-        });
-      });
-    });
+    app.post('/rn-edit',         authenticate, route_page_edit);
+    app.post('/rn-delete',       authenticate, route_page_delete);
+    app.post('/rn-add-category', authenticate, route_category_create);
 
     app.post('/rn-add-page', authenticate, function (req, res, next) {
       var fileCategory = '';
