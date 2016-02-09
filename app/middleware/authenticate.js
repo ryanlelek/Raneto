@@ -12,7 +12,7 @@ function middleware_authenticate (config) {
         return;
       }
       return next();
-    }
+    };
 
   } else {
 

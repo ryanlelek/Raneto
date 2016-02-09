@@ -16,7 +16,6 @@ function route_home (config, raneto) {
 
     var pageList     = remove_image_content_directory(config, raneto.getPages(slug));
     var filePath     = path.normalize(raneto.config.content_dir + slug);
-    var filePathOrig = filePath;
 
     if (filePath.indexOf(suffix, filePath.length - suffix.length) !== -1) {
       filePath = filePath.slice(0, - suffix.length - 1);

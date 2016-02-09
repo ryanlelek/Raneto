@@ -2,6 +2,8 @@
 'use strict';
 
 // Modules
+var path     = require('path');
+var fs       = require('fs');
 var sanitize = require('sanitize-filename');
 
 function route_page_edit (config, raneto) {

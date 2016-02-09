@@ -82,7 +82,7 @@ function initialize (config) {
   }
 
   // Router for / and /index with or without search parameter
-  app.get("/:var(index)?", route_search, route_home);
+  app.get('/:var(index)?', route_search, route_home);
   app.get(/^([^.]*)/, route_wildcard);
 
   // Handle Errors
