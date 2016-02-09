@@ -35,6 +35,7 @@ function initialize (config) {
   var route_page_delete     = require('./routes/page.delete.route.js') (config, raneto);
   var route_page_create     = require('./routes/page.create.route.js') (config, raneto);
   var route_category_create = require('./routes/category.create.route.js') (config, raneto);
+  var route_search          = require('./routes/search.route.js')          (config, raneto);
 
   // New Express App
   var app = express();
@@ -85,34 +86,8 @@ function initialize (config) {
   }
 
   // Router for / and /index with or without search parameter
-  app.get("/:var(index)?", function(req, res, next){
-    if (req.query.search) {
+  app.get("/:var(index)?", route_search, function (req, res, next) {
 
-      var searchQuery    = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim();
-      var searchResults  = raneto.doSearch(searchQuery);
-      var pageListSearch = remove_image_content_directory(config, raneto.getPages(''));
-
-      // TODO: Move to Raneto Core
-      // Loop through Results and Extract Category
-      searchResults.forEach(function (result) {
-        result.category = null;
-        var split = result.slug.split('/');
-        if (split.length > 1) {
-          result.category = split[0];
-        }
-      });
-
-      return res.render('search', {
-        config: config,
-        pages: pageListSearch,
-        search: searchQuery,
-        searchResults: searchResults,
-        body_class: 'page-search',
-        lang: config.lang,
-        loggedIn: (config.authentication ? req.session.loggedIn : false)
-      });
-
-    } else {
       var suffix = 'edit';
       var slug = req.params[0];
       if (slug === '/') { slug = '/index'; }
@@ -135,7 +110,7 @@ function initialize (config) {
         lang          : config.lang,
         loggedIn: (config.authentication ? req.session.loggedIn : false)
       });
-    }
+
   });
 
   app.get(/^([^.]*)/, function (req, res, next) {
