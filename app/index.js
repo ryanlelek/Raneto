@@ -244,7 +244,7 @@ function initialize (config) {
     } else {
       var suffix = 'edit';
       var slug = req.params[0];
-      if (slug === '/') { slug = '/index'; }
+      var slug = '/index';
 
       var pageList     = remove_image_content_directory(config, raneto.getPages(slug));
       var filePath     = path.normalize(raneto.config.content_dir + slug);
@@ -253,17 +253,23 @@ function initialize (config) {
       if (filePath.indexOf(suffix, filePath.length - suffix.length) !== -1) {
         filePath = filePath.slice(0, - suffix.length - 1);
       }
-      var stat = fs.lstatSync(path.join(config.theme_dir, config.theme_name, 'templates', 'home.html'));
+	  
+      if (fs.existsSync(filePath + '.md')) {
+		next();
+      }
+	  else {
+        var stat = fs.lstatSync(path.join(config.theme_dir, config.theme_name, 'templates', 'home.html'));
 
-      return res.render('home', {
-        config        : config,
-        pages         : pageList,
-        body_class    : 'page-home',
-        meta          : config.home_meta,
-        last_modified : moment(stat.mtime).format('Do MMM YYYY'),
-        lang          : config.lang,
-        loggedIn: (config.authentication ? req.session.loggedIn : false)
+        return res.render('home', {
+          config        : config,
+          pages         : pageList,
+          body_class    : 'page-home',
+          meta          : config.home_meta,
+          last_modified : moment(stat.mtime).format('Do MMM YYYY'),
+          lang          : config.lang,
+          loggedIn: (config.authentication ? req.session.loggedIn : false)
       });
+	  }
     }
   });
 
@@ -273,6 +279,7 @@ function initialize (config) {
      if (req.params[0]) {
 
       var slug = req.params[0];
+      if (slug === '/') { slug = '/index'; }
 
       var pageList     = remove_image_content_directory(config, raneto.getPages(slug));
       var filePath     = path.normalize(raneto.config.content_dir + slug);
