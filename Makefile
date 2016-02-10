@@ -16,6 +16,16 @@ install:
 	# Install Node.js Modules
 	npm install;
 
+.PHONY: delint
+delint:
+
+	# JSHint
+	./node_modules/jshint/bin/jshint \
+		app/                           \
+		bin/raneto                     \
+		example/                       \
+		gulpfile.js;
+
 .PHONY: build
 build:
 
