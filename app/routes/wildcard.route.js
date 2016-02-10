@@ -18,16 +18,17 @@ function route_wildcard (config, raneto) {
     var slug   = req.params[0];
     if (slug === '/') { slug = '/index'; }
 
-    var filePath     = path.normalize(raneto.config.content_dir + slug);
-    var filePathOrig = filePath;
+    var file_path      = path.normalize(raneto.config.content_dir + slug);
+    var file_path_orig = file_path;
 
-    if (filePath.indexOf(suffix, filePath.length - suffix.length) !== -1) {
-      filePath = filePath.slice(0, - suffix.length - 1);
+    // Remove "/edit" suffix
+    if (file_path.indexOf(suffix, file_path.length - suffix.length) !== -1) {
+      file_path = file_path.slice(0, - suffix.length - 1);
     }
 
-    if (!fs.existsSync(filePath)) { filePath += '.md'; }
+    if (!fs.existsSync(file_path)) { file_path += '.md'; }
 
-    fs.readFile(filePath, 'utf8', function (error, content) {
+    fs.readFile(file_path, 'utf8', function (error, content) {
 
       if (error) {
         error.status = '404';
@@ -36,14 +37,14 @@ function route_wildcard (config, raneto) {
       }
 
       // Process Markdown files
-      if (path.extname(filePath) === '.md') {
+      if (path.extname(file_path) === '.md') {
 
         // File info
-        var stat = fs.lstatSync(filePath);
+        var stat = fs.lstatSync(file_path);
 
         // Meta
         var meta = raneto.processMeta(content);
-        if (!meta.title) { meta.title = raneto.slugToTitle(filePath); }
+        if (!meta.title) { meta.title = raneto.slugToTitle(file_path); }
 
         // Content
         content = raneto.stripMeta(content);
@@ -52,7 +53,8 @@ function route_wildcard (config, raneto) {
         var template = meta.template || 'page';
         var render   = template;
 
-        if (filePathOrig.indexOf(suffix, filePathOrig.length - suffix.length) !== -1) {
+        // Check for "/edit" suffix
+        if (file_path_orig.indexOf(suffix, file_path_orig.length - suffix.length) !== -1) {
 
           // Edit Page
           if (config.authentication === true && !req.session.loggedIn) {
@@ -72,11 +74,11 @@ function route_wildcard (config, raneto) {
 
         }
 
-        var pageList = remove_image_content_directory(config, raneto.getPages(slug));
+        var page_list = remove_image_content_directory(config, raneto.getPages(slug));
 
         return res.render(render, {
           config        : config,
-          pages         : pageList,
+          pages         : page_list,
           meta          : meta,
           content       : content,
           body_class    : template + '-' + raneto.cleanString(slug),
