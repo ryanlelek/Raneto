@@ -15,6 +15,11 @@ function get_filepath (p) {
     filepath += '/' + sanitize(p.category);
   }
 
+  // Add File Name
+  if (p.filename) {
+    filepath += '/' + sanitize(p.filename);
+  }
+
   // Normalize
   filepath = path.normalize(filepath);
 

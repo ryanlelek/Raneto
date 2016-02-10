@@ -2,21 +2,19 @@
 'use strict';
 
 // Modules
-var path     = require('path');
-var fs       = require('fs');
-var sanitize = require('sanitize-filename');
+var fs           = require('fs');
+var get_filepath = require('../functions/get_filepath.js');
 
 function route_page_create (config, raneto) {
   return function (req, res, next) {
 
-    var fileCategory = '';
-    if (req.body.category) {
-      fileCategory   = '/' + sanitize(req.body.category);
-    }
-    var fileName     = '/' + sanitize(req.body.name + '.md');
-    var filePath     = path.normalize(raneto.config.content_dir + fileCategory + fileName);
+    var filepath = get_filepath({
+      content  : raneto.config.content_dir,
+      category : req.body.category,
+      filename : req.body.name + '.md'
+    });
 
-    fs.open(filePath, 'a', function (error, fd) {
+    fs.open(filepath, 'a', function (error, fd) {
       fs.close(fd);
       if (error) {
         return res.json({
