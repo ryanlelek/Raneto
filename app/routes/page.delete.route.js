@@ -2,24 +2,40 @@
 'use strict';
 
 // Modules
-var path     = require('path');
-var fs       = require('fs');
-var sanitize = require('sanitize-filename');
+var fs           = require('fs');
+var get_filepath = require('../functions/get_filepath.js');
 
 function route_page_delete (config, raneto) {
   return function (req, res, next) {
 
-    var req_file     = req.body.file.split('/');
-    var fileCategory = '';
-    var fileName     = '/' + sanitize(req_file[1]);
-    if (req_file.length > 2) {
-      fileCategory   = '/' + sanitize(req_file[1]);
-      fileName       = '/' + sanitize(req_file[2]);
-    }
-    var filePath     = path.normalize(raneto.config.content_dir + fileCategory + fileName);
-    if (!fs.existsSync(filePath)) { filePath += '.md'; }
+    var file_category;
+    var file_name;
 
-    fs.rename(filePath, filePath + '.del', function (error) {
+    // Handle category in file path
+    var req_file = req.body.file.split('/');
+    if (req_file.length > 2) {
+      file_category = req_file[1];
+      file_name     = req_file[2];
+    } else {
+      file_name     = req_file[1];
+    }
+
+    // Generate Filepath
+    var filepath = get_filepath({
+      content  : raneto.config.content_dir,
+      category : file_category,
+      filename : file_name
+    });
+
+    // No file at that filepath?
+    // Add ".md" extension to try again
+    if (!fs.existsSync(filepath)) {
+      filepath += '.md';
+    }
+
+    // Don't Delete
+    // Rename to remove from listing
+    fs.rename(filepath, filepath + '.del', function (error) {
       if (error) {
         return res.json({
           status  : 1,
