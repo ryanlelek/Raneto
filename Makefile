@@ -16,6 +16,9 @@ install:
 	# Install Node.js Modules
 	npm install;
 
+.PHONY: test
+test: delint
+
 .PHONY: delint
 delint:
 
