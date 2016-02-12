@@ -18,19 +18,6 @@ See the `example/` directory for how this implementation works.
 4. To start Raneto, run `npm start` (or `npm run start_win` on Windows)
 5. Visit `http://localhost:3000` in your web browser
 
-Production Notes
-----------------
-
-When running a live site you'll want to set the `PORT` env variable to `80` so you don't need to add `:3000` to the URL.
-This requires root privileges and is not recommended.
-
-Instead it is preferred to use a reverse proxy for security reasons.
-Heroku and other services handle this aspect for you, but you can implement your own reverse proxy with Nginx or Apache.
-**See the "Related Projects" section for deployment scripts to use on your own servers**
-
-You can change the port anytime by setting the environment variable in your propfile, or running in-line as below:
-`$ PORT=1234 npm start`
-
 Contribute
 ----------
 
