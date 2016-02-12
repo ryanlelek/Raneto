@@ -37,7 +37,7 @@ This also means you will need to commit any changes you make to Git before deplo
 Thankfully this is easy to setup:  
 
     $ git clone https://github.com/gilbitron/Raneto.git
-    # cd Raneto/
+    $ cd Raneto/
     [NOW EDIT FILES IN content/]
     $ git add content/
     $ git commit -m "My Changes"

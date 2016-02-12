@@ -1,17 +1,10 @@
 Raneto
 ======
 
-[Raneto](http://raneto.com) is a free, open, simple Markdown powered Knowledgebase for Nodejs. [Find out more &rarr;](http://docs.raneto.com/what-is-raneto)
+[Raneto](http://raneto.com) is a free, open, simple Markdown powered Knowledgebase for Node.js.  
+[Find out more &rarr;](http://docs.raneto.com/what-is-raneto)  
 
-Requirements
-------------
-
-* [Node.js](http://nodejs.org) **v4.0.0** (or later)
-
-Demo & Docs
------------
-
-See [http://docs.raneto.com](http://docs.raneto.com)
+Visit [http://docs.raneto.com](http://docs.raneto.com) to see a demo and get started!
 
 Install
 -------
