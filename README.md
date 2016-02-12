@@ -6,18 +6,6 @@ Raneto
 
 Visit [http://docs.raneto.com](http://docs.raneto.com) to see a demo and get started!
 
-Install
--------
-
-It is recommended to create a new Git repository to store your documentation files and then install Raneto as a dependency into it.  
-See the `example/` directory for how this implementation works.
-
-1. Switch to your existing or new project directory
-2. Add Raneto to your project via NPM's package.json file or downloading the latest version from the [releases page](https://github.com/gilbitron/Raneto/releases)
-3. In a terminal, run `npm install` to install the node dependencies
-4. To start Raneto, run `npm start` (or `npm run start_win` on Windows)
-5. Visit `http://localhost:3000` in your web browser
-
 Contribute
 ----------
 
