@@ -18,11 +18,6 @@ Contribute
 
 See [http://docs.raneto.com/contributing](http://docs.raneto.com/contributing)
 
-Showcase
---------
-
-Using Raneto in the wild? We'd love to see it. Add your site to the [Raneto Showcase](https://github.com/gilbitron/Raneto/wiki/Raneto-Showcase).
-
 Related Projects
 ----------------
 - [Deploy Raneto to your servers with Ansible](https://github.com/ryanlelek/raneto-devops) (@ryanlelek)
