@@ -31,5 +31,6 @@ Related Projects
 Credits
 -------
 
-Raneto was created by [Gilbert Pellegrom](http://gilbert.pellegrom.me) from
-[Dev7studios](http://dev7studios.com). Released under the [MIT license](https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE).
+Raneto was created by [Gilbert Pellegrom](http://gilbert.pellegrom.me) from [Dev7studios](http://dev7studios.com).  
+Maintained by [Ryan Lelek](http://www.ryanlelek.com) from [AnsibleTutorials.com](http://www.ansibletutorials.com).  
+Released under the [MIT license](https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE).
