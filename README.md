@@ -18,16 +18,6 @@ See the `example/` directory for how this implementation works.
 4. To start Raneto, run `npm start` (or `npm run start_win` on Windows)
 5. Visit `http://localhost:3000` in your web browser
 
-Running as a Service
---------------------
-
-You can run Raneto easily in the background on your local or production machines with PM2.
-
-1. Install Raneto globally with `npm install -g raneto`
-2. Edit the configuration file in your global NPM `node_modules/` directory (locate with `which raneto` on *NIX)
-3. Run Raneto with `raneto start` and access logs with `raneto logs`
-4. When finished, run `raneto stop`
-
 Production Notes
 ----------------
 
