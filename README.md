@@ -13,13 +13,17 @@ Run this in a terminal and then visit [http://localhost:3000](http://localhost:3
 For full Installation instructions, see the [Installation Guide](http://docs.raneto.com/install/installing-raneto).  
 `git clone https://github.com/gilbitron/Raneto.git && cd Raneto && npm install && npm start`
 
-Contribute
-----------
+Links
+---------------
 
-See [http://docs.raneto.com/contributing](http://docs.raneto.com/contributing)
+- [Configuration](http://docs.raneto.com/usage/configuration)
+- [Production Notes](http://docs.raneto.com/install/production-notes)
+- [Deploying to Heroku](http://docs.raneto.com/tutorials/deploying-raneto-to-heroku)
+- [Contributing](http://docs.raneto.com/contributing)
 
 Related Projects
 ----------------
+
 - [Deploy Raneto to your servers with Ansible](https://github.com/ryanlelek/raneto-devops) (@ryanlelek)
 - [Run Raneto in a Vagrant container](https://github.com/draptik/vagrant-raneto) (@draptik)
 
