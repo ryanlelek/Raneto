@@ -23,7 +23,7 @@ build/Release
 node_modules
 
 # npm Components (Installed Automatically)
-public/lib/
+themes/default/public/lib/
 
 # Misc
 *.pages

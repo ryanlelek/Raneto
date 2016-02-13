@@ -37,7 +37,7 @@ var config = module.exports = {
   content_dir : 'content/',
 
   // Where is the public directory or document root?
-  public_dir  : __dirname + '/../public/',
+  public_dir  : __dirname + '/../themes/default/public/',
 
   // The base URL of your images folder,
   // Relative to config.public_dir
@@ -68,4 +68,4 @@ var config = module.exports = {
 };
 
 // load translations
-config.lang = require('../public/translations/' + config.locale + '.json');
+config.lang = require('../themes/default/public/translations/' + config.locale + '.json');
