@@ -16,6 +16,10 @@ var raneto        = require('raneto-core');
 
 function initialize (config) {
 
+  // Load Translations
+  if (!config.locale) { config.locale = 'en'; }
+  config.lang = require('./translations/' + config.locale + '.json');
+
   // Setup config
   extend(raneto.config, config);
 
@@ -59,6 +63,7 @@ function initialize (config) {
   app.use(cookie_parser());
   app.use(express.static(config.public_dir));
   app.use(config.image_url, express.static(path.normalize(config.content_dir + config.image_url)));
+  app.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
 
   // HTTP Authentication
   if (config.authentication === true) {

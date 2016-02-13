@@ -1,8 +1,7 @@
 
 'use strict';
 
-// Exports
-var config = module.exports = {
+var config = {
 
   // Your site title (format: page_title - site_title)
   site_title: 'Raneto Docs',
@@ -34,7 +33,7 @@ var config = module.exports = {
   // Specify the path of your content folder where all your '.md' files are located
   // Fix: Needs trailing slash for now!
   // Fix: Cannot be an absolute path
-  content_dir : 'content/',
+  content_dir : __dirname + '/../content/',
 
   // Where is the public directory or document root?
   public_dir  : __dirname + '/../themes/default/public/',
@@ -67,5 +66,5 @@ var config = module.exports = {
 
 };
 
-// load translations
-config.lang = require('../themes/default/public/translations/' + config.locale + '.json');
+// Exports
+module.exports = config;
