@@ -1,3 +1,5 @@
+[![Raneto Logo](https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
+
 Raneto
 ======
 
@@ -32,4 +34,5 @@ Credits
 
 Raneto was created by [Gilbert Pellegrom](http://gilbert.pellegrom.me) from [Dev7studios](http://dev7studios.com).  
 Maintained by [Ryan Lelek](http://www.ryanlelek.com) from [AnsibleTutorials.com](http://www.ansibletutorials.com).  
+Logo by @mmamrila(https://github.com/mmamrila)  
 Released under the [MIT license](https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE).
