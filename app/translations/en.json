@@ -11,7 +11,8 @@
     "pageName"        : "Page name",
     "addPage"         : "Add page",
     "reallyDeletePage": "Are you sure you want to delete this page?",
-    "mainArticles"    : "Main articles"
+    "mainArticles"    : "Main articles",
+    "editor"          : "Editor"
   },
 
   "api": {
