@@ -11,7 +11,9 @@
     "pageName"        : "Artikelname",
     "addPage"         : "Artikel hinzufügen",
     "reallyDeletePage": "Sind Sie sicher, dass Sie diesen Artikel löschen möchten?",
-    "mainArticles"    : "Hauptartikel"
+    "mainArticles"    : "Hauptartikel",
+    "editor"          : "Editor"
+
   },
 
   "api": {
