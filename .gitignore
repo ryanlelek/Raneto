@@ -28,3 +28,5 @@ themes/default/public/lib/
 # Misc
 *.pages
 *.pdf
+.DS_Store
+
