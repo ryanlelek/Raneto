@@ -44,6 +44,7 @@ function route_wildcard (config, raneto) {
 
         // Meta
         var meta = raneto.processMeta(content);
+        meta.custom_title = meta.title;
         if (!meta.title) { meta.title = raneto.slugToTitle(file_path); }
 
         // Content
