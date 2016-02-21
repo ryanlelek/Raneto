@@ -18,22 +18,39 @@
       <h3>{{lang.global.editor}}</h3>
 
       <div class="form-horizontal">
-        <div class="form-group">
-          <label for="entry-metainfo-title" class="control-label col-sm-3">Title</label>
-          <div class="col-sm-9">
-            <input id="entry-metainfo-title" type="text" value="{{{meta.custom_title}}}" class="form-control"></input>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="entry-metainfo-title" class="control-label col-sm-3">Description</label>
-          <div class="col-sm-9">
-            <input id="entry-metainfo-description" type="text" value="{{{meta.description}}}" class="form-control"></input>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="entry-metainfo-title" class="control-label col-sm-3">Sort</label>
-          <div class="col-sm-9">
-            <input id="entry-metainfo-sort" type="number" value="{{{meta.sort}}}" class="form-control"></input>
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  {{lang.edit.headerMetaInfo}}
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <div class="form-group">
+                  <label for="entry-metainfo-title" class="control-label col-sm-3">{{lang.edit.lableMetaTitle}}</label>
+                  <div class="col-sm-9">
+                    <input id="entry-metainfo-title" type="text" value="{{{meta.custom_title}}}" class="form-control"></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="entry-metainfo-title" class="control-label col-sm-3">{{lang.edit.lableMetaDescription}}</label>
+                  <div class="col-sm-9">
+                    <input id="entry-metainfo-description" type="text" value="{{{meta.description}}}" class="form-control"></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="entry-metainfo-title" class="control-label col-sm-3">{{lang.edit.lableMetaSort}}</label>
+                  <div class="col-sm-9">
+                    <input id="entry-metainfo-sort" type="number" value="{{{meta.sort}}}" class="form-control"></input>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group">
