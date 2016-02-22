@@ -32,7 +32,11 @@
     "preview"      : "Preview",
     "editor"       : "Editor",
     "pageSaved"    : "Page Successfully Saved",
-    "pageSaveError": "Error Saving Page"
+    "pageSaveError": "Error Saving Page",
+    "headerMetaInfo" : "Meta information",
+    "lableMetaTitle": "Title",
+    "lableMetaDescription": "Description",
+    "lableMetaSort": "Sort"
   },
 
   "home": {

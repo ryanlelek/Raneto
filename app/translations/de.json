@@ -33,7 +33,11 @@
     "preview"      : "Vorschau",
     "editor"       : "Editor",
     "pageSaved"    : "Artikel erfolgreich gespeichert",
-    "pageSaveError": "Fehler beim Speichern des Artikels"
+    "pageSaveError": "Fehler beim Speichern des Artikels",
+    "headerMetaInfo" : "Meta Information",
+    "lableMetaTitle": "Titel",
+    "lableMetaDescription": "Beschreibung",
+    "lableMetaSort": "Sortierung"
   },
 
   "home": {
