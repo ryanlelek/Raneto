@@ -49,6 +49,7 @@ function initialize (config) {
   // Setup Views
   if (!config.theme_dir)  { config.theme_dir  = path.join(__dirname, '..', 'themes'); }
   if (!config.theme_name) { config.theme_name = 'default'; }
+  if (!config.public_dir) { config.public_dir = path.join(config.theme_dir, config.theme_name, 'public'); }
   app.set('views', path.join(config.theme_dir, config.theme_name, 'templates'));
   app.set('layout', 'layout');
   app.set('view engine', 'html');
@@ -62,6 +63,9 @@ function initialize (config) {
   app.use(body_parser.urlencoded({ extended : false }));
   app.use(cookie_parser());
   app.use(express.static(config.public_dir));
+  if (config.theme_dir !== path.join(__dirname, '..', 'themes')) {
+    app.use(express.static(path.join(config.theme_dir, config.theme_name, 'public')));
+  }
   app.use(config.image_url, express.static(path.normalize(config.content_dir + config.image_url)));
   app.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
 
