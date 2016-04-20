@@ -1,0 +1,68 @@
+{
+  "global": {
+    "yes"             : "Да",
+    "no"              : "Нет",
+    "search"          : "Поиск",
+    "cancel"          : "Отмена",
+    "save"            : "Сохранить",
+    "close"           : "Закрыть",
+    "lastUpdated"     : "Последнее обновление",
+
+    "pageName"        : "Название страницы",
+    "addPage"         : "Добавить страницу",
+    "reallyDeletePage": "Вы действительно хотите удалить эту страницу?",
+    "mainArticles"    : "Статьи",
+    "editor"          : "Редактор"
+  },
+
+  "api": {
+    "loginSuccessful"   : "Вы успешно вошли",
+    "invalidCredentials": "Неправильная пара логин/пароль",
+    "pageSaved"         : "Страница сохранена",
+    "pageDeleted"       : "Страница удалена",
+    "categoryCreated"   : "Категория создана",
+    "pageCreated"       : "Страница создана"
+  },
+
+  "error": {
+    "404": "Упс. Данной страницы не существует."
+  },
+
+  "edit": {
+    "preview"      : "Предпросмотр",
+    "editor"       : "Редактор",
+    "pageSaved"    : "Страница успешно сохранена",
+    "pageSaveError": "Ошибка при сохранении",
+    "headerMetaInfo" : "Мета информация",
+    "lableMetaTitle": "Заголовок",
+    "lableMetaDescription": "Описание",
+    "lableMetaSort": "Сортировка"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "Поиск"
+  },
+
+  "login": {
+    "login"   : "Вход",
+    "logout"  : "Выход",
+    "username": "Логин",
+    "password": "Пароль"
+  },
+
+  "page": {
+    "addCategory": "Добавить категорию",
+    "addPage"    : "Добавить страницу",
+    "deletePage" : "Удалить",
+    "editPage"   : "Редактировать",
+    "actions"    : "Действия",
+
+    "needHelp"   : "Нужна помощь?",
+    "getInTouch" : "Свяжитесь с нами!"
+  },
+
+  "search": {
+    "resultsFor"  : "Результаты поиска по запросу",
+    "noResultsFor": "Ничего не найдено по запросу"
+  }
+}
