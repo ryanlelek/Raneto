@@ -48,9 +48,11 @@ var config = {
 
   // Set to true to enable the web editor
   allow_editing : false,
-
   // Set to true to enable HTTP Basic Authentication
+
   authentication : false,
+  // If editing is enabled, set this to true to only authenticate for editing, not for viewing
+  authentication_for_edit: false,
   credentials    : {
     username : 'admin',
     password : 'password'

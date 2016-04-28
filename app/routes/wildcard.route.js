@@ -58,7 +58,7 @@ function route_wildcard (config, raneto) {
         if (file_path_orig.indexOf(suffix, file_path_orig.length - suffix.length) !== -1) {
 
           // Edit Page
-          if (config.authentication === true && !req.session.loggedIn) {
+          if ((config.authentication || config.authentication_for_edit) && !req.session.loggedIn) {
             res.redirect('/login');
             return;
           }
@@ -77,10 +77,10 @@ function route_wildcard (config, raneto) {
 
         var page_list = remove_image_content_directory(config, raneto.getPages(slug));
 
-        var loggedIn = (config.authentication ? req.session.loggedIn : false);
+        var loggedIn = ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false);
 
         var canEdit = false;
-        if (config.authentication) {
+        if (config.authentication || config.authentication_for_edit) {
           canEdit = loggedIn && config.allow_editing;
         } else {
           canEdit = config.allow_editing;
