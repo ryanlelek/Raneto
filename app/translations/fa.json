@@ -1,0 +1,69 @@
+
+{
+  "global": {
+    "yes"             : "بله",
+    "no"              : "خیر",
+    "search"          : "جست و جو",
+    "cancel"          : "بی خیال",
+    "save"            : "ذخیره",
+    "close"           : "بستن",
+    "lastUpdated"     : "آخرین به روز رسانی در",
+
+    "pageName"        : "نام برگه",
+    "addPage"         : "افزودن برگه",
+    "reallyDeletePage": "از حذف این برگه مطمئنید؟",
+    "mainArticles"    : "نوشته‌های اصلی",
+    "editor"          : "ویرایشگر"
+  },
+
+  "api": {
+    "loginSuccessful"   : "با موفقیت وارد شدید",
+    "invalidCredentials": "نام کاربری/گذرواژه اشتباه است.",
+    "pageSaved"         : "برگه ذخیره شد",
+    "pageDeleted"       : "برگه حذف شد",
+    "categoryCreated"   : "دسته‌بندی ساخته شد",
+    "pageCreated"       : "برگه ساخته شد"
+  },
+
+  "error": {
+    "404": "اوخ. به نظر میرسه این صفحه وجود نداره."
+  },
+
+  "edit": {
+    "preview"      : "پیش‌نمایش",
+    "editor"       : "ویرایشگر",
+    "pageSaved"    : "برگه با موفقیت ذخیره شد",
+    "pageSaveError": "خطا در ذخیره‌سازی برگه",
+    "headerMetaInfo" : "اطلاعات فراتر",
+    "lableMetaTitle": "عنوان",
+    "lableMetaDescription": "توضیحات",
+    "lableMetaSort": "مرتب‌سازی"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "جست و جو در پایگاه دانش"
+  },
+
+  "login": {
+    "login"   : "ورود",
+    "logout"  : "خروج",
+    "username": "نام کاربری",
+    "password": "گذرواژه"
+  },
+
+  "page": {
+    "addCategory": "افزودن دسته‌بندی",
+    "addPage"    : "افزودن برگه",
+    "deletePage" : "حذف",
+    "editPage"   : "ویرایش",
+    "actions"    : "عملیات",
+
+    "needHelp"   : "هنوز نیاز به راهنمایی دارید؟",
+    "getInTouch" : "در تماس باشید!"
+  },
+
+  "search": {
+    "resultsFor"  : "یافته‌های جست و جو برای",
+    "noResultsFor": "چیزی پیدا نشد برای"
+  }
+}
