@@ -1,0 +1,39 @@
+* {
+  direction: rtl;
+  unicode-bidi: embed;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header .logo {
+  margin-right: 20px;
+  font-size: 20px;
+  line-height: 34px;
+}
+
+.header .search-form {
+  margin-left: 20px;
+}
+
+.footer .copyright {
+  margin: 0 0 40px 20px;
+  font-size: 85%;
+  color: #999;
+}
+
+.list-group {
+  padding-left: unset;
+  padding-right: 0;
+}
+
+.header
+.container-fluid
+.row
+.col-sm-6
+form {
+  float: left !important;
+}
+
+.content
+.btn-group {
+  float: left !important;
+}

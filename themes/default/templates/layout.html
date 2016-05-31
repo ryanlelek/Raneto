@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="{{config.base_url}}/lib/highlightjs/styles/solarized_light.css">
   <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
   <link rel="stylesheet" href="{{config.base_url}}/styles/ghostdown.css">
+  {{#config.rtl_layout}}
+  <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css">
+  <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
+  {{/config.rtl_layout}}
 
   {{{config.analytics}}}
 
@@ -64,7 +68,7 @@
 
   {{#config.allow_editing}}
   {{#loggedIn}}
-  
+
     <!-- Modal: Add Page -->
     <div class="modal fade" id="addModal" tabindex="-1">
       <div class="modal-dialog">
@@ -103,7 +107,7 @@
         </div>
       </div>
     </div>
-  
+
   {{/loggedIn}}
   {{/config.allow_editing}}
 
