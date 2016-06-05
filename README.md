@@ -1,5 +1,11 @@
 [![Raneto Logo](https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
 
+Change log
+----------
+
+An increase in the small screen , if you turn the content page , automatically hide the menu on the left .
+
+
 Raneto
 ======
 
