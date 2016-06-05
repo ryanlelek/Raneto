@@ -58,6 +58,9 @@ var config = {
 
   locale: 'en',
 
+  // Set to true to render suitable layout for RTL languages
+  rtl_layout: false,
+
   // Edit Home Page title, description, etc.
   home_meta : {
     //title       : 'Custom Home Title',

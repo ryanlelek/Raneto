@@ -8,6 +8,7 @@ gulp.task('copy_libs', function () {
 
   var source = [
     'node_modules/bootstrap/**/*',
+    'node_modules/bootstrap-rtl/**/*',
     'node_modules/fitvids/**/*',
     'node_modules/highlightjs/**/*',
     'node_modules/jquery/**/*',
