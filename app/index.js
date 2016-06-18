@@ -23,7 +23,7 @@ function initialize (config) {
   }
 
   // Content_Dir requires trailing slash
-  if (config.content_dir[config.content_dir.length - 1] !== path.sep) config.content_dir += path.sep;
+  if (config.content_dir[config.content_dir.length - 1] !== path.sep) { config.content_dir += path.sep; }
   // Setup config
   extend(raneto.config, config);
 
