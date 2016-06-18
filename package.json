@@ -56,7 +56,7 @@
     "moment": "2.11.2",
     "morgan": "1.6.1",
     "pm2": "1.0.0",
-    "raneto-core": "0.4.0",
+    "raneto-core": "0.5.0",
     "sanitize-filename": "1.5.3",
     "serve-favicon": "2.3.0",
     "sweetalert": "1.1.3",
