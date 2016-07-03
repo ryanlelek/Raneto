@@ -50,11 +50,17 @@ var config = {
   allow_editing : false,
 
   // Set to true to enable HTTP Basic Authentication
-  authentication : false,
-  credentials    : {
-    username : 'admin',
-    password : 'password'
-  },
+  authentication : true,
+  credentials    : [
+    {
+      username : 'admin',
+      password : 'password'
+    },
+    {
+      username : 'admin2',
+      password : 'password'
+    }
+  ],
 
   locale: 'en',
 

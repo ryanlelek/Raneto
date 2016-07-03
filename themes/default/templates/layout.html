@@ -34,7 +34,15 @@
           <form class="form-inline pull-right">
             {{#config.authentication}}
               {{#loggedIn}}
-              &nbsp;<a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a>
+                <div class="dropdown">
+                  <button class="btn btn-info dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{username}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
+                    <li><a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a></li>
+                  </ul>
+                </div>
               {{/loggedIn}}
               {{^loggedIn}}
               &nbsp;<a href="{{config.base_url}}/login" class="btn btn-info">{{lang.login.login}}</a>
