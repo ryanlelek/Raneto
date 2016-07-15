@@ -1,0 +1,68 @@
+{
+  "global": {
+    "yes"             : "Oui",
+    "no"              : "Non",
+    "search"          : "Rechercher",
+    "cancel"          : "Annuler",
+    "save"            : "Sauvegarder",
+    "close"           : "Fermer",
+    "lastUpdated"     : "Dernière mise à jour le",
+
+    "pageName"        : "Nom de page",
+    "addPage"         : "Ajout de page",
+    "reallyDeletePage": "Etes-vous sûr de vouloir supprimer cette page ?",
+    "mainArticles"    : "Articles principaux",
+    "editor"          : "Editeur"
+  },
+
+  "api": {
+    "loginSuccessful"   : "Connexion avec succès",
+    "invalidCredentials": "Login/Password invalide",
+    "pageSaved"         : "Page sauvegardé",
+    "pageDeleted"       : "Page supprimé",
+    "categoryCreated"   : "Categorie crée",
+    "pageCreated"       : "Page crée"
+  },
+
+  "error": {
+    "404": "Oups. Il semble que cette page n'existe pas."
+  },
+
+  "edit": {
+    "preview"      : "Prévisualisation",
+    "editor"       : "Editeur",
+    "pageSaved"    : "Page enregistrée avec succès",
+    "pageSaveError": "Erreur lors de la sauvegarde de la page",
+    "headerMetaInfo" : "Meta information",
+    "lableMetaTitle": "Titre",
+    "lableMetaDescription": "Description",
+    "lableMetaSort": "Tri"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "Rechercher dans la base de connaissance"
+  },
+
+  "login": {
+    "login"   : "Connexion",
+    "logout"  : "Déconnexion",
+    "username": "Utilisateur",
+    "password": "Mot de passe"
+  },
+
+  "page": {
+    "addCategory": "Ajouter une categorie",
+    "addPage"    : "Ajouter une page",
+    "deletePage" : "Supprimer",
+    "editPage"   : "Editer",
+    "actions"    : "Actions",
+
+    "needHelp"   : "Besoin d'aide ?",
+    "getInTouch" : "Rester en contact !"
+  },
+
+  "search": {
+    "resultsFor"  : "Résultats de la recherche pour",
+    "noResultsFor": "Aucun résultat pour"
+  }
+}
