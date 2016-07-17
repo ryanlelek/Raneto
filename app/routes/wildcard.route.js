@@ -95,6 +95,7 @@ function route_wildcard (config, raneto) {
           last_modified : moment(stat.mtime).format('Do MMM YYYY'),
           lang          : config.lang,
           loggedIn      : loggedIn,
+          username      : (config.authentication ? req.session.username : null),
           canEdit       : canEdit
         });
 

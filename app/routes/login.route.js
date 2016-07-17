@@ -4,22 +4,25 @@
 function route_login (config) {
   return function (req, res, next) {
 
-    if (
-      req.param('username') === config.credentials.username &&
-      req.param('password') === config.credentials.password
-    ) {
-      req.session.loggedIn = true;
-      res.json({
-        status  : 1,
-        message : config.lang.api.loginSuccessful
-      });
-    } else {
-      res.json({
-        status  : 0,
-        message : config.lang.api.invalidCredentials
-      });
+    for (var i = 0; i < config.credentials.length; i++) {
+      if (
+        req.param('username') === config.credentials[i].username &&
+        req.param('password') === config.credentials[i].password
+      ) {
+        req.session.loggedIn = true;
+        req.session.username = config.credentials[i].username;
+        res.json({
+          status  : 1,
+          message : config.lang.api.loginSuccessful
+        });
+        return;
+      }
     }
 
+    res.json({
+      status  : 0,
+      message : config.lang.api.invalidCredentials
+    });
   };
 }
 
