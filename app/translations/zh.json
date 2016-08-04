@@ -1,0 +1,68 @@
+{
+  "global": {
+    "yes"             : "是",
+    "no"              : "否",
+    "search"          : "搜索",
+    "cancel"          : "取消",
+    "save"            : "保存",
+    "close"           : "关闭",
+    "lastUpdated"     : "最后更新于",
+
+    "pageName"        : "页面名称",
+    "addPage"         : "新建页面",
+    "reallyDeletePage": "确定要删除这个页面么？",
+    "mainArticles"    : "主要文章",
+    "editor"          : "编辑器"
+  },
+
+  "api": {
+    "loginSuccessful"   : "登陆成功",
+    "invalidCredentials": "不正确的用户名或密码",
+    "pageSaved"         : "页面已保存",
+    "pageDeleted"       : "页面已删除",
+    "categoryCreated"   : "分类已创建",
+    "pageCreated"       : "页面已创建"
+  },
+
+  "error": {
+    "404": "对不起，您所请求的页面不存在。"
+  },
+
+  "edit": {
+    "preview"      : "预览",
+    "editor"       : "编辑器",
+    "pageSaved"    : "页面已保存",
+    "pageSaveError": "页面保存出错",
+    "headerMetaInfo" : "元数据信息",
+    "lableMetaTitle": "标题",
+    "lableMetaDescription": "描述",
+    "lableMetaSort": "排序"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "搜索整个知识库"
+  },
+
+  "login": {
+    "login"   : "登录",
+    "logout"  : "登出",
+    "username": "用户名",
+    "password": "密码"
+  },
+
+  "page": {
+    "addCategory": "添加分类",
+    "addPage"    : "添加页面",
+    "deletePage" : "删除",
+    "editPage"   : "编辑",
+    "actions"    : "动作",
+
+    "needHelp"   : "是否仍需要帮助？",
+    "getInTouch" : "请保持联络！"
+  },
+
+  "search": {
+    "resultsFor"  : "搜索结果，关键词为",
+    "noResultsFor": "未找到结果，关键词为"
+  }
+}
