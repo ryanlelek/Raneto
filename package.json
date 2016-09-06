@@ -66,7 +66,7 @@
   },
   "devDependencies": {
     "jshint": "^2.9.1",
-    "mocha": "2.4.5",
-    "supertest": "1.1.0"
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
   }
 }
