@@ -50,6 +50,7 @@
     "hogan-express": "0.5.2",
     "jquery": "2.2.0",
     "jquery.backstretch": "2.1.1",
+    "js-yaml": "^3.6.1",
     "lunr": "0.5.12",
     "marked": "0.3.5",
     "masonry-layout": "3.3.2",
