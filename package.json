@@ -43,7 +43,7 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "extend": "3.0.0",
-    "fitvids": "1.0.2",
+    "fitvids": "^2.0.0",
     "gulp": "3.9.1",
     "gulp-shell": "0.5.2",
     "highlightjs": "8.7.0",
