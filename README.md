@@ -3,6 +3,8 @@
 Change log
 ----------
 
+07.09.2016 Added option for Google OAuth login. Full how-to description can be read [here](GoogleOAuthHowto.md) or in [this blog post](http://www.nikola-breznjak.com/blog/codeproject/raneto-google-oauth-login/).
+
 An increase in the small screen , if you turn the content page , automatically hide the menu on the left .
 
 

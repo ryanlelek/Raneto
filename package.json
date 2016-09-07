@@ -67,6 +67,8 @@
   "devDependencies": {
     "jshint": "2.9.1",
     "mocha": "2.4.5",
+    "passport": "^0.3.2",
+    "passport-google-oauth20": "^1.0.0",
     "supertest": "1.1.0"
   }
 }
