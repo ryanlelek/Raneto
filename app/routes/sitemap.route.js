@@ -1,12 +1,11 @@
 'use strict';
 
 // Modules
-var url    = require('url');
 var path   = require('path');
 var fs     = require('fs');
 var sm     = require('sitemap');
-var _      = require("underscore");
-var moment = require("moment");
+var _      = require('underscore');
+var moment = require('moment');
 
 function route_sitemap(config, raneto) {
   return function (req, res, next) {
