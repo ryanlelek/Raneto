@@ -6,6 +6,7 @@ var path                           = require('path');
 var fs                             = require('fs');
 var moment                         = require('moment');
 var marked                         = require('marked');
+var toc                            = require('markdown-toc');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
 function route_wildcard (config, raneto) {
@@ -66,6 +67,14 @@ function route_wildcard (config, raneto) {
           content = content;
 
         } else {
+
+          // Render Table of Contents
+          if (config.table_of_contents) {
+            var tableOfContents = toc(content);
+            if (tableOfContents.content) {
+              content = "#### Table of Contents\n" + tableOfContents.content + "\n\n" + content
+            }
+          }
 
           // Render Markdown
           marked.setOptions({
