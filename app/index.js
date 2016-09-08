@@ -40,6 +40,7 @@ function initialize (config) {
   var route_search          = require('./routes/search.route.js')          (config, raneto);
   var route_home            = require('./routes/home.route.js')            (config, raneto);
   var route_wildcard        = require('./routes/wildcard.route.js')        (config, raneto);
+  var route_sitemap         = require('./routes/sitemap.route.js')         (config, raneto);
 
   // New Express App
   var app = express();
@@ -95,6 +96,7 @@ function initialize (config) {
   }
 
   // Router for / and /index with or without search parameter
+  app.get('/sitemap.xml', route_sitemap);
   app.get('/:var(index)?', route_search, route_home);
   app.get(/^([^.]*)/, route_wildcard);
 
