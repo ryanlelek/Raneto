@@ -60,6 +60,17 @@ var config = {
   },
   secret: 'someCoolSecretRightHere',
 
+  credentials    : [
+    {
+      username : 'admin',
+      password : 'password'
+    },
+    {
+      username : 'admin2',
+      password : 'password'
+    }
+  ],
+
   locale: 'en',
 
   // Set to true to render suitable layout for RTL languages
