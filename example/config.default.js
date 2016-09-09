@@ -51,7 +51,7 @@ var config = {
 
   // Set to true to enable HTTP Basic Authentication
   authentication : true,
-  googleoauth: false,
+  googleoauth: true,
   oauth2 : {
     client_id: 'GOOGLE_CLIENT_ID',
     client_secret: 'GOOGLE_CLIENT_SECRET',
