@@ -17,7 +17,7 @@ install:
 	npm install;
 
 .PHONY: test
-test: delint
+test: delint mocha
 
 .PHONY: delint
 delint:
@@ -28,6 +28,10 @@ delint:
 		bin/raneto                     \
 		example/                       \
 		gulpfile.js;
+
+.PHONY: mocha
+mocha:
+	npm test;
 
 .PHONY: build
 build:

@@ -1,13 +1,9 @@
+
+Raneto [![](https://travis-ci.org/gilbitron/Raneto.svg?branch=master)](https://travis-ci.org/gilbitron/Raneto)
+======
+
 [![Raneto Logo](https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
 
-Change log
-----------
-
-An increase in the small screen , if you turn the content page , automatically hide the menu on the left .
-
-
-Raneto
-======
 
 [Raneto](http://raneto.com) is a free, open, simple Markdown powered Knowledgebase for Node.js.  
 [Find out more &rarr;](http://docs.raneto.com/what-is-raneto)  

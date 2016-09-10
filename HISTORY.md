@@ -1,6 +1,12 @@
 
 # Raneto Changelog
 
+Upcoming
+========
+
+  * **[Improvement] Better small-screen layout that automatically hides the left menu
+    - contributed by **@ezaze**
+
 2015.12.29 / v0.8.0
 ===================
 
@@ -98,3 +104,17 @@
 ==========================
 
   * Initial release
+
+
+
+*** Raneto Core Changelog ***
+
+2015.04.22 - version 0.3.0
+* [New] Add support for symlinks in content dir
+
+2014.06.05 - version 0.2.0
+* [New] Added formatting to doSearch results
+* [Changed] Move config options to overridable array
+
+2014.06.04 - version 0.1.0
+ * Initial release
