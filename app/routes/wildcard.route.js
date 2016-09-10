@@ -72,7 +72,7 @@ function route_wildcard (config, raneto) {
           if (config.table_of_contents) {
             var tableOfContents = toc(content);
             if (tableOfContents.content) {
-              content = "#### Table of Contents\n" + tableOfContents.content + "\n\n" + content
+              content = '#### Table of Contents\n' + tableOfContents.content + '\n\n' + content;
             }
           }
 
