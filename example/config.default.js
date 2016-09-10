@@ -71,7 +71,9 @@ var config = {
   home_meta : {
     //title       : 'Custom Home Title',
     //description : 'Custom Home Description'
-  }
+  },
+
+  table_of_contents: false
 
 };
 
