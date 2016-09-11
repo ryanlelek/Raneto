@@ -1,6 +1,76 @@
 
 # Raneto Changelog
 
+Upcoming / v0.11.0
+==================
+
+  * **[New]** Language Translations!
+    - Mandarin Chinese contributed by **@noahvans**
+    - French contributed by **@sfoubert**
+    - Brazilian Portuguese contributed by **@ToasterBR**
+  * **[New]** Dynamic Sitemap.xml
+    - contributed by **@sfoubert**
+  * **[Improvement]** Multiple User Login
+    - contributed by **@mohammadrafigh**
+  * **[Improvement]** Table of Contents (Dynamic)
+    - contributed by **@Sparticuz**
+  * **[Misc]** Merged `Raneto-Core` module into repository
+  * **[Misc]** Dependency upgrades
+
+
+2016.06.18 / v0.10.1
+====================
+
+  * **[New]** Language Translations!
+    - Right to Left support contributed by **@mohammadrafigh**
+    - Persian contributed by **@mohammadrafigh**
+  * **[New]** Docker support
+    - contributed by **@prologic**
+  * **[Improvement]** Better small-screen layout that automatically hides the left menu
+    - contributed by **@ezaze**
+  * **[Misc]** Upgrading raneto-core from v0.4.0 to v0.5.0
+
+
+2016.05.22 / v0.10.0
+====================
+
+  * **[New]** Raneto Logo
+    - contributed by **@mmamrila**
+  * **[New]** Language Translations!
+    - Russian contributed by **@iam-medvedev**
+    - Turkish contributed by **@bleda**
+  * **[New]** Metadata is editable
+    - contributed by **@draptik**
+  * **[Fixed] General BugFixes contributed by
+    - **@draptik**
+    - **@rogerhutchings**
+    - **@dncrews**
+    - **@durand**
+
+
+2016.02.13 / v0.9.0
+===================
+
+  * **[Fixed]** Embedding images in content
+    - contributed by **@helenamunoz**
+  * **[Fixed]** Custom homepage via index.md file
+    - contributed by **@dirivero**
+  * **[Fixed]** Sanitizing file paths
+  * **[New]** German Translation / Locale
+    - contributed by **@Radiergummi**
+  * **[New]** Authentication on Changes Only
+    - contributed by **@Radiergummi**
+  * **[New]** Vagrant Container
+    - contributed by **@draptik**
+  * **[New]** Category in Search Results
+  * **[New]** Metadata on homepage
+  * **[Upgraded]** Module raneto-core from v0.2.0 to v0.4.0
+  * **[Upgraded]** Other Dependencies
+  * **[Misc]** Broke up code into multiple files
+  * **[Misc]** Delinted Code
+  * **[Misc]** Overall refactor
+
+
 2015.12.29 / v0.8.0
 ===================
 
@@ -98,3 +168,17 @@
 ==========================
 
   * Initial release
+
+
+
+*** Raneto Core Changelog ***
+
+2015.04.22 - version 0.3.0
+* [New] Add support for symlinks in content dir
+
+2014.06.05 - version 0.2.0
+* [New] Added formatting to doSearch results
+* [Changed] Move config options to overridable array
+
+2014.06.04 - version 0.1.0
+ * Initial release

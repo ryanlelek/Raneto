@@ -1,0 +1,5 @@
+{
+  "extends": "../../../.jshintrc",
+  "esversion": 6,
+  "strict"   : false
+}

@@ -12,7 +12,7 @@ var moment        = require('moment');
 var extend        = require('extend');
 var hogan         = require('hogan-express');
 var session       = require('express-session');
-var raneto        = require('raneto-core');
+var raneto        = require('./raneto-core/lib/raneto.js');
 var passport      = require('passport');
 
 function initialize (config) {
@@ -42,6 +42,7 @@ function initialize (config) {
   var route_search          = require('./routes/search.route.js')          (config, raneto);
   var route_home            = require('./routes/home.route.js')            (config, raneto);
   var route_wildcard        = require('./routes/wildcard.route.js')        (config, raneto);
+  var route_sitemap         = require('./routes/sitemap.route.js')         (config, raneto);
 
   // New Express App
   var app = express();
@@ -119,6 +120,7 @@ function initialize (config) {
     app.get(/^([^.]*)/, oauth2.required, route_wildcard);
   }
   else {
+    app.get('/sitemap.xml', route_sitemap);
     app.get('/:var(index)?', route_search, route_home);
     app.get(/^([^.]*)/, route_wildcard);
   }

@@ -1,15 +1,7 @@
+Raneto [![](https://travis-ci.org/gilbitron/Raneto.svg?branch=master)](https://travis-ci.org/gilbitron/Raneto)
+
 [![Raneto Logo](https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
 
-Change log
-----------
-
-07.09.2016 Added option for Google OAuth login. Full how-to description can be read [here](GoogleOAuthHowto.md) or in [this blog post](http://www.nikola-breznjak.com/blog/codeproject/raneto-google-oauth-login/).
-
-An increase in the small screen , if you turn the content page , automatically hide the menu on the left .
-
-
-Raneto
-======
 
 [Raneto](http://raneto.com) is a free, open, simple Markdown powered Knowledgebase for Node.js.  
 [Find out more &rarr;](http://docs.raneto.com/what-is-raneto)  
