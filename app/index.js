@@ -30,6 +30,7 @@ function initialize (config) {
 
   // Load Files
   var authenticate          = require('./middleware/authenticate.js')      (config);
+  var always_authenticate   = require('./middleware/always_authenticate.js')      (config);
   var error_handler         = require('./middleware/error_handler.js')     (config);
   var oauth2                = require('./middleware/oauth2.js');
   var route_login           = require('./routes/login.route.js')           (config);
@@ -77,7 +78,7 @@ function initialize (config) {
   app.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
 
   // HTTP Authentication
-  if (config.authentication === true) {
+  if (config.authentication === true || config.authentication_for_edit) {
     app.use(session({
       secret            : config.secret,
       name              : 'raneto.sid',
@@ -100,18 +101,20 @@ function initialize (config) {
 
   // Online Editor Routes
   if (config.allow_editing === true) {
+
+    var middlewareToUse = authenticate;
+    if (config.authentication_for_edit === true) {
+      middlewareToUse = always_authenticate;
+    }
     if (config.googleoauth === true) {
-      app.post('/rn-edit',         oauth2.required, route_page_edit);
-      app.post('/rn-delete',       oauth2.required, route_page_delete);
-      app.post('/rn-add-page',     oauth2.required, route_page_create);
-      app.post('/rn-add-category', oauth2.required, route_category_create);
+      middlewareToUse = oauth2.required;
     }
-    else {
-      app.post('/rn-edit',         authenticate, route_page_edit);
-      app.post('/rn-delete',       authenticate, route_page_delete);
-      app.post('/rn-add-page',     authenticate, route_page_create);
-      app.post('/rn-add-category', authenticate, route_category_create);
-    }
+
+    app.post('/rn-edit',         middlewareToUse, route_page_edit);
+    app.post('/rn-delete',       middlewareToUse, route_page_delete);
+    app.post('/rn-add-page',     middlewareToUse, route_page_create);
+    app.post('/rn-add-category', middlewareToUse, route_category_create);
+
   }
 
   // Router for / and /index with or without search parameter

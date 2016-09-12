@@ -14,7 +14,6 @@
 'use strict';
 
 var express = require('express');
-var debug = require('debug')('raneto');
 
 // [START setup]
 var passport = require('passport');
