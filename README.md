@@ -1,6 +1,4 @@
-
 Raneto [![](https://travis-ci.org/gilbitron/Raneto.svg?branch=master)](https://travis-ci.org/gilbitron/Raneto)
-======
 
 [![Raneto Logo](https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
 

@@ -47,10 +47,19 @@ var config = {
   analytics: '',
 
   // Set to true to enable the web editor
-  allow_editing : false,
+  allow_editing : true,
 
   // Set to true to enable HTTP Basic Authentication
   authentication : true,
+  googleoauth: true,
+  oauth2 : {
+    client_id: 'GOOGLE_CLIENT_ID',
+    client_secret: 'GOOGLE_CLIENT_SECRET',
+    callback: 'http://localhost:3000/auth/google/callback',
+    hostedDomain: 'google.com'
+  },
+  secret: 'someCoolSecretRightHere',
+
   credentials    : [
     {
       username : 'admin',

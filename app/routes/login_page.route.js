@@ -7,7 +7,8 @@ function route_login_page (config) {
     return res.render('login', {
       layout      : null,
       lang        : config.lang,
-      rtl_layout  : config.rtl_layout
+      rtl_layout  : config.rtl_layout,
+      googleoauth : config.googleoauth
     });
 
   };
