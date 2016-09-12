@@ -55,14 +55,9 @@
                 </div>
               {{/loggedIn}}
               {{^loggedIn}}
-              &nbsp;<a href="{{config.base_url}}/login" class="btn btn-info">{{lang.login.login}}</a>
+                &nbsp;<a href="{{config.base_url}}/login" class="btn btn-info">{{lang.login.login}}</a>
               {{/loggedIn}}
             {{/config.authentication}}
-            {{#config.authentication_for_edit}}
-              {{#loggedIn}}
-              &nbsp;<a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a>
-              {{/loggedIn}}
-            {{/config.authentication_for_edit}}
           </form>
           {{/config.googleoauth}}
           
