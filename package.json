@@ -52,6 +52,7 @@
     "hogan-express": "^0.5.2",
     "jquery": "^2.2.4",
     "jquery.backstretch": "^2.1.13",
+    "js-yaml": "^3.6.1",
     "lunr": "^0.7.1",
     "markdown-toc": "^0.12.16",
     "marked": "^0.3.6",
