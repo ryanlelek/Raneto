@@ -50,7 +50,12 @@ var config = {
   allow_editing : true,
 
   // Set to true to enable HTTP Basic Authentication
-  authentication : true,
+  authentication : false,
+
+  // If editing is enabled, set this to true to only authenticate for editing, not for viewing
+  authentication_for_edit: true,
+
+  // Google OAuth
   googleoauth: true,
   oauth2 : {
     client_id: 'GOOGLE_CLIENT_ID',
