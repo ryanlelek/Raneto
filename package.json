@@ -27,8 +27,8 @@
     "start": "DEBUG=raneto node example/server.js",
     "start_win": "set DEBUG=raneto&&node example/server.js",
     "test": "mocha --reporter spec",
-    "postinstall": "npm update && npm run gulp",
-    "gulp": "gulp"
+    "copylibs": "copyfiles -u 1 node_modules/bootstrap/**/* node_modules/bootstrap-rtl/**/* node_modules/fitvids/**/* node_modules/highlightjs/**/* node_modules/jquery/**/* node_modules/masonry-layout/**/* node_modules/sweetalert/**/* node_modules/jquery.backstretch/**/* themes/default/public/lib",
+    "postinstall": "npm run copylibs"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -40,14 +40,13 @@
     "bootstrap-rtl": "^3.3.4",
     "commander": "^2.9.0",
     "cookie-parser": "^1.4.3",
+    "copyfiles": "^1.0.0",
     "debug": "^2.2.0",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "extend": "^3.0.0",
     "fitvids": "^2.0.0",
     "glob": "^7.0.6",
-    "gulp": "^3.9.1",
-    "gulp-shell": "^0.5.2",
     "highlightjs": "^8.7.0",
     "hogan-express": "^0.5.2",
     "jquery": "^2.2.4",
