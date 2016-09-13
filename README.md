@@ -1,4 +1,5 @@
 Raneto [![](https://travis-ci.org/gilbitron/Raneto.svg?branch=master)](https://travis-ci.org/gilbitron/Raneto)
+======
 
 [![Raneto Logo](https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
 
@@ -21,7 +22,7 @@ Links
 - [Configuration](http://docs.raneto.com/usage/configuration)
 - [Production Notes](http://docs.raneto.com/install/production-notes)
 - [Deploying to Heroku](http://docs.raneto.com/tutorials/deploying-raneto-to-heroku)
-- [Contributing](http://docs.raneto.com/contributing)
+- [Contributing](https://github.com/gilbitron/Raneto/blob/master/CONTRIBUTE.md)
 
 Related Projects
 ----------------
