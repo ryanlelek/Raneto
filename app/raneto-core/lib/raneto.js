@@ -36,9 +36,9 @@ var _lunr = require('lunr');
 
 var _lunr2 = _interopRequireDefault(_lunr);
 
-var _yamljs = require('yamljs');
+var _jsYaml = require('js-yaml');
 
-var yaml = _interopRequireWildcard(_yamljs);
+var yaml = _interopRequireWildcard(_jsYaml);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -139,7 +139,7 @@ var Raneto = function () {
           metaArr = markdownContent.match(_metaRegexYaml);
           metaString = metaArr ? metaArr[1].trim() : '';
 
-          yamlObject = yaml.parse(metaString);
+          yamlObject = yaml.safeLoad(metaString);
 
           for (yamlField in yamlObject) {
             if (yamlObject.hasOwnProperty(yamlField)) {
