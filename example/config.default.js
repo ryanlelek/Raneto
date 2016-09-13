@@ -87,6 +87,17 @@ var config = {
     //description : 'Custom Home Description'
   },
 
+  //variables: [
+  //  {
+  //    name: 'test_variable',
+  //    content: 'test variable'
+  //  },
+  //  {
+  //    name: 'test_variable_2',
+  //    content: 'test variable 2'
+  //  }
+  //]
+
   table_of_contents: false
 
 };

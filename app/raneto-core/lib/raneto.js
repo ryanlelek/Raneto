@@ -175,6 +175,11 @@ var Raneto = function () {
   }, {
     key: 'processVars',
     value: function processVars(markdownContent) {
+      if (typeof this.config.variables !== 'undefined') {
+        this.config.variables.forEach(function (block) {
+          markdownContent = markdownContent.replace(new RegExp('\%' + block.name + '\%', 'g'), block.content);
+        });
+      }
       if (typeof this.config.base_url !== 'undefined') {
         markdownContent = markdownContent.replace(/\%base_url\%/g, this.config.base_url);
       }

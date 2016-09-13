@@ -135,6 +135,18 @@ describe('#processVars()', function () {
           .should.equal('This is some Markdown with a /base/url.');
   });
 
+  it('replaces custom vars in Markdown content', function () {
+    var variables = [
+      {
+        name: 'test_variable',
+        content: 'Test Variable'
+      }
+    ];
+    raneto.config.variables = variables;
+    raneto.processVars('This is some Markdown with a %test_variable%.')
+          .should.equal('This is some Markdown with a Test Variable.');
+  });
+
 });
 
 describe('#getPage()', function () {
