@@ -7,6 +7,6 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 RUN npm install --production && \
-	./node_modules/gulp/bin/gulp.js
+	npm run copylibs
 
 CMD ["npm", "start"]

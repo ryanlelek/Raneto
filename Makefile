@@ -26,8 +26,7 @@ delint:
 	./node_modules/jshint/bin/jshint \
 		app/                           \
 		bin/raneto                     \
-		example/                       \
-		gulpfile.js;
+		example/;
 
 .PHONY: mocha
 mocha:
@@ -35,9 +34,7 @@ mocha:
 
 .PHONY: build
 build:
-
-	# Run Gulp
-	./node_modules/gulp/bin/gulp.js;
+	npm run copylibs;
 
 .PHONY: start
 start:
@@ -51,5 +48,4 @@ deploy:
 	# Install Node.js Modules (Production)
 	npm install --production; true;
 
-	# Run Gulp
-	./node_modules/gulp/bin/gulp.js; true;
+	npm run copylibs;
