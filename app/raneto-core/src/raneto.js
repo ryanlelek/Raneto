@@ -5,7 +5,7 @@ import * as _       from 'underscore';
 import * as _s      from 'underscore.string';
 import marked       from 'marked';
 import lunr         from 'lunr';
-import * as yaml    from 'yamljs';
+import * as yaml    from 'js-yaml';
 
 const default_config = {
   // The base URL of your site (allows you to use %base_url% in Markdown files)
@@ -87,7 +87,7 @@ class Raneto {
         metaArr    = markdownContent.match(_metaRegexYaml);
         metaString = metaArr ? metaArr[1].trim() : '';
 
-        yamlObject = yaml.parse(metaString);
+        yamlObject = yaml.safeLoad(metaString);
 
         for (yamlField in yamlObject) {
           if (yamlObject.hasOwnProperty(yamlField)) {
