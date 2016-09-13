@@ -15,13 +15,13 @@
   },
   "dependencies": {
     "glob": "7.0.0",
+    "js-yaml": "^3.6.1",
     "lunr": "0.6.0",
     "marked": "0.3.5",
     "moment": "2.11.2",
     "underscore": "1.8.3",
     "underscore.string": "3.2.3",
-    "validator": "4.8.0",
-    "yamljs": "^0.2.7"
+    "validator": "4.8.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
