@@ -1,15 +1,21 @@
 
 # Raneto Changelog
 
-Upcoming / v0.11.0
+2016.09.13 / v0.11.0
 ==================
 
   * **[New]** Language Translations!
     - Mandarin Chinese contributed by **@noahvans**
     - French contributed by **@sfoubert**
     - Brazilian Portuguese contributed by **@ToasterBR**
+  * **[New]** Google OAuth Support
+    - contributed by **@Hitman666**
+  * **[New]** Authentication for Edit (Public Read-Only)
+    - contributed by **@alexspeller**
   * **[New]** Dynamic Sitemap.xml
     - contributed by **@sfoubert**
+  * **[New]** Custom Variables
+    - contributed by **@Sparticuz**
   * **[Improvement]** Multiple User Login
     - contributed by **@mohammadrafigh**
   * **[Improvement]** Table of Contents (Dynamic)
