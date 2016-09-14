@@ -3,8 +3,8 @@
 
 // Modules
 var fs                             = require('fs');
-var moment                         = require('moment');
 var get_filepath                   = require('../functions/get_filepath.js');
+var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
 function route_home (config, raneto) {
@@ -33,7 +33,6 @@ function route_home (config, raneto) {
       filename : 'home.html'
     });
 
-    var stat     = fs.lstatSync(template_filepath);
     var pageList = remove_image_content_directory(config, raneto.getPages('/index'));
 
     return res.render('home', {
@@ -41,7 +40,7 @@ function route_home (config, raneto) {
       pages         : pageList,
       body_class    : 'page-home',
       meta          : config.home_meta,
-      last_modified : moment(stat.mtime).format('Do MMM YYYY'),
+      last_modified : get_last_modified(config,config.home_meta,template_filepath),
       lang          : config.lang,
       loggedIn      : ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false),
       username      : ((config.authentication || config.authentication_for_edit) ? req.session.username : null)
