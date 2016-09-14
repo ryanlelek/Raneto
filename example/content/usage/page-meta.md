@@ -13,5 +13,5 @@ should be written in [YAML](http://www.yaml.org/spec/1.2/spec.html).
  * Modified - This variable will override the modified date based on the file name.
    * This should be in full ISO 8601 format including Time and Timezone offset.
 
-Before version 0.11.0 these meta blocks could only be HTML comments (/* */). Starting with version 0.11.0, the meta
+Before version 0.11.0 these meta blocks could only be HTML comments (/\* \*/). Starting with version 0.11.0, the meta
 blocks should be YAML blocks.
