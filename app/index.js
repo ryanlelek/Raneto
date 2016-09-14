@@ -12,7 +12,7 @@ var moment        = require('moment');
 var extend        = require('extend');
 var hogan         = require('hogan-express');
 var session       = require('express-session');
-var raneto        = require('./raneto-core/lib/raneto.js');
+var raneto        = require('./core/lib/raneto.js');
 var passport      = require('passport');
 
 function initialize (config) {
