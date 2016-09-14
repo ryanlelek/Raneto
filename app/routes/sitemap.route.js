@@ -35,11 +35,14 @@ function route_sitemap(config, raneto) {
     });
 
     for (var i = 0, len = urls.length; i < len; i++) {
+      var content = fs.readFileSync(files[i],'utf8');
+      // Need to override the datetime format for sitemap
+      var conf = {datetime_format: 'YYYY-MM-DD'};
       sitemap.add({
         url: urls[i],
         changefreq: 'weekly',
         priority: 0.8,
-        lastmod: get_last_modified(config,meta,files[i])
+        lastmod: get_last_modified(conf,raneto.processMeta(content),files[i])
       });
     }
 
