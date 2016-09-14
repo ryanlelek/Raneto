@@ -4,9 +4,9 @@
 // Modules
 var path                           = require('path');
 var fs                             = require('fs');
-var moment                         = require('moment');
 var marked                         = require('marked');
 var toc                            = require('markdown-toc');
+var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
 function route_wildcard (config, raneto) {
@@ -39,9 +39,6 @@ function route_wildcard (config, raneto) {
 
       // Process Markdown files
       if (path.extname(file_path) === '.md') {
-
-        // File info
-        var stat = fs.lstatSync(file_path);
 
         // Meta
         var meta = raneto.processMeta(content);
@@ -101,7 +98,7 @@ function route_wildcard (config, raneto) {
           meta          : meta,
           content       : content,
           body_class    : template + '-' + raneto.cleanString(slug),
-          last_modified : moment(stat.mtime).format('Do MMM YYYY'),
+          last_modified : get_last_modified(config,meta,file_path),
           lang          : config.lang,
           loggedIn      : loggedIn,
           username      : (config.authentication ? req.session.username : null),

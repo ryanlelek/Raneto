@@ -78,6 +78,9 @@ var config = {
 
   locale: 'en',
 
+  // Sets the format for datetime's
+  datetime_format: 'Do MMM YYYY',
+
   // Set to true to render suitable layout for RTL languages
   rtl_layout: false,
 
