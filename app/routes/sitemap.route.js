@@ -7,7 +7,7 @@ var sm                = require('sitemap');
 var _                 = require('underscore');
 var get_last_modified = require('../functions/get_last_modified.js');
 
-function route_sitemap(config, raneto) {
+function route_sitemap (config, raneto) {
   return function (req, res, next) {
 
     var hostname = req.headers.host;
@@ -35,14 +35,14 @@ function route_sitemap(config, raneto) {
     });
 
     for (var i = 0, len = urls.length; i < len; i++) {
-      var content = fs.readFileSync(files[i],'utf8');
+      var content = fs.readFileSync(files[i], 'utf8');
       // Need to override the datetime format for sitemap
       var conf = {datetime_format: 'YYYY-MM-DD'};
       sitemap.add({
         url: urls[i],
         changefreq: 'weekly',
         priority: 0.8,
-        lastmod: get_last_modified(conf,raneto.processMeta(content),files[i])
+        lastmod: get_last_modified(conf, raneto.processMeta(content), files[i])
       });
     }
 
@@ -52,7 +52,7 @@ function route_sitemap(config, raneto) {
   };
 }
 
-function listFiles(dir) {
+function listFiles (dir) {
   return fs.readdirSync(dir).reduce(function (list, file) {
     var name = path.join(dir, file);
     var isDir = fs.statSync(name).isDirectory();
