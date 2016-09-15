@@ -23,6 +23,7 @@
     "padded-blocks": 0,
     "quotes": ["error","single"],
     "semi": 0,
+    "no-path-concat": 1,
     "no-undef": 2,
     "no-unused-vars": 2
   }
