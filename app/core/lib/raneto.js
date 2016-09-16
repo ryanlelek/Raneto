@@ -67,7 +67,7 @@ var default_config = {
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
 var _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
-var _metaRegexYaml = /\uFEFF?\s*([^]*)---/i;
+var _metaRegexYaml = /\uFEFF?\s*([^]*?)(---)/i;
 
 function patch_content_dir(content_dir) {
   return content_dir.replace(/\\/g, '/');
