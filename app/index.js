@@ -29,21 +29,22 @@ function initialize (config) {
   extend(raneto.config, config);
 
   // Load Files
-  var authenticate          = require('./middleware/authenticate.js')      (config);
-  var always_authenticate   = require('./middleware/always_authenticate.js')      (config);
-  var error_handler         = require('./middleware/error_handler.js')     (config);
-  var oauth2                = require('./middleware/oauth2.js');
-  var route_login           = require('./routes/login.route.js')           (config);
-  var route_login_page      = require('./routes/login_page.route.js')      (config);
-  var route_logout          = require('./routes/logout.route.js');
-  var route_page_edit       = require('./routes/page.edit.route.js')       (config, raneto);
-  var route_page_delete     = require('./routes/page.delete.route.js')     (config, raneto);
-  var route_page_create     = require('./routes/page.create.route.js')     (config, raneto);
-  var route_category_create = require('./routes/category.create.route.js') (config, raneto);
-  var route_search          = require('./routes/search.route.js')          (config, raneto);
-  var route_home            = require('./routes/home.route.js')            (config, raneto);
-  var route_wildcard        = require('./routes/wildcard.route.js')        (config, raneto);
-  var route_sitemap         = require('./routes/sitemap.route.js')         (config, raneto);
+  var authenticate              = require('./middleware/authenticate.js')               (config);
+  var always_authenticate       = require('./middleware/always_authenticate.js')        (config);
+  var authenticate_read_access  = require ('./middleware/authenticate_read_access.js')  (config);
+  var error_handler             = require('./middleware/error_handler.js')              (config);
+  var oauth2                    = require('./middleware/oauth2.js');
+  var route_login               = require('./routes/login.route.js')                    (config);
+  var route_login_page          = require('./routes/login_page.route.js')               (config);
+  var route_logout              = require('./routes/logout.route.js');
+  var route_page_edit           = require('./routes/page.edit.route.js')                (config, raneto);
+  var route_page_delete         = require('./routes/page.delete.route.js')              (config, raneto);
+  var route_page_create         = require('./routes/page.create.route.js')              (config, raneto);
+  var route_category_create     = require('./routes/category.create.route.js')          (config, raneto);
+  var route_search              = require('./routes/search.route.js')                   (config, raneto);
+  var route_home                = require('./routes/home.route.js')                     (config, raneto);
+  var route_wildcard            = require('./routes/wildcard.route.js')                 (config, raneto);
+  var route_sitemap             = require('./routes/sitemap.route.js')                  (config, raneto);
 
   // New Express App
   var app = express();
@@ -85,7 +86,7 @@ function initialize (config) {
       resave            : false,
       saveUninitialized : false
     }));
-
+    app.use(authenticate_read_access);
     // OAuth2
     if (config.googleoauth === true) {
       app.use(passport.initialize());
