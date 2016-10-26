@@ -55,7 +55,7 @@ function addTemplateVariables (req, res, next) {
 }
 // [END middleware]
 
-function router(config) {
+function router (config) {
   // Configure the Google strategy for use by Passport.js.
   //
   // OAuth 2-based strategies require a `verify` function which receives the
@@ -68,8 +68,7 @@ function router(config) {
     clientSecret: config.oauth2.client_secret,
     callbackURL: config.oauth2.callback,
     hostedDomain: config.hostedDomain || '',
-    accessType: 'offline',
-
+    accessType: 'offline'
   }, function (accessToken, refreshToken, profile, cb) {
     // Extract the minimal profile information we need from the profile object
     // provided by Google
@@ -136,7 +135,6 @@ function router(config) {
     req.logout();
     res.redirect('/login');
   });
-
 
   return router;
 }

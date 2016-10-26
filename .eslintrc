@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": "standard",
+  "plugins": [
+    "standard",
+    "promise"
+  ],
+  "rules": {
+    "camelcase": 0,
+    "curly": 2,
+    "eqeqeq": 2,
+    "func-call-spacing": 0,
+    "guard-for-in": 2,
+    "indent": 2,
+    "key-spacing": 0,
+    "max-depth": ["error",{"max" : 4}],
+    "no-irregular-whitespace": 2,
+    "no-multi-spaces": 0,
+    "padded-blocks": 0,
+    "quotes": ["error","single"],
+    "semi": 0,
+    "no-path-concat": 1,
+    "no-undef": 2,
+    "no-unused-vars": 2
+  }
+}

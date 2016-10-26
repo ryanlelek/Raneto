@@ -13,7 +13,7 @@ var config = {
   support_email: '',
 
   // Footer Text / Copyright
-  copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - <a href="http://raneto.com">Powered by Raneto</a>',
+  copyright: 'Copyright &copy; ' + new Date().getFullYear() + ' - <a href="http://raneto.com">Powered by Raneto</a>',
 
   // Excerpt length (used in search)
   excerpt_length: 400,
@@ -26,7 +26,6 @@ var config = {
   // If true category folders need to contain a "sort" file with an integer value
   category_sort: true,
 
-  // Which Theme to Use?
   theme_dir  : __dirname + '/../themes/',
   theme_name : 'default',
 
@@ -85,21 +84,21 @@ var config = {
   rtl_layout: false,
 
   // Edit Home Page title, description, etc.
-  home_meta : {
-    //title       : 'Custom Home Title',
-    //description : 'Custom Home Description'
-  },
+  // home_meta : {
+  //   title       : 'Custom Home Title',
+  //   description : 'Custom Home Description'
+  // },
 
-  //variables: [
-  //  {
-  //    name: 'test_variable',
-  //    content: 'test variable'
-  //  },
-  //  {
-  //    name: 'test_variable_2',
-  //    content: 'test variable 2'
-  //  }
-  //]
+  // variables: [
+  //   {
+  //     name: 'test_variable',
+  //     content: 'test variable'
+  //   },
+  //   {
+  //     name: 'test_variable_2',
+  //     content: 'test variable 2'
+  //   }
+  // ]
 
   table_of_contents: false
 
