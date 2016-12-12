@@ -78,7 +78,7 @@ function initialize (config) {
   app.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
 
   // HTTP Authentication
-  if (config.authentication === true || config.authentication_for_edit) {
+  if (config.authentication === true || config.authentication_for_edit || config.authentication_for_read) {
     app.use(session({
       secret            : config.secret,
       name              : 'raneto.sid',
@@ -121,8 +121,11 @@ function initialize (config) {
   if (config.googleoauth === true) {
     app.get('/:var(index)?', oauth2.required, route_search, route_home);
     app.get(/^([^.]*)/, oauth2.required, route_wildcard);
-  }
-  else {
+  } else if (config.authentication_for_read === true) {
+    app.get('/sitemap.xml', authenticate, route_sitemap);
+    app.get('/:var(index)?', authenticate, route_search, route_home);
+    app.get(/^([^.]*)/, authenticate, route_wildcard);
+  } else {
     app.get('/sitemap.xml', route_sitemap);
     app.get('/:var(index)?', route_search, route_home);
     app.get(/^([^.]*)/, route_wildcard);
