@@ -74,7 +74,7 @@ describe('#processMeta()', function () {
   });
 
   it('returns array of meta values (YAML)', function () {
-    var result = raneto.processMeta('\n'+
+    var result = raneto.processMeta('---\n'+
       'Title: This is a title\n'+
       'Description: This is a description\n'+
       'Sort: 4\n'+
@@ -106,9 +106,22 @@ describe('#stripMeta()', function () {
     result.should.equal('This is the content');
   });
 
+  it('strips yaml meta comment block with horizontal rule in content', function() {
+    var result = raneto.stripMeta('---\n'+
+      'Title: + This is a title\n'+
+      '---\n'+
+      'This is the content\n---');
+    result.should.equal('This is the content\n---');
+  });
+
   it('leaves content if no meta comment block', function () {
     var result = raneto.stripMeta('This is the content');
     result.should.equal('This is the content');
+  });
+
+  it('leaves content with horizontal rule if no meta comment block', function () {
+    var result = raneto.stripMeta('This is the content\n---');
+    result.should.equal('This is the content\n---');
   });
 
   it('only strips the first comment block', function () {

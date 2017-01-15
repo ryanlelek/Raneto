@@ -1,4 +1,5 @@
-﻿Title: Example Page With BOM for YAML
+﻿---
+Title: Example Page With BOM for YAML
 Sort: 3
 ---
 
