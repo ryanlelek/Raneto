@@ -55,6 +55,9 @@ var config = {
   // If editing is enabled, set this to true to only authenticate for editing, not for viewing
   authentication_for_edit: true,
 
+  // If authentication is enabled, set this to true to enable authentication for reading too
+  authentication_for_read: false,
+
   // Google OAuth
   googleoauth: false,
   oauth2 : {
