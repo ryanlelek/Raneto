@@ -27,8 +27,16 @@ const default_config = {
 };
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
+// Look for the the following header formats at the beginning of the file: 
+// /* 
+// {header string} 
+// */ 
+//   or 
+// --- 
+// {header string} 
+// ---
 const _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
-const _metaRegexYaml = /\uFEFF?\s*([^]*)---/i;
+const _metaRegexYaml = /^\uFEFF?---([\s\S]*?)---/i;
 
 function patch_content_dir(content_dir) {
   return content_dir.replace(/\\/g, '/');
