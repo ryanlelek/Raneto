@@ -109,7 +109,7 @@ var Raneto = function () {
     key: 'cleanObjectStrings',
     value: function cleanObjectStrings(obj) {
       var cleanObj = {};
-      for (field in obj) {
+      for (var field in obj) {
         if (obj.hasOwnProperty(field)) {
           cleanObj[this.cleanString(field, true)] = ('' + obj[field]).trim();
         }
@@ -160,7 +160,6 @@ var Raneto = function () {
         case _metaRegexYaml.test(markdownContent):
           metaArr = markdownContent.match(_metaRegexYaml);
           metaString = metaArr ? metaArr[1].trim() : '';
-
           yamlObject = yaml.safeLoad(metaString);
           meta = this.cleanObjectStrings(yamlObject);
           break;

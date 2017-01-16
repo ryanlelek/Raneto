@@ -62,7 +62,7 @@ class Raneto {
   // Clean object strings.
   cleanObjectStrings(obj) {
     let cleanObj = {}
-    for (field in obj) {
+    for (let field in obj) {
       if (obj.hasOwnProperty(field)) {
         cleanObj[this.cleanString(field, true)] = ('' + obj[field]).trim();
       }
@@ -105,7 +105,6 @@ class Raneto {
       case _metaRegexYaml.test(markdownContent):
         metaArr    = markdownContent.match(_metaRegexYaml);
         metaString = metaArr ? metaArr[1].trim() : '';
-
         yamlObject = yaml.safeLoad(metaString);
         meta = this.cleanObjectStrings(yamlObject);
         break;
