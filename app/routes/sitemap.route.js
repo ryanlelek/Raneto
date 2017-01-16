@@ -16,7 +16,7 @@ function route_sitemap(config, raneto) {
     // get list md files
     var files = listFiles(content_dir);
     files = _.filter(files, function (file) {
-      return file.endsWith('.md');
+      return file.substr(-3) === '.md';
     });
 
     var filesPath = files.map(function (file) {

@@ -1,4 +1,5 @@
-﻿Title: Example Page With BOM for YAML
+﻿---
+Title: Example Page With BOM for YAML
 Sort: 3
 Modified: 2016-09-14T15:43:00-0500
 ---
