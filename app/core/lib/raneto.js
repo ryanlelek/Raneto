@@ -283,7 +283,7 @@ var Raneto = function () {
           var dirMetadata = {};
           try {
             var metaFile = fs.readFileSync(patch_content_dir(_this2.config.content_dir) + shortPath + '/meta');
-            dirMetadata = _this2.cleanObjectStrings(yaml.safeLoad(_this2.processMeta(metaFile.toString('utf-8'))));
+            dirMetadata = _this2.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
           } catch (e) {
             if (_this2.config.debug) {
               console.log('No meta file for', patch_content_dir(_this2.config.content_dir) + shortPath);
