@@ -59,6 +59,17 @@ class Raneto {
     }
   }
 
+  // Clean object strings.
+  cleanObjectStrings(obj) {
+    let cleanObj = {}
+    for (let field in obj) {
+      if (obj.hasOwnProperty(field)) {
+        cleanObj[this.cleanString(field, true)] = ('' + obj[field]).trim();
+      }
+    }
+    return cleanObj;
+  }
+
   // Convert a slug to a title
   slugToTitle(slug) {
     slug = slug.replace('.md', '').trim();
@@ -67,7 +78,7 @@ class Raneto {
 
   // Get meta information from Markdown content
   processMeta(markdownContent) {
-    const meta = {};
+    let meta = {};
     let metaArr;
     let metaString;
     let metas;
@@ -94,14 +105,8 @@ class Raneto {
       case _metaRegexYaml.test(markdownContent):
         metaArr    = markdownContent.match(_metaRegexYaml);
         metaString = metaArr ? metaArr[1].trim() : '';
-
         yamlObject = yaml.safeLoad(metaString);
-
-        for (yamlField in yamlObject) {
-          if (yamlObject.hasOwnProperty(yamlField)) {
-            meta[this.cleanString(yamlField, true)] = ('' + yamlObject[yamlField]).trim();
-          }
-        }
+        meta = this.cleanObjectStrings(yamlObject);
         break;
 
       default:
@@ -204,7 +209,15 @@ class Raneto {
           return true;
         }
 
-        if (category_sort) {
+        let dirMetadata = {};
+        try {
+          const metaFile = fs.readFileSync(patch_content_dir(this.config.content_dir) + shortPath +'/meta');
+          dirMetadata = this.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
+        } catch (e) {
+          if (this.config.debug) { console.log('No meta file for', patch_content_dir(this.config.content_dir) + shortPath); }
+        }
+
+        if (category_sort && !dirMetadata.sort) {
           try {
             const sortFile = fs.readFileSync(patch_content_dir(this.config.content_dir) + shortPath +'/sort');
             sort = parseInt(sortFile.toString('utf-8'), 10);
@@ -215,10 +228,10 @@ class Raneto {
 
         filesProcessed.push({
           slug     : shortPath,
-          title    : _s.titleize(_s.humanize(path.basename(shortPath))),
+          title    : dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
           is_index : false,
           class    : 'category-' + this.cleanString(shortPath),
-          sort     : sort,
+          sort     : dirMetadata.sort || sort,
           files    : []
         });
 

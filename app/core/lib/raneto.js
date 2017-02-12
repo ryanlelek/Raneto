@@ -103,6 +103,20 @@ var Raneto = function () {
       }
     }
 
+    // Clean object strings.
+
+  }, {
+    key: 'cleanObjectStrings',
+    value: function cleanObjectStrings(obj) {
+      var cleanObj = {};
+      for (var field in obj) {
+        if (obj.hasOwnProperty(field)) {
+          cleanObj[this.cleanString(field, true)] = ('' + obj[field]).trim();
+        }
+      }
+      return cleanObj;
+    }
+
     // Convert a slug to a title
 
   }, {
@@ -146,14 +160,8 @@ var Raneto = function () {
         case _metaRegexYaml.test(markdownContent):
           metaArr = markdownContent.match(_metaRegexYaml);
           metaString = metaArr ? metaArr[1].trim() : '';
-
           yamlObject = yaml.safeLoad(metaString);
-
-          for (yamlField in yamlObject) {
-            if (yamlObject.hasOwnProperty(yamlField)) {
-              meta[this.cleanString(yamlField, true)] = ('' + yamlObject[yamlField]).trim();
-            }
-          }
+          meta = this.cleanObjectStrings(yamlObject);
           break;
 
         default:
@@ -272,7 +280,17 @@ var Raneto = function () {
             return true;
           }
 
-          if (category_sort) {
+          var dirMetadata = {};
+          try {
+            var metaFile = fs.readFileSync(patch_content_dir(_this2.config.content_dir) + shortPath + '/meta');
+            dirMetadata = _this2.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
+          } catch (e) {
+            if (_this2.config.debug) {
+              console.log('No meta file for', patch_content_dir(_this2.config.content_dir) + shortPath);
+            }
+          }
+
+          if (category_sort && !dirMetadata.sort) {
             try {
               var sortFile = fs.readFileSync(patch_content_dir(_this2.config.content_dir) + shortPath + '/sort');
               sort = parseInt(sortFile.toString('utf-8'), 10);
@@ -285,10 +303,10 @@ var Raneto = function () {
 
           filesProcessed.push({
             slug: shortPath,
-            title: _s.titleize(_s.humanize(path.basename(shortPath))),
+            title: dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
             is_index: false,
             class: 'category-' + _this2.cleanString(shortPath),
-            sort: sort,
+            sort: dirMetadata.sort || sort,
             files: []
           });
         }
