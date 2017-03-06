@@ -3,13 +3,14 @@
 /*jshint expr: true*/
 
 // Modules
-var fs                = require('fs');
-var path              = require('path');
-var chai              = require('chai');
-var expect            = chai.expect;
-var moment            = require('moment');
-var raneto            = require('../app/core/lib/raneto.js');
-var get_last_modified = require('../app/functions/get_last_modified.js');
+var fs                 = require('fs');
+var path               = require('path');
+var chai               = require('chai');
+var expect             = chai.expect;
+var moment             = require('moment');
+var raneto             = require('../app/core/lib/raneto.js');
+var build_nested_pages = require('../app/functions/build_nested_pages.js');
+var get_last_modified  = require('../app/functions/get_last_modified.js');
 
 chai.should();
 chai.config.truncateThreshold = 0;
@@ -35,3 +36,16 @@ describe('#get_last_modified()', function () {
 
 });
 
+describe('#build_nested_pages()', function () {
+
+  it('builds tree of pages', function () {
+    raneto.config.content_dir = path.join(__dirname, 'content/');
+    var pages = raneto.getPages();
+    var result = build_nested_pages(pages);
+
+    expect(result.length).to.be.equal(2);
+    expect(result[1].files.length).to.be.equal(2);
+    expect(result[1].files[0].files[0].title).to.be.equal('Sub2 Page');
+  });
+
+});
