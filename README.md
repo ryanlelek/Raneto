@@ -16,6 +16,11 @@ Run this in a terminal and then visit [http://localhost:3000](http://localhost:3
 For full Installation instructions, see the [Installation Guide](http://docs.raneto.com/install/installing-raneto).  
 `git clone https://github.com/gilbitron/Raneto.git && cd Raneto && npm install && npm start`
 
+Supported Node Versions:
+- v4.x
+- v6.x
+- v7.x
+
 Links
 ---------------
 
