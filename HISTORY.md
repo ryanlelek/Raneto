@@ -1,8 +1,31 @@
 
 # Raneto Changelog
 
+2017.03.15 / v0.13.0
+====================
+
+  * **[New]** Nested Pages
+    - contributed by **@zmateusz**
+  * **[New]** Manual Category Title
+    - contributed by **@theRealWardo**
+  * **[New]** Last Edited Metadata Header
+    - contributed by **@Sparticuz**
+  * **[New]** Require Authentication for Viewing
+    - contributed by **@bschne** and **@mohammadrafigh**
+  * **[Improvement]** Meta Data RegEx Refinement
+    - contributed by **@cmeyer90**
+  * **[Improvement]** Unix Sitemap Generation
+    - contributed by **@forsureitsme**
+  * **[Improvement]** Display All Files Fix
+    - contributed by **@forsureitsme**
+  * **[Misc]** Code Refinements
+    - **@shyim**
+    - **@Sparticuz**
+    - **@theRealWardo**
+  * **[Misc]** Dependency upgrades
+
 2016.09.13 / v0.11.0
-==================
+====================
 
   * **[New]** Language Translations!
     - Mandarin Chinese contributed by **@noahvans**
