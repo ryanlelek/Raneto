@@ -66,13 +66,13 @@ var default_config = {
 };
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
-// Look for the the following header formats at the beginning of the file: 
-// /* 
-// {header string} 
-// */ 
-//   or 
-// --- 
-// {header string} 
+// Look for the the following header formats at the beginning of the file:
+// /*
+// {header string}
+// */
+//   or
+// ---
+// {header string}
 // ---
 var _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
 var _metaRegexYaml = /^\uFEFF?---([\s\S]*?)---/i;
@@ -305,6 +305,7 @@ var Raneto = function () {
             slug: shortPath,
             title: dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
             is_index: false,
+            is_directory: true,
             class: 'category-' + _this2.cleanString(shortPath),
             sort: dirMetadata.sort || sort,
             files: []
@@ -313,35 +314,34 @@ var Raneto = function () {
 
         if (stat.isFile() && path.extname(shortPath) === '.md') {
           try {
-            (function () {
 
-              var file = fs.readFileSync(filePath);
-              var slug = shortPath;
-              var pageSort = 0;
+            var file = fs.readFileSync(filePath);
+            var slug = shortPath;
+            var pageSort = 0;
 
-              if (shortPath.indexOf('index.md') > -1) {
-                slug = slug.replace('index.md', '');
-              }
+            if (shortPath.indexOf('index.md') > -1) {
+              slug = slug.replace('index.md', '');
+            }
 
-              slug = slug.replace('.md', '').trim();
+            slug = slug.replace('.md', '').trim();
 
-              var dir = path.dirname(shortPath);
-              var meta = _this2.processMeta(file.toString('utf-8'));
+            var dir = path.dirname(shortPath);
+            var meta = _this2.processMeta(file.toString('utf-8'));
 
-              if (page_sort_meta && meta[page_sort_meta]) {
-                pageSort = parseInt(meta[page_sort_meta], 10);
-              }
+            if (page_sort_meta && meta[page_sort_meta]) {
+              pageSort = parseInt(meta[page_sort_meta], 10);
+            }
 
-              var val = _.find(filesProcessed, function (item) {
-                return item.slug === dir;
-              });
-              val.files.push({
-                slug: slug,
-                title: meta.title ? meta.title : _this2.slugToTitle(slug),
-                active: activePageSlug.trim() === '/' + slug,
-                sort: pageSort
-              });
-            })();
+            var val = _.find(filesProcessed, function (item) {
+              return item.slug === dir;
+            });
+            val.files.push({
+              slug: slug,
+              title: meta.title ? meta.title : _this2.slugToTitle(slug),
+              is_directory: false,
+              active: activePageSlug.trim() === '/' + slug,
+              sort: pageSort
+            });
           } catch (e) {
             if (_this2.config.debug) {
               console.log(e);

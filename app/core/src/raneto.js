@@ -27,13 +27,13 @@ const default_config = {
 };
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
-// Look for the the following header formats at the beginning of the file: 
-// /* 
-// {header string} 
-// */ 
-//   or 
-// --- 
-// {header string} 
+// Look for the the following header formats at the beginning of the file:
+// /*
+// {header string}
+// */
+//   or
+// ---
+// {header string}
 // ---
 const _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
 const _metaRegexYaml = /^\uFEFF?---([\s\S]*?)---/i;
@@ -230,6 +230,7 @@ class Raneto {
           slug     : shortPath,
           title    : dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
           is_index : false,
+          is_directory: true,
           class    : 'category-' + this.cleanString(shortPath),
           sort     : dirMetadata.sort || sort,
           files    : []
@@ -261,6 +262,7 @@ class Raneto {
           val.files.push({
             slug   : slug,
             title  : meta.title ? meta.title : this.slugToTitle(slug),
+            is_directory: false,
             active : (activePageSlug.trim() === '/'+ slug),
             sort   : pageSort
           });
