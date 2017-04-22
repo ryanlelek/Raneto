@@ -1,4 +1,3 @@
-
 <div class="home-search jumbotron row">
   <form class="search-form form-inline" action="{{config.base_url}}/">
     <div class="form-group">
@@ -31,7 +30,28 @@
           <h2 class="panel-heading">{{title}}</h2>
           <ul class="list-group pages">
             {{#files}}
-              <li class="list-group-item page"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{^is_directory}}
+                <li class="list-group-item page"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{/is_directory}}
+              {{#is_directory}}
+                <li class="list-group-item page">{{title}}
+                  {{#files}}
+                    <ul>
+                      {{^is_directory}}
+                        <li><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                      {{/is_directory}}
+                      {{#is_directory}}
+                        <li>{{title}}</li>
+                        <ul>
+                          {{#files}}
+                            <li><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                          {{/files}}
+                        </ul>
+                      {{/is_directory}}
+                    </ul>
+                  {{/files}}
+                </li>
+              {{/is_directory}}
             {{/files}}
           </ul>
         </div>

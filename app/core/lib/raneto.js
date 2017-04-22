@@ -66,13 +66,13 @@ var default_config = {
 };
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
-// Look for the the following header formats at the beginning of the file: 
-// /* 
-// {header string} 
-// */ 
-//   or 
-// --- 
-// {header string} 
+// Look for the the following header formats at the beginning of the file:
+// /*
+// {header string}
+// */
+//   or
+// ---
+// {header string}
 // ---
 var _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
 var _metaRegexYaml = /^\uFEFF?---([\s\S]*?)---/i;
@@ -103,6 +103,20 @@ var Raneto = function () {
       }
     }
 
+    // Clean object strings.
+
+  }, {
+    key: 'cleanObjectStrings',
+    value: function cleanObjectStrings(obj) {
+      var cleanObj = {};
+      for (var field in obj) {
+        if (obj.hasOwnProperty(field)) {
+          cleanObj[this.cleanString(field, true)] = ('' + obj[field]).trim();
+        }
+      }
+      return cleanObj;
+    }
+
     // Convert a slug to a title
 
   }, {
@@ -125,7 +139,6 @@ var Raneto = function () {
       var metas = void 0;
 
       var yamlObject = void 0;
-      var yamlField = void 0;
 
       switch (true) {
         case _metaRegex.test(markdownContent):
@@ -146,14 +159,8 @@ var Raneto = function () {
         case _metaRegexYaml.test(markdownContent):
           metaArr = markdownContent.match(_metaRegexYaml);
           metaString = metaArr ? metaArr[1].trim() : '';
-
           yamlObject = yaml.safeLoad(metaString);
-
-          for (yamlField in yamlObject) {
-            if (yamlObject.hasOwnProperty(yamlField)) {
-              meta[this.cleanString(yamlField, true)] = ('' + yamlObject[yamlField]).trim();
-            }
-          }
+          meta = this.cleanObjectStrings(yamlObject);
           break;
 
         default:
@@ -272,7 +279,17 @@ var Raneto = function () {
             return true;
           }
 
-          if (category_sort) {
+          var dirMetadata = {};
+          try {
+            var metaFile = fs.readFileSync(patch_content_dir(_this2.config.content_dir) + shortPath + '/meta');
+            dirMetadata = _this2.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
+          } catch (e) {
+            if (_this2.config.debug) {
+              console.log('No meta file for', patch_content_dir(_this2.config.content_dir) + shortPath);
+            }
+          }
+
+          if (category_sort && !dirMetadata.sort) {
             try {
               var sortFile = fs.readFileSync(patch_content_dir(_this2.config.content_dir) + shortPath + '/sort');
               sort = parseInt(sortFile.toString('utf-8'), 10);
@@ -285,45 +302,45 @@ var Raneto = function () {
 
           filesProcessed.push({
             slug: shortPath,
-            title: _s.titleize(_s.humanize(path.basename(shortPath))),
+            title: dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
             is_index: false,
+            is_directory: true,
             class: 'category-' + _this2.cleanString(shortPath),
-            sort: sort,
+            sort: dirMetadata.sort || sort,
             files: []
           });
         }
 
         if (stat.isFile() && path.extname(shortPath) === '.md') {
           try {
-            (function () {
 
-              var file = fs.readFileSync(filePath);
-              var slug = shortPath;
-              var pageSort = 0;
+            var file = fs.readFileSync(filePath);
+            var slug = shortPath;
+            var pageSort = 0;
 
-              if (shortPath.indexOf('index.md') > -1) {
-                slug = slug.replace('index.md', '');
-              }
+            if (shortPath.indexOf('index.md') > -1) {
+              slug = slug.replace('index.md', '');
+            }
 
-              slug = slug.replace('.md', '').trim();
+            slug = slug.replace('.md', '').trim();
 
-              var dir = path.dirname(shortPath);
-              var meta = _this2.processMeta(file.toString('utf-8'));
+            var dir = path.dirname(shortPath);
+            var meta = _this2.processMeta(file.toString('utf-8'));
 
-              if (page_sort_meta && meta[page_sort_meta]) {
-                pageSort = parseInt(meta[page_sort_meta], 10);
-              }
+            if (page_sort_meta && meta[page_sort_meta]) {
+              pageSort = parseInt(meta[page_sort_meta], 10);
+            }
 
-              var val = _.find(filesProcessed, function (item) {
-                return item.slug === dir;
-              });
-              val.files.push({
-                slug: slug,
-                title: meta.title ? meta.title : _this2.slugToTitle(slug),
-                active: activePageSlug.trim() === '/' + slug,
-                sort: pageSort
-              });
-            })();
+            var val = _.find(filesProcessed, function (item) {
+              return item.slug === dir;
+            });
+            val.files.push({
+              slug: slug,
+              title: meta.title ? meta.title : _this2.slugToTitle(slug),
+              is_directory: false,
+              active: activePageSlug.trim() === '/' + slug,
+              sort: pageSort
+            });
           } catch (e) {
             if (_this2.config.debug) {
               console.log(e);

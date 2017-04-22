@@ -23,9 +23,17 @@ You can change the meta value used for sorting by changing the `page_sort_meta` 
 
 ## Sorting Categories
 
-To manually sort categories you have to add a file called `sort` (with no extension) in the category
+To manually sort categories you can add a file called `sort` (with no extension) in the category
 folder. The content of the file should simply be an index integer. Sorting will occur the same way as
 it does for pages. If no `sort` file exists the category will have a sort index of `0`.
+
+Alternatively, you can add a file called `meta` (with no extension) in the category foler. This file
+can be specified in YAML format and can also override the category title. For example:
+
+```
+Title: Sorting
+Sort: 4
+```
 
 Note that top level files (i.e. files without a category) will be in an "index" category with a sort
 value of `0`, so it makes sense to order your category indexes starting at `1`.
