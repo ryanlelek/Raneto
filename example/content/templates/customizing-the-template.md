@@ -55,7 +55,7 @@ Below are a list of template variables available to use in their respective temp
 
 The `pages` array has a structure similar to the following:
 
-* `slug`: The categoy slug
+* `slug`: The category slug
 * `title`: The category title
 * `is_index`: True for the top level files (ie not in a category)
 * `class`: CSS class
