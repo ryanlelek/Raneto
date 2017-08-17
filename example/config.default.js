@@ -107,6 +107,7 @@ var config = {
   table_of_contents: false
 
 };
+config.public_dir = __dirname + '/../themes/' + config.theme_name + '/public/';
 
 // Exports
 module.exports = config;
