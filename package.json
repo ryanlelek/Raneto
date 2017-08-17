@@ -30,7 +30,7 @@
     "start": "DEBUG=raneto node example/server.js",
     "start_win": "set DEBUG=raneto&&node example/server.js",
     "test": "npm run lint && npm run compile && mocha --reporter spec test/*.js",
-    "postinstall": "npm update && npm run gulp",
+    "postinstall": "npm run gulp",
     "gulp": "gulp",
     "compile": "babel app/core/src --out-dir app/core/lib",
     "lint": "jshint app/**/*.js test/*.js",
