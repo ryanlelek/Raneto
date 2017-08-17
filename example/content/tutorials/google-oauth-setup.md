@@ -1,4 +1,7 @@
-# Raneto Google OAuth login
+/*
+Title: Google OAuth Login Setup
+Sort: 3
+*/
 
 ## TL;DR
 [Raneto](http://raneto.com/) allows only basic username/password authentication, so I added Google OAuth support. This option can be turned on by setting the `googleoauth` option in the `config.default.js` file to `true`, and by supplying the OAuth config object as outlined in the guides below. Additionally, you can allow only emails from the certain domain to use the service with one config setting.
