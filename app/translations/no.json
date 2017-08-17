@@ -1,0 +1,68 @@
+{
+  "global": {
+    "yes"             : "Ja",
+    "no"              : "Nei",
+    "search"          : "Søk",
+    "cancel"          : "Avbryt",
+    "save"            : "Lagre",
+    "close"           : "Lukk",
+    "lastUpdated"     : "Sist oppdatert",
+
+    "pageName"        : "Sidenavn",
+    "addPage"         : "Legg til side",
+    "reallyDeletePage": "Er du sikker på at du vil slette denne siden?",
+    "mainArticles"    : "Hovedartikler",
+    "editor"          : "Redigering"
+  },
+
+  "api": {
+    "loginSuccessful"   : "Innlogging vellykket",
+    "invalidCredentials": "Ugyldig brukernavn/passord",
+    "pageSaved"         : "Side lagret",
+    "pageDeleted"       : "Side slettet",
+    "categoryCreated"   : "Kategori opprettet",
+    "pageCreated"       : "Side opprettet"
+  },
+
+  "error": {
+    "404": "Whoops. Ser ut som denne siden ikke eksisterer."
+  },
+
+  "edit": {
+    "preview"      : "Forhåndsvisning",
+    "editor"       : "Redigering",
+    "pageSaved"    : "Side vellykket lagret",
+    "pageSaveError": "Feil oppstått under lagring av side",
+    "headerMetaInfo" : "Meta informasjon",
+    "lableMetaTitle": "Tittel",
+    "lableMetaDescription": "Beskrivelse",
+    "lableMetaSort": "Sortèr"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "Søk kunnskapsbasen"
+  },
+
+  "login": {
+    "login"   : "Logg inn",
+    "logout"  : "Logg ut",
+    "username": "Brukernavn",
+    "password": "Passord"
+  },
+
+  "page": {
+    "addCategory": "Legg til kategori",
+    "addPage"    : "Legg til side",
+    "deletePage" : "Slett",
+    "editPage"   : "Endre",
+    "actions"    : "Handlinger",
+
+    "needHelp"   : "Trenger du fortsatt hjelp?",
+    "getInTouch" : "Ta kontakt!"
+  },
+
+  "search": {
+    "resultsFor"  : "Søkeresultater for",
+    "noResultsFor": "Ingen resultater for"
+  }
+}
