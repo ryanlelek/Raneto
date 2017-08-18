@@ -45,7 +45,7 @@ function authRequired (req, res, next) {
     req.session.oauth2return = req.originalUrl;
     return res.redirect('/login');
   }
-  if(req.session.allowedDomain && req.session.allowedDomain != req.user.domain) {
+  if(req.session.allowedDomain && req.session.allowedDomain !== req.user.domain) {
     return res.redirect('/login');
   }
   next();
