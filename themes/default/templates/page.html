@@ -17,7 +17,28 @@
           {{/is_index}}
           <ul class="pages">
             {{#files}}
-              <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{^is_directory}}
+                <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{/is_directory}}
+              {{#is_directory}}
+                <li class="page{{#active}} active{{/active}}">{{title}}
+                  {{#files}}
+                    <ul>
+                      {{^is_directory}}
+                        <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                      {{/is_directory}}
+                      {{#is_directory}}
+                        <li class="page{{#active}} active{{/active}}">{{title}}</li>
+                        <ul>
+                          {{#files}}
+                            <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                          {{/files}}
+                        </ul>
+                      {{/is_directory}}
+                    </ul>
+                  {{/files}}
+                </li>
+              {{/is_directory}}
             {{/files}}
           </ul>
         </li>
