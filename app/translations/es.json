@@ -10,7 +10,7 @@
 
     "pageName"        : "Nombre de la página",
     "addPage"         : "Añadir página",
-    "reallyDeletePage": "¿Está seguro de que quiere borrar esta página?",
+    "reallyDeletePage": "¿Está seguro de que desea borrar esta página?",
     "mainArticles"    : "Artículos principales",
     "editor"          : "Editor"
   },
@@ -57,7 +57,7 @@
     "editPage"   : "Editar",
     "actions"    : "Acciones",
 
-    "needHelp"   : "Todavía necesita ayuda?",
+    "needHelp"   : "¿Todavía necesita ayuda?",
     "getInTouch" : "Póngase en contacto!"
   },
 
