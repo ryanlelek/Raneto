@@ -44,7 +44,7 @@ describe('#build_nested_pages()', function () {
     var result = build_nested_pages(pages);
 
     expect(result.length).to.be.equal(2);
-    expect(result[1].files.length).to.be.equal(2);
+    expect(result[1].files.length).to.be.equal(3);
     expect(result[1].files[0].files[0].title).to.be.equal('Sub2 Page');
   });
 
