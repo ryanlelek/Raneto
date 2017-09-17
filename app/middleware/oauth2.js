@@ -21,13 +21,18 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 function extractProfile (profile) {
   var imageUrl = '';
+  var domain = '';
   if (profile.photos && profile.photos.length) {
     imageUrl = profile.photos[0].value;
+  }
+  if (profile._json && profile._json.domain) {
+    domain = profile._json.domain;
   }
   return {
     id: profile.id,
     displayName: profile.displayName,
-    image: imageUrl
+    image: imageUrl,
+    domain: domain
   };
 }
 
@@ -38,6 +43,9 @@ function extractProfile (profile) {
 function authRequired (req, res, next) {
   if (!req.user) {
     req.session.oauth2return = req.originalUrl;
+    return res.redirect('/login');
+  }
+  if(req.session.allowedDomain && req.session.allowedDomain !== req.user.domain) {
     return res.redirect('/login');
   }
   next();
@@ -67,7 +75,6 @@ function router(config) {
     clientID: config.oauth2.client_id,
     clientSecret: config.oauth2.client_secret,
     callbackURL: config.oauth2.callback,
-    hostedDomain: config.hostedDomain || '',
     accessType: 'offline',
 
   }, function (accessToken, refreshToken, profile, cb) {
@@ -106,7 +113,7 @@ function router(config) {
     },
 
     // Start OAuth 2 flow using Passport.js
-    passport.authenticate('google', { scope: ['email', 'profile'] })
+    passport.authenticate('google', { scope: ['email', 'profile'], hostedDomain: config.oauth2.hostedDomain || '' })
   );
   // [END authorize]
 
@@ -122,6 +129,9 @@ function router(config) {
     // Redirect back to the original page, if any
     function (req, res) {
       req.session.loggedIn = true;
+      if(config.oauth2.validateHostedDomain) {
+        req.session.allowedDomain = config.oauth2.hostedDomain;
+      }
       var redirect = req.session.oauth2return || '/';
       delete req.session.oauth2return;
       res.redirect(redirect);
