@@ -1,6 +1,7 @@
 /*
 Title: What is Raneto?
 Sort: 1
+ShowOnHome: true
 */
 
 Raneto is a Knowledgebase platform for [Node.js](http://nodejs.org) that uses static

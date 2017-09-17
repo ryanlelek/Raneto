@@ -3,6 +3,7 @@
 
 // Modules
 var fs                             = require('fs');
+var _                              = require('underscore');
 var build_nested_pages             = require('../functions/build_nested_pages.js');
 var get_filepath                   = require('../functions/get_filepath.js');
 var get_last_modified              = require('../functions/get_last_modified.js');
@@ -34,7 +35,16 @@ function route_home (config, raneto) {
       filename : 'home.html'
     });
 
-    var pageList = remove_image_content_directory(config, raneto.getPages('/index'));
+    // Filter out the image content directory and items with show_on_home == false
+    var pageList = remove_image_content_directory(config, 
+      _.chain(raneto.getPages('/index'))
+      .filter(page => page.show_on_home)
+      .map(page => {
+        var filteredFiles = _.filter(page.files, file => file.show_on_home);
+        page.files = filteredFiles;
+        return page;
+      })
+      .value());
 
     return res.render('home', {
       config        : config,
