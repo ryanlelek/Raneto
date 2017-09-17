@@ -17,7 +17,9 @@
     "url": "https://github.com/gilbitron/Raneto.git"
   },
   "bugs": "https://github.com/gilbitron/Raneto/issues",
-  "contributors": [ "https://github.com/gilbitron/Raneto/graphs/contributors" ],
+  "contributors": [
+    "https://github.com/gilbitron/Raneto/graphs/contributors"
+  ],
   "licenses": [
     {
       "type": "MIT",
