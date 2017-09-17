@@ -232,7 +232,7 @@ class Raneto {
         filesProcessed.push({
           slug     : shortPath,
           title    : dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
-          show_on_home: dirMetadata.show_on_home ? (dirMetadata.show_on_home == 'true') : this.config.show_on_home_default,
+          show_on_home: dirMetadata.show_on_home ? (dirMetadata.show_on_home === 'true') : this.config.show_on_home_default,
           is_index : false,
           is_directory: true,
           class    : 'category-' + this.cleanString(shortPath),
@@ -266,7 +266,7 @@ class Raneto {
           val.files.push({
             slug   : slug,
             title  : meta.title ? meta.title : this.slugToTitle(slug),
-            show_on_home: meta.show_on_home ? (meta.show_on_home == 'true') : this.config.show_on_home_default,
+            show_on_home: meta.show_on_home ? (meta.show_on_home === 'true') : this.config.show_on_home_default,
             is_directory: false,
             active : (activePageSlug.trim() === '/'+ slug),
             sort   : pageSort
