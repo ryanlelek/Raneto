@@ -1,4 +1,5 @@
-Title: Meta Block
+---
+Title: Page Meta
 Description: This page describes how the Meta information works.
 Modified: 2016-09-14T11:50:00-0500
 ---
@@ -9,7 +10,8 @@ should be written in [YAML](http://www.yaml.org/spec/1.2/spec.html).
 
  * Title - This variable will override the title based on the file name.
  * Description - This variable will give lunr a description to search on.
- * Sort - This variable will affect the sorting of the pages inside the category
+ * Sort - This variable will affect the sorting of the pages inside the category.
+ * ShowOnHome - Optional. If false, page won't be listed on the home page. Default behavior can be changed through `config.show_on_home_default`.
  * Modified - This variable will override the modified date based on the file name.
    * This should be in full ISO 8601 format including Time and Timezone offset.
 
