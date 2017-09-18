@@ -19,7 +19,7 @@ For full Installation instructions, see the [Installation Guide](http://docs.ran
 Supported Node Versions:
 - v4.x
 - v6.x
-- v7.x
+- v8.x
 
 Links
 ---------------

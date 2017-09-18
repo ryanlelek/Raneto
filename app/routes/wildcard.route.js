@@ -4,6 +4,7 @@
 // Modules
 var path                           = require('path');
 var fs                             = require('fs');
+var build_nested_pages             = require('../functions/build_nested_pages.js');
 var marked                         = require('marked');
 var toc                            = require('markdown-toc');
 var get_last_modified              = require('../functions/get_last_modified.js');
@@ -81,7 +82,7 @@ function route_wildcard (config, raneto) {
 
         }
 
-        var page_list = remove_image_content_directory(config, raneto.getPages(slug));
+        var pageList = remove_image_content_directory(config, raneto.getPages(slug));
 
         var loggedIn = ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false);
 
@@ -94,7 +95,7 @@ function route_wildcard (config, raneto) {
 
         return res.render(render, {
           config        : config,
-          pages         : page_list,
+          pages         : build_nested_pages(pageList),
           meta          : meta,
           content       : content,
           body_class    : template + '-' + raneto.cleanString(slug),
