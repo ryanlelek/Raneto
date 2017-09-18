@@ -40,8 +40,7 @@ function route_home (config, raneto) {
       _.chain(raneto.getPages('/index'))
       .filter(function(page) { return page.show_on_home; })
       .map(function(page) {
-        var filteredFiles = _.filter(page.files, function(file) { return file.show_on_home; });
-        page.files = filteredFiles;
+        page.files = _.filter(page.files, function(file) { return file.show_on_home; });
         return page;
       })
       .value());
