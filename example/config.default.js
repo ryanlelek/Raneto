@@ -26,6 +26,10 @@ var config = {
   // If true category folders need to contain a "sort" file with an integer value
   category_sort: true,
 
+  // Controls behavior of home page if meta ShowOnHome is not present. If set to true
+  // all categories or files that do not specify ShowOnHome meta property will be shown
+  show_on_home_default: true,
+
   // Which Theme to Use?
   theme_dir  : __dirname + '/../themes/',
   theme_name : 'default',

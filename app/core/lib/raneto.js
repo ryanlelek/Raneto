@@ -59,6 +59,9 @@ var default_config = {
   // Should categories be sorted numerically (true) or alphabetically (false)
   // If true category folders need to contain a "sort" file with an integer value
   category_sort: true,
+  // Controls behavior of home page if meta ShowOnHome is not present. If set to true
+  // all categories or files that do not specify ShowOnHome meta property will be shown
+  show_on_home_default: true,
   // Specify the path of your content folder where all your '.md' files are located
   content_dir: './content/',
   // Toggle debug logging
@@ -254,6 +257,7 @@ var Raneto = function () {
       filesProcessed.push({
         slug: '.',
         title: '',
+        show_on_home: true,
         is_index: true,
         class: 'category-index',
         sort: 0,
@@ -303,6 +307,7 @@ var Raneto = function () {
           filesProcessed.push({
             slug: shortPath,
             title: dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
+            show_on_home: dirMetadata.show_on_home ? dirMetadata.show_on_home === 'true' : _this2.config.show_on_home_default,
             is_index: false,
             is_directory: true,
             class: 'category-' + _this2.cleanString(shortPath),
@@ -337,6 +342,7 @@ var Raneto = function () {
             val.files.push({
               slug: slug,
               title: meta.title ? meta.title : _this2.slugToTitle(slug),
+              show_on_home: meta.show_on_home ? meta.show_on_home === 'true' : _this2.config.show_on_home_default,
               is_directory: false,
               active: activePageSlug.trim() === '/' + slug,
               sort: pageSort
