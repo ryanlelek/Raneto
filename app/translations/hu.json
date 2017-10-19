@@ -1,0 +1,69 @@
+{
+    "global": {
+      "yes"             : "Igen",
+      "no"              : "Nem",
+      "search"          : "Keresés",
+      "cancel"          : "Mégsem",
+      "save"            : "Mentés",
+      "close"           : "Bezárás",
+      "lastUpdated"     : "Utoljára frissítve: ",
+  
+      "pageName"        : "Oldal neve",
+      "addPage"         : "Oldal hozzáadása",
+      "reallyDeletePage": "Biztosan törölni szeretnéd ezt az oldalt?",
+      "mainArticles"    : "Fő cikkek",
+      "editor"          : "Szerkesztő"
+    },
+  
+    "api": {
+      "loginSuccessful"   : "Sikeres bejelentkezés",
+      "invalidCredentials": "Helytelen felhasználónév / jelszó páros",
+      "pageSaved"         : "Oldal mentve",
+      "pageDeleted"       : "Oldal törölve",
+      "categoryCreated"   : "Kategória hozzáadva",
+      "pageCreated"       : "Oldal hozzáadva"
+    },
+  
+    "error": {
+      "404": "Hoppá! Úgy tűnik, ez az oldal nem létezik."
+    },
+  
+    "edit": {
+      "preview"      : "Előnézet",
+      "editor"       : "Szerkesztő",
+      "pageSaved"    : "Oldal sikeresen mentve",
+      "pageSaveError": "Hiba az oldal mentése közben",
+      "headerMetaInfo" : "Összegző információk",
+      "lableMetaTitle": "Cím",
+      "lableMetaDescription": "Leírás",
+      "lableMetaSort": "Rendezés"
+    },
+  
+    "home": {
+      "searchKnowledgeBase": "Keresés a tudásbázisban"
+    },
+  
+    "login": {
+      "login"   : "Bejelentkezés",
+      "logout"  : "Kijelentkezés",
+      "username": "Felhasználónév",
+      "password": "Jelszó"
+    },
+  
+    "page": {
+      "addCategory": "Kategória hozzáadása",
+      "addPage"    : "Oldal hozzáadása",
+      "deletePage" : "Törlés",
+      "editPage"   : "Szerkesztés",
+      "actions"    : "Műveletek",
+  
+      "needHelp"   : "Még mindig kell segítség?",
+      "getInTouch" : "Kerülj kapcsolatba!"
+    },
+  
+    "search": {
+      "resultsFor"  : "Keresési eredmények",
+      "noResultsFor": "Semmi nem található erre: "
+    }
+  }
+  
