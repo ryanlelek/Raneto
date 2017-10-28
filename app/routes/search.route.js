@@ -19,7 +19,7 @@ function route_search (config, raneto) {
     var invalidChars   = '&\'"/';
     var sanitizedQuery = validator.blacklist(tagFreeQuery, invalidChars);
 
-    // trim and 
+    // trim and convert to string
     var searchQuery    = validator.toString(sanitizedQuery).trim();
 
     var searchResults  = raneto.doSearch(searchQuery);
