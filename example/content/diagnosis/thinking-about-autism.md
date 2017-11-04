@@ -4,7 +4,7 @@ Sort: 1
 article_tags: something,hello 
 */
 
-## **Thinking About Autism**
+
 ASD is a life-long neurological disorder that affects the way a person communicates and relates to the people and world around them. ASD can affect behaviour, social interactions, and one’s ability to communicate verbally. ASD is a spectrum disorder, which means that while all people with ASD will experience certain difficulties, the degree to which each person on the spectrum experiences these challenges will be different.
 
 For a simple, clinical definition of ASD, please visit the [POND Network](http://pond-network.ca/master-categories/autism-spectrum-disorder-asd/), the Province of On
@@ -16,7 +16,7 @@ ASD crosses all cultural, ethnic, geographic and socioeconomic boundaries.
 
 ![enter image description here](http://autismontario.novosolutions.net/admin/virtual/imgs/DSMEN.png)
 
-###Changes to the Diagnostic Terminology
+### Changes to the Diagnostic Terminology
 
 The terminology, the words or terms we use to diagnose ASD are constantly changing. As assessment tools are developed, the set of described behaviours are defined in new ways. There have been many changes made to the diagnostic terminology over time, and while it is important to know the history, what is most important, is meeting the needs of people on the spectrum, and their families.
 
@@ -26,19 +26,19 @@ For more information about changes to the DSM 5 or the diagnostic criteria, plea
 
 ![enter image description here](http://autismontario.novosolutions.net/admin/virtual/imgs/Prism.png)
 
-###Talking about Autism Spectrum Disorder
+### Talking about Autism Spectrum Disorder
 
 There are lots of different ways to talk about Autism Spectrum Disorder (ASD). We can talk about ASD medically, we can describe it through behaviour, we can talk about prevalence rates, we can talk about early detection and the importance of early evidence-based intervention, we can talk about the need for support for people with ASD across a lifespan, or we can talk about why advocacy is vital for building communities equipped to meet and support the changing needs of people on the spectrum.
 
 It’s easy to think about ASD as a diagnosis, however, we are not talking about a diagnosis. We are talking about a person with ASD. We are talking about a person with individual needs. We are talking about a person with loving family members. We are talking about a person who needs to be accepted and included in her or his community, we are talking about a person who is granted equal opportunity preparing for and succeeding in adulthood. 
 
-###The Unique Challenges of ASD
+### The Unique Challenges of ASD
 
 Ontario must support the individual needs of a person with ASD throughout their lifespan using evidence-based treatment and intervention, while remembering that developmental trajectories are constantly changing.
 
 Whether someone with ASD is affected mildly, severely, or somewhere in between, they might have difficulty verbalizing their thoughts, managing their anxiety, dealing with change, or participating in group activities. This can sometimes result in unintended conflicts with community at large; it can lead to engagement with mental health sector, as well as criminal and family justice systems. Without the proper support, a person with ASD can experience joblessness, homelessness, strain and stress. This can have a major impact on their quality of life.
 
-###Focusing on the Full Life of a Person with Autism
+### Focusing on the Full Life of a Person with Autism
 
 Early intervention is critical to the development of all children on the autism spectrum. Waiting lists for evidence-based services are unacceptable. In some places in Ontario it can take up to four years to receive a diagnosis of ASD.
 
