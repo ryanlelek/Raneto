@@ -57,5 +57,3 @@ How to make it better? How to see those issues change? I am not sure. I think it
 I continue to be inspired by all the people who have helped me and continue to help me; friends, family and people who were strangers a year ago. People like Robin who works at Woodview, believes in everybody’s abilities and strives to see change happen and people like Josephine & Michael at Dromore House, who continue to monitor my brother’s day-to-day welfare. All these people continue to see people’s abilities and truly want to help.
 
 As for my awesome brother, who didn’t fit in most places; now he is fitting in. I am so proud and amazed at how well he is adapting and coping and also of all the new skills he acquired. He may never be able to fully cope with all his losses but he continues to go to work, enjoy his new routine and be my brother again.
-
- 
