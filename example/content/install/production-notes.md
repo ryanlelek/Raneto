@@ -1,6 +1,7 @@
 /*
 Title: Production Notes
 Sort: 3
+article_tags: hello,milk
 */
 
 When running a live site you'll want to set the `PORT` env variable to `80` so you don't need to add `:3000` to the URL.

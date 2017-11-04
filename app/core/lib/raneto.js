@@ -56,6 +56,7 @@ var default_config = {
   // The meta value by which to sort pages (value should be an integer)
   // If this option is blank pages will be sorted alphabetically
   page_sort_meta: 'sort',
+  article_tags: 'article_tags',
   // Should categories be sorted numerically (true) or alphabetically (false)
   // If true category folders need to contain a "sort" file with an integer value
   category_sort: true,
@@ -343,6 +344,159 @@ var Raneto = function () {
               slug: slug,
               title: meta.title ? meta.title : _this2.slugToTitle(slug),
               show_on_home: meta.show_on_home ? meta.show_on_home === 'true' : _this2.config.show_on_home_default,
+              is_directory: false,
+              active: activePageSlug.trim() === '/' + slug,
+              sort: pageSort
+            });
+          } catch (e) {
+            if (_this2.config.debug) {
+              console.log(e);
+            }
+          }
+        }
+      });
+
+      var sortedFiles = _.sortBy(filesProcessed, function (cat) {
+        return cat.sort;
+      });
+      sortedFiles.forEach(function (category) {
+        category.files = _.sortBy(category.files, function (file) {
+          return file.sort;
+        });
+      });
+
+      return sortedFiles;
+    }
+
+    // Index and search contents
+
+  }, {
+    key: 'getPages_Filtered',
+    value: function getPages_Filtered(activePageSlug, filter_tags) {
+      // Function to get a filtered page (by article tags)
+      var _this2 = this;
+
+      activePageSlug = activePageSlug || '';
+      filter_tags = filter_tags || '';
+      var filter_tags_array = filter_tags.split(',');
+      var page_sort_meta = this.config.page_sort_meta || '';
+      var article_tags = this.config.article_tags || '';
+      var category_sort = this.config.category_sort || false;
+      var files = glob.sync(patch_content_dir(this.config.content_dir) + '**/*');
+      var content_dir = path.normalize(patch_content_dir(this.config.content_dir));
+      var filesProcessed = [];
+      
+      filesProcessed.push({
+        slug: '.',
+        title: '',
+        show_on_home: true,
+        is_index: true,
+        class: 'category-index',
+        sort: 0,
+        files: []
+      });
+
+      files.forEach(function (filePath) {
+
+        var shortPath = path.normalize(filePath).replace(content_dir, '').trim();
+        var stat = fs.lstatSync(filePath);
+
+        if (stat.isSymbolicLink()) {
+          stat = fs.lstatSync(fs.readlinkSync(filePath));
+        }
+
+        if (stat.isDirectory()) {
+
+          var sort = 0;
+          // ignore directories that has an ignore file under it
+          var ignoreFile = patch_content_dir(_this2.config.content_dir) + shortPath + '/ignore';
+
+          if (fs.existsSync(ignoreFile) && fs.lstatSync(ignoreFile).isFile()) {
+            return true;
+          }
+
+          var dirMetadata = {};
+          try {
+            var metaFile = fs.readFileSync(patch_content_dir(_this2.config.content_dir) + shortPath + '/meta');
+            dirMetadata = _this2.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
+          } catch (e) {
+            if (_this2.config.debug) {
+              console.log('No meta file for', patch_content_dir(_this2.config.content_dir) + shortPath);
+            }
+          }
+
+          if (category_sort && !dirMetadata.sort) {
+            try {
+              var sortFile = fs.readFileSync(patch_content_dir(_this2.config.content_dir) + shortPath + '/sort');
+              sort = parseInt(sortFile.toString('utf-8'), 10);
+            } catch (e) {
+              if (_this2.config.debug) {
+                console.log('No sort file for', patch_content_dir(_this2.config.content_dir) + shortPath);
+              }
+            }
+          }
+
+          filesProcessed.push({
+            slug: shortPath,
+            title: dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
+            show_on_home: dirMetadata.show_on_home ? dirMetadata.show_on_home === 'true' : _this2.config.show_on_home_default,
+            is_index: false,
+            is_directory: true,
+            class: 'category-' + _this2.cleanString(shortPath),
+            sort: dirMetadata.sort || sort,
+            files: []
+          });
+        }
+
+        if (stat.isFile() && path.extname(shortPath) === '.md') {
+          try {
+
+            var file = fs.readFileSync(filePath);
+            var slug = shortPath;
+            var pageSort = 0;
+
+            if (shortPath.indexOf('index.md') > -1) {
+              slug = slug.replace('index.md', '');
+            }
+
+            slug = slug.replace('.md', '').trim();
+
+            var dir = path.dirname(shortPath);
+            var meta = _this2.processMeta(file.toString('utf-8'));
+
+            if (page_sort_meta && meta[page_sort_meta]) {
+              pageSort = parseInt(meta[page_sort_meta], 10);
+            }
+
+            var val = _.find(filesProcessed, function (item) {
+              return item.slug === dir;
+            });
+
+            // parse through passed tags and compare them against current article tags
+            var showArticleAnyways = false; // set this to true to show articles 
+                                            // regardless even if they don't have
+                                            // tags set in the metadata
+            var showArticleInView;
+            if(meta[article_tags] != undefined){
+              var containsTag = false;
+              var currentArticleTags = meta[article_tags].split(',');
+
+              for(var i=0; i < filter_tags_array.length; i++){
+                for(var j=0; j < currentArticleTags.length; j ++){
+                  if(filter_tags_array[i] == currentArticleTags[j]){
+                    showArticleInView = true;
+                  }
+                }
+              }
+            } else {
+              showArticleInView = showArticleAnyways;
+            }
+
+            val.files.push({
+              slug: slug,
+              title: meta.title ? meta.title : _this2.slugToTitle(slug),
+              //show_on_home: meta.show_on_home ? meta.show_on_home === 'true' : _this2.config.show_on_home_default,
+              show_on_home: showArticleInView,
               is_directory: false,
               active: activePageSlug.trim() === '/' + slug,
               sort: pageSort
