@@ -4,8 +4,6 @@ Sort: 1
 article_tags: something,hello 
 */
 
-##Autism Spectrum Disorder Factsheet - American Psychiatric Association
-
 One of the most important changes in the fifth edition of the _Diagnostic and Statistical Manual of Mental Disorders_ (DSM-5) is to autism spectrum disorder (ASD). The revised diagnosis represents a new, more accurate, and medically and scientifically useful way of diagnosing individuals with autism-related disorders.
 
 Using DSM-IV, patients could be diagnosed with four separate disorders: autistic disorder, Asperger’s disorder, childhood disintegrative disorder, or the catch-all diagnosis of pervasive developmental disorder not otherwise specified. Researchers found that these separate diagnoses were not consistently applied across different clinics and treatment centers. Anyone diagnosed with one of the four pervasive developmental disorders (PDD) from DSM-IV should still meet the criteria for ASD in DSM-5 or another, more accurate DSM-5 diagnosis. While DSM does not outline recommended treatment and services for mental disorders, determining an accurate diagnosis is a first step for a clinician in defining a treatment plan for a patient.
