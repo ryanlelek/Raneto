@@ -120,11 +120,11 @@ function initialize (config) {
 
   // Router for / and /index with or without search parameter
   if (config.googleoauth === true) {
-    app.get('/:var(index)?', oauth2.required, route_search, route_home);
+    app.get('/kb/:var(index)?', oauth2.required, route_search, route_home);
     app.get(/^([^.]*)/, oauth2.required, route_wildcard);
   } else if (config.authentication_for_read === true) {
     app.get('/sitemap.xml', authenticate, route_sitemap);
-    app.get('/:var(index)?', authenticate, route_search, route_home);
+    app.get('/kb/:var(index)?', authenticate, route_search, route_home);
     app.get(/^([^.]*)/, authenticate, route_wildcard);
   } else {
     app.get('/sitemap.xml', route_sitemap);
