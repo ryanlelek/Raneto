@@ -4,20 +4,19 @@ Sort: 1
 article_tags: something,hello 
 */
 
-##Developing Job Skills 2
 
-###Developing Job-Readiness Skills in Youth with ASD Through Volunteering: Moving Into the Community
+### Developing Job-Readiness Skills in Youth with ASD Through Volunteering: Moving Into the Community
 
 (Part 2 of a 2 part series)
 >By Laurie Pearce 
 
-###Start Small
+#### Start Small
 
 Once household chores and money rules have been firmly established, it is time to look outside the home for work (volunteer) opportunities. While you’re seeking out those opportunities, you can try this little strategy I call “guerilla volunteering”.  While in the community, look for small pieces of helpful but casual work your child can do: restoring order to the spice display, making sure all the soup cans face out, ensuring the library’s videos are in alphabetical order. In the very early days you might want to secretly create a small amount of disorder that your child can correct quickly and easily, so the job doesn’t become overwhelming and then gradually have them deal with larger tasks.
 
 Be sure your child’s teacher knows about your child’s growing capabilities. Ask for work-type responsibilities to be given at school, whether that’s taking attendance to the office or setting up/cleaning up for a specific activity. 
 
-###What to Look for in a Volunteer Opportunity
+#### What to Look for in a Volunteer Opportunity
 
 When looking for more formal volunteering opportunities, look for ones that:
 
@@ -57,12 +56,12 @@ Charity Village and/or your local volunteer banks often post volunteer positions
 
 Watch for opportunities wherever you go – your instincts will usually tell you when you’ve encountered a suitable environment and, even more importantly, people with the compassion, interest, and attitude to make a job work for your child.
 
-####It’s Not Just Your Child Who Needs Training
+##### It’s Not Just Your Child Who Needs Training
 
 If possible, have someone other than the parent accompany the child to his or her volunteer work: that will make the separation of work from home clearer. A respite worker is a good option, as is another caregiver, a responsible friend, or even a sibling.
 
 Take the time to educate whomever your child will be working with about ASD in general, your child in particular, and the strategies and supports they need. Don’t be afraid to ask for what needs to be adjusted, and set expectations appropriately: it is better that the “employer” be pleasantly surprised than disappointed. Watch out for the well-meaning supervisor who takes pity on your child and steps in to take over the work or accepts minimal performance: that attitude will not be helpful for your child in the long run.
 
-####Check Out These Excellent Resources
+##### Check Out These Excellent Resources
 
 The books “Tasks Galore” and “Tasks Galore at Work” are visual, creative guides to setting up in-home training that can help develop and practice job skills (e.g. assembling, filing, and sorting). See [http://www.tasksgalore.com/](http://www.tasksgalore.com/) for details or these volumes might be available from your school or local service provider.
