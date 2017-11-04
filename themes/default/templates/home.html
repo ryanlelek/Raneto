@@ -152,6 +152,8 @@
     if(tagsArray != ""){
       // hide the natural language form container
       $(".nl-container").fadeOut();
+      // free up body from not scrolling
+      $("body").css("overflow", "");
       // show the tag groups
       $(".tag-selector-container").css("display", "block");
 
@@ -187,6 +189,8 @@
     } else {
       // show the collection form
       $(".nl-container").fadeIn();
+      // lock body from scrolling
+      $("body").css("overflow", "hidden");
       // hook into the submit button
       $(".nl-submit").click(function( event ) {
         event.preventDefault();
