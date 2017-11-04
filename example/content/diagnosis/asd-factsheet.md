@@ -1,7 +1,7 @@
-/* 
+/*
 Title: Autism Spectrum Disorder Factsheet - American Psychiatric Association
-Sort: 1 
-article_tags: something,hello 
+Sort: 1
+article_tags: learn 
 */
 
 One of the most important changes in the fifth edition of the _Diagnostic and Statistical Manual of Mental Disorders_ (DSM-5) is to autism spectrum disorder (ASD). The revised diagnosis represents a new, more accurate, and medically and scientifically useful way of diagnosing individuals with autism-related disorders.

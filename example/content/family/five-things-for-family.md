@@ -1,7 +1,7 @@
 /*
 Title: Five Things To Do For a Family Dealing With Autism
 Sort: 3
-article_tags: hello,milk
+article_tags: family
 */
 
 *By: Jonathan Alderson, Autism treatment specialist, founder/director Intensive Multi-Treatment Intervention, Harvard grad and author of the book Challenging the Myths of Autism*

@@ -1,7 +1,7 @@
 /*
-Title: Travelling with a Child with Asperger's Syndrom
+Title: Travelling with a Child with Asperger's Syndrome
 Sort: 2
-article_tags: shalom,cheese
+article_tags: family
 */
 
 *Angèle Desrochers: teacher and parent of a child with Asperger’s Syndrome*

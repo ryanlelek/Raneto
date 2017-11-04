@@ -1,7 +1,7 @@
-/* 
-Title: Thinking About Autism 
-Sort: 1 
-article_tags: something,hello 
+/*
+Title: Thinking About Autism
+Sort: 1
+article_tags: learn,volunteer
 */
 
 ## **Thinking About Autism**
@@ -20,7 +20,7 @@ ASD crosses all cultural, ethnic, geographic and socioeconomic boundaries.
 
 The terminology, the words or terms we use to diagnose ASD are constantly changing. As assessment tools are developed, the set of described behaviours are defined in new ways. There have been many changes made to the diagnostic terminology over time, and while it is important to know the history, what is most important, is meeting the needs of people on the spectrum, and their families.
 
-For more information about changes to the DSM 5 or the diagnostic criteria, please contact your local Chapter or your local Family Support Coordinator. 
+For more information about changes to the DSM 5 or the diagnostic criteria, please contact your local Chapter or your local Family Support Coordinator.
 
 ![enter image description here](http://autismontario.novosolutions.net/admin/virtual/imgs/Prism.png)
 
@@ -30,7 +30,7 @@ For more information about changes to the DSM 5 or the diagnostic criteria, plea
 
 There are lots of different ways to talk about Autism Spectrum Disorder (ASD). We can talk about ASD medically, we can describe it through behaviour, we can talk about prevalence rates, we can talk about early detection and the importance of early evidence-based intervention, we can talk about the need for support for people with ASD across a lifespan, or we can talk about why advocacy is vital for building communities equipped to meet and support the changing needs of people on the spectrum.
 
-It’s easy to think about ASD as a diagnosis, however, we are not talking about a diagnosis. We are talking about a person with ASD. We are talking about a person with individual needs. We are talking about a person with loving family members. We are talking about a person who needs to be accepted and included in her or his community, we are talking about a person who is granted equal opportunity preparing for and succeeding in adulthood. 
+It’s easy to think about ASD as a diagnosis, however, we are not talking about a diagnosis. We are talking about a person with ASD. We are talking about a person with individual needs. We are talking about a person with loving family members. We are talking about a person who needs to be accepted and included in her or his community, we are talking about a person who is granted equal opportunity preparing for and succeeding in adulthood.
 
 ###The Unique Challenges of ASD
 
@@ -46,6 +46,6 @@ ASD doesn’t go away in adulthood; the system in Ontario must be responsive to 
 
 Unfortunately, the supports and services for adults on the spectrum are inadequate and fragmented, and fail to address needs across the entire lifespan. There is a societal cost to families withdrawing from workplace to act as caregivers, increasing responsibility as parents age and resources diminish. Housing for people with ASD continues to be segregated and expensive. People with ASD require affordable, safe, supported residences, where they are a meaningful part of their communities.
 
-Because ASD changes over time – in its expression, challenges and delights; Ontario must be prepared to support children, youth and adults within the context of development, learning, family and community. Supportive, understanding and inclusive communities ensure that each person with ASD is provided the means to achieve quality of life as a respected member of society. 
+Because ASD changes over time – in its expression, challenges and delights; Ontario must be prepared to support children, youth and adults within the context of development, learning, family and community. Supportive, understanding and inclusive communities ensure that each person with ASD is provided the means to achieve quality of life as a respected member of society.
 
 [Download this article.](http://autismontario.novosolutions.net/redirfile.asp?id=380&fstore=&SID=)

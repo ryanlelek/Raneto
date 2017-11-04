@@ -1,7 +1,7 @@
 /*
 Title: Making the Most of the Holidays for Your Family and Your Son/Daughter on the Autism Spectrum
 Sort: 3
-article_tags: hello,milk
+article_tags: family
 */
 
 *Contributed by Cathy Pratt, Ph.D., BCBA-D, Director, Rachel Hopf, M.A., Graduate Assistant, Kelsey Larriba-Quest, M.Ed., Graduate Assistant, Indiana Resource Center for Autism*

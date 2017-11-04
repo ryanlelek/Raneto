@@ -1,7 +1,7 @@
 /*
-Title: "Autism - A Sibling's Perspective
+Title: Autism - A Sibling's Perspective
 Sort: 3
-article_tags: hello,milk
+article_tags: family
 */
 
 *By Kathy Chorneyko*

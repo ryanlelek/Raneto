@@ -1,7 +1,7 @@
 /*
 Title: How do I explain autism to a sibling?
 Sort: 3
-article_tags: hello,milk
+article_tags: family
 */
 
 *By Maureen Bennie, Autism Awareness Centre Inc., autismawarenesscenter.com*

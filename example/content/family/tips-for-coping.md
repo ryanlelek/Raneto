@@ -1,7 +1,7 @@
 /*
 Title: Tips for Coping With, and, Enjoying Your Kids
 Sort: 3
-article_tags: hello,milk
+article_tags: family
 */
 
 *From a Mom with 5 Children on the Autism Spectrum*

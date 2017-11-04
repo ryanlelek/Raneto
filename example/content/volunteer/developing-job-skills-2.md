@@ -1,7 +1,7 @@
-/* 
+/*
 Title: Developing Job Skills 2
-Sort: 1 
-article_tags: something,hello 
+Sort: 1
+article_tags: volunteer
 */
 
 ##Developing Job Skills 2
@@ -9,13 +9,13 @@ article_tags: something,hello
 ###Developing Job-Readiness Skills in Youth with ASD Through Volunteering: Moving Into the Community
 
 (Part 2 of a 2 part series)
->By Laurie Pearce 
+>By Laurie Pearce
 
 ###Start Small
 
 Once household chores and money rules have been firmly established, it is time to look outside the home for work (volunteer) opportunities. While you’re seeking out those opportunities, you can try this little strategy I call “guerilla volunteering”.  While in the community, look for small pieces of helpful but casual work your child can do: restoring order to the spice display, making sure all the soup cans face out, ensuring the library’s videos are in alphabetical order. In the very early days you might want to secretly create a small amount of disorder that your child can correct quickly and easily, so the job doesn’t become overwhelming and then gradually have them deal with larger tasks.
 
-Be sure your child’s teacher knows about your child’s growing capabilities. Ask for work-type responsibilities to be given at school, whether that’s taking attendance to the office or setting up/cleaning up for a specific activity. 
+Be sure your child’s teacher knows about your child’s growing capabilities. Ask for work-type responsibilities to be given at school, whether that’s taking attendance to the office or setting up/cleaning up for a specific activity.
 
 ###What to Look for in a Volunteer Opportunity
 

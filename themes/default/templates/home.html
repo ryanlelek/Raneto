@@ -13,28 +13,27 @@
         <td>
           <span>Taggroup1</span><br>
           <select id="tag_group_1">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            <option value="super-hero" selected>Super Hero</option>
+            <option value="family">Family</option>
+            <option value="supporter">Supporter</option>
+            <option value="profressional">Educator/ Medical Professional</option>
           </select>
         </td>
         <td>
           <span>Taggroup2</span><br>
           <select id="tag_group_2">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            <option value="learn" selected>learn</option>
+            <option value="volunteer">volunteer</option>
+            <option value="support">find support</option>
+            <option value="donate">donate</option>
           </select>
         </td>
         <td>
           <span>Taggroup3</span><br>
           <select id="tag_group_3">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            <option value="toronto" selected>Toronto</option>
+            <option value="oshawa">Oshawa</option>
+            <option value="hamilton">Hamilton</option>
           </select>
         </td>
       </tr>
@@ -97,45 +96,42 @@
 <div class="nl-container demo-1" align="center">
   <div class="main clearfix">
     <form id="nl-form" class="nl-form">
-      I feel to eat 
+      I am a
       <select id="nl_tag_1">
-        <option value="1" selected>any food</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+        <option value="super-hero" selected>Super Hero</option>
+        <option value="family">Family</option>
+        <option value="supporter">Supporter</option>
+        <option value="profressional">Educator/ Medical Professional</option>
       </select>
-      <br />in a
+      <br />I want to
       <select id="nl_tag_2">
-        <option value="1" selected>standard</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+        <option value="learn" selected>learn</option>
+        <option value="volunteer">volunteer</option>
+        <option value="support">find support</option>
+        <option value="donate">donate</option>
       </select>
-      restaurant
-      <br />at 
+      <br />in
       <select id="nl_tag_3">
-        <option value="1" selected>anytime</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+        <option value="toronto" selected>Toronto</option>
+        <option value="oshawa">Oshawa</option>
+        <option value="hamilton">Hamilton</option>
+        <!-- <option value="mercedes">Mercedes</option> -->
+        <!-- <option value="audi">Audi</option> -->
       </select>
       <div class="nl-overlay"></div>
     </form>
     <div class="nl-submit-wrap">
-      <button class="nl-submit nl-form-button">Find a restaurant</button>
+      <button class="nl-submit nl-form-button">Lets go!</button>
     </div>
   </div>
 </div><!-- /container -->
 
 <script>
-  function getQueryStringValue (key) {  
+  function getQueryStringValue (key) {
     return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
   }
 
-  window.onload = function () { 
+  window.onload = function () {
     // show/hide list groups that have more than 0 or less than 0 items
     $(".list-group").each(function(){
       if($(this).find(".list-group-item").length = 0){
@@ -176,10 +172,10 @@
 
       // detect change in tag groups and change URL accordingly
       $('#tag_group_1').change(function(){
-        window.location.href = window.location.origin + window.location.pathname + "?tags=" + $(this).find("option:selected").attr('value') + "," + tagsArray[1] + "," + tagsArray[2] 
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + $(this).find("option:selected").attr('value') + "," + tagsArray[1] + "," + tagsArray[2]
       });
       $('#tag_group_2').change(function(){
-        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + $(this).find("option:selected").attr('value') + "," + tagsArray[2] 
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + $(this).find("option:selected").attr('value') + "," + tagsArray[2]
       });
       $('#tag_group_3').change(function(){
         window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
@@ -199,7 +195,7 @@
   }
 
 ;( function( window ) {
-  
+
   'use strict';
 
   var document = window.document;
@@ -208,7 +204,7 @@
     String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');};
   }
 
-  function NLForm( el ) { 
+  function NLForm( el ) {
     this.el = el;
     this.overlay = this.el.querySelector( '.nl-overlay' );
     this.fields = [];
@@ -249,10 +245,10 @@
   NLField.prototype = {
     _create : function() {
       if( this.type === 'dropdown' ) {
-        this._createDropDown(); 
+        this._createDropDown();
       }
       else if( this.type === 'input' ) {
-        this._createInput();  
+        this._createInput();
       }
     },
     _createDropDown : function() {
@@ -323,7 +319,7 @@
             self.close();
           }
         } );
-        this.inputsubmit.addEventListener( 'click', function( ev ) { 
+        this.inputsubmit.addEventListener( 'click', function( ev ) {
           ev.preventDefault(); self.close(); } );
         this.inputsubmit.addEventListener( 'touchstart', function( ev ) { ev.preventDefault(); self.close(); } );
       }
