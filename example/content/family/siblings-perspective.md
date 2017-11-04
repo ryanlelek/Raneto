@@ -1,0 +1,31 @@
+/*
+Title: Autism: A Sibling's Perspective
+Sort: 3
+article_tags: hello,milk
+*/
+
+*By Kathy Chorneyko*
+
+On April 3, 2012, my brother John and I had the great pleasure of participating in the sibling session of the 4th biennial Stages of Autism: Adolescence and Beyond Conference. We shared with the audience a bit of John’s and our family’s story which hopefully is summarized with some coherence in the paragraphs that follow.
+
+**Early Years**
+
+John was born on March 12, 1968, the third in what was to be a family of four children. At the time he had an older brother by twelve years, myself the older sister by five, with a younger brother to arrive two years later. My memories of John’s early childhood are somewhat hazy and as far as I recall nothing seemed amiss in the beginning but when John was around two, things started happening that weren’t completely usual. For example, he became particularly sensitive to loud noises and unusually frightened of seemingly innocuous things. There was one particular television commercial for laundry detergent that would send him running away in fear.
+
+As John grew older other things became apparent: social interactions and the usual childhood group activities were difficult for him. On the other hand there were things he was spectacular at, like building with Lego® and remembering all sorts of minute details and facts. I recall a multitude of doctors and assessments and unfortunately a pervasive undercurrent of guilt put on our parents for John’s problems. To their credit, our parents weathered this well although I can only imagine now, after becoming a parent myself, the overwhelming stress and anxiety which they shielded us from. There was one particularly difficult family session where we were all observed from behind a two-way mirror. After a very short time, my parents packed us all up and left. In all likelihood these early encounters contributed to the very delicate trust they had for the psychiatrists, psychologists and social workers that were to come. It was the case also that there was a general lack of educational facilities/programmes for children like John. At someone’s well-meaning intention, my parents went to visit a suggested institute and while they never shared with us the details, my mother was particularly quiet for some days and finally made it clear to us all, that in no uncertain terms would John ever be in a place like that. It seemed to be a profound moment for my parents and I wouldn’t be surprised if it was then that they understood how they would have to closely organize John’s future.
+
+So my parents spent countless hours and days investigating options for John, reading about different treatments and programmes, talking with a variety of professionals, non-professionals and basically keeping their eyes and ears open for possibilities. With their guidance and attentiveness, John completed high school, his last courses done in an adult school and by correspondence. They took him to the Mayo clinic for assessment and they have always credited the professionals there for finding, finally, a medication regime that seemed to work for John. To my knowledge, with some slight modifications, he is still on this combination today. My parents never gave up trying to help John in any way they could. During all of this, they involved us relatively peripherally and I suspect in many ways being busy with our own education and careers, we weren’t so interested to get more involved. However, the foundations of John’s care and the principle of how things should be in the future was communicated to us to some extent by their words but largely by their actions.
+
+**Adjusting to change**
+
+While our parents were still able, they felt that they should still look after things for John but age and illness spare no one. A number of years ago our father began showing signs of cognitive decline and our mother became his primary caregiver. Then she herself became unwell with a difficult to control cancer. She continued to want to do as much as she could for John despite all of these things and up until the last few months of her life, almost miraculously, she was able to do this. My parents had discussed with us arrangements for John and as siblings we had begun to think about what losing her would mean. Mostly though, we thought about financial/power of attorney/guardianship issues, which are tremendously important, but there are other things equally deserving of consideration:
+
+Support for your sibling with autism as they struggle to deal with illness, aging and death. Seeing your mother or father very ill is not an easy thing for anyone and no less so for an individual with autism. How they come to terms with this and the grieving process may be different or the same but no less acute or deserving of a thoughtful, sympathetic and empathic approach. John and our family have been extremely fortunate to have the support of the Woodview Manor community.
+
+Understand yourself in the context of your family. Taking on or feeling responsible for tasks that you don’t feel comfortable with might not go well in the long run. Up front, open communication about how you feel about issues with your parents and other siblings will help to alleviate pressures later on when the inevitable does happen. Also keep in mind that there are many ways to provide support within a family and no family is the same so what works for one, may not for another.
+
+Make things fit for you as much as possible. Our parents did a great deal in organizing our brother’s disability benefits, drug and dental needs. After our mother passed away we had and still do have some homework to do about understanding how these things work, but mostly it has become a matter of making them work in ways that fit our routines and lifestyles which are substantially different from our parents. We can’t be our parents to our brother or sister, nor should we try to be. But we can aim to be supportive siblings in the best way we can.
+
+**In Conclusion**
+
+At the conference the panel was asked whether it would have been helpful to have other people to talk to who also had a sibling with autism. Certainly from my point of view this would have been very useful and hopefully the sibling panel is a small beginning in this regard.  
