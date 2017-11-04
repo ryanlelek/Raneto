@@ -185,6 +185,15 @@
   padding: 0 20px;
 }
 
+.tag-selector-container {
+  width: 100%;
+  display: none; /* hidden by default */
+}
+
+.tag-selector-container td {
+  text-align: center;
+}
+
 @media only screen and (max-width: 767px) {
 
   .home-search .form-group {
