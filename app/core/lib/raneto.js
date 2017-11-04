@@ -378,14 +378,14 @@ var Raneto = function () {
 
       activePageSlug = activePageSlug || '';
       filter_tags = filter_tags || '';
+      var filter_tags_array = filter_tags.split(',');
       var page_sort_meta = this.config.page_sort_meta || '';
       var article_tags = this.config.article_tags || '';
       var category_sort = this.config.category_sort || false;
       var files = glob.sync(patch_content_dir(this.config.content_dir) + '**/*');
       var content_dir = path.normalize(patch_content_dir(this.config.content_dir));
       var filesProcessed = [];
-      var filter_tags_array = filter_tags.split(',');
-
+      
       filesProcessed.push({
         slug: '.',
         title: '',
@@ -473,22 +473,30 @@ var Raneto = function () {
             });
 
             // parse through passed tags and compare them against current article tags
-            var containsTag = false;
-            var currentArticleTags = meta[article_tags].split(',');
+            var showArticleAnyways = false; // set this to true to show articles 
+                                            // regardless even if they don't have
+                                            // tags set in the metadata
+            var showArticleInView;
+            if(meta[article_tags] != undefined){
+              var containsTag = false;
+              var currentArticleTags = meta[article_tags].split(',');
 
-            for(var i=0; i < filter_tags_array.length; i++){
-              for(var j=0; j < currentArticleTags.length; j ++){
-                if(filter_tags_array[i] == currentArticleTags[j]){
-                  containsTag = true;
+              for(var i=0; i < filter_tags_array.length; i++){
+                for(var j=0; j < currentArticleTags.length; j ++){
+                  if(filter_tags_array[i] == currentArticleTags[j]){
+                    showArticleInView = true;
+                  }
                 }
               }
+            } else {
+              showArticleInView = showArticleAnyways;
             }
 
             val.files.push({
               slug: slug,
               title: meta.title ? meta.title : _this2.slugToTitle(slug),
               //show_on_home: meta.show_on_home ? meta.show_on_home === 'true' : _this2.config.show_on_home_default,
-              show_on_home: containsTag,
+              show_on_home: showArticleInView,
               is_directory: false,
               active: activePageSlug.trim() === '/' + slug,
               sort: pageSort

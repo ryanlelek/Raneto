@@ -1,7 +1,6 @@
 /*
 Title: What is Raneto?
 Sort: 1
-ShowOnHome: false
 article_tags: something,hello
 */
 
