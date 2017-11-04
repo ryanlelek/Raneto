@@ -492,6 +492,7 @@ input:focus::-ms-input-placeholder {
   padding-left: 0;
   margin-left: -15px;
   padding-top: 130px;
+  display: none;
 }
 
 @media screen and (max-width: 45em) {

@@ -185,6 +185,8 @@
         window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
       });
     } else {
+      // show the collection form
+      $(".nl-container").fadeIn();
       // hook into the submit button
       $(".nl-submit").click(function( event ) {
         event.preventDefault();
