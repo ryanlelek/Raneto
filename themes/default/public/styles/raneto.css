@@ -237,6 +237,20 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+.nl-form-button {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 
 .nl-form input:focus {
   outline: none;
@@ -414,7 +428,7 @@ input:focus::-ms-input-placeholder {
   margin-top: 0.4em;
 }
 
-.nl-form .nl-submit {
+.nl-submit {
   line-height: 3;
   text-transform: uppercase;
   cursor: pointer;
@@ -436,12 +450,12 @@ input:focus::-ms-input-placeholder {
   background: #69B1A9;
 }
 
-.no-touch .nl-form .nl-submit:hover,
-.no-touch .nl-form .nl-submit:active {
+.nl-submit:hover,
+.nl-submit:active {
   background: #69B1A9;
 }
 
-.no-touch .nl-form .nl-submit:hover:before {
+.nl-submit:hover:before {
   background: #58a199;
 }
 

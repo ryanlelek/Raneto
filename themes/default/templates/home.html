@@ -98,35 +98,35 @@
   <div class="main clearfix">
     <form id="nl-form" class="nl-form">
       I feel to eat 
-      <select>
+      <select id="nl_tag_1">
         <option value="1" selected>any food</option>
-        <option value="2">Indian</option>
-        <option value="3">French</option>
-        <option value="4">Japanese</option>
-        <option value="2">Italian</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
       </select>
       <br />in a
-      <select>
+      <select id="nl_tag_2">
         <option value="1" selected>standard</option>
-        <option value="2">fancy</option>
-        <option value="3">hip</option>
-        <option value="4">traditional</option>
-        <option value="2">romantic</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
       </select>
       restaurant
       <br />at 
-      <select>
+      <select id="nl_tag_3">
         <option value="1" selected>anytime</option>
-        <option value="1">7 p.m.</option>
-        <option value="2">8 p.m.</option>
-        <option value="3">9 p.m.</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
       </select>
-      in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
-      <div class="nl-submit-wrap">
-        <button class="nl-submit" type="submit">Find a restaurant</button>
-      </div>
       <div class="nl-overlay"></div>
     </form>
+    <div class="nl-submit-wrap">
+      <button class="nl-submit nl-form-button">Find a restaurant</button>
+    </div>
   </div>
 </div><!-- /container -->
 
@@ -184,7 +184,15 @@
       $('#tag_group_3').change(function(){
         window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
       });
-
+    } else {
+      // hook into the submit button
+      $(".nl-submit").click(function( event ) {
+        event.preventDefault();
+        var tag1 = $("#nl_tag_1").val();
+        var tag2 = $("#nl_tag_2").val();
+        var tag3 = $("#nl_tag_3").val();
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tag1 + "," + tag2 + "," + tag3
+      });
     }
   }
 
@@ -313,7 +321,8 @@
             self.close();
           }
         } );
-        this.inputsubmit.addEventListener( 'click', function( ev ) { ev.preventDefault(); self.close(); } );
+        this.inputsubmit.addEventListener( 'click', function( ev ) { 
+          ev.preventDefault(); self.close(); } );
         this.inputsubmit.addEventListener( 'touchstart', function( ev ) { ev.preventDefault(); self.close(); } );
       }
 
