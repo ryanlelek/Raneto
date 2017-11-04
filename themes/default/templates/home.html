@@ -6,6 +6,40 @@
       <button type="submit" class="btn btn-primary btn-lg">{{lang.global.search}}</button>
     </div>
   </form>
+  <br>
+  <div class="tag-selector-container" align="center">
+    <table>
+      <tr>
+        <td>
+          <span>Taggroup1</span><br>
+          <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </td>
+        <td>
+          <span>Taggroup2</span><br>
+          <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </td>
+        <td>
+          <span>Taggroup3</span><br>
+          <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div class="home-categories row">
@@ -60,7 +94,12 @@
   {{/pages}}
 </div>
 <script>
+  function getQueryStringValue (key) {  
+    return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+  }
+
   window.onload = function () { 
+    // show/hide list groups that have more than 0 or less than 0 items
     $(".list-group").each(function(){
       if($(this).find(".list-group-item").length = 0){
         $(this).closest(".col").css("display", "none");
@@ -69,5 +108,10 @@
         $(this).closest(".col").css("opacity", "1");
       }
     });
+
+    //show/hide tag picker depending on url tag arguments
+    if(getQueryStringValue("tags") != ""){
+      $(".tag-selector-container").css("display", "block");
+    }
   }
 </script>
