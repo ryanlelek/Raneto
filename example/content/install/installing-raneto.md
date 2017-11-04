@@ -1,6 +1,7 @@
 /*
 Title: Installing Raneto
 Sort: 2
+article_tags: shalom,cheese
 */
 
 Once you are sure you have met the [minimum requirements](%base_url%/install/requirements) you can install
