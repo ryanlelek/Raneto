@@ -4,9 +4,7 @@ Sort: 1
 article_tags: something,hello 
 */
 
-##Developing Job Skills 1
-
-###Developing Job-Readiness Skills in Youth with ASD through Volunteering: Getting Started
+### Developing Job-Readiness Skills in Youth with ASD through Volunteering: Getting Started
 
 (Part 1 of a 2 part series)
 
@@ -14,7 +12,7 @@ article_tags: something,hello
 
 Like many other parents of a youth with an Autism Spectrum Disorder (ASD), I find thoughts of the future can be positively paralyzing. To overcome that paralysis, I decided to focus on helping my son prepare for some form of work when he leaves school. The focus is not on career development, but simply to increase the options that will be available for him to make a meaningful life for himself once he leaves school. This article provides some suggestions for other parents with similar goals, suggestions that I believe can be applied to individuals wherever they might be on the spectrum.
 
-###The First Job is in the Home
+### The First Job is in the Home
 
 You don’t have to look far to find a way to develop job skills in your child or youth: just take a look around your home. Household chores are not just a way to share the workload of family life; they’re an invaluable way to help your child develop useful skills and a sense of responsibility.
 
@@ -38,7 +36,7 @@ Even the simplest household chore develops core skills. For example, emptying th
 
 - As your child gets comfortable with doing chores, add more responsibility, either more chores or more responsibility for an existing chore. Add some chores where your child has to identify that the work needs to be done at all (e.g. the garbage can in the kitchen is close to full), so they don’t rely on always being told to start the work.
 
-###Money: Your New Primary Reinforcer
+### Money: Your New Primary Reinforcer
 
 Paying your child for their household chores and, when they’re ready, for their volunteer work, has many benefits. No math drill, computer math program, or worksheet can teach someone about the value of money better than having cash in the hand, and the opportunity to spend it.
 
