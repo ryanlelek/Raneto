@@ -12,7 +12,7 @@
       <tr>
         <td>
           <span>Taggroup1</span><br>
-          <select>
+          <select id="tag_group_1">
             <option value="volvo">Volvo</option>
             <option value="saab">Saab</option>
             <option value="mercedes">Mercedes</option>
@@ -21,7 +21,7 @@
         </td>
         <td>
           <span>Taggroup2</span><br>
-          <select>
+          <select id="tag_group_2">
             <option value="volvo">Volvo</option>
             <option value="saab">Saab</option>
             <option value="mercedes">Mercedes</option>
@@ -30,7 +30,7 @@
         </td>
         <td>
           <span>Taggroup3</span><br>
-          <select>
+          <select id="tag_group_3">
             <option value="volvo">Volvo</option>
             <option value="saab">Saab</option>
             <option value="mercedes">Mercedes</option>
@@ -109,9 +109,43 @@
       }
     });
 
-    //show/hide tag picker depending on url tag arguments
-    if(getQueryStringValue("tags") != ""){
+    // parse the tag arguments in URL
+    var tagsArray = getQueryStringValue("tags").split(",");
+    // set the tags initially to match the url tags
+    if(tagsArray != ""){
+      // show the tag groups
       $(".tag-selector-container").css("display", "block");
+
+      // tag group 1
+      if($("#tag_group_1 option[value='" + tagsArray[0] + "']").length > 0){
+        $("#tag_group_1").val(tagsArray[0]);
+      } else {
+        console.log("Tag " + tagsArray[0] + " does not exist.");
+      }
+      // tag group 2
+      if($("#tag_group_2 option[value='" + tagsArray[1] + "']").length > 0){
+        $("#tag_group_2").val(tagsArray[1]);
+      } else {
+        console.log("Tag " + tagsArray[1] + " does not exist.");
+      }
+      // tag group 3
+      if($("#tag_group_3 option[value='" + tagsArray[2] + "']").length > 0){
+        $("#tag_group_3").val(tagsArray[2]);
+      } else {
+        console.log("Tag " + tagsArray[2] + " does not exist.");
+      }
+
+      // detect change in tag groups and change URL accordingly
+      $('#tag_group_1').change(function(){
+        window.location.href = window.location.origin + "/?tags=" + $(this).find("option:selected").attr('value') + "," + tagsArray[1] + "," + tagsArray[2] 
+      });
+      $('#tag_group_2').change(function(){
+        window.location.href = window.location.origin + "/?tags=" + tagsArray[0] + "," + $(this).find("option:selected").attr('value') + "," + tagsArray[2] 
+      });
+      $('#tag_group_3').change(function(){
+        window.location.href = window.location.origin + "/?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
+      });
+
     }
   }
 </script>
