@@ -128,7 +128,7 @@ function initialize (config) {
     app.get(/^([^.]*)/, authenticate, route_wildcard);
   } else {
     app.get('/sitemap.xml', route_sitemap);
-    app.get('/:var(index)?', route_search, route_home);
+    app.get('/kb/:var(index)?', route_search, route_home);
     app.get(/^([^.]*)/, route_wildcard);
   }
 

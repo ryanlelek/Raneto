@@ -137,13 +137,13 @@
 
       // detect change in tag groups and change URL accordingly
       $('#tag_group_1').change(function(){
-        window.location.href = window.location.origin + "/?tags=" + $(this).find("option:selected").attr('value') + "," + tagsArray[1] + "," + tagsArray[2] 
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + $(this).find("option:selected").attr('value') + "," + tagsArray[1] + "," + tagsArray[2] 
       });
       $('#tag_group_2').change(function(){
-        window.location.href = window.location.origin + "/?tags=" + tagsArray[0] + "," + $(this).find("option:selected").attr('value') + "," + tagsArray[2] 
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + $(this).find("option:selected").attr('value') + "," + tagsArray[2] 
       });
       $('#tag_group_3').change(function(){
-        window.location.href = window.location.origin + "/?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
       });
 
     }
