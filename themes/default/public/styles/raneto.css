@@ -493,7 +493,7 @@ input:focus::-ms-input-placeholder {
 .view-all-articles-button {
   margin-top: 15px;
   border: 0;
-  background: #779126;
+  background: #b3ba3f;
   border-radius: 25px;
   color: #fff;
   padding: 5px 10px 5px 10px;
@@ -555,7 +555,7 @@ input:focus::-ms-input-placeholder {
 
 /* -------------------- Colors: Background */
 .slate   { background-color: #ddd; }
-.green   { background-color: #779126; }
+.green   { background-color: #b3ba3f; }
 .blue    { background-color: #3b8ec2; }
 .yellow  { background-color: #eec111; }
 .black   { background-color: #000; }
@@ -625,6 +625,11 @@ select#soflow-color {
   .input-lg {
     width: 665px !important;
   }
+}
+
+.btn-lg {
+  background-color: #b3ba3f !important;
+  border-color: #9da241 !important;
 }
 
 
