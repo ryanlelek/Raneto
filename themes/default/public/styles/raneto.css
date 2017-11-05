@@ -620,3 +620,11 @@ select#soflow-color {
    border-radius: 20px;
    padding-left: 15px;
 }
+
+@media screen and (min-width: 768px) {
+  .input-lg {
+    width: 665px !important;
+  }
+}
+
+
