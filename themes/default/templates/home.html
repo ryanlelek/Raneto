@@ -1,4 +1,4 @@
-<div class="home-search jumbotron row">
+<div class="home-search jumbotron row" style="padding-top: 28px; padding-bottom: 28px;">
   <form class="search-form form-inline" action="{{config.base_url}}/">
     <div class="form-group">
       <label class="sr-only" for="home-search">{{lang.home.searchKnowledgeBase}}</label>
@@ -11,32 +11,40 @@
     <table>
       <tr>
         <td>
-          <span>Taggroup1</span><br>
-          <select id="tag_group_1">
-            <option value="super-hero" selected>Super Hero</option>
-            <option value="family">Family</option>
-            <option value="supporter">Supporter</option>
-            <option value="profressional">Educator/ Medical Professional</option>
-          </select>
+          <span>I am</span><br>
+          <div class="styled-select green rounded">
+            <select id="tag_group_1">
+              <option value="super-hero" selected>Super Hero</option>
+              <option value="family">Family</option>
+              <option value="supporter">Supporter</option>
+              <option value="profressional">Educator/ Medical Professional</option>
+            </select>
+          </div>
         </td>
         <td>
-          <span>Taggroup2</span><br>
-          <select id="tag_group_2">
-            <option value="learn" selected>learn</option>
-            <option value="volunteer">volunteer</option>
-            <option value="support">find support</option>
-            <option value="donate">donate</option>
-          </select>
+          <span>I want to</span><br>
+          <div class="styled-select green rounded">
+            <select id="tag_group_2">
+              <option value="learn" selected>learn</option>
+              <option value="volunteer">volunteer</option>
+              <option value="support">find support</option>
+              <option value="donate">donate</option>
+            </select>
+          </div>
         </td>
         <td>
-          <span>Taggroup3</span><br>
-          <select id="tag_group_3">
-            <option value="toronto" selected>Toronto</option>
-            <option value="oshawa">Oshawa</option>
-            <option value="hamilton">Hamilton</option>
-          </select>
+          <span>in</span><br>
+          <div class="styled-select green rounded">
+            <select id="tag_group_3">
+              <option value="toronto" selected>Toronto</option>
+              <option value="oshawa">Oshawa</option>
+              <option value="hamilton">Hamilton</option>
+            </select>
+          </div>
         </td>
-        <td>
+      </tr>
+      <tr>
+        <td colspan="3">
           <button id="view-all-articles" class="view-all-articles-button">View all articles</button>
         </td>
       </tr>
