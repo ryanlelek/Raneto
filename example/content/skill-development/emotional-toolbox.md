@@ -57,7 +57,7 @@ Tony Attwood, a well-known psychologist in the field of Autism Spectrum Disorder
 - Incorporate special interests or talents into the curriculum, employment or volunteer work
 
  **Medication: used to treat mood disorders**
- 
+
 - Work collaboratively with health care professionals
 - Follow the physician’s instructions
 - Record any side effects (positive and negative) and discuss with the physician
