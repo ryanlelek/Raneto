@@ -138,8 +138,8 @@
   window.onload = function () {
     // show/hide list groups that have more than 0 or less than 0 items
     $(".list-group").each(function(){
-      if($(this).find(".list-group-item").length = 0){
-        $(this).closest(".col").css("display", "none");
+      if($(this).find(".list-group-item").length == 0){
+        $(this).closest(".col").remove();
       }
       if($(this).find(".list-group-item").length > 0){
         $(this).closest(".col").css("opacity", "1");
