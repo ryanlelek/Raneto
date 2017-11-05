@@ -1,4 +1,4 @@
-[![Autism Ontario Logo](https://github.com/arelroche/autism-knowledge-base/blob/master/themes/default/public/images/autism-ontario-white.png)](http://www.autismontario.com/)
+[![Autism Ontario Logo](https://github.com/arelroche/autism-knowledge-base/blob/master/themes/default/public/images/AutismOntario_COL.png)](http://www.autismontario.com/)
 
 Autism Ontario Knowledge Base - https://desolate-reef-40746.herokuapp.com/
 
