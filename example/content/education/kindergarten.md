@@ -1,7 +1,7 @@
-/* 
+/*
 Title: Preparing for Kindergarten: Ideas for Families
-Sort: 1 
-article_tags: something,hello 
+Sort: 1
+article_tags: support,family
 */
 ### Tip Sheet
 
@@ -23,14 +23,14 @@ A key part of planning the transition to school is to familiarize your child wit
 
 An important part of preparing a child for kindergarten is practice being in a group setting. These opportunities can be provided in an early childhood setting that follows a predictable and organized schedule of activities and teaches daily routines and expectations in the classroom and on the yard. A child who has attended a preschool program has had the chance to learn to:
 
- 
+
 
 - Do some activities on their own
 - Follow instructions
 - Participate in some classroom routines (circle time, snack, waiting in line)
 - Tolerate 20 (or more) other little people in the same room
 
- 
+
 
 The child who has learned these important skills is much more likely to be successful in kindergarten than one who has not.   Many preschool service providers support children with autism in an inclusive setting:  nursery school, child-care centre, drop-in or Early Years Centre, summer camp or a private home program.  
 
@@ -38,14 +38,14 @@ The child who has learned these important skills is much more likely to be succe
 
 Families know their children best.  An opportunity to meet with school board staff, share information about your child and create a transition plan is a key component of preparing for kindergarten. Providing a clear picture of your child allows school staff to better prepare for welcoming your child into kindergarten. Information to share with the school includes:
 
- 
+
 
 - Your child’s strengths and needs
 - Diagnostic and medical information, including any special equipment your child uses
 - Skills your child has developed and what you have found helpful in teaching your child
 - Your child’s favourite activities, likes and dislikes and how to calm your child when he or she is upset, sad or fearful
 
- 
+
 
 Families who are uncomfortable sharing a diagnosis or describing their child’s needs risk that the school will not be prepared to properly support their child.  Parents may be tempted to just wait and see how well their child can adjusts on their own but they must avoid this approach when starting school.  This is unfair to a child with unique needs that usually become quite apparent within the first few days or weeks of school. At this point, staff and resources have been allocated and it is often too late to arrange additional support.
 
@@ -53,7 +53,7 @@ Collaboration and co-operation are keys to successful meetings and transitions. 
 
 ### Classroom Supports
 
-Many kindergarten teachers will have some experience having a child with autism in their classroom.  School personnel supporting a child with an Autism Spectrum Disorder have access to both in school and school board services. The types of services and accessibility of these services, varies from one school board to another. At the school level, the teacher can access the school resource teacher, who can pursue involvement of other professionals within the school board or through local service providers. 
+Many kindergarten teachers will have some experience having a child with autism in their classroom.  School personnel supporting a child with an Autism Spectrum Disorder have access to both in school and school board services. The types of services and accessibility of these services, varies from one school board to another. At the school level, the teacher can access the school resource teacher, who can pursue involvement of other professionals within the school board or through local service providers.
 
 When planning your child’s transition to school, it is important to discuss how preschool service providers can share their knowledge of your child and help support this important transition. Service providers are often willing to visit the classroom to share their experiences and success. Although actual assignment of support personnel is often not done until closer to school starting, parents are encouraged to ask about supports the school is planning to provide as early as possible, providing ample time to prepare.
 
@@ -77,5 +77,3 @@ _References:_ References: York Region Early Intervention Services; Transition to
 ----------
 
 [Download this article.](http://autismontario.novosolutions.net/redirfile.asp?id=12&fstore=&SID=)
-
-

@@ -1,7 +1,7 @@
-/* 
+/*
 Title: Paediatric Dentist
-Sort: 1 
-article_tags: something,hello 
+Sort: 1
+article_tags: profressional,family,support
 */
 #### **What is the role of a Paediatric Dentist?**
 
@@ -9,11 +9,11 @@ Paediatric Dental specialists are dentists who have received training in the dis
 
 For some children and youth with Autism Spectrum Disorder (ASD), a trip to the dentist can be a very anxiety-provoking experience. Paediatric Dentists are aware a trip to the dentist can be frightening and are equipped to meet the special needs of their young patients.
 
-Sedation is an Option. Many Paediatric Dentists offer conscious sedation services in their practices. These sedation services can include light sedation, while other dentists offer patients a sedation option but have visiting dental or medical anaesthesia specialists administer deeper levels of sedation. Some Paediatric Dentists have access to hospital operating rooms and are able to bring their patients to these facilities for treatment. Finally, some sedation services are provided by dental anaesthesiologists and although they are not specialists in Paediatric Dentistry, they are highly trained in the field of anaesthesia for dentistry. 
+Sedation is an Option. Many Paediatric Dentists offer conscious sedation services in their practices. These sedation services can include light sedation, while other dentists offer patients a sedation option but have visiting dental or medical anaesthesia specialists administer deeper levels of sedation. Some Paediatric Dentists have access to hospital operating rooms and are able to bring their patients to these facilities for treatment. Finally, some sedation services are provided by dental anaesthesiologists and although they are not specialists in Paediatric Dentistry, they are highly trained in the field of anaesthesia for dentistry.
 
 #### **How does a Paediatric Dentist help a child with ASD?**
 
-Because Paediatric Dentists might see more children with ASD, they may be more familiar with the special needs children or youth with ASD might have. This is helpful when it comes to developing an effective course of treatment that can meet the needs of the patient sitting in the dental chair. In addition, Paediatric Dentists typically have reinforcing activities available to those waiting or undergoing procedures in their offices that might be of interest to those with ASD. Toys, video games and other sensory items can help to make their visit more enjoyable. 
+Because Paediatric Dentists might see more children with ASD, they may be more familiar with the special needs children or youth with ASD might have. This is helpful when it comes to developing an effective course of treatment that can meet the needs of the patient sitting in the dental chair. In addition, Paediatric Dentists typically have reinforcing activities available to those waiting or undergoing procedures in their offices that might be of interest to those with ASD. Toys, video games and other sensory items can help to make their visit more enjoyable.
 
 #### **Children with ASD often experience sensory challenges. How will a dentist mitigate these difficulties in their practice?**
 
@@ -43,11 +43,11 @@ In larger cities in Ontario, there are likely to be both Paediatric Dentists and
 
 A caring and compassionate attitude towards an individual affected by ASD and their family is paramount. Understanding the approaches that best serve the unique needs of each patient is important. With patience, many patients with ASD can successfully tolerate dental treatment.
 
-A general dentist who treats patients with ASD should have patience and understanding. As well, the knowledge of how and when to access supportive services like a Paediatric Dentists or dental anaesthesiologists are necessary if the general dentist and the family feel that these services are required. 
+A general dentist who treats patients with ASD should have patience and understanding. As well, the knowledge of how and when to access supportive services like a Paediatric Dentists or dental anaesthesiologists are necessary if the general dentist and the family feel that these services are required.
 
 #### **Will a dentist recommend solutions/practice for improving oral hygiene a home?**
 
-Dental offices have oral hygiene programs that they recommend to people based on their needs and abilities. Both the dentist and the dental hygienist should suggest different ways to help those with ASD maintain their oral hygiene. There are aids like mechanical toothbrushes and special flossing devices, to name a few, that can be recommended. In addition, families should be counseled about which foods and drinks increase the risk of tooth decay and methods to reduce this risk, such as, eating cheese and drinking lots of water. 
+Dental offices have oral hygiene programs that they recommend to people based on their needs and abilities. Both the dentist and the dental hygienist should suggest different ways to help those with ASD maintain their oral hygiene. There are aids like mechanical toothbrushes and special flossing devices, to name a few, that can be recommended. In addition, families should be counseled about which foods and drinks increase the risk of tooth decay and methods to reduce this risk, such as, eating cheese and drinking lots of water.
 
 #### **What else do I need to be aware of when looking for a dentist who is knowledgeable about supporting children with ASD and other challenges?**
 
@@ -73,4 +73,3 @@ Disclaimer: This document reflects the views of the author. It is Autism Ontario
 ----------
 
 [Download this article.](http://autismontario.novosolutions.net/redirfile.asp?id=316&fstore=&SID=)
-

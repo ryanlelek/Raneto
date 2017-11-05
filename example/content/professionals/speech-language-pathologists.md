@@ -1,7 +1,7 @@
-/* 
+/*
 Title: Speech Language Pathologists
-Sort: 1 
-article_tags: something,hello 
+Sort: 1
+article_tags: profressional,family,support
 */
 
 #### **What is the role of a Speech and Language Pathologist (SLP) in working with a child with Autism Spectrum Disorder (ASD)?**
@@ -15,14 +15,14 @@ article_tags: something,hello
 - Written language skills – the ability to write for a variety of purposes
 - Vocal quality – the rate, rhythm, and speaking style
 - Augmentative and alternative communication (AAC) – sign language, Picture Exchange Communication System, voice-output devices such as GoTalk or iPad/iPhone with Proloquo2go.
- 
+
 
 #### **What are some signs a child may require the assistance of a SLP?**
 
 The child may exhibit one or more of the following signs:
 
 - The child is not using any spoken words or is not using spoken language in a meaningful way
-- The child is not understood by unfamiliar people (e.g., babysitter, daycare provider, teacher, relatives, etc.) 
+- The child is not understood by unfamiliar people (e.g., babysitter, daycare provider, teacher, relatives, etc.)
 - The child is not combining words to form lengthy phrases in order to request/ask for items that he/she wants
 - The child is not using aspects of grammar that would be expected at their chronological age (e.g, pronouns – I, you, he, she, we, they, etc.; past tense verbs – jumped, ate, drank, etc.; present progressive tense verbs – is [verb ing, for example, The dog is barking.)
 - The child is not using language for a variety of purposes such as requesting items, requesting attention, requesting help/assistance, answering yes/no questions, answering and asking Wh-questions (who, what, where, and when), requesting information, and for conversation purposes
@@ -138,4 +138,3 @@ Disclaimer: This document reflects the views of the author. It is Autism Ontario
 
 ----------
 [Download this article.](http://autismontario.novosolutions.net/redirfile.asp?id=319&fstore=&SID=)
-

@@ -1,7 +1,7 @@
-/* 
+/*
 Title: Social Workers
-Sort: 1 
-article_tags: something,hello 
+Sort: 1
+article_tags: profressional,family,support
 */
 
 #### **What is the role of a social worker with a child with Autism Spectrum Disorder (ASD) and their family?**
@@ -22,11 +22,11 @@ Children and youth with ASD experience challenges beyond those that are typical 
 
 #### **Can a child of any age benefit from seeing a social worker?**
 
-There is no precise age to determine whether a child could benefit from counselling. For counselling to be beneficial, he or she has must have some functional communication and be able to interact in a productive way with a professional. Young children often do best with experiential types of therapy such as play therapy or art therapy. Younger children (and some older ones) may have difficulty processing difficult emotions or attending for a longer period of time. Sessions may therefore need to be more frequent and shorter in length, when possible. Teens or even pre-teens may benefit from “talk therapy” with structure to the sessions facilitated by the social worker. These sessions may be complimented with joint sessions including parents and siblings. 
+There is no precise age to determine whether a child could benefit from counselling. For counselling to be beneficial, he or she has must have some functional communication and be able to interact in a productive way with a professional. Young children often do best with experiential types of therapy such as play therapy or art therapy. Younger children (and some older ones) may have difficulty processing difficult emotions or attending for a longer period of time. Sessions may therefore need to be more frequent and shorter in length, when possible. Teens or even pre-teens may benefit from “talk therapy” with structure to the sessions facilitated by the social worker. These sessions may be complimented with joint sessions including parents and siblings.
 
 #### **Is it helpful for parents of children with ASD to see a social worker?**
 
-Parents and other family members of children with ASD can benefit from seeing a social worker. A social worker can work with a parent individually, provide couple counselling or family counselling. The counselling can focus on a number of areas including the adaptation to the child’s diagnosis, processing feelings about the diagnosis, providing guidance and support in addressing concerns, or helping during times of transitions. To facilitate this, the social worker will develop goals in collaboration with the family. 
+Parents and other family members of children with ASD can benefit from seeing a social worker. A social worker can work with a parent individually, provide couple counselling or family counselling. The counselling can focus on a number of areas including the adaptation to the child’s diagnosis, processing feelings about the diagnosis, providing guidance and support in addressing concerns, or helping during times of transitions. To facilitate this, the social worker will develop goals in collaboration with the family.
 
 #### **Can a social worker fill out and sign forms, such as Assistance for Children with Severe Disabilities and the Disability Tax Credit?**
 
@@ -36,11 +36,11 @@ A social worker is not able to complete these forms. They can only be completed 
 
 A social worker can be an important part to any team in supporting your child. Social workers are concerned with the various systems that individuals come into contact with, and therefore value collaboration with other professionals to ensure treatment goals are consistent. Social workers are also trained to help people access resources and will be aware of suitable sources of support for the family.
 
-Social workers often take a “case management” role in ensuring that members on the professional team are communicating with each other and have a consistent perception of the family’s strengths and needs and a collaborative plan to help the child and family accomplish their goals. 
+Social workers often take a “case management” role in ensuring that members on the professional team are communicating with each other and have a consistent perception of the family’s strengths and needs and a collaborative plan to help the child and family accomplish their goals.
 
 #### **What questions should I ask a social worker when I contact them to provide service to myself or my child?**
 
-You should ask a social worker if they have had previous experience in supporting individuals with ASDs and their families, if they are a “Registered Social Worker”, their method of working with a client, their proposed length of involvement, means of assessment and treatment, how communication will occur with parents or others who are involved, and methods of billing and payment. 
+You should ask a social worker if they have had previous experience in supporting individuals with ASDs and their families, if they are a “Registered Social Worker”, their method of working with a client, their proposed length of involvement, means of assessment and treatment, how communication will occur with parents or others who are involved, and methods of billing and payment.
 
 #### **Can a social worker diagnose ASD? Can a social worker make a diagnosis that other professionals cannot?**
 
@@ -48,15 +48,15 @@ A social worker cannot diagnose Autism Spectrum Disorder--only a psychologist or
 
 #### **Should a social worker provide written documentation of the assessment or treatment they provide?**
 
-A social worker is required to keep records about sessions with clients and some provide written assessments and reports about work done with clients. If this is something you are interested in or require you should speak about this with your social worker. Additional fees will be applied for the time taken to write reports. 
+A social worker is required to keep records about sessions with clients and some provide written assessments and reports about work done with clients. If this is something you are interested in or require you should speak about this with your social worker. Additional fees will be applied for the time taken to write reports.
 
 #### **What are different types of therapy a social worker would provide to a child with ASD? Are some therapies proven to help more than others?**
 
-Social workers draw from a variety of therapeutic modalities. Some work mainly from one or two theories (for example, narrative therapy or solution focused therapy), while others take a more eclectic approach and integrate a number of therapies based on client needs and presentation. Cognitive Behavioural Therapy (CBT) has strong evidence in the treatment of anxiety disorders and depression in children and youth, and there is promising research for the effectiveness in children and youth with ASD. 
+Social workers draw from a variety of therapeutic modalities. Some work mainly from one or two theories (for example, narrative therapy or solution focused therapy), while others take a more eclectic approach and integrate a number of therapies based on client needs and presentation. Cognitive Behavioural Therapy (CBT) has strong evidence in the treatment of anxiety disorders and depression in children and youth, and there is promising research for the effectiveness in children and youth with ASD.
 
 #### **Are there an expected number of therapy sessions for children with ASD? For our family?**
 
-The length of time that you are involved with a social worker depends on the nature of the problem that they are addressing, their model of intervention, the costs involved for a family, and demands of for the social worker to see other families. Often, serial involvement with a social worker is helpful in which the social worker sees the child for a period of time, closes the file when the problem is resolved, and re-opens the file if there are new challenges for the child or family at a later time. 
+The length of time that you are involved with a social worker depends on the nature of the problem that they are addressing, their model of intervention, the costs involved for a family, and demands of for the social worker to see other families. Often, serial involvement with a social worker is helpful in which the social worker sees the child for a period of time, closes the file when the problem is resolved, and re-opens the file if there are new challenges for the child or family at a later time.
 
 #### **Will a social worker see my child in their office, in our home, or in the community?**
 
@@ -68,7 +68,7 @@ Content from sessions with a 16 year old is confidential and the social worker m
 
 #### **How much should I expect to pay for the services of a social worker? Is there funding available to pay for social work services?**
 
-Social workers generally have a sliding scale and their fee depends on their experience, academic qualifications and the nature/purpose of the involvement. Fees for social workers in Ontario range from $100.00 per hour to $150.00 per hour, but could be more or less than this. 
+Social workers generally have a sliding scale and their fee depends on their experience, academic qualifications and the nature/purpose of the involvement. Fees for social workers in Ontario range from $100.00 per hour to $150.00 per hour, but could be more or less than this.
 
 #### **Are there organizations or associations a social worker has to be, or may want to be affiliated with?**
 
@@ -83,7 +83,7 @@ The College exists to protect the public from unethical, incompetent or unprofes
 The title “Social Worker” is protected by the Social Work and Social Service Work Act. Most social workers have a Bachelor of Social Work (BSW), Masters in Social Work (MSW) or occasionally, a Doctorate in Social Work (PhD or DSW). Other degrees may be recognized as equivalent by the OCSWSSW on a case-by-case basis. A social worker signifies their registration with the College by the designation “R.S.W.”(e.g., Roy Jones, M.S.W., R.S.W.).
 
 > Interviewee: Dr. Kevin Stoddart, MSW, PhD, RSW
-> 
+>
 > Dr. Stoddart is Director of The Redpath Centre and Assistant Professor (Status) at the Factor-Inwentash Faculty of Social Work, University of Toronto. He has worked in the fields of Autism Spectrum Disorders (ASDs), Asperger Syndrome and child and adult mental health for over 25 years. For the last 15 years, his clinical focus has been children, youth and adults with mild ASDs and in particular, Asperger Syndrome. His research and publications focus on understanding the clinical and psychosocial needs of individuals with developmental disabilities, ASDs, and their families.
 
 ----------
@@ -93,5 +93,3 @@ Disclaimer: This document reflects the views of the author. It is Autism Ontario
 ----------
 
 [Download this article.](http://autismontario.novosolutions.net/redirfile.asp?id=317&fstore=&SID=)
-
- 
