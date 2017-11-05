@@ -138,12 +138,19 @@
   window.onload = function () {
     // show/hide list groups that have more than 0 or less than 0 items
     $(".list-group").each(function(){
-      if($(this).find(".list-group-item").length = 0){
-        $(this).closest(".col").css("display", "none");
+      if($(this).find(".list-group-item").length == 0){
+        $(this).closest(".col").remove();
       }
       if($(this).find(".list-group-item").length > 0){
         $(this).closest(".col").css("opacity", "1");
       }
+    });
+
+    // recalculate masonry layout to account for newly removed elements
+    $(".home-categories").masonry({
+      columnWidth        : ".col",
+      itemSelector       : ".col",
+      transitionDuration : 0
     });
 
     // parse the tag arguments in URL
