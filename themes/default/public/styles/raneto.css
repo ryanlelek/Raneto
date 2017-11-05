@@ -429,34 +429,21 @@ input:focus::-ms-input-placeholder {
 }
 
 .nl-submit {
-  line-height: 3;
+  line-height: 5;
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
-  background: #76C3BD;
-  color: #fff;
-  padding: 0 1em 0 0;
-  font-size: 40%;
+  background: #478CDB;
+  color: white;
+  padding: 0 1em;
+  font-size: 70%;
   font-weight: bold;
-  letter-spacing: 3px;
-}
-
-.nl-submit:before {
-  content: "\e001";
-  color: #fff;
-  float: left;
-  padding: 0 0.7em;
-  margin: 0 0.8em 0 0;
-  background: #69B1A9;
+  letter-spacing: 5px;
 }
 
 .nl-submit:hover,
 .nl-submit:active {
-  background: #69B1A9;
-}
-
-.nl-submit:hover:before {
-  background: #58a199;
+  background: #026288;
 }
 
 /* overlay becomes visible when a field is opened */
