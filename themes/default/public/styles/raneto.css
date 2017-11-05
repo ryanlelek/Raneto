@@ -23,6 +23,10 @@
   line-height: 34px;
 }
 
+.header .logo img {
+  width: 200px;
+}
+
 .header .search-form {
   margin-right: 20px;
 }
