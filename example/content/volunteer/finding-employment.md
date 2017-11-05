@@ -1,11 +1,10 @@
-
 /* 
 Title: Finding and Keeping Employment
-Sort: 1 
+Sort: 1
 article_tags: support
 */
 
-_This article summarizes some of the information contained in the recent report entitled Diversity in Ontario’s Youth and Adults with Autism Spectrum Disorders: Complex Needs in Unprepared Systems._ 
+_This article summarizes some of the information contained in the recent report entitled Diversity in Ontario’s Youth and Adults with Autism Spectrum Disorders: Complex Needs in Unprepared Systems._
 
 By Claudia Accardi, MSW, RSW & Sarah Duhaime, MSW, RSW, The Redpath Centre
 
@@ -23,7 +22,7 @@ Whether we are in the role of service providers, parents, or individuals with an
 
 ### Challenges to Accessing Employment Faced By Youth and Adults With ASD:
 
- 
+
 
 - Preparing for and attending an interview—difficulties managing anxiety, reading social cues, communicating appropriate information
 - Social interactions with colleagues, organizational skills and sensory challenges
@@ -46,7 +45,7 @@ Whether we are in the role of service providers, parents, or individuals with an
 
 ### Recommendations for the Individual and Family:
 
- 
+
 
 - Enroll in co-operative education opportunities in high school, volunteer in the community, and seek out summer employment to get experience in a variety of settings
 - Enroll in programs that focus on employment, life skills, and social skills to prepare the individual for adult independence
