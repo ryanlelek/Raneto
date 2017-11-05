@@ -492,6 +492,11 @@ input:focus::-ms-input-placeholder {
 
 .view-all-articles-button {
   margin-top: 15px;
+  border: 0;
+  background: #779126;
+  border-radius: 25px;
+  color: #fff;
+  padding: 5px 10px 5px 10px;
 }
 
 @media screen and (max-width: 45em) {
