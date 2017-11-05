@@ -28,39 +28,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6">
-          <a href="{{config.base_url}}/" class="logo">{{config.site_title}}</a>
+          <a href="{{config.base_url}}/" class="logo"><img src='/images/autism-ontario-white.png'></a>
         </div>
         <div class="col-sm-6">
-          {{#config.googleoauth}}
-          <form class="form-inline pull-right">
-            {{#config.authentication}} {{#loggedIn}} &nbsp;
-            <span>{{profile.displayName}}</span> &nbsp;
-            <a href="{{config.base_url}}/auth/logout" class="btn btn-info">{{lang.login.logout}}</a> {{/loggedIn}} {{^loggedIn}} &nbsp;
-            <a href="{{config.base_url}}/auth/login" class="btn btn-info">{{lang.login.login}}</a> {{/loggedIn}} {{/config.authentication}}
-          </form>
-          {{/config.googleoauth}}
-
-          {{^config.googleoauth}}
-          <form class="form-inline pull-right">
-            {{#config.authentication}}
-              {{#loggedIn}}
-                <div class="dropdown">
-                  <button class="btn btn-info dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    {{username}}
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
-                    <li><a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a></li>
-                  </ul>
-                </div>
-              {{/loggedIn}}
-              {{^loggedIn}}
-                &nbsp;<a href="{{config.base_url}}/login" class="btn btn-info">{{lang.login.login}}</a>
-              {{/loggedIn}}
-            {{/config.authentication}}
-          </form>
-          {{/config.googleoauth}}
-          
           <form class="search-form form-inline pull-right" action="{{config.base_url}}/">
             <div class="form-group">
               <label class="sr-only" for="search">{{lang.global.search}}</label>
