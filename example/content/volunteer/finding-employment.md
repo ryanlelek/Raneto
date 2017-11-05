@@ -2,7 +2,7 @@
 /* 
 Title: Finding and Keeping Employment
 Sort: 1 
-article_tags: support 
+article_tags: support
 */
 
 _This article summarizes some of the information contained in the recent report entitled Diversity in Ontario’s Youth and Adults with Autism Spectrum Disorders: Complex Needs in Unprepared Systems._ 
