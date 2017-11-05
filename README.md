@@ -28,11 +28,11 @@ Creating new articles or editing existing ones, can be handled in two ways -
 
 1. **Directly in GitHub**
 
-For those comfortable with Markdown, a file can be created under the desired folder (or by creating a new folder) within /example/content and the content can be directly added.
+   For those comfortable with Markdown, a file can be created under the desired folder (or by creating a new folder) within /example/content and the content can be directly added.
 
 2. **StackEdit**
 
-StackEdit is a free online Markdown editor that features a rich-text editor. The editor also converts the formatting into Markdown in realtime while giving you a preview of the content. StackEdit can be connected direclty to the git repository and changes can be published directly to master if desired by setting the appropriate path (e.g. /example/content/folder-name/file-name.md) in the publish prompt.
+   StackEdit is a free online Markdown editor that features a rich-text editor. The editor also converts the formatting into Markdown in realtime while giving you a preview of the content. StackEdit can be connected direclty to the git repository and changes can be published directly to master if desired by setting the appropriate path (e.g. /example/content/folder-name/file-name.md) in the publish prompt.
 
 Every article in the knowledge must have the following code block at the very top to ensure that it is tagged appropriately -
 ```
