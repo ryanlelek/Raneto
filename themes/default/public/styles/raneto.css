@@ -277,11 +277,17 @@
   border-bottom: 1px dashed #B2BB1E;
 }
 
+a:hover
+{
+    color: #026288;
+    text-decoration: none;
+}
+
 /* drop-down list / text element */
 .nl-field ul {
   position: absolute;
   visibility: hidden;
-  background: #76C3BD;
+  background: #478CDB;
   left: -0.5em;
   top: 50%;
   font-size: 80%;
@@ -317,7 +323,7 @@
 }
 
 .nl-dd ul li.nl-dd-checked {
-  color: #478982;
+  color: #026288;
 }
 
 .no-touch .nl-dd ul li:hover {
