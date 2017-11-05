@@ -146,6 +146,13 @@
       }
     });
 
+    // recalculate masonry layout to account for newly removed elements
+    $(".home-categories").masonry({
+      columnWidth        : ".col",
+      itemSelector       : ".col",
+      transitionDuration : 0
+    });
+
     // parse the tag arguments in URL
     var tagsArray = getQueryStringValue("tags").split(",");
     // set the tags initially to match the url tags
