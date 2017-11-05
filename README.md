@@ -3,10 +3,10 @@
 Autism Ontario Knowledge Base - https://desolate-reef-40746.herokuapp.com/
 
 ### Technology Used:
-[Raneto](http://raneto.com): Free, open, simple Markdown powered Knowledgebase for Node.js
-Heroku: Hosting our knowledge base
-HTML, CSS, JS: Filtering methodology and landing page
-StackEdit: Content Editing
+- [Raneto](http://raneto.com): Free, open, simple Markdown powered Knowledgebase for Node.js
+- Heroku: Hosting our knowledge base
+- HTML, CSS, JS: Filtering methodology and landing page
+- StackEdit: Content Editing
 
 ### How does the knowledge base work?
 #### Raneto
