@@ -192,6 +192,8 @@
 
 .tag-selector-container td {
   text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -486,6 +488,11 @@ input:focus::-ms-input-placeholder {
   margin-left: -15px;
   padding-top: 130px;
   display: none;
+  overflow: scroll;
+}
+
+.view-all-articles-button {
+  margin-top: 15px;
 }
 
 @media screen and (max-width: 45em) {

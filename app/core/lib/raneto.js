@@ -477,14 +477,19 @@ var Raneto = function () {
                                             // regardless even if they don't have
                                             // tags set in the metadata
             var showArticleInView;
-            if(meta[article_tags] != undefined){
-              var containsTag = false;
-              var currentArticleTags = meta[article_tags].split(',');
 
-              for(var i=0; i < filter_tags_array.length; i++){
-                for(var j=0; j < currentArticleTags.length; j ++){
-                  if(filter_tags_array[i] == currentArticleTags[j]){
-                    showArticleInView = true;
+            if(meta[article_tags] != undefined){
+              if(filter_tags_array[0] == "none"){
+                showArticleInView = true;
+              } else {
+                var containsTag = false;
+                var currentArticleTags = meta[article_tags].split(',');
+
+                for(var i=0; i < filter_tags_array.length; i++){
+                  for(var j=0; j < currentArticleTags.length; j ++){
+                    if(filter_tags_array[i] == currentArticleTags[j]){
+                      showArticleInView = true;
+                    }
                   }
                 }
               }

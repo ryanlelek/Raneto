@@ -36,6 +36,9 @@
             <option value="hamilton">Hamilton</option>
           </select>
         </td>
+        <td>
+          <button id="view-all-articles" class="view-all-articles-button">View all articles</button>
+        </td>
       </tr>
     </table>
   </div>
@@ -146,11 +149,19 @@
     // parse the tag arguments in URL
     var tagsArray = getQueryStringValue("tags").split(",");
     // set the tags initially to match the url tags
-    if(tagsArray != ""){
+    if(tagsArray != "" || tagsArray == "none"){
       // hide the natural language form container
       $(".nl-container").fadeOut();
-      // show the tag groups
-      $(".tag-selector-container").css("display", "block");
+      // free up body from not scrolling
+      $("body").css("overflow", "");
+
+      if(tagsArray == "none"){
+        // hide the tag groups
+        $(".tag-selector-container").css("display", "none");
+      } else {
+        // show the tag groups
+        $(".tag-selector-container").css("display", "block");
+      }
 
       // tag group 1
       if($("#tag_group_1 option[value='" + tagsArray[0] + "']").length > 0){
@@ -181,9 +192,16 @@
       $('#tag_group_3').change(function(){
         window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
       });
+
+      // hook into the show all articles
+      $("#view-all-articles").click(function(){
+        window.location.href = window.location.origin + window.location.pathname + "?tags=none"
+      });
     } else {
       // show the collection form
       $(".nl-container").fadeIn();
+      // lock body from scrolling
+      $("body").css("overflow", "hidden");
       // hook into the submit button
       $(".nl-submit").click(function( event ) {
         event.preventDefault();
