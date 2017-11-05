@@ -1,4 +1,4 @@
-
+/*
 .header {
   color: #CCC;
   background: #b3ba3f;
@@ -228,7 +228,7 @@
   background: transparent;
   font-family: inherit;
   font-size: inherit;
-  color: inherit;
+  color: white;
   font-weight: inherit;
   line-height: inherit;
   display: inline-block;
@@ -272,9 +272,9 @@
 .nl-form select  {
   line-height: inherit;
   display: inline-block;
-  color: #b14943;
+  color: #478CDB;
   cursor: pointer;
-  border-bottom: 1px dashed #b14943;
+  border-bottom: 1px dashed #B2BB1E;
 }
 
 /* drop-down list / text element */
@@ -369,7 +369,7 @@
   background: rgba(0,0,0,0.1);
   width: 1.8em;
   text-align: center;
-  color: transparent;
+  color: white;
 }
 
 .nl-field-go:before {
@@ -492,4 +492,4 @@ input:focus::-ms-input-placeholder {
   .nl-form {
     font-size: 2em;
   }
-}
+}*/
