@@ -39,7 +39,7 @@
     "prepublish": "npm run compile"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": "6.x.x"
   },
   "dependencies": {
     "always-tail": "^0.2.0",

@@ -1,4 +1,4 @@
-<div class="home-search jumbotron row">
+<div class="home-search jumbotron row" style="padding-top: 28px; padding-bottom: 28px;">
   <form class="search-form form-inline" action="{{config.base_url}}/">
     <div class="form-group">
       <label class="sr-only" for="home-search">{{lang.home.searchKnowledgeBase}}</label>
@@ -6,6 +6,50 @@
       <button type="submit" class="btn btn-primary btn-lg">{{lang.global.search}}</button>
     </div>
   </form>
+  <br>
+  <div class="tag-selector-container" align="center">
+    <table>
+      <tr>
+        <td>
+          <span>I am</span><br>
+          <div class="styled-select green rounded">
+            <select id="tag_group_1">
+              <option value="super-hero" selected>Super Hero</option>
+              <option value="family">Family</option>
+              <option value="supporter">Supporter</option>
+              <option value="profressional">Educator/ Medical Professional</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <span>I want to</span><br>
+          <div class="styled-select green rounded">
+            <select id="tag_group_2">
+              <option value="learn" selected>learn</option>
+              <option value="volunteer">volunteer</option>
+              <option value="support">find support</option>
+              <option value="donate">donate</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <span>in</span><br>
+          <div class="styled-select green rounded">
+            <select id="tag_group_3">
+              <option value="toronto" selected>Toronto</option>
+              <option value="oshawa">Oshawa</option>
+              <option value="hamilton">Hamilton</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <button id="view-all-articles" class="view-all-articles-button">View all articles</button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div class="home-categories row">
@@ -25,7 +69,7 @@
       {{/files.length}}
     {{/is_index}}
     {{^is_index}}
-      <div class="col col-sm-4 col-xs-12">
+      <div class="col col-sm-4 col-xs-12" style="opacity: 0;">
         <div class="panel panel-default {{class}}">
           <h2 class="panel-heading">{{title}}</h2>
           <ul class="list-group pages">
@@ -59,3 +103,303 @@
     {{/is_index}}
   {{/pages}}
 </div>
+
+<div class="nl-container demo-1" align="center">
+  <div class="main clearfix">
+    <form id="nl-form" class="nl-form">
+      I am
+      <select id="nl_tag_1">
+        <option value="super-hero" selected>living with autism</option>
+        <option value="family">a family member</option>
+        <option value="supporter">a supporter</option>
+        <option value="profressional">educator</option>
+        <option value="profressional">medical professional</option>
+      </select>
+      <br />I want to
+      <select id="nl_tag_2">
+        <option value="learn" selected>learn</option>
+        <option value="volunteer">volunteer</option>
+        <option value="support">find support</option>
+        <option value="donate">donate</option>
+      </select>
+      <br />in
+      <select id="nl_tag_3">
+        <option value="toronto" selected>Toronto</option>
+        <option value="oshawa">Oshawa</option>
+        <option value="hamilton">Hamilton</option>
+        <!-- <option value="mercedes">Mercedes</option> -->
+        <!-- <option value="audi">Audi</option> -->
+      </select>
+      <div class="nl-overlay"></div>
+    </form>
+    <div class="nl-submit-wrap">
+      <button class="nl-submit nl-form-button">Lets go!</button>
+    </div>
+  </div>
+</div><!-- /container -->
+
+<script>
+  function getQueryStringValue (key) {
+    return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+  }
+
+  window.onload = function () {
+    // show/hide list groups that have more than 0 or less than 0 items
+    $(".list-group").each(function(){
+      if($(this).find(".list-group-item").length == 0){
+        $(this).closest(".col").remove();
+      }
+      if($(this).find(".list-group-item").length > 0){
+        $(this).closest(".col").css("opacity", "1");
+      }
+    });
+
+    // recalculate masonry layout to account for newly removed elements
+    $(".home-categories").masonry({
+      columnWidth        : ".col",
+      itemSelector       : ".col",
+      transitionDuration : 0
+    });
+
+    // parse the tag arguments in URL
+    var tagsArray = getQueryStringValue("tags").split(",");
+    // set the tags initially to match the url tags
+    if(tagsArray != "" || tagsArray == "none"){
+      // hide the natural language form container
+      $(".nl-container").fadeOut();
+      // free up body from not scrolling
+      $("body").css("overflow", "");
+
+      if(tagsArray == "none"){
+        // hide the tag groups
+        $(".tag-selector-container").css("display", "none");
+      } else {
+        // show the tag groups
+        $(".tag-selector-container").css("display", "block");
+      }
+
+      // tag group 1
+      if($("#tag_group_1 option[value='" + tagsArray[0] + "']").length > 0){
+        $("#tag_group_1").val(tagsArray[0]);
+      } else {
+        console.log("Tag " + tagsArray[0] + " does not exist.");
+      }
+      // tag group 2
+      if($("#tag_group_2 option[value='" + tagsArray[1] + "']").length > 0){
+        $("#tag_group_2").val(tagsArray[1]);
+      } else {
+        console.log("Tag " + tagsArray[1] + " does not exist.");
+      }
+      // tag group 3
+      if($("#tag_group_3 option[value='" + tagsArray[2] + "']").length > 0){
+        $("#tag_group_3").val(tagsArray[2]);
+      } else {
+        console.log("Tag " + tagsArray[2] + " does not exist.");
+      }
+
+      // detect change in tag groups and change URL accordingly
+      $('#tag_group_1').change(function(){
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + $(this).find("option:selected").attr('value') + "," + tagsArray[1] + "," + tagsArray[2]
+      });
+      $('#tag_group_2').change(function(){
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + $(this).find("option:selected").attr('value') + "," + tagsArray[2]
+      });
+      $('#tag_group_3').change(function(){
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tagsArray[0] + "," + tagsArray[1] + "," + $(this).find("option:selected").attr('value')
+      });
+
+      // hook into the show all articles
+      $("#view-all-articles").click(function(){
+        window.location.href = window.location.origin + window.location.pathname + "?tags=none"
+      });
+    } else {
+      // show the collection form
+      $(".nl-container").fadeIn();
+      // lock body from scrolling
+      $("body").css("overflow", "hidden");
+      // hook into the submit button
+      $(".nl-submit").click(function( event ) {
+        event.preventDefault();
+        var tag1 = $("#nl_tag_1").val();
+        var tag2 = $("#nl_tag_2").val();
+        var tag3 = $("#nl_tag_3").val();
+        window.location.href = window.location.origin + window.location.pathname + "?tags=" + tag1 + "," + tag2 + "," + tag3
+      });
+    }
+  }
+
+;( function( window ) {
+
+  'use strict';
+
+  var document = window.document;
+
+  if (!String.prototype.trim) {
+    String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');};
+  }
+
+  function NLForm( el ) {
+    this.el = el;
+    this.overlay = this.el.querySelector( '.nl-overlay' );
+    this.fields = [];
+    this.fldOpen = -1;
+    this._init();
+  }
+
+  NLForm.prototype = {
+    _init : function() {
+      var self = this;
+      Array.prototype.slice.call( this.el.querySelectorAll( 'select' ) ).forEach( function( el, i ) {
+        self.fldOpen++;
+        self.fields.push( new NLField( self, el, 'dropdown', self.fldOpen ) );
+      } );
+      Array.prototype.slice.call( this.el.querySelectorAll( 'input' ) ).forEach( function( el, i ) {
+        self.fldOpen++;
+        self.fields.push( new NLField( self, el, 'input', self.fldOpen ) );
+      } );
+      this.overlay.addEventListener( 'click', function(ev) { self._closeFlds(); } );
+      this.overlay.addEventListener( 'touchstart', function(ev) { self._closeFlds(); } );
+    },
+    _closeFlds : function() {
+      if( this.fldOpen !== -1 ) {
+        this.fields[ this.fldOpen ].close();
+      }
+    }
+  }
+
+  function NLField( form, el, type, idx ) {
+    this.form = form;
+    this.elOriginal = el;
+    this.pos = idx;
+    this.type = type;
+    this._create();
+    this._initEvents();
+  }
+
+  NLField.prototype = {
+    _create : function() {
+      if( this.type === 'dropdown' ) {
+        this._createDropDown();
+      }
+      else if( this.type === 'input' ) {
+        this._createInput();
+      }
+    },
+    _createDropDown : function() {
+      var self = this;
+      this.fld = document.createElement( 'div' );
+      this.fld.className = 'nl-field nl-dd';
+      this.toggle = document.createElement( 'a' );
+      this.toggle.innerHTML = this.elOriginal.options[ this.elOriginal.selectedIndex ].innerHTML;
+      this.toggle.className = 'nl-field-toggle';
+      this.optionsList = document.createElement( 'ul' );
+      var ihtml = '';
+      Array.prototype.slice.call( this.elOriginal.querySelectorAll( 'option' ) ).forEach( function( el, i ) {
+        ihtml += self.elOriginal.selectedIndex === i ? '<li class="nl-dd-checked">' + el.innerHTML + '</li>' : '<li>' + el.innerHTML + '</li>';
+        // selected index value
+        if( self.elOriginal.selectedIndex === i ) {
+          self.selectedIdx = i;
+        }
+      } );
+      this.optionsList.innerHTML = ihtml;
+      this.fld.appendChild( this.toggle );
+      this.fld.appendChild( this.optionsList );
+      this.elOriginal.parentNode.insertBefore( this.fld, this.elOriginal );
+      this.elOriginal.style.display = 'none';
+    },
+    _createInput : function() {
+      var self = this;
+      this.fld = document.createElement( 'div' );
+      this.fld.className = 'nl-field nl-ti-text';
+      this.toggle = document.createElement( 'a' );
+      this.toggle.innerHTML = this.elOriginal.getAttribute( 'placeholder' );
+      this.toggle.className = 'nl-field-toggle';
+      this.optionsList = document.createElement( 'ul' );
+      this.getinput = document.createElement( 'input' );
+      this.getinput.setAttribute( 'type', 'text' );
+      this.getinput.setAttribute( 'placeholder', this.elOriginal.getAttribute( 'placeholder' ) );
+      this.getinputWrapper = document.createElement( 'li' );
+      this.getinputWrapper.className = 'nl-ti-input';
+      this.inputsubmit = document.createElement( 'button' );
+      this.inputsubmit.className = 'nl-field-go';
+      this.inputsubmit.innerHTML = 'Go';
+      this.getinputWrapper.appendChild( this.getinput );
+      this.getinputWrapper.appendChild( this.inputsubmit );
+      this.example = document.createElement( 'li' );
+      this.example.className = 'nl-ti-example';
+      this.example.innerHTML = this.elOriginal.getAttribute( 'data-subline' );
+      this.optionsList.appendChild( this.getinputWrapper );
+      this.optionsList.appendChild( this.example );
+      this.fld.appendChild( this.toggle );
+      this.fld.appendChild( this.optionsList );
+      this.elOriginal.parentNode.insertBefore( this.fld, this.elOriginal );
+      this.elOriginal.style.display = 'none';
+    },
+    _initEvents : function() {
+      var self = this;
+      this.toggle.addEventListener( 'click', function( ev ) { ev.preventDefault(); ev.stopPropagation(); self._open(); } );
+      this.toggle.addEventListener( 'touchstart', function( ev ) { ev.preventDefault(); ev.stopPropagation(); self._open(); } );
+
+      if( this.type === 'dropdown' ) {
+        var opts = Array.prototype.slice.call( this.optionsList.querySelectorAll( 'li' ) );
+        opts.forEach( function( el, i ) {
+          el.addEventListener( 'click', function( ev ) { ev.preventDefault(); self.close( el, opts.indexOf( el ) ); } );
+          el.addEventListener( 'touchstart', function( ev ) { ev.preventDefault(); self.close( el, opts.indexOf( el ) ); } );
+        } );
+      }
+      else if( this.type === 'input' ) {
+        this.getinput.addEventListener( 'keydown', function( ev ) {
+          if ( ev.keyCode == 13 ) {
+            self.close();
+          }
+        } );
+        this.inputsubmit.addEventListener( 'click', function( ev ) {
+          ev.preventDefault(); self.close(); } );
+        this.inputsubmit.addEventListener( 'touchstart', function( ev ) { ev.preventDefault(); self.close(); } );
+      }
+
+    },
+    _open : function() {
+      if( this.open ) {
+        return false;
+      }
+      this.open = true;
+      this.form.fldOpen = this.pos;
+      var self = this;
+      this.fld.className += ' nl-field-open';
+    },
+    close : function( opt, idx ) {
+      if( !this.open ) {
+        return false;
+      }
+      this.open = false;
+      this.form.fldOpen = -1;
+      this.fld.className = this.fld.className.replace(/\b nl-field-open\b/,'');
+
+      if( this.type === 'dropdown' ) {
+        if( opt ) {
+          // remove class nl-dd-checked from previous option
+          var selectedopt = this.optionsList.children[ this.selectedIdx ];
+          selectedopt.className = '';
+          opt.className = 'nl-dd-checked';
+          this.toggle.innerHTML = opt.innerHTML;
+          // update selected index value
+          this.selectedIdx = idx;
+          // update original select element´s value
+          this.elOriginal.value = this.elOriginal.children[ this.selectedIdx ].value;
+        }
+      }
+      else if( this.type === 'input' ) {
+        this.getinput.blur();
+        this.toggle.innerHTML = this.getinput.value.trim() !== '' ? this.getinput.value : this.getinput.getAttribute( 'placeholder' );
+        this.elOriginal.value = this.getinput.value;
+      }
+    }
+  }
+
+  // add to global namespace
+  window.NLForm = NLForm;
+
+} )( window );
+var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+</script>
