@@ -1,7 +1,7 @@
 
 .header {
   color: #CCC;
-  background: #2C323D;
+  background: #b3ba3f;
 }
 
 .header .container-fluid {
@@ -400,7 +400,7 @@ input:focus::-moz-placeholder {
   color: rgba(255,255,255,0.2);
 }
 
-input:-ms-input-placeholder {  
+input:-ms-input-placeholder {
   color: rgba(255,255,255,0.8);
 }
 
