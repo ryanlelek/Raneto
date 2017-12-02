@@ -215,8 +215,9 @@
 .nl-form {
   width: 100%;
   margin: 0.3em auto 0 auto;
-  font-size: 4em;
+  font-size: 3em;
   line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .nl-form ul {
