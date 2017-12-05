@@ -18,6 +18,7 @@
   "quotmark" : true,
   "undef"    : true,
   "unused"   : "vars",
+  "esversion": 6,
   "strict"   : true,
   "node"     : true
 }
