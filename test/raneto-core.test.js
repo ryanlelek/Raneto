@@ -219,8 +219,8 @@ describe('#getPages()', function () {
 
   it('loads meta show_on_home value from file', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();    
-    expect(result[0].files[3]).to.have.property('show_on_home', false);
+    var result = raneto.getPages();
+    expect(result[0].files[4]).to.have.property('show_on_home', false);
   });
 
   it('applies show_on_home_default in absence of meta for directories', function () {
@@ -251,13 +251,19 @@ describe('#doSearch()', function () {
   it('returns an array of search results', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     var result = raneto.doSearch('example');
-    expect(result).to.have.length(4);
+    expect(result).to.have.length(5);
   });
 
   it('returns an empty array if nothing found', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     var result = raneto.doSearch('asdasdasd');
     expect(result).to.be.empty;
+  });
+
+  it('returns an array if search has special characters', function () {
+    raneto.config.content_dir = path.join(__dirname, 'content/');
+    var result = raneto.doSearch('with "special');
+    expect(result[0].title).to.be.deep.equals('Special Characters Page');
   });
 
 });
