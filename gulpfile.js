@@ -14,7 +14,7 @@ gulp.task('copy_libs', function () {
     'node_modules/jquery/**/*',
     'node_modules/masonry-layout/**/*',
     'node_modules/sweetalert2/**/*',
-    'node_modules/jquery.backstretch/**/*'
+    'node_modules/jquery-backstretch/**/*'
   ];
 
   var dest = 'themes/default/public/lib';
