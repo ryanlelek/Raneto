@@ -19,8 +19,9 @@ gulp.task('copy_libs', function () {
 
   var dest = 'themes/default/public/lib';
 
-  return gulp.src(source, { base: 'node_modules' })
-             .pipe(gulp.dest(dest));
+  return gulp
+    .src(source, { base: 'node_modules' })
+    .pipe(gulp.dest(dest));
 
 });
 

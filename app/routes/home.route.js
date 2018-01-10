@@ -38,12 +38,12 @@ function route_home (config, raneto) {
     // Filter out the image content directory and items with show_on_home == false
     var pageList = remove_image_content_directory(config,
       _.chain(raneto.getPages('/index'))
-      .filter(function (page) { return page.show_on_home; })
-      .map(function (page) {
-        page.files = _.filter(page.files, function (file) { return file.show_on_home; });
-        return page;
-      })
-      .value());
+        .filter(function (page) { return page.show_on_home; })
+        .map(function (page) {
+          page.files = _.filter(page.files, function (file) { return file.show_on_home; });
+          return page;
+        })
+        .value());
 
     return res.render('home', {
       config        : config,

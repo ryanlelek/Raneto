@@ -64,6 +64,7 @@ describe('#processMeta()', function () {
 
   it('returns an empty array if no meta specified', function () {
     var result = raneto.processMeta('no meta here');
+    /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });
 
@@ -144,8 +145,9 @@ describe('#processVars()', function () {
 
   it('replaces config vars in Markdown content', function () {
     raneto.config.base_url = '/base/url';
-    raneto.processVars('This is some Markdown with a %base_url%.')
-          .should.equal('This is some Markdown with a /base/url.');
+    raneto
+      .processVars('This is some Markdown with a %base_url%.')
+      .should.equal('This is some Markdown with a /base/url.');
   });
 
   it('replaces custom vars in Markdown content', function () {
@@ -156,8 +158,9 @@ describe('#processVars()', function () {
       }
     ];
     raneto.config.variables = variables;
-    raneto.processVars('This is some Markdown with a %test_variable%.')
-          .should.equal('This is some Markdown with a Test Variable.');
+    raneto
+      .processVars('This is some Markdown with a %test_variable%.')
+      .should.equal('This is some Markdown with a Test Variable.');
   });
 
 });
@@ -176,6 +179,7 @@ describe('#getPage()', function () {
   it('returns null if no page found', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     var result = raneto.getPage(raneto.config.content_dir + 'nonexistent-page.md');
+    /* eslint-disable no-unused-expressions */
     expect(result).to.be.null;
   });
 
@@ -259,6 +263,7 @@ describe('#doSearch()', function () {
   it('returns an empty array if nothing found', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     var result = raneto.doSearch('asdasdasd');
+    /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });
 
