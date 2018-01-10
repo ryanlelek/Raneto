@@ -6,9 +6,9 @@
       {{#canEdit}}
         <li><input id="newCategory" type="text" class="form-control" placeholder="{{lang.page.addCategory}}"/></li>
       {{/canEdit}}
-      
+
       {{#pages}}
-        <li class="category">
+        <li class="category {{#active}} active{{/active}}">
           {{#is_index}}
             <h5 class="category-title">Main Articles {{#canEdit}}<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/canEdit}}</h5>
           {{/is_index}}

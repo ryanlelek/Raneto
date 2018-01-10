@@ -50,6 +50,10 @@
   text-transform: uppercase;
 }
 
+.menu .category.active .category-title {
+  font-weight: bold;
+}
+
 .menu a {
   display: inline-block;
   line-height: 20px;
@@ -61,7 +65,7 @@
   text-decoration: none;
 }
 
-.menu .active a {
+.menu .page.active a {
   font-weight: bold;
   color: #444;
 }

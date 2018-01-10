@@ -179,6 +179,7 @@ class Raneto {
   // Get a structured array of the contents of contentDir
   getPages(activePageSlug) {
     activePageSlug     = activePageSlug || '';
+    const baseSlug = activePageSlug.split(/[\\/]/).slice(0, -1).join('/');
     const page_sort_meta = this.config.page_sort_meta || '';
     const category_sort  = this.config.category_sort || false;
     const files          = glob.sync(patch_content_dir(this.config.content_dir) +'**/*');
@@ -190,6 +191,7 @@ class Raneto {
       title    : '',
       show_on_home: true,
       is_index : true,
+      active: (baseSlug === ''),
       class    : 'category-index',
       sort     : 0,
       files    : []
@@ -198,6 +200,7 @@ class Raneto {
     files.forEach(filePath => {
 
       const shortPath = path.normalize(filePath).replace(content_dir, '').trim();
+      const fileSlug = shortPath.split('\\').join('/');
       let stat      = fs.lstatSync(filePath);
 
       if (stat.isSymbolicLink()) {
@@ -237,6 +240,7 @@ class Raneto {
           show_on_home: dirMetadata.show_on_home ? (dirMetadata.show_on_home === 'true') : this.config.show_on_home_default,
           is_index : false,
           is_directory: true,
+          active   : activePageSlug.startsWith('/' + fileSlug),
           class    : 'category-' + this.cleanString(shortPath),
           sort     : dirMetadata.sort || sort,
           files    : []
@@ -248,10 +252,10 @@ class Raneto {
         try {
 
           const file     = fs.readFileSync(filePath);
-          let slug     = shortPath;
+          let slug     = fileSlug;
           let pageSort = 0;
 
-          if (shortPath.indexOf('index.md') > -1) {
+          if (fileSlug.indexOf('index.md') > -1) {
             slug = slug.replace('index.md', '');
           }
 

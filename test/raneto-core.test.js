@@ -197,7 +197,9 @@ describe('#getPages()', function () {
   it('marks activePageSlug as active', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     var result = raneto.getPages('/example-page');
+    expect(result[0]).to.have.property('active', true);
     expect(result[0].files[0]).to.have.property('active', true);
+    expect(result[1]).to.have.property('active', false);
     expect(result[1].files[0]).to.have.property('active', false);
   });
 
