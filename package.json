@@ -31,12 +31,10 @@
   "scripts": {
     "start": "DEBUG=raneto node example/server.js",
     "start_win": "set DEBUG=raneto&&node example/server.js",
-    "test": "npm run lint && npm run compile && mocha --reporter spec test/*.js",
+    "test": "npm run lint && mocha --reporter spec test/*.js",
     "postinstall": "npm run gulp",
     "gulp": "gulp",
-    "compile": "babel app/core/src --out-dir app/core/lib",
-    "lint": "jshint app/**/*.js test/*.js",
-    "prepublish": "npm run compile"
+    "lint": "jshint app/**/*.js test/*.js"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -79,11 +77,6 @@
     "validator": "^9.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.26.0",
     "chai": "^4.1.1",
     "jshint": "^2.9.5",
     "mocha": "^4.0.1",

@@ -6,7 +6,7 @@
 var path   = require('path');
 var chai   = require('chai');
 var expect = chai.expect;
-var raneto = require('../app/core/lib/raneto.js');
+var raneto = require('../app/core/raneto.js');
 
 chai.should();
 chai.config.truncateThreshold = 0;
@@ -201,20 +201,20 @@ describe('#getPages()', function () {
 
   it('adds show_on_home property to directory', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();    
-    expect(result[0]).to.have.property('show_on_home', true);  
+    var result = raneto.getPages();
+    expect(result[0]).to.have.property('show_on_home', true);
   });
 
   it('adds show_on_home property to files', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();    
-    expect(result[0].files[0]).to.have.property('show_on_home', true);     
+    var result = raneto.getPages();
+    expect(result[0].files[0]).to.have.property('show_on_home', true);
   });
 
   it('loads meta show_on_home value from directory', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();    
-    expect(result[3]).to.have.property('show_on_home', false);    
+    var result = raneto.getPages();
+    expect(result[3]).to.have.property('show_on_home', false);
   });
 
   it('loads meta show_on_home value from file', function () {
@@ -226,22 +226,22 @@ describe('#getPages()', function () {
   it('applies show_on_home_default in absence of meta for directories', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     raneto.config.show_on_home_default = false;
-    var result = raneto.getPages();    
-    expect(result[1]).to.have.property('show_on_home', false);      
+    var result = raneto.getPages();
+    expect(result[1]).to.have.property('show_on_home', false);
   });
 
   it('applies show_on_home_default in absence of meta for files', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     raneto.config.show_on_home_default = false;
-    var result = raneto.getPages();    
-    expect(result[1].files[0]).to.have.property('show_on_home', false);          
+    var result = raneto.getPages();
+    expect(result[1].files[0]).to.have.property('show_on_home', false);
   });
 
   it('category index always shows on home', function () {
     raneto.config.content_dir = path.join(__dirname, 'content/');
     raneto.config.show_on_home_default = false;
-    var result = raneto.getPages();    
-    expect(result[0]).to.have.property('show_on_home', true);      
+    var result = raneto.getPages();
+    expect(result[0]).to.have.property('show_on_home', true);
   });
 
 });
