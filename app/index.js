@@ -12,10 +12,11 @@ var moment        = require('moment');
 var extend        = require('extend');
 var hogan         = require('hogan-express');
 var session       = require('express-session');
-var raneto        = require('./core/raneto.js');
+var Raneto        = require('./core/raneto.js');
 var passport      = require('passport');
 
 function initialize (config) {
+  const raneto = new Raneto();
 
   // Load Translations
   if (!config.locale) { config.locale = 'en'; }

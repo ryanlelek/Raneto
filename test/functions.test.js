@@ -8,9 +8,11 @@ var path               = require('path');
 var chai               = require('chai');
 var expect             = chai.expect;
 var moment             = require('moment');
-var raneto             = require('../app/core/raneto.js');
+var Raneto             = require('../app/core/raneto.js');
 var build_nested_pages = require('../app/functions/build_nested_pages.js');
 var get_last_modified  = require('../app/functions/get_last_modified.js');
+
+const raneto = new Raneto();
 
 chai.should();
 chai.config.truncateThreshold = 0;

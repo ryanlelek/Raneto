@@ -6,7 +6,9 @@
 var path   = require('path');
 var chai   = require('chai');
 var expect = chai.expect;
-var raneto = require('../app/core/raneto.js');
+var Raneto = require('../app/core/raneto.js');
+
+const raneto = new Raneto();
 
 chai.should();
 chai.config.truncateThreshold = 0;

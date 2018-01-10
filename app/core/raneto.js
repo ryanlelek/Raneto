@@ -327,5 +327,5 @@ class Raneto {
   }
 }
 
-exports.default = new Raneto();
+exports.default = Raneto;
 module.exports = exports['default'];
