@@ -1,6 +1,37 @@
 
 # Raneto Changelog
 
+2018.01.09 / v0.14.0
+====================
+
+  * **[New]** Language Translations!
+    - Spanish contributed by **@dgarcia202**
+    - Norwegian contributed by **@kek91**
+    - Hungarian contributed by **@gabord**
+  * **[New]** Multi-level Page Nesting
+    - **@denisvmedia**
+  * **[New]** Marking Active Category in UI
+    - **@pmoleri**
+  * **[New]** Export of Raneto class
+    - **@pmoleri**
+  * **[Improvement]** Search with Special Characters
+    - **@cassiobsilva**
+  * **[Improvement]** Upgrade to SweetAlert2
+    - **@limonte**
+  * **[Misc]** Remove Babel
+    - **@pmoleri**
+  * **[Misc]** Move from JSHint to ESLint
+    - **@Sparticuz**
+  * **[Misc]** Code Refinements
+    - **@furier**
+    - **@dettoni**
+    - **@denisvmedia**
+    - **@dgarcia202**
+  * **[Misc]** Document Refinements
+    - **@dgarcia202**
+    - **@n7st**
+  * **[Misc]** Dependency upgrades
+
 2017.03.15 / v0.13.0
 ====================
 
