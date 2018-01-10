@@ -1,7 +1,5 @@
 'use strict';
 
-/*jshint expr: true*/
-
 // Modules
 var path   = require('path');
 var chai   = require('chai');
@@ -52,11 +50,11 @@ describe('#slugToTitle()', function () {
 describe('#processMeta()', function () {
 
   it('returns array of meta values', function () {
-    var result = raneto.processMeta('/*\n'+
-      'Title: This is a title\n'+
-      'Description: This is a description\n'+
-      'Sort: 4\n'+
-      'Multi word: Value\n'+
+    var result = raneto.processMeta('/*\n' +
+      'Title: This is a title\n' +
+      'Description: This is a description\n' +
+      'Sort: 4\n' +
+      'Multi word: Value\n' +
       '*/\n');
     expect(result).to.have.property('title', 'This is a title');
     expect(result).to.have.property('description', 'This is a description');
@@ -76,11 +74,11 @@ describe('#processMeta()', function () {
   });
 
   it('returns array of meta values (YAML)', function () {
-    var result = raneto.processMeta('---\n'+
-      'Title: This is a title\n'+
-      'Description: This is a description\n'+
-      'Sort: 4\n'+
-      'Multi word: Value\n'+
+    var result = raneto.processMeta('---\n' +
+      'Title: This is a title\n' +
+      'Description: This is a description\n' +
+      'Sort: 4\n' +
+      'Multi word: Value\n' +
       '---\n');
     expect(result).to.have.property('title', 'This is a title');
     expect(result).to.have.property('description', 'This is a description');
@@ -99,19 +97,19 @@ describe('#processMeta()', function () {
 describe('#stripMeta()', function () {
 
   it('strips meta comment block', function () {
-    var result = raneto.stripMeta('/*\n'+
-      'Title: This is a title\n'+
-      'Description: This is a description\n'+
-      'Sort: 4\n'+
-      'Multi word: Value\n'+
+    var result = raneto.stripMeta('/*\n' +
+      'Title: This is a title\n' +
+      'Description: This is a description\n' +
+      'Sort: 4\n' +
+      'Multi word: Value\n' +
       '*/\nThis is the content');
     result.should.equal('This is the content');
   });
 
-  it('strips yaml meta comment block with horizontal rule in content', function() {
-    var result = raneto.stripMeta('---\n'+
-      'Title: + This is a title\n'+
-      '---\n'+
+  it('strips yaml meta comment block with horizontal rule in content', function () {
+    var result = raneto.stripMeta('---\n' +
+      'Title: + This is a title\n' +
+      '---\n' +
       'This is the content\n---');
     result.should.equal('This is the content\n---');
   });
@@ -127,16 +125,16 @@ describe('#stripMeta()', function () {
   });
 
   it('only strips the first comment block', function () {
-    var result = raneto.stripMeta('/*\n'+
-      'Title: This is a title\n'+
-      'Description: This is a description\n'+
-      'Sort: 4\n'+
-      'Multi word: Value\n'+
-      '*/\nThis is the content/*\n'+
-      'Title: This is a title\n'+
+    var result = raneto.stripMeta('/*\n' +
+      'Title: This is a title\n' +
+      'Description: This is a description\n' +
+      'Sort: 4\n' +
+      'Multi word: Value\n' +
+      '*/\nThis is the content/*\n' +
+      'Title: This is a title\n' +
       '*/');
-    result.should.equal('This is the content/*\n'+
-      'Title: This is a title\n'+
+    result.should.equal('This is the content/*\n' +
+      'Title: This is a title\n' +
       '*/');
   });
 

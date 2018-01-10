@@ -25,7 +25,7 @@ function route_wildcard (config, raneto) {
 
     // Remove "/edit" suffix
     if (file_path.indexOf(suffix, file_path.length - suffix.length) !== -1) {
-      file_path = file_path.slice(0, - suffix.length - 1);
+      file_path = file_path.slice(0, -suffix.length - 1);
     }
 
     if (!fs.existsSync(file_path)) { file_path += '.md'; }
@@ -62,7 +62,6 @@ function route_wildcard (config, raneto) {
             return;
           }
           render  = 'edit';
-          content = content;
 
         } else {
 
@@ -99,7 +98,7 @@ function route_wildcard (config, raneto) {
           meta          : meta,
           content       : content,
           body_class    : template + '-' + raneto.cleanString(slug),
-          last_modified : get_last_modified(config,meta,file_path),
+          last_modified : get_last_modified(config, meta, file_path),
           lang          : config.lang,
           loggedIn      : loggedIn,
           username      : (config.authentication ? req.session.username : null),

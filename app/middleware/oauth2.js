@@ -45,7 +45,7 @@ function authRequired (req, res, next) {
     req.session.oauth2return = req.originalUrl;
     return res.redirect('/login');
   }
-  if(req.session.allowedDomain && req.session.allowedDomain !== req.user.domain) {
+  if (req.session.allowedDomain && req.session.allowedDomain !== req.user.domain) {
     return res.redirect('/login');
   }
   next();
@@ -63,7 +63,7 @@ function addTemplateVariables (req, res, next) {
 }
 // [END middleware]
 
-function router(config) {
+function router (config) {
   // Configure the Google strategy for use by Passport.js.
   //
   // OAuth 2-based strategies require a `verify` function which receives the
@@ -75,7 +75,7 @@ function router(config) {
     clientID: config.oauth2.client_id,
     clientSecret: config.oauth2.client_secret,
     callbackURL: config.oauth2.callback,
-    accessType: 'offline',
+    accessType: 'offline'
 
   }, function (accessToken, refreshToken, profile, cb) {
     // Extract the minimal profile information we need from the profile object
@@ -129,7 +129,7 @@ function router(config) {
     // Redirect back to the original page, if any
     function (req, res) {
       req.session.loggedIn = true;
-      if(config.oauth2.validateHostedDomain) {
+      if (config.oauth2.validateHostedDomain) {
         req.session.allowedDomain = config.oauth2.hostedDomain;
       }
       var redirect = req.session.oauth2return || '/';
@@ -146,7 +146,6 @@ function router(config) {
     req.logout();
     res.redirect('/login');
   });
-
 
   return router;
 }

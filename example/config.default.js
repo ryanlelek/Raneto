@@ -1,6 +1,9 @@
 
 'use strict';
 
+// Modules
+var path = require('path');
+
 var config = {
 
   // Your site title (format: page_title - site_title)
@@ -13,7 +16,7 @@ var config = {
   support_email: '',
 
   // Footer Text / Copyright
-  copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - <a href="http://raneto.com">Powered by Raneto</a>',
+  copyright: 'Copyright &copy; ' + new Date().getFullYear() + ' - <a href="http://raneto.com">Powered by Raneto</a>',
 
   // Excerpt length (used in search)
   excerpt_length: 400,
@@ -31,16 +34,16 @@ var config = {
   show_on_home_default: true,
 
   // Which Theme to Use?
-  theme_dir  : __dirname + '/../themes/',
+  theme_dir  : path.join(__dirname, '..', 'themes'),
   theme_name : 'default',
 
   // Specify the path of your content folder where all your '.md' files are located
   // Fix: Needs trailing slash for now!
   // Fix: Cannot be an absolute path
-  content_dir : __dirname + '/content/',
+  content_dir : path.join(__dirname, 'content'),
 
   // Where is the public directory or document root?
-  public_dir  : __dirname + '/../themes/default/public/',
+  public_dir  : path.join(__dirname, '..', 'themes', 'default', 'public'),
 
   // The base URL of your images folder,
   // Relative to config.public_dir
@@ -93,25 +96,25 @@ var config = {
 
   // Edit Home Page title, description, etc.
   home_meta : {
-    //title       : 'Custom Home Title',
-    //description : 'Custom Home Description'
+    // title       : 'Custom Home Title',
+    // description : 'Custom Home Description'
   },
 
-  //variables: [
-  //  {
-  //    name: 'test_variable',
-  //    content: 'test variable'
-  //  },
-  //  {
-  //    name: 'test_variable_2',
-  //    content: 'test variable 2'
-  //  }
-  //]
+  // variables: [
+  //   {
+  //     name: 'test_variable',
+  //     content: 'test variable'
+  //   },
+  //   {
+  //     name: 'test_variable_2',
+  //     content: 'test variable 2'
+  //   }
+  // ]
 
   table_of_contents: false
 
 };
-config.public_dir = __dirname + '/../themes/' + config.theme_name + '/public/';
+config.public_dir = path.join(__dirname, '..', 'themes', config.theme_name, 'public');
 
 // Exports
 module.exports = config;

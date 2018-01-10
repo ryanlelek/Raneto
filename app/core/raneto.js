@@ -43,18 +43,18 @@ const default_config = {
 const _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
 const _metaRegexYaml = /^\uFEFF?---([\s\S]*?)---/i;
 
-function patch_content_dir(content_dir) {
+function patch_content_dir (content_dir) {
   return content_dir.replace(/\\/g, '/');
 }
 
 class Raneto {
 
-  constructor() {
+  constructor () {
     this.config = Object.assign({}, default_config);  // Clone default config
   }
 
   // Makes filename safe strings
-  cleanString(str, use_underscore) {
+  cleanString (str, use_underscore) {
     const u   = use_underscore || false;
     str = str.replace(/\//g, ' ').trim();
     if (u) {
@@ -65,7 +65,7 @@ class Raneto {
   }
 
   // Clean object strings.
-  cleanObjectStrings(obj) {
+  cleanObjectStrings (obj) {
     let cleanObj = {};
     for (let field in obj) {
       if (obj.hasOwnProperty(field)) {
@@ -76,13 +76,13 @@ class Raneto {
   }
 
   // Convert a slug to a title
-  slugToTitle(slug) {
+  slugToTitle (slug) {
     slug = slug.replace('.md', '').trim();
     return _s.titleize(_s.humanize(path.basename(slug)));
   }
 
   // Get meta information from Markdown content
-  processMeta(markdownContent) {
+  processMeta (markdownContent) {
     let meta = {};
     let metaArr;
     let metaString;
@@ -121,7 +121,7 @@ class Raneto {
   }
 
   // Strip meta from Markdown content
-  stripMeta(markdownContent) {
+  stripMeta (markdownContent) {
     switch (true) {
       case _metaRegex.test(markdownContent):
         return markdownContent.replace(_metaRegex, '').trim();
@@ -133,23 +133,23 @@ class Raneto {
   }
 
   // Replace content variables in Markdown content
-  processVars(markdownContent) {
+  processVars (markdownContent) {
     if (typeof this.config.variables !== 'undefined') {
       this.config.variables.forEach(block => {
-        markdownContent = markdownContent.replace(new RegExp('\%'+block.name+'\%', 'g'), block.content);
+        markdownContent = markdownContent.replace(new RegExp('%' + block.name + '%', 'g'), block.content);
       });
     }
     if (typeof this.config.base_url  !== 'undefined') {
-      markdownContent = markdownContent.replace(/\%base_url\%/g, this.config.base_url);
+      markdownContent = markdownContent.replace(/%base_url%/g, this.config.base_url);
     }
     if (typeof this.config.image_url !== 'undefined') {
-      markdownContent = markdownContent.replace(/\%image_url\%/g, this.config.image_url);
+      markdownContent = markdownContent.replace(/%image_url%/g, this.config.image_url);
     }
     return markdownContent;
   }
 
   // Get a page
-  getPage(filePath) {
+  getPage (filePath) {
     try {
       const file = fs.readFileSync(filePath);
       let slug = patch_content_dir(filePath).replace(patch_content_dir(this.config.content_dir), '').trim();
@@ -177,12 +177,12 @@ class Raneto {
   }
 
   // Get a structured array of the contents of contentDir
-  getPages(activePageSlug) {
+  getPages (activePageSlug) {
     activePageSlug     = activePageSlug || '';
     const baseSlug = activePageSlug.split(/[\\/]/).slice(0, -1).join('/');
     const page_sort_meta = this.config.page_sort_meta || '';
     const category_sort  = this.config.category_sort || false;
-    const files          = glob.sync(patch_content_dir(this.config.content_dir) +'**/*');
+    const files          = glob.sync(patch_content_dir(this.config.content_dir) + '**/*');
     const content_dir    = path.normalize(patch_content_dir(this.config.content_dir));
     const filesProcessed = [];
 
@@ -219,7 +219,7 @@ class Raneto {
 
         let dirMetadata = {};
         try {
-          const metaFile = fs.readFileSync(patch_content_dir(this.config.content_dir) + shortPath +'/meta');
+          const metaFile = fs.readFileSync(patch_content_dir(this.config.content_dir) + shortPath + '/meta');
           dirMetadata = this.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
         } catch (e) {
           if (this.config.debug) { console.log('No meta file for', patch_content_dir(this.config.content_dir) + shortPath); }
@@ -227,7 +227,7 @@ class Raneto {
 
         if (category_sort && !dirMetadata.sort) {
           try {
-            const sortFile = fs.readFileSync(patch_content_dir(this.config.content_dir) + shortPath +'/sort');
+            const sortFile = fs.readFileSync(patch_content_dir(this.config.content_dir) + shortPath + '/sort');
             sort = parseInt(sortFile.toString('utf-8'), 10);
           } catch (e) {
             if (this.config.debug) { console.log('No sort file for', patch_content_dir(this.config.content_dir) + shortPath); }
@@ -274,7 +274,7 @@ class Raneto {
             title  : meta.title ? meta.title : this.slugToTitle(slug),
             show_on_home: meta.show_on_home ? (meta.show_on_home === 'true') : this.config.show_on_home_default,
             is_directory: false,
-            active : (activePageSlug.trim() === '/'+ slug),
+            active : (activePageSlug.trim() === '/' + slug),
             sort   : pageSort
           });
 
@@ -293,10 +293,10 @@ class Raneto {
   }
 
   // Index and search contents
-  doSearch(query) {
+  doSearch (query) {
     const contentDir = patch_content_dir(path.normalize(this.config.content_dir));
     const files = glob.sync(contentDir + '**/*.md');
-    const idx   = lunr(function() {
+    const idx   = lunr(function () {
       this.field('title', { boost: 10 });
       this.field('body');
     });
@@ -323,7 +323,7 @@ class Raneto {
 
     results.forEach(result => {
       const page = this.getPage(this.config.content_dir + result.ref);
-      page.excerpt = page.excerpt.replace(new RegExp('('+ query +')', 'gim'), '<span class="search-query">$1</span>');
+      page.excerpt = page.excerpt.replace(new RegExp('(' + query + ')', 'gim'), '<span class="search-query">$1</span>');
       searchResults.push(page);
     });
 

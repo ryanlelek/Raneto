@@ -21,13 +21,13 @@ const config = require('./config.default.js');
 const express = require('express');
 
 // Create two subapps with different configurations
-const appEn = raneto(Object.assign({}, config, {base_url: "/en", locale: 'en'}));
-const appEs = raneto(Object.assign({}, config, {base_url: "/es", locale: 'es'}));
+const appEn = raneto(Object.assign({}, config, {base_url: '/en', locale: 'en'}));
+const appEs = raneto(Object.assign({}, config, {base_url: '/es', locale: 'es'}));
 
 // Create the main app
 const mainApp = express();
-mainApp.use("/en", appEn);
-mainApp.use("/es", appEs);
+mainApp.use('/en', appEn);
+mainApp.use('/es', appEs);
 
 // Load the HTTP Server
 const server = mainApp.listen(3000, function () {

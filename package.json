@@ -34,7 +34,7 @@
     "test": "npm run lint && mocha --reporter spec test/*.js",
     "postinstall": "npm run gulp",
     "gulp": "gulp",
-    "lint": "jshint app/**/*.js test/*.js"
+    "lint": "./node_modules/.bin/eslint bin/*.js app/**/*.js example/**/*.js test/*.js translate/*.json gulpfile.js"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -78,7 +78,10 @@
   },
   "devDependencies": {
     "chai": "^4.1.1",
-    "jshint": "^2.9.5",
+    "eslint": "^3.5.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
     "mocha": "^4.0.1",
     "supertest": "^3.0.0"
   }

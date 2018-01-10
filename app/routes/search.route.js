@@ -15,7 +15,7 @@ function route_search (config, raneto) {
     // remove < and >
     var tagFreeQuery   = _s.stripTags(req.query.search);
 
-    // remove /, ', " and & from query 
+    // remove /, ', " and & from query
     var invalidChars   = '&\'"/';
     var sanitizedQuery = validator.blacklist(tagFreeQuery, invalidChars);
 

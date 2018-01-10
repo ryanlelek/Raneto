@@ -13,7 +13,6 @@ function middleware_authenticate_read_access (config) {
           res.redirect(403, '/login');
           return;
         }
-        return next();
       } else {
         return next();
       }

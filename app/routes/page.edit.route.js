@@ -35,11 +35,11 @@ function route_page_edit (config, raneto) {
     }
 
     // Create content including meta information (i.e. title, description, sort)
-    function create_content(body) {
+    function create_content (body) {
       var meta = create_meta_info(body.meta_title, body.meta_description, body.meta_sort);
       return meta + body.content;
     }
-    
+
     var complete_content = create_content(req.body);
 
     fs.writeFile(filepath, complete_content, function (error) {
