@@ -9,6 +9,7 @@ var marked                         = require('marked');
 var toc                            = require('markdown-toc');
 var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
+const contentProcessors = require('../functions/contentProcessors');
 
 function route_wildcard (config, raneto) {
   return function (req, res, next) {
@@ -42,13 +43,13 @@ function route_wildcard (config, raneto) {
       if (path.extname(file_path) === '.md') {
 
         // Meta
-        var meta = raneto.processMeta(content);
+        var meta = contentProcessors.processMeta(content);
         meta.custom_title = meta.title;
-        if (!meta.title) { meta.title = raneto.slugToTitle(file_path); }
+        if (!meta.title) { meta.title = contentProcessors.slugToTitle(file_path); }
 
         // Content
-        content = raneto.stripMeta(content);
-        content = raneto.processVars(content);
+        content = contentProcessors.stripMeta(content);
+        content = contentProcessors.processVars(content);
 
         var template = meta.template || 'page';
         var render   = template;
@@ -97,7 +98,7 @@ function route_wildcard (config, raneto) {
           pages         : build_nested_pages(pageList),
           meta          : meta,
           content       : content,
-          body_class    : template + '-' + raneto.cleanString(slug),
+          body_class    : template + '-' + contentProcessors.cleanString(slug),
           last_modified : get_last_modified(config, meta, file_path),
           lang          : config.lang,
           loggedIn      : loggedIn,

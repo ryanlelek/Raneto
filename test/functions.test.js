@@ -9,6 +9,7 @@ var moment             = require('moment');
 var Raneto             = require('../app/core/raneto.js');
 var build_nested_pages = require('../app/functions/build_nested_pages.js');
 var get_last_modified  = require('../app/functions/get_last_modified.js');
+const contentProcessors = require('../app/functions/contentProcessors');
 
 const raneto = new Raneto();
 
@@ -21,7 +22,7 @@ describe('#get_last_modified()', function () {
     raneto.config.datetime_format = 'Do MMM YYYY';
     var file_path = path.join(__dirname, 'content/page-with-bom-yaml.md');
     var content = fs.readFileSync(file_path, 'utf8');
-    var modified = get_last_modified(raneto.config, raneto.processMeta(content), file_path);
+    var modified = get_last_modified(raneto.config, contentProcessors.processMeta(content), file_path);
     expect(modified).to.be.equal('14th Sep 2016');
   });
 
@@ -29,7 +30,7 @@ describe('#get_last_modified()', function () {
     raneto.config.datetime_format = 'Do MMM YYYY';
     var file_path = path.join(__dirname, 'content/example-page.md');
     var content = fs.readFileSync(file_path, 'utf8');
-    var modified = get_last_modified(raneto.config, raneto.processMeta(content), file_path);
+    var modified = get_last_modified(raneto.config, contentProcessors.processMeta(content), file_path);
     var fstime = moment(fs.lstatSync(file_path).mtime).format(raneto.config.datetime_format);
     expect(modified).to.be.equal(fstime);
   });

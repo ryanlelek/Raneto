@@ -5,6 +5,7 @@ var path   = require('path');
 var chai   = require('chai');
 var expect = chai.expect;
 var Raneto = require('../app/core/raneto.js');
+const contentProcessors = require('../app/functions/contentProcessors');
 
 const raneto = new Raneto();
 
@@ -14,23 +15,23 @@ chai.config.truncateThreshold = 0;
 describe('#cleanString()', function () {
 
   it('converts "Hello World" into "hello-world"', function () {
-    raneto.cleanString('Hello World').should.equal('hello-world');
+    contentProcessors.cleanString('Hello World').should.equal('hello-world');
   });
 
   it('converts "/some/directory-example/hello/" into "some-directory-example-hello"', function () {
-    raneto.cleanString('/some/directory-example/hello/').should.equal('some-directory-example-hello');
+    contentProcessors.cleanString('/some/directory-example/hello/').should.equal('some-directory-example-hello');
   });
 
   it('converts "with trailing space " into "with-trailing-space"', function () {
-    raneto.cleanString('with trailing space ').should.equal('with-trailing-space');
+    contentProcessors.cleanString('with trailing space ').should.equal('with-trailing-space');
   });
 
   it('converts "also does underscores" into "also_does_underscores"', function () {
-    raneto.cleanString('also does underscores', true).should.equal('also_does_underscores');
+    contentProcessors.cleanString('also does underscores', true).should.equal('also_does_underscores');
   });
 
   it('converts "/some/directory-example/underscores/" into "some_directory_example_underscores"', function () {
-    raneto.cleanString('/some/directory-example/underscores/', true).should.equal('some_directory_example_underscores');
+    contentProcessors.cleanString('/some/directory-example/underscores/', true).should.equal('some_directory_example_underscores');
   });
 
 });
@@ -38,11 +39,11 @@ describe('#cleanString()', function () {
 describe('#slugToTitle()', function () {
 
   it('converts "hello-world" into "Hello World"', function () {
-    raneto.slugToTitle('hello-world').should.equal('Hello World');
+    contentProcessors.slugToTitle('hello-world').should.equal('Hello World');
   });
 
   it('converts "dir/some-example-file.md" into "Some Example File"', function () {
-    raneto.slugToTitle('dir/some-example-file.md').should.equal('Some Example File');
+    contentProcessors.slugToTitle('dir/some-example-file.md').should.equal('Some Example File');
   });
 
 });
@@ -50,7 +51,7 @@ describe('#slugToTitle()', function () {
 describe('#processMeta()', function () {
 
   it('returns array of meta values', function () {
-    var result = raneto.processMeta('/*\n' +
+    var result = contentProcessors.processMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -63,7 +64,7 @@ describe('#processMeta()', function () {
   });
 
   it('returns an empty array if no meta specified', function () {
-    var result = raneto.processMeta('no meta here');
+    var result = contentProcessors.processMeta('no meta here');
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });
@@ -75,7 +76,7 @@ describe('#processMeta()', function () {
   });
 
   it('returns array of meta values (YAML)', function () {
-    var result = raneto.processMeta('---\n' +
+    var result = contentProcessors.processMeta('---\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -98,7 +99,7 @@ describe('#processMeta()', function () {
 describe('#stripMeta()', function () {
 
   it('strips meta comment block', function () {
-    var result = raneto.stripMeta('/*\n' +
+    var result = contentProcessors.stripMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -108,7 +109,7 @@ describe('#stripMeta()', function () {
   });
 
   it('strips yaml meta comment block with horizontal rule in content', function () {
-    var result = raneto.stripMeta('---\n' +
+    var result = contentProcessors.stripMeta('---\n' +
       'Title: + This is a title\n' +
       '---\n' +
       'This is the content\n---');
@@ -116,17 +117,17 @@ describe('#stripMeta()', function () {
   });
 
   it('leaves content if no meta comment block', function () {
-    var result = raneto.stripMeta('This is the content');
+    var result = contentProcessors.stripMeta('This is the content');
     result.should.equal('This is the content');
   });
 
   it('leaves content with horizontal rule if no meta comment block', function () {
-    var result = raneto.stripMeta('This is the content\n---');
+    var result = contentProcessors.stripMeta('This is the content\n---');
     result.should.equal('This is the content\n---');
   });
 
   it('only strips the first comment block', function () {
-    var result = raneto.stripMeta('/*\n' +
+    var result = contentProcessors.stripMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -143,23 +144,22 @@ describe('#stripMeta()', function () {
 
 describe('#processVars()', function () {
 
-  it('replaces config vars in Markdown content', function () {
-    raneto.config.base_url = '/base/url';
-    raneto
-      .processVars('This is some Markdown with a %base_url%.')
+  it('replaces config vars in Markdown content', () => {
+    const baseUrl = '/base/url';
+    contentProcessors
+      .processVars('This is some Markdown with a %base_url%.', undefined, baseUrl, undefined)
       .should.equal('This is some Markdown with a /base/url.');
   });
 
-  it('replaces custom vars in Markdown content', function () {
-    var variables = [
+  it('replaces custom vars in Markdown content', () => {
+    const variables = [
       {
         name: 'test_variable',
         content: 'Test Variable'
       }
     ];
-    raneto.config.variables = variables;
-    raneto
-      .processVars('This is some Markdown with a %test_variable%.')
+    contentProcessors
+      .processVars('This is some Markdown with a %test_variable%.', variables)
       .should.equal('This is some Markdown with a Test Variable.');
   });
 
