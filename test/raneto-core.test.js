@@ -1,16 +1,23 @@
 'use strict';
 
 // Modules
-var path   = require('path');
-var chai   = require('chai');
+var path = require('path');
+var chai = require('chai');
 var expect = chai.expect;
 var Raneto = require('../app/core/raneto.js');
 const contentProcessors = require('../app/functions/contentProcessors');
 
 const raneto = new Raneto();
 
+const searchHandler = require('../app/core/search');
+const pageHandler = require('../app/core/page');
+
 chai.should();
 chai.config.truncateThreshold = 0;
+
+const config = {
+  content_dir: path.join(__dirname, 'content/')
+};
 
 describe('#cleanString()', function () {
 
@@ -48,7 +55,7 @@ describe('#slugToTitle()', function () {
 
 });
 
-describe('#processMeta()', function () {
+describe('#processMeta()', () => {
 
   it('returns array of meta values', function () {
     var result = contentProcessors.processMeta('/*\n' +
@@ -69,9 +76,11 @@ describe('#processMeta()', function () {
     expect(result).to.be.empty;
   });
 
-  it('returns proper meta from file starting with a BOM character', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPage(path.join(raneto.config.content_dir, 'page-with-bom.md'));
+  it('returns proper meta from file starting with a BOM character', () => {
+    const result = pageHandler(
+      path.join(config.content_dir, 'page-with-bom.md'),
+      config
+    );
     expect(result).to.have.property('title', 'Example Page With BOM');
   });
 
@@ -88,9 +97,11 @@ describe('#processMeta()', function () {
     expect(result).to.have.property('multi_word', 'Value');
   });
 
-  it('returns proper meta from file starting with a BOM character (YAML)', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPage(raneto.config.content_dir + 'page-with-bom-yaml.md');
+  it('returns proper meta from file starting with a BOM character (YAML)', () => {
+    const result = pageHandler(
+      path.join(config.content_dir, 'page-with-bom-yaml.md'),
+      config
+    );
     expect(result).to.have.property('title', 'Example Page With BOM for YAML');
   });
 
@@ -167,20 +178,24 @@ describe('#processVars()', function () {
 
 });
 
-describe('#getPage()', function () {
+describe('#getPage()', () => {
 
-  it('returns an array of values for a given page', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPage(raneto.config.content_dir + 'example-page.md');
+  it('returns an array of values for a given page', () => {
+    const result = pageHandler(
+      path.join(config.content_dir, 'example-page.md'),
+      config
+    );
     expect(result).to.have.property('slug', 'example-page');
     expect(result).to.have.property('title', 'Example Page');
     expect(result).to.have.property('body');
     expect(result).to.have.property('excerpt');
   });
 
-  it('returns null if no page found', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPage(raneto.config.content_dir + 'nonexistent-page.md');
+  it('returns null if no page found', () => {
+    const result = pageHandler(
+      path.join(config.content_dir, 'nonexistent-page.md'),
+      config
+    );
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.null;
   });
@@ -254,17 +269,14 @@ describe('#getPages()', function () {
 
 });
 
-describe('#doSearch()', function () {
-
-  it('returns an array of search results', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.doSearch('example');
+describe('#doSearch()', () => {
+  it('returns an array of search results', () => {
+    const result = searchHandler('example', config);
     expect(result).to.have.length(5);
   });
 
-  it('returns an empty array if nothing found', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.doSearch('asdasdasd');
+  it('returns an empty array if nothing found', () => {
+    const result = searchHandler('qwerty', config);
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });

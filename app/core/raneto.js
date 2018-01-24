@@ -5,8 +5,6 @@ const fs = require('fs');
 const glob = require('glob');
 const _ = require('underscore');
 const _s = require('underscore.string');
-const marked = require('marked');
-const lunr = require('lunr');
 const yaml = require('js-yaml');
 const contentProcessors = require('../functions/contentProcessors');
 
@@ -40,34 +38,6 @@ class Raneto {
 
   constructor () {
     this.config = Object.assign({}, default_config);  // Clone default config
-  }
-
-  // Get a page
-  getPage (filePath) {
-    try {
-      const file = fs.readFileSync(filePath);
-      let slug = patch_content_dir(filePath).replace(patch_content_dir(this.config.content_dir), '').trim();
-
-      if (slug.indexOf('index.md') > -1) {
-        slug = slug.replace('index.md', '');
-      }
-      slug = slug.replace('.md', '').trim();
-
-      const meta    = contentProcessors.processMeta(file.toString('utf-8'));
-      let content = contentProcessors.stripMeta(file.toString('utf-8'));
-      content     = contentProcessors.processVars(content, this.config);
-      const html    = marked(content);
-
-      return {
-        slug    : slug,
-        title   : meta.title ? meta.title : contentProcessors.slugToTitle(slug),
-        body    : html,
-        excerpt : _s.prune(_s.stripTags(_s.unescapeHTML(html)), (this.config.excerpt_length || 400))
-      };
-    } catch (e) {
-      if (this.config.debug) { console.log(e); }
-      return null;
-    }
   }
 
   // Get a structured array of the contents of contentDir
@@ -184,35 +154,6 @@ class Raneto {
     });
 
     return sortedFiles;
-  }
-
-  // Index and search contents
-  doSearch (query) {
-    const contentDir = patch_content_dir(path.normalize(this.config.content_dir));
-    const documents = glob
-      .sync(contentDir + '**/*.md')
-      .map(filePath => contentProcessors.extractDocument(
-        contentDir, filePath, this.config.debug
-      ))
-      .filter(doc => doc !== null);
-
-    const idx = lunr(function () {
-      this.field('title');
-      this.field('body');
-      this.ref('id');
-      documents.forEach((doc) => this.add(doc), this);
-    });
-
-    const results       = idx.search(query);
-    const searchResults = [];
-
-    results.forEach(result => {
-      const page = this.getPage(this.config.content_dir + result.ref);
-      page.excerpt = page.excerpt.replace(new RegExp('(' + query + ')', 'gim'), '<span class="search-query">$1</span>');
-      searchResults.push(page);
-    });
-
-    return searchResults;
   }
 }
 
