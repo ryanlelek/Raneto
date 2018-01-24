@@ -55,7 +55,7 @@ class Raneto {
 
       const meta    = contentProcessors.processMeta(file.toString('utf-8'));
       let content = contentProcessors.stripMeta(file.toString('utf-8'));
-      content     = contentProcessors.processVars(content, this.config.variables, this.config.base_url, this.config.image_url);
+      content     = contentProcessors.processVars(content, this.config);
       const html    = marked(content);
 
       return {

@@ -96,17 +96,17 @@ function processMeta (markdownContent) {
 }
 
 // Replace content variables in Markdown content
-function processVars (markdownContent, variables, baseURL, imageURL) {
-  if (typeof variables !== 'undefined') {
-    variables.forEach(block => {
-      markdownContent = markdownContent.replace(new RegExp('%' + block.name + '%', 'g'), block.content);
+function processVars (markdownContent, config) {
+  if (config.variables && Array.isArray(config.variables)) {
+    config.variables.forEach((v) => {
+      markdownContent = markdownContent.replace(new RegExp('%' + v.name + '%', 'g'), v.content);
     });
   }
-  if (typeof baseURL !== 'undefined') {
-    markdownContent = markdownContent.replace(/%base_url%/g, baseURL);
+  if (config.base_url) {
+    markdownContent = markdownContent.replace(/%base_url%/g, config.base_url);
   }
-  if (typeof imageURL !== 'undefined') {
-    markdownContent = markdownContent.replace(/%image_url%/g, imageURL);
+  if (config.image_url) {
+    markdownContent = markdownContent.replace(/%image_url%/g, config.image_url);
   }
   return markdownContent;
 }

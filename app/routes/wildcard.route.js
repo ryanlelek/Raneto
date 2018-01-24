@@ -49,7 +49,7 @@ function route_wildcard (config, raneto) {
 
         // Content
         content = contentProcessors.stripMeta(content);
-        content = contentProcessors.processVars(content);
+        content = contentProcessors.processVars(content, config);
 
         var template = meta.template || 'page';
         var render   = template;

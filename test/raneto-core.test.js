@@ -145,21 +145,23 @@ describe('#stripMeta()', function () {
 describe('#processVars()', function () {
 
   it('replaces config vars in Markdown content', () => {
-    const baseUrl = '/base/url';
+    const config = {base_url: '/base/url'};
     contentProcessors
-      .processVars('This is some Markdown with a %base_url%.', undefined, baseUrl, undefined)
+      .processVars('This is some Markdown with a %base_url%.', config)
       .should.equal('This is some Markdown with a /base/url.');
   });
 
   it('replaces custom vars in Markdown content', () => {
-    const variables = [
-      {
-        name: 'test_variable',
-        content: 'Test Variable'
-      }
-    ];
+    const config = {
+      variables: [
+        {
+          name: 'test_variable',
+          content: 'Test Variable'
+        }
+      ]
+    };
     contentProcessors
-      .processVars('This is some Markdown with a %test_variable%.', variables)
+      .processVars('This is some Markdown with a %test_variable%.', config)
       .should.equal('This is some Markdown with a Test Variable.');
   });
 
