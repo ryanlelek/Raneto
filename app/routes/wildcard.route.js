@@ -7,11 +7,11 @@ var fs                             = require('fs');
 var build_nested_pages             = require('../functions/build_nested_pages.js');
 var marked                         = require('marked');
 var toc                            = require('markdown-toc');
-var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
 const contentProcessors = require('../functions/contentProcessors');
 const contentsHandler = require('../core/contents');
+const utils = require('../core/utils');
 
 function route_wildcard (config) {
   return function (req, res, next) {
@@ -101,7 +101,7 @@ function route_wildcard (config) {
           meta          : meta,
           content       : content,
           body_class    : template + '-' + contentProcessors.cleanString(slug),
-          last_modified : get_last_modified(config, meta, file_path),
+          last_modified : utils.getLastModified(config, meta, file_path),
           lang          : config.lang,
           loggedIn      : loggedIn,
           username      : (config.authentication ? req.session.username : null),

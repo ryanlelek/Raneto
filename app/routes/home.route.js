@@ -6,10 +6,10 @@ var fs                             = require('fs');
 var _                              = require('underscore');
 var build_nested_pages             = require('../functions/build_nested_pages.js');
 var get_filepath                   = require('../functions/get_filepath.js');
-var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
 const contentsHandler = require('../core/contents');
+const utils = require('../core/utils');
 
 function route_home (config) {
   return function (req, res, next) {
@@ -52,7 +52,7 @@ function route_home (config) {
       pages         : build_nested_pages(pageList),
       body_class    : 'page-home',
       meta          : config.home_meta,
-      last_modified : get_last_modified(config, config.home_meta, template_filepath),
+      last_modified : utils.getLastModified(config, config.home_meta, template_filepath),
       lang          : config.lang,
       loggedIn      : ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false),
       username      : ((config.authentication || config.authentication_for_edit) ? req.session.username : null)
