@@ -267,10 +267,4 @@ describe('#doSearch()', function () {
     expect(result).to.be.empty;
   });
 
-  it('returns an array if search has special characters', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.doSearch('with "special');
-    expect(result[0].title).to.be.deep.equals('Special Characters Page');
-  });
-
 });

@@ -189,27 +189,18 @@ class Raneto {
   // Index and search contents
   doSearch (query) {
     const contentDir = patch_content_dir(path.normalize(this.config.content_dir));
-    const files = glob.sync(contentDir + '**/*.md');
-    const idx   = lunr(function () {
-      this.field('title', { boost: 10 });
+    const documents = glob
+      .sync(contentDir + '**/*.md')
+      .map(filePath => contentProcessors.extractDocument(
+        contentDir, filePath, this.config.debug
+      ))
+      .filter(doc => doc !== null);
+
+    const idx = lunr(function () {
+      this.field('title');
       this.field('body');
-    });
-
-    files.forEach(filePath => {
-      try {
-        const shortPath = filePath.replace(contentDir, '').trim();
-        const file      = fs.readFileSync(filePath);
-        const meta      = contentProcessors.processMeta(file.toString('utf-8'));
-
-        idx.add({
-          id    : shortPath,
-          title : meta.title ? meta.title : contentProcessors.slugToTitle(shortPath),
-          body  : file.toString('utf-8')
-        });
-
-      } catch (e) {
-        if (this.config.debug) { console.log(e); }
-      }
+      this.ref('id');
+      documents.forEach((doc) => this.add(doc), this);
     });
 
     const results       = idx.search(query);

@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
 const _s = require('underscore.string');
 const yaml = require('js-yaml');
 
@@ -110,9 +111,28 @@ function processVars (markdownContent, variables, baseURL, imageURL) {
   return markdownContent;
 }
 
+function extractDocument (contentDir, filePath, debug) {
+  try {
+    const file = fs.readFileSync(filePath);
+    const meta = processMeta(file.toString('utf-8'));
+
+    const id = filePath.replace(contentDir, '').trim();
+    const title = meta.title ? meta.title : slugToTitle(id);
+    const body = file.toString('utf-8');
+
+    return {id, title, body}
+  } catch (e) {
+    if (debug) {
+      console.log(e);
+    }
+    return null;
+  }
+}
+
 exports.default = {
   cleanString,
   cleanObjectStrings,
+  extractDocument,
   slugToTitle,
   stripMeta,
   processMeta,
