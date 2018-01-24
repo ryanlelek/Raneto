@@ -13,7 +13,7 @@ var remove_image_content_directory = require('../functions/remove_image_content_
 const contentProcessors = require('../functions/contentProcessors');
 const contentsHandler = require('../core/contents');
 
-function route_wildcard (config, raneto) {
+function route_wildcard (config) {
   return function (req, res, next) {
 
     // Skip if nothing matched the wildcard Regex
@@ -23,7 +23,7 @@ function route_wildcard (config, raneto) {
     var slug   = req.params[0];
     if (slug === '/') { slug = '/index'; }
 
-    var file_path      = path.normalize(raneto.config.content_dir + slug);
+    var file_path      = path.normalize(config.content_dir + slug);
     var file_path_orig = file_path;
 
     // Remove "/edit" suffix
