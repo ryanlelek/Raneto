@@ -22,6 +22,7 @@ const config = {
   page_sort_meta: 'sort',
   category_sort: true,
   show_on_home_default: true,
+  searchExtraLanguages: ['ru'],
   debug: false,
   content_dir: path.join(__dirname, 'content/'),
   datetime_format: 'Do MMM YYYY'

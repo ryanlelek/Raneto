@@ -60,6 +60,7 @@
     "jquery-backstretch": "^2.1.16",
     "js-yaml": "^3.9.1",
     "lunr": "^2.1.5",
+    "lunr-languages": "^1.0.0",
     "markdown-toc": "^1.2.0",
     "marked": "^0.3.12",
     "masonry-layout": "^4.2.1",

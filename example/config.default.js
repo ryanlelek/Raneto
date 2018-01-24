@@ -88,6 +88,9 @@ var config = {
 
   locale: 'en',
 
+  // Support search with extra languages
+  searchExtraLanguages: ['ru'],
+
   // Sets the format for datetime's
   datetime_format: 'Do MMM YYYY',
 

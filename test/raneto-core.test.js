@@ -19,6 +19,7 @@ const config = {
   page_sort_meta: 'sort',
   category_sort: true,
   show_on_home_default: true,
+  searchExtraLanguages: ['ru'],
   debug: false,
   content_dir: path.join(__dirname, 'content/'),
   datetime_format: 'Do MMM YYYY'
@@ -272,6 +273,11 @@ describe('#doSearch()', () => {
   it('returns an array of search results', () => {
     const result = searchHandler('example', config);
     expect(result).to.have.length(5);
+  });
+
+  it('recognizes multiple languages', () => {
+    const result = searchHandler('пример', config);
+    expect(result).to.have.length(1);
   });
 
   it('returns an empty array if nothing found', () => {
