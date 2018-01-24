@@ -1,55 +1,60 @@
 'use strict';
 
-// Modules
-var path = require('path');
-var chai = require('chai');
-var expect = chai.expect;
-var Raneto = require('../app/core/raneto.js');
+const path = require('path');
+const chai = require('chai');
+const expect = chai.expect;
 const contentProcessors = require('../app/functions/contentProcessors');
-
-const raneto = new Raneto();
 
 const searchHandler = require('../app/core/search');
 const pageHandler = require('../app/core/page');
+const contentsHandler = require('../app/core/contents');
 
 chai.should();
 chai.config.truncateThreshold = 0;
 
 const config = {
-  content_dir: path.join(__dirname, 'content/')
+  base_url: '',
+  image_url: '/images',
+  excerpt_length: 400,
+  page_sort_meta: 'sort',
+  category_sort: true,
+  show_on_home_default: true,
+  debug: false,
+  content_dir: path.join(__dirname, 'content/'),
+  datetime_format: 'Do MMM YYYY'
 };
 
-describe('#cleanString()', function () {
+describe('#cleanString()', () => {
 
-  it('converts "Hello World" into "hello-world"', function () {
+  it('converts "Hello World" into "hello-world"', () => {
     contentProcessors.cleanString('Hello World').should.equal('hello-world');
   });
 
-  it('converts "/some/directory-example/hello/" into "some-directory-example-hello"', function () {
+  it('converts "/some/directory-example/hello/" into "some-directory-example-hello"', () => {
     contentProcessors.cleanString('/some/directory-example/hello/').should.equal('some-directory-example-hello');
   });
 
-  it('converts "with trailing space " into "with-trailing-space"', function () {
+  it('converts "with trailing space " into "with-trailing-space"', () => {
     contentProcessors.cleanString('with trailing space ').should.equal('with-trailing-space');
   });
 
-  it('converts "also does underscores" into "also_does_underscores"', function () {
+  it('converts "also does underscores" into "also_does_underscores"', () => {
     contentProcessors.cleanString('also does underscores', true).should.equal('also_does_underscores');
   });
 
-  it('converts "/some/directory-example/underscores/" into "some_directory_example_underscores"', function () {
+  it('converts "/some/directory-example/underscores/" into "some_directory_example_underscores"', () => {
     contentProcessors.cleanString('/some/directory-example/underscores/', true).should.equal('some_directory_example_underscores');
   });
 
 });
 
-describe('#slugToTitle()', function () {
+describe('#slugToTitle()', () => {
 
-  it('converts "hello-world" into "Hello World"', function () {
+  it('converts "hello-world" into "Hello World"', () => {
     contentProcessors.slugToTitle('hello-world').should.equal('Hello World');
   });
 
-  it('converts "dir/some-example-file.md" into "Some Example File"', function () {
+  it('converts "dir/some-example-file.md" into "Some Example File"', () => {
     contentProcessors.slugToTitle('dir/some-example-file.md').should.equal('Some Example File');
   });
 
@@ -57,8 +62,8 @@ describe('#slugToTitle()', function () {
 
 describe('#processMeta()', () => {
 
-  it('returns array of meta values', function () {
-    var result = contentProcessors.processMeta('/*\n' +
+  it('returns array of meta values', () => {
+    const result = contentProcessors.processMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -70,8 +75,8 @@ describe('#processMeta()', () => {
     expect(result).to.have.property('multi_word', 'Value');
   });
 
-  it('returns an empty array if no meta specified', function () {
-    var result = contentProcessors.processMeta('no meta here');
+  it('returns an empty array if no meta specified', () => {
+    const result = contentProcessors.processMeta('no meta here');
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });
@@ -84,8 +89,8 @@ describe('#processMeta()', () => {
     expect(result).to.have.property('title', 'Example Page With BOM');
   });
 
-  it('returns array of meta values (YAML)', function () {
-    var result = contentProcessors.processMeta('---\n' +
+  it('returns array of meta values (YAML)', () => {
+    const result = contentProcessors.processMeta('---\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -107,10 +112,10 @@ describe('#processMeta()', () => {
 
 });
 
-describe('#stripMeta()', function () {
+describe('#stripMeta()', () => {
 
-  it('strips meta comment block', function () {
-    var result = contentProcessors.stripMeta('/*\n' +
+  it('strips meta comment block', () => {
+    const result = contentProcessors.stripMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -119,26 +124,26 @@ describe('#stripMeta()', function () {
     result.should.equal('This is the content');
   });
 
-  it('strips yaml meta comment block with horizontal rule in content', function () {
-    var result = contentProcessors.stripMeta('---\n' +
+  it('strips yaml meta comment block with horizontal rule in content', () => {
+    const result = contentProcessors.stripMeta('---\n' +
       'Title: + This is a title\n' +
       '---\n' +
       'This is the content\n---');
     result.should.equal('This is the content\n---');
   });
 
-  it('leaves content if no meta comment block', function () {
-    var result = contentProcessors.stripMeta('This is the content');
+  it('leaves content if no meta comment block', () => {
+    const result = contentProcessors.stripMeta('This is the content');
     result.should.equal('This is the content');
   });
 
-  it('leaves content with horizontal rule if no meta comment block', function () {
-    var result = contentProcessors.stripMeta('This is the content\n---');
+  it('leaves content with horizontal rule if no meta comment block', () => {
+    const result = contentProcessors.stripMeta('This is the content\n---');
     result.should.equal('This is the content\n---');
   });
 
-  it('only strips the first comment block', function () {
-    var result = contentProcessors.stripMeta('/*\n' +
+  it('only strips the first comment block', () => {
+    const result = contentProcessors.stripMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
       'Sort: 4\n' +
@@ -153,7 +158,7 @@ describe('#stripMeta()', function () {
 
 });
 
-describe('#processVars()', function () {
+describe('#processVars()', () => {
 
   it('replaces config vars in Markdown content', () => {
     const config = {base_url: '/base/url'};
@@ -202,68 +207,62 @@ describe('#getPage()', () => {
 
 });
 
-describe('#getPages()', function () {
+describe('#getPages()', () => {
 
-  it('returns an array of categories and pages', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();
+  it('returns an array of categories and pages', () => {
+    const result = contentsHandler(null, config);
     expect(result[0]).to.have.property('is_index', true);
     expect(result[0].files[0]).to.have.property('title', 'Example Page');
     expect(result[1]).to.have.property('slug', 'sub');
     expect(result[1].files[0]).to.have.property('title', 'Example Sub Page');
   });
 
-  it('marks activePageSlug as active', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages('/example-page');
+  it('marks activePageSlug as active', () => {
+    const result = contentsHandler('/example-page', config);
     expect(result[0]).to.have.property('active', true);
     expect(result[0].files[0]).to.have.property('active', true);
     expect(result[1]).to.have.property('active', false);
     expect(result[1].files[0]).to.have.property('active', false);
   });
 
-  it('adds show_on_home property to directory', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();
+  it('adds show_on_home property to directory', () => {
+    const result = contentsHandler(null, config);
     expect(result[0]).to.have.property('show_on_home', true);
   });
 
-  it('adds show_on_home property to files', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();
+  it('adds show_on_home property to files', () => {
+    const result = contentsHandler(null, config);
     expect(result[0].files[0]).to.have.property('show_on_home', true);
   });
 
-  it('loads meta show_on_home value from directory', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();
+  it('loads meta show_on_home value from directory', () => {
+    const result = contentsHandler(null, config);
     expect(result[3]).to.have.property('show_on_home', false);
   });
 
-  it('loads meta show_on_home value from file', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var result = raneto.getPages();
+  it('loads meta show_on_home value from file', () => {
+    const result = contentsHandler(null, config);
     expect(result[0].files[4]).to.have.property('show_on_home', false);
   });
 
-  it('applies show_on_home_default in absence of meta for directories', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    raneto.config.show_on_home_default = false;
-    var result = raneto.getPages();
+  it('applies show_on_home_default in absence of meta for directories', () => {
+    const result = contentsHandler(null, Object.assign(config, {
+      show_on_home_default: false
+    }));
     expect(result[1]).to.have.property('show_on_home', false);
   });
 
-  it('applies show_on_home_default in absence of meta for files', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    raneto.config.show_on_home_default = false;
-    var result = raneto.getPages();
+  it('applies show_on_home_default in absence of meta for files', () => {
+    const result = contentsHandler(null, Object.assign(config, {
+      show_on_home_default: false
+    }));
     expect(result[1].files[0]).to.have.property('show_on_home', false);
   });
 
-  it('category index always shows on home', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    raneto.config.show_on_home_default = false;
-    var result = raneto.getPages();
+  it('category index always shows on home', () => {
+    const result = contentsHandler(null, Object.assign(config, {
+      show_on_home_default: false
+    }));
     expect(result[0]).to.have.property('show_on_home', true);
   });
 

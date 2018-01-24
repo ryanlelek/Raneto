@@ -9,7 +9,9 @@ var marked                         = require('marked');
 var toc                            = require('markdown-toc');
 var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
+
 const contentProcessors = require('../functions/contentProcessors');
+const contentsHandler = require('../core/contents');
 
 function route_wildcard (config, raneto) {
   return function (req, res, next) {
@@ -82,7 +84,7 @@ function route_wildcard (config, raneto) {
 
         }
 
-        var pageList = remove_image_content_directory(config, raneto.getPages(slug));
+        var pageList = remove_image_content_directory(config, contentsHandler(slug, config));
 
         var loggedIn = ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false);
 

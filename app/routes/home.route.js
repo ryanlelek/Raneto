@@ -9,6 +9,8 @@ var get_filepath                   = require('../functions/get_filepath.js');
 var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
+const contentsHandler = require('../core/contents');
+
 function route_home (config, raneto) {
   return function (req, res, next) {
 
@@ -37,7 +39,7 @@ function route_home (config, raneto) {
 
     // Filter out the image content directory and items with show_on_home == false
     var pageList = remove_image_content_directory(config,
-      _.chain(raneto.getPages('/index'))
+      _.chain(contentsHandler('/index', config))
         .filter(function (page) { return page.show_on_home; })
         .map(function (page) {
           page.files = _.filter(page.files, function (file) { return file.show_on_home; });
