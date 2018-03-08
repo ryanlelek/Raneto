@@ -14,7 +14,7 @@ Quickstart
 
 Run this in a terminal and then visit [http://localhost:3000](http://localhost:3000).  
 For full Installation instructions, see the [Installation Guide](http://docs.raneto.com/install/installing-raneto).  
-`git clone https://github.com/gilbitron/Raneto.git && cd Raneto && npm install && npm start`
+`git clone https://github.com/gilbitron/Raneto.git && cd Raneto && npm install && npm run gulp && npm start`
 
 Supported Node Versions:
 - v4.x
