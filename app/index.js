@@ -29,6 +29,7 @@ function initialize (config) {
   extend(raneto.config, config);
 
   // Load Files
+  var detect_language           = require('./middleware/detect_language.js');
   var authenticate              = require('./middleware/authenticate.js')               (config);
   var always_authenticate       = require('./middleware/always_authenticate.js')        (config);
   var authenticate_read_access  = require ('./middleware/authenticate_read_access.js')  (config);
@@ -99,6 +100,9 @@ function initialize (config) {
     app.get('/logout', route_logout);
     app.get('/login',     route_login_page);
   }
+
+  // Language Detection
+  app.use(detect_language);
 
   // Online Editor Routes
   if (config.allow_editing === true) {

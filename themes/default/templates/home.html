@@ -107,12 +107,14 @@
   {{/pages}}
 </div>
 
-<div class="nl-container demo-1" align="center">  
+<div class="nl-container demo-1" align="center">
   <div class="main clearfix">
+    <button id='to-french'>French</button>
+    <button id='to-english'>English</button>
     <div>
       <a href="http://www.autismontario.com/">
         <img src="/images/Autism-Ontario-Bilingual-Logo-2016.png" alt="AutismOntario Logo" style="width:300px;height:164px;border:0;">
-      </a>    
+      </a>
     </div>
     <form id="nl-form" class="nl-form">
       I am a
@@ -232,6 +234,13 @@
         window.location.href = window.location.origin + window.location.pathname + "?tags=" + tag1 + "," + tag2 + "," + tag3
       });
     }
+
+    $('#to-french').click(function () {
+      document.cookie = 'language=fr';
+    });
+    $('#to-english').click(function () {
+      document.cookie = 'language=en';
+    });
   }
 
 ;( function( window ) {
