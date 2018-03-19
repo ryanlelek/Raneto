@@ -13,7 +13,7 @@ function route_search (config, raneto) {
     if (!req.query.search) { return next(); }
 
     var searchQuery    = validator.toString(validator.escape(_s.stripTags(req.query.search))).trim();
-    var searchResults  = raneto.doSearch(searchQuery);
+    var searchResults  = raneto.doSearch(searchQuery, req.cookies['language']);
     var pageListSearch = remove_image_content_directory(config, raneto.getPages(''));
 
     // TODO: Move to Raneto Core

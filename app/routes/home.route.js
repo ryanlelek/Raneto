@@ -12,11 +12,13 @@ var remove_image_content_directory = require('../functions/remove_image_content_
 function route_home (config, raneto) {
   return function (req, res, next) {
 
+
+
     // Generate Filepath
     var filepath = get_filepath({
       content  : raneto.config.content_dir,
       filename : 'index'
-    });
+    }, req);
 
     // Do we have an index.md file?
     // If so, use that.
@@ -37,7 +39,7 @@ function route_home (config, raneto) {
 
     // Filter out the image content directory and items with show_on_home == false
     var pageList = remove_image_content_directory(config, 
-      _.chain((req.query.tags == undefined) ? raneto.getPages('/index') : raneto.getPages_Filtered('/index', req.query.tags))
+      _.chain((req.query.tags == undefined) ? raneto.getPages('/index', req.cookies['language']) : raneto.getPages_Filtered('/index', req.query.tags, req.cookies['language']))
       .filter(function(page) { return page.show_on_home; })
       .map(function(page) {
         page.files = _.filter(page.files, function(file) { return file.show_on_home; });

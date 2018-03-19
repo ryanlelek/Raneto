@@ -215,7 +215,7 @@ var Raneto = function () {
     value: function getPage(filePath) {
       try {
         var file = fs.readFileSync(filePath);
-        var slug = patch_content_dir(filePath).replace(patch_content_dir(this.config.content_dir), '').trim();
+        var slug = patch_content_dir(filePath).replace(patch_content_dir(this.config.content_dir + '/content-fr/'), '').trim();
 
         if (slug.indexOf('index.md') > -1) {
           slug = slug.replace('index.md', '');
@@ -245,14 +245,16 @@ var Raneto = function () {
 
   }, {
     key: 'getPages',
-    value: function getPages(activePageSlug) {
+    value: function getPages(activePageSlug, translation) {
+      console.log("GETPAGES");
+      console.log("translation: " + translation);
       var _this2 = this;
 
       activePageSlug = activePageSlug || '';
       var page_sort_meta = this.config.page_sort_meta || '';
       var category_sort = this.config.category_sort || false;
-      var files = glob.sync(patch_content_dir(this.config.content_dir) + '**/*');
-      var content_dir = path.normalize(patch_content_dir(this.config.content_dir));
+      var files = glob.sync(patch_content_dir(this.config.content_dir + '/content-fr/') + '**/*');
+      var content_dir = path.normalize(patch_content_dir(this.config.content_dir + '/content-fr/'));
       var filesProcessed = [];
 
       filesProcessed.push({
@@ -372,8 +374,10 @@ var Raneto = function () {
 
   }, {
     key: 'getPages_Filtered',
-    value: function getPages_Filtered(activePageSlug, filter_tags) {
+    value: function getPages_Filtered(activePageSlug, filter_tags, translation) {
       // Function to get a filtered page (by article tags)
+      console.log("GETPAGESFILTERED");
+      console.log("translationWillL: " + translation);
       var _this2 = this;
 
       activePageSlug = activePageSlug || '';
@@ -382,8 +386,8 @@ var Raneto = function () {
       var page_sort_meta = this.config.page_sort_meta || '';
       var article_tags = this.config.article_tags || '';
       var category_sort = this.config.category_sort || false;
-      var files = glob.sync(patch_content_dir(this.config.content_dir) + '**/*');
-      var content_dir = path.normalize(patch_content_dir(this.config.content_dir));
+      var files = glob.sync(patch_content_dir(this.config.content_dir + '/content-' + translation + '/') + '**/*');
+      var content_dir = path.normalize(patch_content_dir(this.config.content_dir + '/content-' + translation + '/'));
       var filesProcessed = [];
       
       filesProcessed.push({
@@ -399,6 +403,7 @@ var Raneto = function () {
       files.forEach(function (filePath) {
 
         var shortPath = path.normalize(filePath).replace(content_dir, '').trim();
+        //console.log(shortPath);
         var stat = fs.lstatSync(filePath);
 
         if (stat.isSymbolicLink()) {
@@ -533,7 +538,7 @@ var Raneto = function () {
     value: function doSearch(query) {
       var _this3 = this;
 
-      var contentDir = patch_content_dir(path.normalize(this.config.content_dir));
+      var contentDir = patch_content_dir(path.normalize(this.config.content_dir + '/content-fr/'));
       var files = glob.sync(contentDir + '**/*.md');
       var idx = (0, _lunr2.default)(function () {
         this.field('title', { boost: 10 });
