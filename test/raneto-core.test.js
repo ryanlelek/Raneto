@@ -4,10 +4,12 @@ const path = require('path');
 const chai = require('chai');
 const expect = chai.expect;
 const contentProcessors = require('../app/functions/contentProcessors');
+const build_nested_pages = require('../app/functions/build_nested_pages.js');
 
 const searchHandler = require('../app/core/search');
 const pageHandler = require('../app/core/page');
 const contentsHandler = require('../app/core/contents');
+const categoryHandler = require('../app/core/category');
 
 chai.should();
 chai.config.truncateThreshold = 0;
@@ -265,6 +267,30 @@ describe('#getPages()', () => {
       show_on_home_default: false
     }));
     expect(result[0]).to.have.property('show_on_home', true);
+  });
+
+});
+
+describe('#getCategoryPage()', () => {
+
+  it('returns an array of values for a given category', function () {
+    var slug = '/sub/sub2/';
+    var pageList = contentsHandler(slug, config);
+    var pages = build_nested_pages(pageList);
+    var result = categoryHandler(pages, slug);
+    expect(result).to.have.property('slug', 'sub\\sub2');
+    expect(result).to.have.property('title', 'Sub2');
+    expect(result).to.have.property('is_directory', true);
+    expect(result).to.have.property('files');
+  });
+
+  it('returns null if no category found', function () {
+    var slug = '/sub/sub-nonexistent/';
+    var pageList = contentsHandler(slug, config);
+    var pages = build_nested_pages(pageList);
+    var result = categoryHandler(pages, slug);
+    /* eslint-disable no-unused-expressions */
+    expect(result).to.be.null;
   });
 
 });
