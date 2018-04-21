@@ -5,13 +5,14 @@ var path              = require('path');
 var fs                = require('fs');
 var sm                = require('sitemap');
 var _                 = require('underscore');
-var get_last_modified = require('../functions/get_last_modified.js');
+const contentProcessors = require('../functions/contentProcessors');
+const utils = require('../core/utils');
 
-function route_sitemap (config, raneto) {
+function route_sitemap (config) {
   return function (req, res, next) {
 
-    var hostname = req.headers.host;
-    var content_dir = path.normalize(raneto.config.content_dir);
+    var hostname = config.hostname || req.headers.host;
+    var content_dir = path.normalize(config.content_dir);
 
     // get list md files
     var files = listFiles(content_dir);
@@ -39,10 +40,10 @@ function route_sitemap (config, raneto) {
       // Need to override the datetime format for sitemap
       var conf = {datetime_format: 'YYYY-MM-DD'};
       sitemap.add({
-        url: urls[i],
+        url: (config.prefix_url || '') + urls[i],
         changefreq: 'weekly',
         priority: 0.8,
-        lastmod: get_last_modified(conf, raneto.processMeta(content), files[i])
+        lastmod: utils.getLastModified(conf, contentProcessors.processMeta(content), files[i])
       });
     }
 
