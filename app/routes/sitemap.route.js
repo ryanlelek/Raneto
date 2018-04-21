@@ -40,7 +40,7 @@ function route_sitemap (config) {
       // Need to override the datetime format for sitemap
       var conf = {datetime_format: 'YYYY-MM-DD'};
       sitemap.add({
-        url: (raneto.config.prefix_url || '') + urls[i],
+        url: (config.prefix_url || '') + urls[i],
         changefreq: 'weekly',
         priority: 0.8,
         lastmod: utils.getLastModified(conf, contentProcessors.processMeta(content), files[i])
