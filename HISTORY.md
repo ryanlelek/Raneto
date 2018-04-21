@@ -1,6 +1,19 @@
 
 # Raneto Changelog
 
+2018.04.21 / v0.16.0
+====================
+
+  * **[New]** Better Multi-Language Support!
+    - contributed by **@Orhideous**
+  * **[New]** Raneto can be served from non-root path (URI Prefix)
+    - contributed by **@gugu**
+  * **[Misc]** Upgrade to lunr v2.x
+    - contributed by **@Orhideous**
+  * **[Misc]** Code Refactor
+    - contributed by **@Orhideous**
+  * **[Misc]** Dependency upgrades
+
 2018.03.29 / v0.15.0
 ====================
 
