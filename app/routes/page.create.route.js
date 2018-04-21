@@ -5,11 +5,11 @@
 var fs           = require('fs');
 var get_filepath = require('../functions/get_filepath.js');
 
-function route_page_create (config, raneto) {
+function route_page_create (config) {
   return function (req, res, next) {
 
     var filepath = get_filepath({
-      content  : raneto.config.content_dir,
+      content  : config.content_dir,
       category : req.body.category,
       filename : req.body.name + '.md'
     });

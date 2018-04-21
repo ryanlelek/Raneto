@@ -1,36 +1,47 @@
 'use strict';
 
-// Modules
-var fs                 = require('fs');
-var path               = require('path');
-var chai               = require('chai');
-var expect             = chai.expect;
-var moment             = require('moment');
-var Raneto             = require('../app/core/raneto.js');
-var build_nested_pages = require('../app/functions/build_nested_pages.js');
-var get_last_modified  = require('../app/functions/get_last_modified.js');
+const fs = require('fs');
+const path = require('path');
+const chai = require('chai');
+const expect = chai.expect;
+const moment = require('moment');
 
-const raneto = new Raneto();
+const build_nested_pages = require('../app/functions/build_nested_pages.js');
+const contentProcessors = require('../app/functions/contentProcessors');
+
+const contentsHandler = require('../app/core/contents');
+const utils = require('../app/core/utils');
 
 chai.should();
 chai.config.truncateThreshold = 0;
 
+const config = {
+  base_url: '',
+  image_url: '/images',
+  excerpt_length: 400,
+  page_sort_meta: 'sort',
+  category_sort: true,
+  show_on_home_default: true,
+  searchExtraLanguages: ['ru'],
+  debug: false,
+  content_dir: path.join(__dirname, 'content/'),
+  datetime_format: 'Do MMM YYYY'
+};
+
 describe('#get_last_modified()', function () {
 
   it('returns last modified from page meta', function () {
-    raneto.config.datetime_format = 'Do MMM YYYY';
-    var file_path = path.join(__dirname, 'content/page-with-bom-yaml.md');
-    var content = fs.readFileSync(file_path, 'utf8');
-    var modified = get_last_modified(raneto.config, raneto.processMeta(content), file_path);
+    const file_path = path.join(__dirname, 'content/page-with-bom-yaml.md');
+    const content = fs.readFileSync(file_path, 'utf8');
+    const modified = utils.getLastModified(config, contentProcessors.processMeta(content), file_path);
     expect(modified).to.be.equal('14th Sep 2016');
   });
 
   it('returns last modified from fs', function () {
-    raneto.config.datetime_format = 'Do MMM YYYY';
-    var file_path = path.join(__dirname, 'content/example-page.md');
-    var content = fs.readFileSync(file_path, 'utf8');
-    var modified = get_last_modified(raneto.config, raneto.processMeta(content), file_path);
-    var fstime = moment(fs.lstatSync(file_path).mtime).format(raneto.config.datetime_format);
+    const file_path = path.join(__dirname, 'content/example-page.md');
+    const content = fs.readFileSync(file_path, 'utf8');
+    const modified = utils.getLastModified(config, contentProcessors.processMeta(content), file_path);
+    const fstime = moment(fs.lstatSync(file_path).mtime).format(config.datetime_format);
     expect(modified).to.be.equal(fstime);
   });
 
@@ -39,9 +50,8 @@ describe('#get_last_modified()', function () {
 describe('#build_nested_pages()', function () {
 
   it('builds tree of pages', function () {
-    raneto.config.content_dir = path.join(__dirname, 'content/');
-    var pages = raneto.getPages();
-    var result = build_nested_pages(pages);
+    const pages = contentsHandler(null, config);
+    const result = build_nested_pages(pages);
 
     expect(result.length).to.be.equal(2);
     expect(result[1].files.length).to.be.equal(3);
