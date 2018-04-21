@@ -30,7 +30,12 @@
       {{#searchResults.length}}
         {{#searchResults}}
           <div class="page">
-            <h2 class="page-title"><a href="{{config.base_url}}/{{slug}}">{{title}} {{#category}}<span style="color: #DDD;">({{category}})</a>{{/category}}</h2>
+            <h2 class="page-title">
+              <a href="{{config.base_url}}/{{slug}}">
+                {{title}} 
+                {{#category}}<span style="color: #DDD;">({{category}})</span>{{/category}}
+              </a>
+            </h2>
             <div class="page-excerpt">{{{excerpt}}}</div>
           </div>
         {{/searchResults}}

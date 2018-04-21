@@ -8,7 +8,7 @@ var yaml = require('js-yaml');
 function create_meta_info (meta_title, meta_description, meta_sort) {
 
   var yamlDocument = {};
-  var meta_info_is_present = meta_title && meta_description && meta_sort;
+  var meta_info_is_present = meta_title || meta_description || meta_sort;
 
   if (meta_info_is_present) {
     if (meta_title)       { yamlDocument.Title       = meta_title;              }

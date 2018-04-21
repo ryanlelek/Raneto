@@ -1,6 +1,21 @@
 
 # Raneto Changelog
 
+2018.03.29 / v0.15.0
+====================
+
+  * **[New]** Language Translations!
+    - Romanian contributed by **@mariuspana**
+  * **[Fixed]** #192 Any metadata will now cause metadata to render
+    - **@mralexgray**
+  * **[Fixed]** Login page loading of jQuery Backstretch plugin
+    - **@Zezzty**
+  * **[Fixed]** #247 Search result page no longer shows excerpt as link text
+    - **@Zezzty**
+  * **[Fixed]** #251 #194 Documentation in README for local install
+    - **@shui**
+  * **[Misc]** Dependency upgrades
+
 2018.01.09 / v0.14.0
 ====================
 

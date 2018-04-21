@@ -6,7 +6,10 @@ var validator                      = require('validator');
 var _s                             = require('underscore.string');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
-function route_search (config, raneto) {
+const searchHandler = require('../core/search');
+const contentsHandler = require('../core/contents');
+
+function route_search (config) {
   return function (req, res, next) {
 
     // Skip if Search not present
@@ -22,8 +25,8 @@ function route_search (config, raneto) {
     // trim and convert to string
     var searchQuery    = validator.toString(sanitizedQuery).trim();
 
-    var searchResults  = raneto.doSearch(searchQuery);
-    var pageListSearch = remove_image_content_directory(config, raneto.getPages(''));
+    var searchResults  = searchHandler(searchQuery, config);
+    var pageListSearch = remove_image_content_directory(config, contentsHandler(null, config));
 
     // TODO: Move to Raneto Core
     // Loop through Results and Extract Category
