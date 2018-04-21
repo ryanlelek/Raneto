@@ -43,6 +43,7 @@ function initialize (config) {
 
   // New Express App
   var app = express();
+  var router = express.Router();
 
   // Setup Port
   app.set('port', process.env.PORT || 3000);
@@ -68,10 +69,10 @@ function initialize (config) {
   app.use(cookie_parser());
   app.use(express.static(config.public_dir));
   if (config.theme_dir !== path.join(__dirname, '..', 'themes')) {
-    app.use(express.static(path.join(config.theme_dir, config.theme_name, 'public')));
+    router.use(express.static(path.join(config.theme_dir, config.theme_name, 'public')));
   }
-  app.use(config.image_url, express.static(path.normalize(config.content_dir + config.image_url)));
-  app.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
+  router.use(config.image_url, express.static(path.normalize(config.content_dir + config.image_url)));
+  router.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
 
   // HTTP Authentication
   if (config.authentication === true || config.authentication_for_edit || config.authentication_for_read) {
@@ -86,13 +87,13 @@ function initialize (config) {
     if (config.googleoauth === true) {
       app.use(passport.initialize());
       app.use(passport.session());
-      app.use(oauth2.router(config));
+      router.use(oauth2.router(config));
       app.use(oauth2.template);
     }
 
-    app.post('/rn-login', route_login);
-    app.get('/logout', route_logout);
-    app.get('/login',     route_login_page);
+    router.post('/rn-login', route_login);
+    router.get('/logout', route_logout);
+    router.get('/login',     route_login_page);
   }
 
   // Online Editor Routes
@@ -106,29 +107,30 @@ function initialize (config) {
       middlewareToUse = oauth2.required;
     }
 
-    app.post('/rn-edit',         middlewareToUse, route_page_edit);
-    app.post('/rn-delete',       middlewareToUse, route_page_delete);
-    app.post('/rn-add-page',     middlewareToUse, route_page_create);
-    app.post('/rn-add-category', middlewareToUse, route_category_create);
+    router.post('/rn-edit',         middlewareToUse, route_page_edit);
+    router.post('/rn-delete',       middlewareToUse, route_page_delete);
+    router.post('/rn-add-page',     middlewareToUse, route_page_create);
+    router.post('/rn-add-category', middlewareToUse, route_category_create);
 
   }
 
   // Router for / and /index with or without search parameter
   if (config.googleoauth === true) {
-    app.get('/:var(index)?', oauth2.required, route_search, route_home);
-    app.get(/^([^.]*)/, oauth2.required, route_wildcard);
+    router.get('/:var(index)?', oauth2.required, route_search, route_home);
+    router.get(/^([^.]*)/, oauth2.required, route_wildcard);
   } else if (config.authentication_for_read === true) {
-    app.get('/sitemap.xml', authenticate, route_sitemap);
-    app.get('/:var(index)?', authenticate, route_search, route_home);
-    app.get(/^([^.]*)/, authenticate, route_wildcard);
+    router.get('/sitemap.xml', authenticate, route_sitemap);
+    router.get('/:var(index)?', authenticate, route_search, route_home);
+    router.get(/^([^.]*)/, authenticate, route_wildcard);
   } else {
-    app.get('/sitemap.xml', route_sitemap);
-    app.get('/:var(index)?', route_search, route_home);
-    app.get(/^([^.]*)/, route_wildcard);
+    router.get('/sitemap.xml', route_sitemap);
+    router.get('/:var(index)?', route_search, route_home);
+    router.get(/^([^.]*)/, route_wildcard);
   }
 
   // Handle Errors
   app.use(error_handler);
+  app.use(config.prefix_url || '/', router);
 
   return app;
 
