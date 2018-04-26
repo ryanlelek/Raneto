@@ -41,6 +41,7 @@ function handler (query, config) {
   const idx = lunrInstance(function () {
     this.use(getStemmers(config));
     this.field('title');
+    this.field('keywords');
     this.field('body');
     this.ref('id');
     documents.forEach((doc) => this.add(doc), this);
