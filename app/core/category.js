@@ -7,7 +7,8 @@ function handler (pages, slug) {
   let is_exact = false;
   let currentPage = null;
 
-  slug = path.normalize(slug).replace(/^\\|\\$/g, '');
+  // remove trailing slashes (match both for Windows and Unix)
+  slug = path.normalize(slug).replace(/^\\|^\/|\/$|\\$/g, '');
 
   while (i--) {
     const page = pages[i];
