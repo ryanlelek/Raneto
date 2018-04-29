@@ -246,8 +246,6 @@ var Raneto = function () {
   }, {
     key: 'getPages',
     value: function getPages(activePageSlug, translation) {
-      console.log("GETPAGES");
-      console.log("translation: " + translation);
       var _this2 = this;
 
       activePageSlug = activePageSlug || '';
@@ -376,8 +374,6 @@ var Raneto = function () {
     key: 'getPages_Filtered',
     value: function getPages_Filtered(activePageSlug, filter_tags, translation) {
       // Function to get a filtered page (by article tags)
-      console.log("GETPAGESFILTERED");
-      console.log("translationWillL: " + translation);
       var _this2 = this;
 
       activePageSlug = activePageSlug || '';
