@@ -20,7 +20,7 @@ function route_wildcard (config, raneto) {
     var slug   = req.params[0];
     if (slug === '/') { slug = '/index'; }
 
-    var file_path      = path.normalize(raneto.config.content_dir + slug);
+    var file_path      = path.normalize(raneto.config.content_dir + 'content-' + req.cookies['language'] + slug);
     var file_path_orig = file_path;
 
     // Remove "/edit" suffix
