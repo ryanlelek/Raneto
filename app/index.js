@@ -129,7 +129,7 @@ function initialize (config) {
   }
 
   // Handle Errors
-  app.use(error_handler);
+  router.use(error_handler);
   app.use(config.prefix_url || '/', router);
 
   return app;
