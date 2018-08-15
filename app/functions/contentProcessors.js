@@ -92,6 +92,9 @@ function processMeta (markdownContent) {
     // No meta information
   }
 
+  //extracting keywords from meta into tags table to allow links on them //added by pilare
+  if (meta.keywords) meta.tags = meta.keywords.split(", ");
+  
   return meta;
 }
 
