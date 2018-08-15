@@ -2,6 +2,8 @@
 Title: Page Meta
 Description: This page describes how the Meta information works.
 Modified: 2016-09-14T11:50:00-0500
+Keywords: Meta, Metadata, YAML
+Category: Usage
 ---
 
 Each page can contain optional meta data about the page. This is useful when you need the page to have a different
@@ -13,6 +15,8 @@ should be written in [YAML](http://www.yaml.org/spec/1.2/spec.html).
  * Sort - This variable will affect the sorting of the pages inside the category.
  * ShowOnHome - Optional. If false, page won't be listed on the home page. Default behavior can be changed through `config.show_on_home_default`.
  * Modified - This variable will override the modified date based on the file name.
+ * Keywords - This variable will add keywords to the pages that can be displayed and linked out.
+ * Category - This variable will add category of the article to be displayed.
    * This should be in full ISO 8601 format including Time and Timezone offset.
 
 Before version 0.11.0 these meta blocks could only be HTML comments (/\* \*/). Starting with version 0.11.0, the meta
