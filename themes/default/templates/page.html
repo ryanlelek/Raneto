@@ -65,6 +65,16 @@
       {{#meta.title}}<h1 class="title">{{meta.title}}</h1>{{/meta.title}}
 
       {{{content}}}
+      
+      {{#meta.keywords}}
+        <b>Keywords: </b>       
+        {{#meta.tags}}
+          <a href="{{config.base_url}}/?search={{.}}">{{.}}</a> |
+        {{/meta.tags}}
+      {{/meta.keywords}}
+      {{#meta.category}}
+        <p class="pull-right"><b>Category: </b> {{meta.category}}</p>
+      {{/meta.category}}
 
       <div class="page-meta clearfix">
         {{#config.support_email}}
