@@ -36,7 +36,7 @@ function route_page_edit (config) {
 
     // Create content including meta information (i.e. title, description, sort)
     function create_content (body) {
-      var meta = create_meta_info(body.meta_title, body.meta_description, body.meta_sort,body.meta_category,body.meta_keywords,body.meta_show_on_home);
+      var meta = create_meta_info(body.meta_title, body.meta_description, body.meta_sort, body.meta_category, body.meta_keywords, body.meta_show_on_home);
       return meta + body.content;
     }
 
