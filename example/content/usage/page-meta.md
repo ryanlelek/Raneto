@@ -1,11 +1,10 @@
 ---
 Title: Page Meta
 Description: This page describes how the Meta information works.
-Modified: 2016-09-14T11:50:00-0500
-Keywords: Meta, Metadata, YAML
 Category: Usage
+Keywords: 'Meta, Metadata, YAML, keyword, tag'
+ShowOnHome: 'true'
 ---
-
 Each page can contain optional meta data about the page. This is useful when you need the page to have a different
 Title than the file name. The meta data will also let you override the last modified date of the page. The meta data
 should be written in [YAML](http://www.yaml.org/spec/1.2/spec.html).

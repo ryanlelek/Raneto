@@ -127,7 +127,10 @@
           content : $("#entry-markdown").val(),
           meta_title : $("#entry-metainfo-title").val(),
           meta_description : $("#entry-metainfo-description").val(),  
+          meta_category : $("#entry-metainfo-category").val(),  
+          meta_keywords : $("#entry-metainfo-keywords").val(), 
           meta_sort : $("#entry-metainfo-sort").val(),  
+          meta_show_on_home : $("#entry-metainfo-show-on-home").val(),
         }, function (data) {
           switch (data.status) {
             case 0:

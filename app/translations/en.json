@@ -36,6 +36,9 @@
     "headerMetaInfo" : "Meta information",
     "lableMetaTitle": "Title",
     "lableMetaDescription": "Description",
+    "lableMetaCategory": "Category",
+    "lableMetaKeywords": "Keywords",
+    "lableMetaShowOnHome": "Show on home page",
     "lableMetaSort": "Sort"
   },
 
