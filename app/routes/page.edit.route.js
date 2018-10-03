@@ -11,13 +11,13 @@ function route_page_edit (config) {
 
     var file_category;
     var file_name;
-    
+
     // Handle category in file path
     var req_file = req.body.file.split('/');
     // Suppress first empty
     req_file.shift();
     file_name = req_file.pop();
-    
+
     if (req_file.length > 0) {
       file_category = req_file;
     }
@@ -28,7 +28,7 @@ function route_page_edit (config) {
       category : file_category,
       filename : file_name
     });
-    
+
     // No file at that filepath?
     // Add ".md" extension to try again
     if (!fs.existsSync(filepath)) {

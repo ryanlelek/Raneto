@@ -12,13 +12,12 @@ function get_filepath (p) {
 
   // Add Categories
   if (p.category) {
-    if(!Array.isArray(p.category)){
+    if (!Array.isArray(p.category)) {
       p.category = [p.category];
     }
-    p.category.forEach(function(cat) {
+    p.category.forEach(function (cat) {
       filepath = path.join(filepath, sanitize(cat));
     });
-    
   }
 
   // Add File Name
@@ -28,7 +27,7 @@ function get_filepath (p) {
 
   // Normalize
   filepath = path.normalize(filepath);
-  
+
   return filepath;
 
 }

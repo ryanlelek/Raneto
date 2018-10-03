@@ -10,7 +10,7 @@ function route_category_create (config) {
 
     // Handle category in file path
     var req_category = req.body.category.split('/');
-    
+
     fs.mkdir(get_filepath({
       content  : config.content_dir,
       category : req_category
