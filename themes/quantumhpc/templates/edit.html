@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-sm-12">
+    {{#meta.title}}<h1 class="title">{{meta.title}}</h1>{{/meta.title}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+
+    <section class="content">
+      <div class="alert alert-success" id="edit-status" style="display: none;" role="alert"></div>
+      
+      <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary close-edit">{{lang.global.close}}</button>
+        <button type="button" class="btn btn-success save-page">{{lang.global.save}}</button>
+      </div>
+      <h3>{{lang.global.editor}}</h3>
+
+      <div class="form-horizontal">
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  {{lang.edit.headerMetaInfo}}
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <div class="form-group">
+                  <label for="entry-metainfo-title" class="control-label col-sm-3">{{lang.edit.lableMetaTitle}}</label>
+                  <div class="col-sm-9">
+                    <input id="entry-metainfo-title" type="text" value="{{{meta.custom_title}}}" class="form-control"></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="entry-metainfo-title" class="control-label col-sm-3">{{lang.edit.lableMetaDescription}}</label>
+                  <div class="col-sm-9">
+                    <input id="entry-metainfo-description" type="text" value="{{{meta.description}}}" class="form-control"></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="entry-metainfo-title" class="control-label col-sm-3">{{lang.edit.lableMetaSort}}</label>
+                  <div class="col-sm-9">
+                    <input id="entry-metainfo-sort" type="number" value="{{{meta.sort}}}" class="form-control"></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea id="entry-markdown">{{{content}}}</textarea>
+        </div>
+      </div>
+
+      
+      <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary close-edit">{{lang.global.close}}</button>
+        <button type="button" class="btn btn-success save-page">{{lang.global.save}}</button>
+      </div>
+    </section>
+    <section>
+      <form id="fbDropZone" class="dropzone" enctype='multipart/form-data' method='post'>
+    		  <div class="fallback">
+    				<input name="file" type="file" multiple />
+    			</div>
+    	</form>
+    </section>
+  </div>
+  <div class="col-sm-6">
+
+    <section class="content">
+      <h3>{{lang.edit.preview}}</h3>
+      <div class="entry-preview-content">
+        <div class="rendered-markdown"></div>
+      </div>
+      <div class="page-meta clearfix">
+        <div class="last-updated pull-right">
+          {{lang.global.lastUpdated}} {{last_modified}}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>

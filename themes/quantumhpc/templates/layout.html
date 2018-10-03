@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="{{config.locale}}">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{#meta.title}}{{meta.title}} - {{/meta.title}}{{config.site_title}}</title>
+  {{#meta.description}}<meta name="description" content="{{meta.description}}">{{/meta.description}}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="{{config.base_url}}/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+  <!-- Font Awesome-->
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="/vendor/font-awesome/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/highlightjs/styles/solarized_light.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/raneto/raneto.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/raneto/ghostdown.css">
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme-elements.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme-blog.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme-shop.css">
+
+  <!-- Skin CSS -->
+  <link rel="stylesheet" href="{{config.base_url}}/css/skins/default.css">
+  
+  <!-- Theme Custom CSS -->
+  <link rel="stylesheet" href="{{config.base_url}}/css/custom.css">
+  
+  <!-- Head Libs -->
+  <script src="{{config.base_url}}/vendor/modernizr/modernizr.min.js"></script>
+  
+  <!--[if IE]>
+  	<link rel="stylesheet" href="{{config.base_url}}/css/ie.css">
+  <![endif]-->
+  
+  <!--[if lte IE 8]>
+  	<script src="{{config.base_url}}/vendor/respond/respond.js"></script>
+  	<script src="{{config.base_url}}/vendor/excanvas/excanvas.js"></script>
+  <![endif]-->
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{config.base_url}}/img/logos/favicon.png" type="image/png"  />
+
+  {{#config.rtl_layout}}
+  <link rel="stylesheet" href="{{config.base_url}}/css/raneto/raneto.rtl.css">
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
+  {{/config.rtl_layout}}
+
+  {{{config.analytics}}}
+  
+  
+  {{#config.allow_editing}}
+  {{#canEdit}}
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/dropzone/dropzone.min.css">
+  {{/canEdit}}
+  {{/config.allow_editing}}
+		
+
+</head>
+<body class="{{body_class}}">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <a href="{{config.base_url}}/" class="logo">{{config.site_title}}</a>
+        </div>
+        <div class="col-sm-6">
+          {{#config.googleoauth}}
+          <form class="form-inline pull-right">
+            {{#config.authentication}} {{#loggedIn}} &nbsp;
+            <span>{{profile.displayName}}</span> &nbsp;
+            <a href="{{config.base_url}}/auth/logout" class="btn btn-info">{{lang.login.logout}}</a> {{/loggedIn}} {{^loggedIn}} &nbsp;
+            <a href="{{config.base_url}}/auth/login" class="btn btn-info">{{lang.login.login}}</a> {{/loggedIn}} {{/config.authentication}}
+          </form>
+          {{/config.googleoauth}}
+
+          {{^config.googleoauth}}
+          <form class="form-inline pull-right">
+            {{#config.authentication}}
+              {{#loggedIn}}
+                <div class="dropdown">
+                  <button class="btn btn-info dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{username}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
+                    <li><a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a></li>
+                  </ul>
+                </div>
+              {{/loggedIn}}
+              {{^loggedIn}}
+                &nbsp;<a href="{{config.base_url}}/login" class="btn btn-info">{{lang.login.login}}</a>
+              {{/loggedIn}}
+            {{/config.authentication}}
+          </form>
+          {{/config.googleoauth}}
+          
+          <form class="search-form form-inline pull-right" action="{{config.base_url}}/">
+            <div class="form-group">
+              <label class="sr-only" for="search">{{lang.global.search}}</label>
+              <input type="search" class="form-control" name="search" id="search" size="30" value="{{search}}" placeholder="{{lang.global.search}}">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div class="container-fluid">
+    {{{yield}}}
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container-fluid">
+      {{#config.copyright}}
+        <p class="copyright pull-right">{{{config.copyright}}}</p>
+      {{/config.copyright}}
+    </div>
+  </footer>
+
+  {{#config.allow_editing}}
+  {{#canEdit}}
+
+    <!-- Modal: Add Page -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="{{lang.global.close}}">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">{{lang.global.addPage}}</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="page-name" class="control-label">{{lang.global.pageName}}:</label>
+              <input type="text" class="form-control" id="page-name">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default" data-dismiss="modal" type="button">{{lang.global.cancel}}</button>
+            <button class="btn btn-primary" id="add-page-confirm" type="button">{{lang.global.save}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Delete Page -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4 class="modal-title" id="myModalLabel">{{lang.global.reallyDeletePage}}</h4>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default" data-dismiss="modal" type="button">{{lang.global.no}}</button>
+            <button class="btn btn-primary" id="delete-page-confirm" type="button">{{lang.global.yes}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {{/canEdit}}
+  {{/config.allow_editing}}
+
+  <!-- JavaScript -->
+  <script src="{{config.base_url}}/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="{{config.base_url}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="{{config.base_url}}/vendor/highlightjs/highlight.pack.min.js"></script>
+  <script src="{{config.base_url}}/vendor/fitvids/fitvids.min.js"></script>
+  <script src="{{config.base_url}}/vendor/masonry-layout/dist/masonry.pkgd.min.js"></script>
+  <script src="{{config.base_url}}/js/raneto/ghostdown.js"></script>
+  <script src="{{config.base_url}}/js/raneto/raneto.js"></script>
+
+
+  {{#config.allow_editing}}
+  {{#canEdit}}
+    <script src="{{config.base_url}}/vendor/dropzone/dropzone.min.js"></script>
+    <script>
+    var dropZoneUrl = '{{config.base_url}}/dropzone?' +  $.param({slug : window.location.pathname});
+    	Dropzone.autoDiscover = true;
+    	Dropzone.options.fbDropZone = {
+    	    url : dropZoneUrl,
+    	    init: function () {
+    	        var self = this;
+    		    // config
+    		    // self.options.addRemoveLinks = true;
+    		 	
+    		    // load already saved files
+    		    $.get(dropZoneUrl, function(data) {
+    		      for (var i = 0; i < data.files.length; i++) {
+    		 
+    		        var mockFile = {
+    		          name: data.files[i].name,
+    		          size: data.files[i].size
+    		        };
+    		        self.options.addedfile.call(self, mockFile);
+    		        self.options.thumbnail.call(self, mockFile, data.files[i].url);
+    		        var h = document.createElement("p");                // Create a <h1> element
+        				mockFile.previewTemplate.appendChild(h);
+        				var t = document.createTextNode(data.files[i].url);     // Create a text node
+        				h.appendChild(t); 
+    		 		    // mockFile.previewTemplate.appendChild(document.createTextNode(data.files[i].url));
+    		      }
+    		 
+    		    });
+    		    this.on("success", function(file, responseText) {
+      				// Handle the responseText here. For example, 
+      				// add the text to the preview element:
+      				var h = document.createElement("p");
+      				file.previewTemplate.appendChild(h);
+      				var t = document.createTextNode(responseText);
+      				h.appendChild(t);
+    		    });
+    	    }
+    	};
+    </script>
+    
+  {{/canEdit}}
+  {{/config.allow_editing}}
+</body>
+</html>

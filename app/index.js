@@ -40,6 +40,8 @@ function initialize (config) {
   var route_home                = require('./routes/home.route.js')                     (config);
   var route_wildcard            = require('./routes/wildcard.route.js')                 (config);
   var route_sitemap             = require('./routes/sitemap.route.js')                  (config);
+  var route_get_dropzone        = require('./routes/dropzone.get.route.js')             (config);
+  var route_post_dropzone       = require('./routes/dropzone.post.route.js')            (config);
 
   // New Express App
   var app = express();
@@ -111,7 +113,8 @@ function initialize (config) {
     router.post('/rn-delete',       middlewareToUse, route_page_delete);
     router.post('/rn-add-page',     middlewareToUse, route_page_create);
     router.post('/rn-add-category', middlewareToUse, route_category_create);
-
+    router.get('/dropzone',         middlewareToUse, route_get_dropzone);
+    router.post('/dropzone',        middlewareToUse, route_post_dropzone);
   }
 
   // Router for / and /index with or without search parameter
