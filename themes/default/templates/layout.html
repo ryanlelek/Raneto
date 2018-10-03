@@ -87,7 +87,7 @@
   </footer>
 
   {{#config.allow_editing}}
-  {{#loggedIn}}
+  {{#canEdit}}
 
     <!-- Modal: Add Page -->
     <div class="modal fade" id="addModal" tabindex="-1">
@@ -128,7 +128,7 @@
       </div>
     </div>
 
-  {{/loggedIn}}
+  {{/canEdit}}
   {{/config.allow_editing}}
 
   <!-- JavaScript -->

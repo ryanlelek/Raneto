@@ -10,14 +10,15 @@ function route_page_delete (config) {
 
     var file_category;
     var file_name;
-
+    
     // Handle category in file path
     var req_file = req.body.file.split('/');
-    if (req_file.length > 2) {
-      file_category = req_file[1];
-      file_name     = req_file[2];
-    } else {
-      file_name     = req_file[1];
+    // Suppress first empty
+    req_file.shift();
+    file_name = req_file.pop();
+    
+    if (req_file.length > 0) {
+      file_category = req_file;
     }
 
     // Generate Filepath
