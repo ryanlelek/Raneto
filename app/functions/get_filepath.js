@@ -10,14 +10,19 @@ function get_filepath (p) {
   // Default
   var filepath = p.content;
 
-  // Add Category
+  // Add Categories
   if (p.category) {
-    filepath += '/' + sanitize(p.category);
+    if (!Array.isArray(p.category)) {
+      p.category = [p.category];
+    }
+    p.category.forEach(function (cat) {
+      filepath = path.join(filepath, sanitize(cat));
+    });
   }
 
   // Add File Name
   if (p.filename) {
-    filepath += '/' + sanitize(p.filename);
+    filepath = path.join(filepath, sanitize(p.filename));
   }
 
   // Normalize

@@ -9,16 +9,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="shortcut icon" href="{{config.base_url}}/favicon.ico">
-  <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{config.base_url}}/lib/highlightjs/styles/solarized_light.css">
-  <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.css">
-  <link rel="stylesheet" href="{{config.base_url}}/styles/ghostdown.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+  <!-- Font Awesome-->
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="/vendor/font-awesome/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/highlightjs/styles/solarized_light.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/raneto/raneto.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/raneto/ghostdown.css">
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme-elements.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme-blog.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/theme-shop.css">
+
+  <!-- Skin CSS -->
+  <link rel="stylesheet" href="{{config.base_url}}/css/skins/default.css">
+  
+  <!-- Theme Custom CSS -->
+  <link rel="stylesheet" href="{{config.base_url}}/css/custom.css">
+  
+  <!-- Head Libs -->
+  <script src="{{config.base_url}}/vendor/modernizr/modernizr.min.js"></script>
+  
+  <!--[if IE]>
+  	<link rel="stylesheet" href="{{config.base_url}}/css/ie.css">
+  <![endif]-->
+  
+  <!--[if lte IE 8]>
+  	<script src="{{config.base_url}}/vendor/respond/respond.js"></script>
+  	<script src="{{config.base_url}}/vendor/excanvas/excanvas.js"></script>
+  <![endif]-->
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{config.base_url}}/img/logos/favicon.png" type="image/png"  />
+
   {{#config.rtl_layout}}
-  <link rel="stylesheet" href="{{config.base_url}}/styles/raneto.rtl.css">
-  <link rel="stylesheet" href="{{config.base_url}}/lib/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="{{config.base_url}}/css/raneto/raneto.rtl.css">
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
   {{/config.rtl_layout}}
 
   {{{config.analytics}}}
+  
+  
+  {{#config.allow_editing}}
+  {{#canEdit}}
+  <link rel="stylesheet" href="{{config.base_url}}/vendor/dropzone/dropzone.min.css">
+  {{/canEdit}}
+  {{/config.allow_editing}}
+		
 
 </head>
 <body class="{{body_class}}">
@@ -132,13 +171,59 @@
   {{/config.allow_editing}}
 
   <!-- JavaScript -->
-  <script src="{{config.base_url}}/lib/jquery/dist/jquery.min.js"></script>
-  <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="{{config.base_url}}/lib/highlightjs/highlight.pack.min.js"></script>
-  <script src="{{config.base_url}}/lib/fitvids/fitvids.min.js"></script>
-  <script src="{{config.base_url}}/lib/masonry-layout/dist/masonry.pkgd.min.js"></script>
-  <script src="{{config.base_url}}/scripts/ghostdown.js"></script>
-  <script src="{{config.base_url}}/scripts/raneto.js"></script>
+  <script src="{{config.base_url}}/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="{{config.base_url}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="{{config.base_url}}/vendor/highlightjs/highlight.pack.min.js"></script>
+  <script src="{{config.base_url}}/vendor/fitvids/fitvids.min.js"></script>
+  <script src="{{config.base_url}}/vendor/masonry-layout/dist/masonry.pkgd.min.js"></script>
+  <script src="{{config.base_url}}/js/raneto/ghostdown.js"></script>
+  <script src="{{config.base_url}}/js/raneto/raneto.js"></script>
 
+
+  {{#config.allow_editing}}
+  {{#canEdit}}
+    <script src="{{config.base_url}}/vendor/dropzone/dropzone.min.js"></script>
+    <script>
+    var dropZoneUrl = '{{config.base_url}}/dropzone?' +  $.param({slug : window.location.pathname});
+    	Dropzone.autoDiscover = true;
+    	Dropzone.options.fbDropZone = {
+    	    url : dropZoneUrl,
+    	    init: function () {
+    	        var self = this;
+    		    // config
+    		    // self.options.addRemoveLinks = true;
+    		 	
+    		    // load already saved files
+    		    $.get(dropZoneUrl, function(data) {
+    		      for (var i = 0; i < data.files.length; i++) {
+    		 
+    		        var mockFile = {
+    		          name: data.files[i].name,
+    		          size: data.files[i].size
+    		        };
+    		        self.options.addedfile.call(self, mockFile);
+    		        self.options.thumbnail.call(self, mockFile, data.files[i].url);
+    		        var h = document.createElement("p");                // Create a <h1> element
+        				mockFile.previewTemplate.appendChild(h);
+        				var t = document.createTextNode(data.files[i].url);     // Create a text node
+        				h.appendChild(t); 
+    		 		    // mockFile.previewTemplate.appendChild(document.createTextNode(data.files[i].url));
+    		      }
+    		 
+    		    });
+    		    this.on("success", function(file, responseText) {
+      				// Handle the responseText here. For example, 
+      				// add the text to the preview element:
+      				var h = document.createElement("p");
+      				file.previewTemplate.appendChild(h);
+      				var t = document.createTextNode(responseText);
+      				h.appendChild(t);
+    		    });
+    	    }
+    	};
+    </script>
+    
+  {{/canEdit}}
+  {{/config.allow_editing}}
 </body>
 </html>

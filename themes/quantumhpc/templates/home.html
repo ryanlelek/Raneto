@@ -1,0 +1,61 @@
+<div class="home-search jumbotron row">
+  <form class="search-form form-inline" action="{{config.base_url}}/">
+    <div class="form-group">
+      <label class="sr-only" for="home-search">{{lang.home.searchKnowledgeBase}}</label>
+      <input type="search" class="form-control input-lg" name="search" id="home-search" size="50" placeholder="{{lang.home.searchKnowledgeBase}}">
+      <button type="submit" class="btn btn-primary btn-lg">{{lang.global.search}}</button>
+    </div>
+  </form>
+</div>
+
+<div class="home-categories row">
+  {{#pages}}
+    {{#is_index}}
+      {{#files.length}}
+        <div class="col col-sm-4 col-xs-12">
+          <div class="panel panel-default {{class}}">
+            <h2 class="panel-heading">{{lang.global.mainArticles}}</h2>
+            <ul class="list-group pages">
+              {{#files}}
+                <li class="list-group-item page"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{/files}}
+            </ul>
+          </div>
+        </div>
+      {{/files.length}}
+    {{/is_index}}
+    {{^is_index}}
+      <div class="col col-sm-4 col-xs-12">
+        <div class="panel panel-default {{class}}">
+          <h2 class="panel-heading">{{title}}</h2>
+          <ul class="list-group pages">
+            {{#files}}
+              {{^is_directory}}
+                <li class="list-group-item page"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{/is_directory}}
+              {{#is_directory}}
+                <li class="list-group-item page">{{title}}
+                  {{#files}}
+                    <ul>
+                      {{^is_directory}}
+                        <li><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                      {{/is_directory}}
+                      {{#is_directory}}
+                        <li>{{title}}</li>
+                        <ul>
+                          {{#files}}
+                            <li><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                          {{/files}}
+                        </ul>
+                      {{/is_directory}}
+                    </ul>
+                  {{/files}}
+                </li>
+              {{/is_directory}}
+            {{/files}}
+          </ul>
+        </div>
+      </div>
+    {{/is_index}}
+  {{/pages}}
+</div>

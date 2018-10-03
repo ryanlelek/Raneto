@@ -1,0 +1,83 @@
+
+<div class="row">
+  <div class="col-sm-3 hidden-xs">
+
+    <ul class="menu">
+      {{#canEdit}}
+        <li><input id="newCategory" type="text" class="form-control" placeholder="{{lang.page.addCategory}}"/></li>
+      {{/canEdit}}
+
+      {{#pages}}
+        <li class="category {{#active}} active{{/active}}">
+          {{#is_index}}
+            <h5 class="category-title">{{lang.global.mainArticles}} {{#canEdit}}<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/canEdit}}</h5>
+          {{/is_index}}
+          {{^is_index}}
+            <h5 class="category-title">{{title}} {{#canEdit}}<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/canEdit}}</h5>
+          {{/is_index}}
+          <ul class="pages">
+            {{#files}}
+              {{^is_directory}}
+                <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+              {{/is_directory}}
+              {{#is_directory}}
+                <li class="page{{#active}} active{{/active}}">{{title}}
+                  {{#files}}
+                    <ul>
+                      {{^is_directory}}
+                        <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                      {{/is_directory}}
+                      {{#is_directory}}
+                        <li class="page{{#active}} active{{/active}}">{{title}}</li>
+                        <ul>
+                          {{#files}}
+                            <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
+                          {{/files}}
+                        </ul>
+                      {{/is_directory}}
+                    </ul>
+                  {{/files}}
+                </li>
+              {{/is_directory}}
+            {{/files}}
+          </ul>
+        </li>
+      {{/pages}}
+    </ul>
+
+  </div>
+  <div class="col-sm-9">
+
+    <section class="content">
+
+      {{#canEdit}}
+        <div class="btn-group btn-group-sm pull-right">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            {{lang.page.actions}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a class="goto-edit">{{lang.page.editPage}}</a></li>
+            <li><a data-toggle="modal" data-target="#deleteModal">{{lang.page.deletePage}}</a></li>
+          </ul>
+        </div>
+      {{/canEdit}}
+
+      {{#meta.title}}<h1 class="title">{{meta.title}}</h1>{{/meta.title}}
+
+      {{{content}}}
+
+      <div class="page-meta clearfix">
+        {{#config.support_email}}
+          <div class="contact-support pull-left">
+            <span class="glyphicon glyphicon-envelope"></span> {{lang.page.needHelp}} <a href="mailto:{{config.support_email}}">{{lang.page.getInTouch}}</a>
+          </div>
+        {{/config.support_email}}
+        <div class="last-updated pull-right">
+          {{lang.global.lastUpdated}} {{last_modified}}
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>
