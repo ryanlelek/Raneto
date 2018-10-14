@@ -2,12 +2,12 @@
 'use strict';
 
 // Modules
-var fs               = require('fs');
+var fs               = require('fs-extra');
 var get_filepath     = require('../functions/get_filepath.js');
 var create_meta_info = require('../functions/create_meta_info.js');
 
 function route_page_edit (config) {
-  return function (req, res, next) {
+  return async function (req, res, next) {
 
     var file_category;
     var file_name;
@@ -30,7 +30,7 @@ function route_page_edit (config) {
 
     // No file at that filepath?
     // Add ".md" extension to try again
-    if (!fs.existsSync(filepath)) {
+    if (!(await fs.pathExists(filepath))) {
       filepath += '.md';
     }
 
@@ -42,19 +42,19 @@ function route_page_edit (config) {
 
     var complete_content = create_content(req.body);
 
-    fs.writeFile(filepath, complete_content, function (error) {
-      if (error) {
-        return res.json({
-          status  : 1,
-          message : error
-        });
-      }
+    try {
+      await fs.writeFile(filepath, complete_content);
+
       res.json({
         status  : 0,
         message : config.lang.api.pageSaved
       });
-    });
-
+    } catch (error) {
+      res.json({
+        status  : 1,
+        message : error
+      });
+    }
   };
 }
 

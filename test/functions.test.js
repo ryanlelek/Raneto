@@ -30,17 +30,17 @@ const config = {
 
 describe('#get_last_modified()', function () {
 
-  it('returns last modified from page meta', function () {
+  it('returns last modified from page meta', async function () {
     const file_path = path.join(__dirname, 'content/page-with-bom-yaml.md');
     const content = fs.readFileSync(file_path, 'utf8');
-    const modified = utils.getLastModified(config, contentProcessors.processMeta(content), file_path);
+    const modified = await utils.getLastModified(config, contentProcessors.processMeta(content), file_path);
     expect(modified).to.be.equal('14th Sep 2016');
   });
 
-  it('returns last modified from fs', function () {
+  it('returns last modified from fs', async function () {
     const file_path = path.join(__dirname, 'content/example-page.md');
     const content = fs.readFileSync(file_path, 'utf8');
-    const modified = utils.getLastModified(config, contentProcessors.processMeta(content), file_path);
+    const modified = await utils.getLastModified(config, contentProcessors.processMeta(content), file_path);
     const fstime = moment(fs.lstatSync(file_path).mtime).format(config.datetime_format);
     expect(modified).to.be.equal(fstime);
   });
@@ -49,8 +49,8 @@ describe('#get_last_modified()', function () {
 
 describe('#build_nested_pages()', function () {
 
-  it('builds tree of pages', function () {
-    const pages = contentsHandler(null, config);
+  it('builds tree of pages', async function () {
+    const pages = await contentsHandler(null, config);
     const result = build_nested_pages(pages);
 
     expect(result.length).to.be.equal(2);
