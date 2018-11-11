@@ -56,11 +56,7 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
   const category_sort = config.category_sort || false;
   const shortPath = path.normalize(filePath).replace(content_dir, '').trim();
   const fileSlug = shortPath.split('\\').join('/');
-  let stat = await fs.lstat(filePath);
-
-  if (stat.isSymbolicLink()) {
-    stat = await fs.lstat(await fs.readlink(filePath));
-  }
+  const stat = await fs.stat(filePath);
 
   if (stat.isDirectory()) {
 
