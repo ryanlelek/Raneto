@@ -26,4 +26,4 @@ gulp.task('copy_libs', function () {
 });
 
 // Default
-gulp.task('default', ['copy_libs']);
+gulp.task('default', gulp.series('copy_libs'));
