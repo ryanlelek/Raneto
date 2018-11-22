@@ -17,9 +17,8 @@ For full Installation instructions, see the [Installation Guide](http://docs.ran
 `git clone https://github.com/gilbitron/Raneto.git && cd Raneto && npm install && npm run gulp && npm start`
 
 Supported Node Versions:
-- v4.x
-- v6.x
-- v8.x
+- v10.x.x
+- v8.x.x
 
 Links
 ---------------
