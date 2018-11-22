@@ -1,10 +1,11 @@
+
 'use strict';
 
-const path = require('path');
-const glob = require('glob');
+const path              = require('path');
+const glob              = require('glob');
 const contentProcessors = require('../functions/contentProcessors');
-const utils = require('./utils');
-const pageHandler = require('./page');
+const utils             = require('./utils');
+const pageHandler       = require('./page');
 
 let instance = null;
 let stemmers = null;
@@ -20,6 +21,7 @@ function getLunr (config) {
   }
   return instance;
 }
+
 function getStemmers (config) {
   if (stemmers === null) {
     const languages = ['en'].concat(config.searchExtraLanguages);

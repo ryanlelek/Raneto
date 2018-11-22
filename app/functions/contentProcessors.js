@@ -1,8 +1,9 @@
+
 'use strict';
 
 const path = require('path');
-const fs = require('fs');
-const _s = require('underscore.string');
+const fs   = require('fs');
+const _s   = require('underscore.string');
 const yaml = require('js-yaml');
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
@@ -116,11 +117,11 @@ function extractDocument (contentDir, filePath, debug) {
     const file = fs.readFileSync(filePath);
     const meta = processMeta(file.toString('utf-8'));
 
-    const id = filePath.replace(contentDir, '').trim();
+    const id    = filePath.replace(contentDir, '').trim();
     const title = meta.title ? meta.title : slugToTitle(id);
-    const body = file.toString('utf-8');
+    const body  = file.toString('utf-8');
 
-    return {id, title, body}
+    return { id, title, body }
   } catch (e) {
     if (debug) {
       console.log(e);
