@@ -1,6 +1,6 @@
 
 <div class="row">
-  <div class="col-sm-3 hidden-xs">
+  <div class="col-sm-3 d-none">
 
     <ul class="menu">
       {{#canEdit}}
@@ -51,13 +51,13 @@
     <section class="content">
 
       {{#canEdit}}
-        <div class="btn-group btn-group-sm pull-right">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <div class="btn-group btn-group-sm float-right">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             {{lang.page.actions}} <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a class="goto-edit">{{lang.page.editPage}}</a></li>
-            <li><a data-toggle="modal" data-target="#deleteModal">{{lang.page.deletePage}}</a></li>
+            <li class="dropdown-item"><a class="goto-edit">{{lang.page.editPage}}</a></li>
+            <li class="dropdown-item"><a data-toggle="modal" data-target="#deleteModal">{{lang.page.deletePage}}</a></li>
           </ul>
         </div>
       {{/canEdit}}
@@ -68,11 +68,11 @@
 
       <div class="page-meta clearfix">
         {{#config.support_email}}
-          <div class="contact-support pull-left">
+          <div class="contact-support float-left">
             <span class="glyphicon glyphicon-envelope"></span> {{lang.page.needHelp}} <a href="mailto:{{config.support_email}}">{{lang.page.getInTouch}}</a>
           </div>
         {{/config.support_email}}
-        <div class="last-updated pull-right">
+        <div class="last-updated float-right">
           {{lang.global.lastUpdated}} {{last_modified}}
         </div>
       </div>

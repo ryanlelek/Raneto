@@ -32,7 +32,7 @@
         </div>
         <div class="col-sm-6">
           {{#config.googleoauth}}
-          <form class="form-inline pull-right">
+          <form class="form-inline float-right">
             {{#config.authentication}} {{#loggedIn}} &nbsp;
             <span>{{profile.displayName}}</span> &nbsp;
             <a href="{{config.base_url}}/auth/logout" class="btn btn-info">{{lang.login.logout}}</a> {{/loggedIn}} {{^loggedIn}} &nbsp;
@@ -41,7 +41,7 @@
           {{/config.googleoauth}}
 
           {{^config.googleoauth}}
-          <form class="form-inline pull-right">
+          <form class="form-inline float-right">
             {{#config.authentication}}
               {{#loggedIn}}
                 <div class="dropdown">
@@ -50,7 +50,7 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
-                    <li><a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a></li>
+                    <li class="dropdown-item"><a href="{{config.base_url}}/logout" class="btn btn-info">{{lang.login.logout}}</a></li>
                   </ul>
                 </div>
               {{/loggedIn}}
@@ -61,7 +61,7 @@
           </form>
           {{/config.googleoauth}}
           
-          <form class="search-form form-inline pull-right" action="{{config.base_url}}/">
+          <form class="search-form form-inline float-right" action="{{config.base_url}}/">
             <div class="form-group">
               <label class="sr-only" for="search">{{lang.global.search}}</label>
               <input type="search" class="form-control" name="search" id="search" size="30" value="{{search}}" placeholder="{{lang.global.search}}">
@@ -81,7 +81,7 @@
   <footer class="footer">
     <div class="container-fluid">
       {{#config.copyright}}
-        <p class="copyright pull-right">{{{config.copyright}}}</p>
+        <p class="copyright float-right">{{{config.copyright}}}</p>
       {{/config.copyright}}
     </div>
   </footer>
@@ -101,12 +101,12 @@
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="page-name" class="control-label">{{lang.global.pageName}}:</label>
+              <label for="page-name" class="col-form-label">{{lang.global.pageName}}:</label>
               <input type="text" class="form-control" id="page-name">
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-default" data-dismiss="modal" type="button">{{lang.global.cancel}}</button>
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">{{lang.global.cancel}}</button>
             <button class="btn btn-primary" id="add-page-confirm" type="button">{{lang.global.save}}</button>
           </div>
         </div>
@@ -121,7 +121,7 @@
             <h4 class="modal-title" id="myModalLabel">{{lang.global.reallyDeletePage}}</h4>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-default" data-dismiss="modal" type="button">{{lang.global.no}}</button>
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">{{lang.global.no}}</button>
             <button class="btn btn-primary" id="delete-page-confirm" type="button">{{lang.global.yes}}</button>
           </div>
         </div>
@@ -133,6 +133,7 @@
 
   <!-- JavaScript -->
   <script src="{{config.base_url}}/lib/jquery/dist/jquery.min.js"></script>
+  <script src="{{config.base_url}}/lib/popper.js/dist/umd/popper.min.js"></script>
   <script src="{{config.base_url}}/lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="{{config.base_url}}/lib/highlightjs/highlight.pack.min.js"></script>
   <script src="{{config.base_url}}/lib/fitvids/fitvids.min.js"></script>
