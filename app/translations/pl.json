@@ -1,0 +1,68 @@
+{
+  "global": {
+    "yes"             : "Tak",
+    "no"              : "Nie",
+    "search"          : "Szukaj",
+    "cancel"          : "Anuluj",
+    "save"            : "Zapisz",
+    "close"           : "Zamknij",
+    "lastUpdated"     : "Ostatnio zaaktualizowano",
+
+    "pageName"        : "Nazwa strony",
+    "addPage"         : "Dodaj stronę",
+    "reallyDeletePage": "Czy jesteś pewien, że chcesz usunąć tę stronę?",
+    "mainArticles"    : "Główne artykuły",
+    "editor"          : "Edytor"
+  },
+
+  "api": {
+    "loginSuccessful"   : "Logowanie pomyślne",
+    "invalidCredentials": "Nieprawidłowa nazwa użytkownika/hasło",
+    "pageSaved"         : "Strona została zapisana",
+    "pageDeleted"       : "Strona została usunięta",
+    "categoryCreated"   : "Kategoria została utworzona",
+    "pageCreated"       : "Strona została utworzona"
+  },
+
+  "error": {
+    "404": "Ups. Wygląda na to, że ta strona nie istnieje."
+  },
+
+  "edit": {
+    "preview"      : "Podgląd",
+    "editor"       : "Edytor",
+    "pageSaved"    : "Strona została zapisana pomyślnie",
+    "pageSaveError": "Błąd zapisywania strony",
+    "headerMetaInfo" : "Metadane",
+    "lableMetaTitle": "Tytuł",
+    "lableMetaDescription": "Opis",
+    "lableMetaSort": "Sortuj"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "Przeszukaj bazę wiedzy"
+  },
+
+  "login": {
+    "login"   : "Zaloguj",
+    "logout"  : "Wyloguj",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło"
+  },
+
+  "page": {
+    "addCategory": "Dodaj kategorię",
+    "addPage"    : "Dodaj stronę",
+    "deletePage" : "Usuń stronę",
+    "editPage"   : "Edytuj",
+    "actions"    : "Akcje",
+
+    "needHelp"   : "Nadal potrzebujesz pomocy?",
+    "getInTouch" : "Skontaktuj się z nami!"
+  },
+
+  "search": {
+    "resultsFor"  : "Wyniki wyszukiwania dla frazy",
+    "noResultsFor": "Nic nie znaleziono dla frazy"
+  }
+}
