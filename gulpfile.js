@@ -7,11 +7,12 @@ var gulp = require('gulp');
 gulp.task('copy_libs', function () {
 
   var source = [
+    'node_modules/jquery/**/*',
     'node_modules/bootstrap/**/*',
+    'node_modules/popper.js/**/*',
     'node_modules/bootstrap-rtl/**/*',
     'node_modules/fitvids/**/*',
     'node_modules/highlightjs/**/*',
-    'node_modules/jquery/**/*',
     'node_modules/masonry-layout/**/*',
     'node_modules/sweetalert2/**/*',
     'node_modules/jquery-backstretch/**/*'
