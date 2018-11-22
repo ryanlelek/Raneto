@@ -1,12 +1,13 @@
+
 'use strict';
 
 // Modules
-var path              = require('path');
-var fs                = require('fs');
-var sm                = require('sitemap');
-var _                 = require('underscore');
+var path                = require('path');
+var fs                  = require('fs');
+var sm                  = require('sitemap');
+var _                   = require('underscore');
 const contentProcessors = require('../functions/contentProcessors');
-const utils = require('../core/utils');
+const utils             = require('../core/utils');
 
 function route_sitemap (config) {
   return function (req, res, next) {
@@ -38,7 +39,9 @@ function route_sitemap (config) {
     for (var i = 0, len = urls.length; i < len; i++) {
       var content = fs.readFileSync(files[i], 'utf8');
       // Need to override the datetime format for sitemap
-      var conf = {datetime_format: 'YYYY-MM-DD'};
+      var conf = {
+        datetime_format : 'YYYY-MM-DD'
+      };
       sitemap.add({
         url: (config.prefix_url || '') + urls[i],
         changefreq: 'weekly',

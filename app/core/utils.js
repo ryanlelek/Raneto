@@ -1,10 +1,11 @@
+
 'use strict';
 
-const fs = require('fs');
+const fs     = require('fs');
 const moment = require('moment');
 
 const normalizeDir = (dir) => dir.replace(/\\/g, '/');
-const getSlug = (filePath, contentDir) => normalizeDir(filePath).replace(normalizeDir(contentDir), '').trim();
+const getSlug      = (filePath, contentDir) => normalizeDir(filePath).replace(normalizeDir(contentDir), '').trim();
 
 function getLastModified (config, meta, file_path) {
   if (typeof meta.modified !== 'undefined') {

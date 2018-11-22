@@ -1,12 +1,13 @@
+
 'use strict';
 
-const path = require('path');
-const fs = require('fs');
-const glob = require('glob');
-const _ = require('underscore');
-const _s = require('underscore.string');
-const yaml = require('js-yaml');
-const utils = require('./utils');
+const path              = require('path');
+const fs                = require('fs');
+const glob              = require('glob');
+const _                 = require('underscore');
+const _s                = require('underscore.string');
+const yaml              = require('js-yaml');
+const utils             = require('./utils');
 const contentProcessors = require('../functions/contentProcessors');
 
 function handler (activePageSlug, config) {

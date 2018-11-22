@@ -1,10 +1,11 @@
+
 'use strict';
 
-const path = require('path');
-const fs = require('fs');
-const utils = require('./utils');
-const _s = require('underscore.string');
-const marked = require('marked');
+const path              = require('path');
+const fs                = require('fs');
+const utils             = require('./utils');
+const _s                = require('underscore.string');
+const marked            = require('marked');
 const contentProcessors = require('../functions/contentProcessors');
 
 function handler (filePath, config) {
@@ -29,7 +30,7 @@ function handler (filePath, config) {
     const title = meta.title ? meta.title : contentProcessors.slugToTitle(slug);
     const excerpt = _s.prune(_s.stripTags(_s.unescapeHTML(body)), (config.excerpt_length || 400));
 
-    return {slug, title, body, excerpt};
+    return { slug, title, body, excerpt };
 
   } catch (e) {
     if (config.debug) {

@@ -1,12 +1,13 @@
+
 'use strict';
 
-const path = require('path');
-const chai = require('chai');
-const expect = chai.expect;
+const path              = require('path');
+const chai              = require('chai');
+const expect            = chai.expect;
 const contentProcessors = require('../app/functions/contentProcessors');
 
-const searchHandler = require('../app/core/search');
-const pageHandler = require('../app/core/page');
+const searchHandler   = require('../app/core/search');
+const pageHandler     = require('../app/core/page');
 const contentsHandler = require('../app/core/contents');
 
 chai.should();
@@ -162,7 +163,7 @@ describe('#stripMeta()', () => {
 describe('#processVars()', () => {
 
   it('replaces config vars in Markdown content', () => {
-    const config = {base_url: '/base/url'};
+    const config = { base_url : '/base/url' };
     contentProcessors
       .processVars('This is some Markdown with a %base_url%.', config)
       .should.equal('This is some Markdown with a /base/url.');
