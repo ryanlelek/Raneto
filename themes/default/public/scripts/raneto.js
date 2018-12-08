@@ -52,7 +52,7 @@
             }
             redirect.push(name);
             redirect.push("edit");
-            window.location = redirect.join(rn_base_url() + "/");
+            window.location = rn_base_url() + redirect.join("/");
             break;
         }
       }).fail(function(data) {
