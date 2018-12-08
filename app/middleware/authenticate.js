@@ -7,9 +7,9 @@ function middleware_authenticate (config) {
     return function (req, res, next) {
       if (!req.session.loggedIn) {
         if (config.googleoauth === true) {
-          res.redirect(403, '/login');
+          res.redirect(403, config.base_url + '/login');
         } else {
-          res.redirect(403, '/login');
+          res.redirect(403, config.base_url + '/login');
         }
       }
       return next();

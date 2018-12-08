@@ -23,7 +23,7 @@ jQuery(document).ready(function () {
       });
 
       if ($('.input-error').length === 0) {
-        $.post('/rn-login', $(this).serialize(), function (data) {
+        $.post(rn_base_url() + '/rn-login', $(this).serialize(), function (data) {
 
           swal({
             type              : data.status ? 'success' : 'warning',
@@ -34,7 +34,7 @@ jQuery(document).ready(function () {
 
           if (data.status) {
             window.setTimeout(function () {
-              window.location = '/';
+              window.location = rn_base_url() + '/';
             }, 1500);
           }
 
