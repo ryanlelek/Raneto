@@ -3,6 +3,8 @@
 
   "use strict";
 
+  var base_url = (typeof rn_base_url === "undefined") ? "" : rn_base_url;
+
   var current_category;
 
   $(document).ready(function () {
@@ -39,7 +41,7 @@
     $("#add-page-confirm").click(function () {
       $("#addModal").modal("hide");
       var name = $("#page-name").val().replace(/\s+/g, "-");
-      $.post(rn_base_url() + "/rn-add-page", {
+      $.post(base_url + "/rn-add-page", {
         name     : name,
         category : current_category
       }, function (data) {
@@ -52,30 +54,30 @@
             }
             redirect.push(name);
             redirect.push("edit");
-            window.location = rn_base_url() + redirect.join("/");
+            window.location = base_url + redirect.join("/");
             break;
         }
       }).fail(function(data) {
-        if (data.status === 403) { window.location = rn_base_url() + "/login"; }
+        if (data.status === 403) { window.location = base_url + "/login"; }
       });
     });
 
     // Modal: Delete Page Confirm
     $("#delete-page-confirm").click(function () {
       var file_arr = window.location.pathname.split("/");
-      var base_arr = rn_base_url().split("/");
+      var base_arr = base_url.split("/");
       file_arr.splice(0, base_arr.length, "");
       $("#deleteModal").modal("hide");
-      $.post(rn_base_url() + "/rn-delete", {
+      $.post(base_url + "/rn-delete", {
         file : decodeURI(file_arr.join("/"))
       }, function (data) {
         switch (data.status) {
           case 0:
-            window.location = rn_base_url() + "/";
+            window.location = base_url + "/";
             break;
         }
       }).fail(function(data) {
-        if (data.status === 403) { window.location = rn_base_url() + "/login"; }
+        if (data.status === 403) { window.location = base_url + "/login"; }
       });
     });
 
@@ -96,7 +98,7 @@
     // New Category
     $("#newCategory").keypress(function (e) {
       if (e.which === 13) {
-        $.post(rn_base_url() + "/rn-add-category", {
+        $.post(base_url + "/rn-add-category", {
           category : $(this).val()
                             .trim()
                             .toLowerCase()
@@ -104,7 +106,7 @@
         }, function (data) {
           location.reload();
         }).fail(function(data) {
-        if (data.status === 403) { window.location = rn_base_url() + "/login"; }
+        if (data.status === 403) { window.location = base_url + "/login"; }
       });
       }
     });
@@ -118,16 +120,16 @@
     });
 
     // get translations first, then register save handlers
-    $.getJSON(rn_base_url() + "/translations/" + $("html").prop("lang") + ".json", null, function (lang) {
+    $.getJSON(base_url + "/translations/" + $("html").prop("lang") + ".json", null, function (lang) {
 
       // Save Page
       $(".save-page").click(function () {
         var file_arr = window.location.pathname.split("/");
-        var base_arr = rn_base_url().split("/");
+        var base_arr = base_url.split("/");
         file_arr.splice(0, base_arr.length, "");
         file_arr.pop();
         $("#entry-markdown").next(".CodeMirror")[0].CodeMirror.save();
-        $.post(rn_base_url() + "/rn-edit", {
+        $.post(base_url + "/rn-edit", {
           file    : decodeURI(file_arr.join("/")),
           content : $("#entry-markdown").val(),
           meta_title : $("#entry-metainfo-title").val(),
@@ -153,7 +155,7 @@
               break;
           }
         }).fail(function(data) {
-          if (data.status === 403) { window.location = rn_base_url() + "/login"; }
+          if (data.status === 403) { window.location = base_url + "/login"; }
         });
       });
 
