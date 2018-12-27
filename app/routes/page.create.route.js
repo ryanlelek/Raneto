@@ -28,10 +28,10 @@ function route_page_create (config) {
             message : error
           });
         }
-      });
-      res.json({
-        status  : 0,
-        message : config.lang.api.pageCreated
+        res.json({
+          status  : 0,
+          message : config.lang.api.pageCreated
+        });
       });
     });
 
