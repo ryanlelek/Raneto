@@ -31,7 +31,8 @@ function initialize (config) {
   var oauth2                    = require('./middleware/oauth2.js');
   var route_login               = require('./routes/login.route.js')                    (config);
   var route_login_page          = require('./routes/login_page.route.js')               (config);
-  var route_logout              = require('./routes/logout.route.js');
+  var route_logout              = require('./routes/logout.route.js')
+    (config);
   var route_page_edit           = require('./routes/page.edit.route.js')                (config);
   var route_page_delete         = require('./routes/page.delete.route.js')              (config);
   var route_page_create         = require('./routes/page.create.route.js')              (config);

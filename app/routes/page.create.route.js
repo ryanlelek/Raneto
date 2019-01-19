@@ -21,10 +21,17 @@ function route_page_create (config) {
           message : error
         });
       }
-      fs.close(fd);
-      res.json({
-        status  : 0,
-        message : config.lang.api.pageCreated
+      fs.close(fd, function (error) {
+        if (error) {
+          return res.json({
+            status  : 1,
+            message : error
+          });
+        }
+        res.json({
+          status  : 0,
+          message : config.lang.api.pageCreated
+        });
       });
     });
 

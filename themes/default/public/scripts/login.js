@@ -3,6 +3,8 @@ jQuery(document).ready(function () {
 
   'use strict';
 
+  var base_url = (typeof rn_base_url === "undefined") ? "" : rn_base_url;
+
   // Form validation
   $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea')
     .on('focus', function () {
@@ -23,7 +25,7 @@ jQuery(document).ready(function () {
       });
 
       if ($('.input-error').length === 0) {
-        $.post('/rn-login', $(this).serialize(), function (data) {
+        $.post(base_url + '/rn-login', $(this).serialize(), function (data) {
 
           swal({
             type              : data.status ? 'success' : 'warning',
@@ -34,7 +36,7 @@ jQuery(document).ready(function () {
 
           if (data.status) {
             window.setTimeout(function () {
-              window.location = '/';
+              window.location = base_url + '/';
             }, 1500);
           }
 
