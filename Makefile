@@ -24,11 +24,10 @@ delint:
 
 	# ESLint
 	./node_modules/.bin/eslint \
-		./app/**/*.js            \
-		./bin/*.js               \
-		./example/**/*.js        \
-		./test/*.js              \
-		./translations/*.json    \
+		./app/**/*.js      \
+		./bin/*            \
+		./example/**/*.js  \
+		./test/*.js        \
 		./gulpfile.js;
 
 .PHONY: mocha
