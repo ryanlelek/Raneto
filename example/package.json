@@ -10,7 +10,7 @@
   "author": "Ryan Lelek <ryanlelek@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "raneto": "0.16.0",
+    "raneto": "0.16.2",
     "debug": "4.1.1"
   }
 }
