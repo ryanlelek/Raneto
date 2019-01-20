@@ -37,6 +37,7 @@ describe('#dots_in_url()', function () {
       path.join(config.content_dir, '../dots-in-url.test.js'),
       config
     );
+    /* eslint-disable no-unused-expressions */
     expect(result).to.be.null;
   });
 
