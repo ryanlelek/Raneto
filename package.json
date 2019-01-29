@@ -33,7 +33,8 @@
     "start_win": "set DEBUG=raneto&&node example/server.js",
     "test": "npm run lint && mocha --reporter spec test/*.js",
     "gulp": "gulp",
-    "lint": "./node_modules/.bin/eslint bin/* app/**/*.js example/**/*.js test/*.js gulpfile.js"
+    "lint": "./node_modules/.bin/eslint bin/* app/**/*.js example/**/*.js test/*.js gulpfile.js",
+    "postinstall": "gulp default"
   },
   "engines": {
     "node": ">=8.0.0"
