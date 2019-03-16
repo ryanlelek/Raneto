@@ -75,7 +75,7 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
 
     let dirMetadata = {};
     try {
-      const metaFile = await fs.readFile(contentDir + shortPath + '/meta');
+      const metaFile = await fs.readFile(path.join(contentDir, shortPath, 'meta'));
       dirMetadata = contentProcessors.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
     } catch (e) {
       if (config.debug) {
@@ -85,7 +85,7 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
 
     if (category_sort && !dirMetadata.sort) {
       try {
-        const sortFile = await fs.readFile(contentDir + shortPath + '/sort');
+        const sortFile = await fs.readFile(path.join(contentDir, shortPath, 'sort'));
         sort = parseInt(sortFile.toString('utf-8'), 10);
       } catch (e) {
         if (config.debug) {
@@ -95,13 +95,13 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
     }
 
     return {
-      slug: shortPath,
+      slug: fileSlug,
       title: dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
       show_on_home: dirMetadata.show_on_home ? (dirMetadata.show_on_home === 'true') : config.show_on_home_default,
       is_index: false,
       is_directory: true,
       active: activePageSlug.startsWith('/' + fileSlug),
-      class: 'category-' + contentProcessors.cleanString(shortPath),
+      class: 'category-' + contentProcessors.cleanString(fileSlug),
       sort: dirMetadata.sort || sort,
       files: []
     };
