@@ -73,7 +73,7 @@ function initialize (config) {
     router.use(express.static(path.join(config.theme_dir, config.theme_name, 'public')));
   }
   router.use(config.image_url, express.static(path.normalize(config.content_dir + config.image_url)));
-  router.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
+  router.use('/translations',  express.static(path.normalize(path.join(__dirname, 'translations'))));
 
   // HTTP Authentication
   if (config.authentication === true || config.authentication_for_edit || config.authentication_for_read) {
