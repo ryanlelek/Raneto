@@ -31,8 +31,7 @@ function initialize (config) {
   var oauth2                    = require('./middleware/oauth2.js');
   var route_login               = require('./routes/login.route.js')                    (config);
   var route_login_page          = require('./routes/login_page.route.js')               (config);
-  var route_logout              = require('./routes/logout.route.js')
-    (config);
+  var route_logout              = require('./routes/logout.route.js')                   (config);
   var route_page_edit           = require('./routes/page.edit.route.js')                (config);
   var route_page_delete         = require('./routes/page.delete.route.js')              (config);
   var route_page_create         = require('./routes/page.create.route.js')              (config);
@@ -73,7 +72,7 @@ function initialize (config) {
     router.use(express.static(path.join(config.theme_dir, config.theme_name, 'public')));
   }
   router.use(config.image_url, express.static(path.normalize(config.content_dir + config.image_url)));
-  router.use('/translations',  express.static(path.normalize(__dirname + '/translations')));
+  router.use('/translations',  express.static(path.normalize(path.join(__dirname, 'translations'))));
 
   // HTTP Authentication
   if (config.authentication === true || config.authentication_for_edit || config.authentication_for_read) {

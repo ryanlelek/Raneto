@@ -2,7 +2,7 @@
 'use strict';
 
 const path = require('path');
-const fs   = require('fs');
+const fs   = require('fs-extra');
 const _s   = require('underscore.string');
 const yaml = require('js-yaml');
 
@@ -112,9 +112,9 @@ function processVars (markdownContent, config) {
   return markdownContent;
 }
 
-function extractDocument (contentDir, filePath, debug) {
+async function extractDocument (contentDir, filePath, debug) {
   try {
-    const file = fs.readFileSync(filePath);
+    const file = await fs.readFile(filePath);
     const meta = processMeta(file.toString('utf-8'));
 
     const id    = filePath.replace(contentDir, '').trim();

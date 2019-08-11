@@ -10,7 +10,7 @@ const searchHandler = require('../core/search');
 const contentsHandler = require('../core/contents');
 
 function route_search (config) {
-  return function (req, res, next) {
+  return async function (req, res, next) {
 
     // Skip if Search not present
     if (!req.query.search) { return next(); }
@@ -25,8 +25,8 @@ function route_search (config) {
     // trim and convert to string
     var searchQuery    = validator.toString(sanitizedQuery).trim();
 
-    var searchResults  = searchHandler(searchQuery, config);
-    var pageListSearch = remove_image_content_directory(config, contentsHandler(null, config));
+    var searchResults  = await searchHandler(searchQuery, config);
+    var pageListSearch = remove_image_content_directory(config, await contentsHandler(null, config));
 
     // TODO: Move to Raneto Core
     // Loop through Results and Extract Category

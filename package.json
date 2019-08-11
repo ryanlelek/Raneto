@@ -50,6 +50,7 @@
     "express-session": "1.15.6",
     "extend": "3.0.2",
     "fitvids": "2.0.0",
+    "fs-extra": "^7.0.0",
     "glob": "7.1.3",
     "highlightjs": "9.12.0",
     "hogan-express": "0.5.2",

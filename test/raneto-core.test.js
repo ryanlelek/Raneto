@@ -83,8 +83,8 @@ describe('#processMeta()', () => {
     expect(result).to.be.empty;
   });
 
-  it('returns proper meta from file starting with a BOM character', () => {
-    const result = pageHandler(
+  it('returns proper meta from file starting with a BOM character', async () => {
+    const result = await pageHandler(
       path.join(config.content_dir, 'page-with-bom.md'),
       config
     );
@@ -104,8 +104,8 @@ describe('#processMeta()', () => {
     expect(result).to.have.property('multi_word', 'Value');
   });
 
-  it('returns proper meta from file starting with a BOM character (YAML)', () => {
-    const result = pageHandler(
+  it('returns proper meta from file starting with a BOM character (YAML)', async () => {
+    const result = await pageHandler(
       path.join(config.content_dir, 'page-with-bom-yaml.md'),
       config
     );
@@ -187,8 +187,8 @@ describe('#processVars()', () => {
 
 describe('#getPage()', () => {
 
-  it('returns an array of values for a given page', () => {
-    const result = pageHandler(
+  it('returns an array of values for a given page', async () => {
+    const result = await pageHandler(
       path.join(config.content_dir, 'example-page.md'),
       config
     );
@@ -198,8 +198,8 @@ describe('#getPage()', () => {
     expect(result).to.have.property('excerpt');
   });
 
-  it('returns null if no page found', () => {
-    const result = pageHandler(
+  it('returns null if no page found', async () => {
+    const result = await pageHandler(
       path.join(config.content_dir, 'nonexistent-page.md'),
       config
     );
@@ -211,58 +211,58 @@ describe('#getPage()', () => {
 
 describe('#getPages()', () => {
 
-  it('returns an array of categories and pages', () => {
-    const result = contentsHandler(null, config);
+  it('returns an array of categories and pages', async () => {
+    const result = await contentsHandler(null, config);
     expect(result[0]).to.have.property('is_index', true);
     expect(result[0].files[0]).to.have.property('title', 'Example Page');
     expect(result[1]).to.have.property('slug', 'sub');
     expect(result[1].files[0]).to.have.property('title', 'Example Sub Page');
   });
 
-  it('marks activePageSlug as active', () => {
-    const result = contentsHandler('/example-page', config);
+  it('marks activePageSlug as active', async () => {
+    const result = await contentsHandler('/example-page', config);
     expect(result[0]).to.have.property('active', true);
     expect(result[0].files[0]).to.have.property('active', true);
     expect(result[1]).to.have.property('active', false);
     expect(result[1].files[0]).to.have.property('active', false);
   });
 
-  it('adds show_on_home property to directory', () => {
-    const result = contentsHandler(null, config);
+  it('adds show_on_home property to directory', async () => {
+    const result = await contentsHandler(null, config);
     expect(result[0]).to.have.property('show_on_home', true);
   });
 
-  it('adds show_on_home property to files', () => {
-    const result = contentsHandler(null, config);
+  it('adds show_on_home property to files', async () => {
+    const result = await contentsHandler(null, config);
     expect(result[0].files[0]).to.have.property('show_on_home', true);
   });
 
-  it('loads meta show_on_home value from directory', () => {
-    const result = contentsHandler(null, config);
+  it('loads meta show_on_home value from directory', async () => {
+    const result = await contentsHandler(null, config);
     expect(result[3]).to.have.property('show_on_home', false);
   });
 
-  it('loads meta show_on_home value from file', () => {
-    const result = contentsHandler(null, config);
+  it('loads meta show_on_home value from file', async () => {
+    const result = await contentsHandler(null, config);
     expect(result[0].files[4]).to.have.property('show_on_home', false);
   });
 
-  it('applies show_on_home_default in absence of meta for directories', () => {
-    const result = contentsHandler(null, Object.assign(config, {
+  it('applies show_on_home_default in absence of meta for directories', async () => {
+    const result = await contentsHandler(null, Object.assign(config, {
       show_on_home_default: false
     }));
     expect(result[1]).to.have.property('show_on_home', false);
   });
 
-  it('applies show_on_home_default in absence of meta for files', () => {
-    const result = contentsHandler(null, Object.assign(config, {
+  it('applies show_on_home_default in absence of meta for files', async () => {
+    const result = await contentsHandler(null, Object.assign(config, {
       show_on_home_default: false
     }));
     expect(result[1].files[0]).to.have.property('show_on_home', false);
   });
 
-  it('category index always shows on home', () => {
-    const result = contentsHandler(null, Object.assign(config, {
+  it('category index always shows on home', async () => {
+    const result = await contentsHandler(null, Object.assign(config, {
       show_on_home_default: false
     }));
     expect(result[0]).to.have.property('show_on_home', true);
@@ -271,18 +271,18 @@ describe('#getPages()', () => {
 });
 
 describe('#doSearch()', () => {
-  it('returns an array of search results', () => {
-    const result = searchHandler('example', config);
+  it('returns an array of search results', async () => {
+    const result = await searchHandler('example', config);
     expect(result).to.have.length(5);
   });
 
-  it('recognizes multiple languages', () => {
-    const result = searchHandler('пример', config);
+  it('recognizes multiple languages', async () => {
+    const result = await searchHandler('пример', config);
     expect(result).to.have.length(1);
   });
 
-  it('returns an empty array if nothing found', () => {
-    const result = searchHandler('qwerty', config);
+  it('returns an empty array if nothing found', async () => {
+    const result = await searchHandler('qwerty', config);
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });

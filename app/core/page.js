@@ -2,17 +2,17 @@
 'use strict';
 
 const path              = require('path');
-const fs                = require('fs');
+const fs                = require('fs-extra');
 const utils             = require('./utils');
 const _s                = require('underscore.string');
 const marked            = require('marked');
 const contentProcessors = require('../functions/contentProcessors');
 
-function handler (filePath, config) {
+async function handler (filePath, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
 
   try {
-    const file = fs.readFileSync(filePath);
+    const file = await fs.readFile(filePath);
     let slug = utils.getSlug(filePath, contentDir);
 
     if (slug.indexOf('index.md') > -1) {

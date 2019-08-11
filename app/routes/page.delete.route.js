@@ -2,11 +2,11 @@
 'use strict';
 
 // Modules
-var fs           = require('fs');
+var fs           = require('fs-extra');
 var get_filepath = require('../functions/get_filepath.js');
 
 function route_page_delete (config) {
-  return function (req, res, next) {
+  return async function (req, res, next) {
 
     var file_category;
     var file_name;
@@ -29,25 +29,25 @@ function route_page_delete (config) {
 
     // No file at that filepath?
     // Add ".md" extension to try again
-    if (!fs.existsSync(filepath)) {
+    if (!(await fs.pathExists(filepath))) {
       filepath += '.md';
     }
 
-    // Don't Delete
-    // Rename to remove from listing
-    fs.rename(filepath, filepath + '.del', function (error) {
-      if (error) {
-        return res.json({
-          status  : 1,
-          message : error
-        });
-      }
+    try {
+      // Don't Delete
+      // Rename to remove from listing
+      await fs.rename(filepath, filepath + '.del');
+
       res.json({
         status  : 0,
         message : config.lang.api.pageDeleted
       });
-    });
-
+    } catch (error) {
+      res.json({
+        status  : 1,
+        message : error
+      });
+    }
   };
 }
 
