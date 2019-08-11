@@ -6,8 +6,8 @@ function route_login (config) {
 
     for (var i = 0; i < config.credentials.length; i++) {
       if (
-        req.param('username') === config.credentials[i].username &&
-        req.param('password') === config.credentials[i].password
+        req.body.username === config.credentials[i].username &&
+        req.body.password === config.credentials[i].password
       ) {
         req.session.loggedIn = true;
         req.session.username = config.credentials[i].username;

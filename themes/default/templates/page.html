@@ -52,13 +52,13 @@
 
       {{#canEdit}}
         <div class="btn-group btn-group-sm float-right">
-          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{lang.page.actions}} <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-item"><a class="goto-edit">{{lang.page.editPage}}</a></li>
-            <li class="dropdown-item"><a data-toggle="modal" data-target="#deleteModal">{{lang.page.deletePage}}</a></li>
-          </ul>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{current_url}}/edit">{{lang.page.editPage}}</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal">{{lang.page.deletePage}}</a>
+          </div>
         </div>
       {{/canEdit}}
 

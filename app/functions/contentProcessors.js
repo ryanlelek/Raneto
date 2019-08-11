@@ -3,6 +3,7 @@
 
 const path = require('path');
 const fs   = require('fs-extra');
+const _    = require('underscore');
 const _s   = require('underscore.string');
 const yaml = require('js-yaml');
 
@@ -30,9 +31,9 @@ function cleanString (str, use_underscore) {
 
 // Clean object strings.
 function cleanObjectStrings (obj) {
-  let cleanObj = {};
-  for (let field in obj) {
-    if (obj.hasOwnProperty(field)) {
+  const cleanObj = {};
+  for (const field in obj) {
+    if (_.has(obj, field)) {
       cleanObj[cleanString(field, true)] = ('' + obj[field]).trim();
     }
   }
@@ -103,10 +104,10 @@ function processVars (markdownContent, config) {
       markdownContent = markdownContent.replace(new RegExp('%' + v.name + '%', 'g'), v.content);
     });
   }
-  if (config.base_url) {
+  if (config.base_url !== undefined) {
     markdownContent = markdownContent.replace(/%base_url%/g, config.base_url);
   }
-  if (config.image_url) {
+  if (config.image_url !== undefined) {
     markdownContent = markdownContent.replace(/%image_url%/g, config.image_url);
   }
   return markdownContent;

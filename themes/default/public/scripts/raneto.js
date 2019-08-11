@@ -32,11 +32,6 @@
       });
     }
 
-    // Edit Page
-    $(".goto-edit").click(function () {
-      window.location.href = window.location.href + "/edit";
-    });
-
     // Modal: Add Page Confirm
     $("#add-page-confirm").click(function () {
       $("#addModal").modal("hide");

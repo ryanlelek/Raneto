@@ -27,7 +27,7 @@ jQuery(document).ready(function () {
       if ($('.input-error').length === 0) {
         $.post(base_url + '/rn-login', $(this).serialize(), function (data) {
 
-          swal({
+          Swal.fire({
             type              : data.status ? 'success' : 'warning',
             title             : data.message,
             timer             : data.status ? 2000 : null,
