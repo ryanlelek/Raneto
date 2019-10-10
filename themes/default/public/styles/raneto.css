@@ -44,7 +44,8 @@
   line-height: 30px;
 }
 
-.menu .category-title {
+.menu .category-title,
+.menu .category-title > a {
   margin: 25px 0 10px 0;
   font-size: 12px;
   text-transform: uppercase;
