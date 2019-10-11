@@ -71,7 +71,7 @@ function route_wildcard (config) {
 
         // Render Table of Contents
         if (config.table_of_contents) {
-          var tableOfContents = toc(content);
+          var tableOfContents = toc(content, config.table_of_contents_options);
           if (tableOfContents.content) {
             content = '#### Table of Contents\n' + tableOfContents.content + '\n\n' + content;
           }
