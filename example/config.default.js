@@ -114,7 +114,15 @@ var config = {
   //   }
   // ]
 
-  table_of_contents: false
+  // Set to true to enable generation of table of contents
+  table_of_contents: false,
+
+  // Configure generation of table of contents (see markdown-toc's docs for details on available options)
+  table_of_contents_options: {
+    // append: 'Table of contents appendix',
+    // maxdepth: 6,
+    // firsth1: true,
+  }
 
 };
 config.public_dir = path.join(__dirname, '..', 'themes', config.theme_name, 'public');
