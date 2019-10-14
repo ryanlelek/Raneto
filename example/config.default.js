@@ -122,8 +122,10 @@ var config = {
     // append: 'Table of contents appendix',
     // maxdepth: 6,
     // firsth1: true,
-  }
-
+  },
+  
+  menu_on_pages: true,
+  menu_on_page_collapsible: true
 };
 config.public_dir = path.join(__dirname, '..', 'themes', config.theme_name, 'public');
 
