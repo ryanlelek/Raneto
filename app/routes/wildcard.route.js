@@ -23,7 +23,8 @@ function route_wildcard (config) {
     var slug   = req.params[0];
     if (slug === '/') { slug = '/index'; }
 
-    var file_path      = path.normalize(config.content_dir + slug);
+    // Normalize and strip trailing slash
+    var file_path      = path.normalize(config.content_dir + slug).replace(/\/$|\\$/g, '');
     var file_path_orig = file_path;
 
     // Remove "/edit" suffix
@@ -71,7 +72,7 @@ function route_wildcard (config) {
 
         // Render Table of Contents
         if (config.table_of_contents) {
-          var tableOfContents = toc(content);
+          var tableOfContents = toc(content, config.table_of_contents_options);
           if (tableOfContents.content) {
             content = '#### Table of Contents\n' + tableOfContents.content + '\n\n' + content;
           }
