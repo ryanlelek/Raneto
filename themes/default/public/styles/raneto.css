@@ -40,13 +40,21 @@
   list-style: none;
 }
 
+.menu .pages.collapse li,
+.menu .pages.collapsing li {
+  text-indent: 2px;
+}
+
 .menu li {
   line-height: 30px;
 }
 
+.menu .category-title {
+margin: 25px 0 10px 0;
+}
+
 .menu .category-title,
-.menu .category-title > a {
-  margin: 25px 0 10px 0;
+.menu .category-title > a {  
   font-size: 12px;
   text-transform: uppercase;
 }
