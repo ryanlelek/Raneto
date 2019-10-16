@@ -35,7 +35,7 @@ async function handler (activePageSlug, config) {
   for (const result of results) {
     if (result && result.is_directory) {
       filesProcessed.push(result);
-    } else if (result && !result.is_directory) {
+    } else if (result && result.is_directory === false) {
       const dirSlug = path.dirname(result.slug);
       const parent = _.find(filesProcessed, item => item.slug === dirSlug);
       parent.files.push(result);
