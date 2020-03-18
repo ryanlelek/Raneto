@@ -67,6 +67,11 @@ var config = {
 
   // Google OAuth
   googleoauth: false,
+  google_group_restriction: {
+    enabled: false,
+    api_key: 'GOOGLE_API_KEY',
+    group_name : 'GOOGLE_GROUP_NAME'
+  },
   oauth2 : {
     client_id: 'GOOGLE_CLIENT_ID',
     client_secret: 'GOOGLE_CLIENT_SECRET',
