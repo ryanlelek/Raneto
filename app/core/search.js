@@ -12,6 +12,7 @@ let stemmers = null;
 function getLunr (config) {
   if (instance === null) {
     instance = require('lunr');
+    instance.TinySegmenter = require('tiny-segmenter');
     require('lunr-languages/lunr.stemmer.support')(instance);
     require('lunr-languages/lunr.multi')(instance);
     config.searchExtraLanguages.forEach(lang =>
