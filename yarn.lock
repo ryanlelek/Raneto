@@ -4729,7 +4729,7 @@ time-stamp@^1.0.0:
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.1.0.tgz#764a5a11af50561921b133f3b44e618687e0f5c3"
   integrity sha1-dkpaEa9QVhkhsTPztE5hhofg9cM=
 
-tiny-segmenter@^0.2.0:
+tiny-segmenter@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/tiny-segmenter/-/tiny-segmenter-0.2.0.tgz#4f91115efaa90d1f98b481623b0dcc830a9e1a69"
   integrity sha1-T5ERXvqpDR+YtIFiOw3MgwqeGmk=
