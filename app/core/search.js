@@ -40,7 +40,7 @@ async function handler (query, config) {
   const documents = potentialDocuments
     .filter(doc => doc !== null);
 
-  const lunrInstance = getLunr(config);
+  const lunrInstance = getLunr (config);
   const idx = lunrInstance(function() {
     this.use(getStemmers(config));
     this.field('title');
@@ -58,7 +58,7 @@ async function handler (query, config) {
   return searchResults;
 }
 
-async function processSearchResult(contentDir, config, query, result) {
+async function processSearchResult (contentDir, config, query, result) {
   const page = await pageHandler(contentDir + result.ref, config);
   page.excerpt = page.excerpt.replace(new RegExp('(' + query + ')', 'gim'), '<span class="search-query">$1</span>');
 
