@@ -41,7 +41,7 @@ async function handler (query, config) {
     .filter(doc => doc !== null);
 
   const lunrInstance = getLunr (config);
-  const idx = lunrInstance(function() {
+  const idx = lunrInstance(function () {
     this.use(getStemmers(config));
     this.field('title');
     this.field('body');
