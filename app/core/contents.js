@@ -99,6 +99,7 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
       active: activePageSlug.startsWith('/' + fileSlug),
       class: 'category-' + contentProcessors.cleanString(fileSlug),
       sort: dirMetadata.sort || sort,
+      description: dirMetadata.description || '',
       files: []
     };
 
