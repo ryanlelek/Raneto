@@ -1,0 +1,68 @@
+{
+    "global": {
+        "yes": "はい",
+        "no": "いいえ",
+        "search": "検索",
+        "cancel": "キャンセル",
+        "save": "保存",
+        "close": "閉じる",
+        "lastUpdated": "最終更新日時",
+
+        "pageName": "ページ名",
+        "addPage": "ページ追加",
+        "reallyDeletePage": "このページを削除してよいですか？",
+        "mainArticles": "メイン記事",
+        "editor": "作成者"
+    },
+
+    "api": {
+        "loginSuccessful": "ログインしました。",
+        "invalidCredentials": "ユーザ名とパスワードの組み合わせが正しくありません。",
+        "pageSaved": "ページを保存しました",
+        "pageDeleted": "ページを削除しました。",
+        "categoryCreated": "カテゴリを作成しました。",
+        "pageCreated": "ページを作成しました。"
+    },
+
+    "error": {
+        "404": "あらあら、ページがないようですよ。"
+    },
+
+    "edit": {
+        "preview": "プレビュー",
+        "editor": "エディタ",
+        "pageSaved": "保存しました。",
+        "pageSaveError": "保存に失敗しました。",
+        "headerMetaInfo": "メタ情報",
+        "lableMetaTitle": "タイトル",
+        "lableMetaDescription": "説明",
+        "lableMetaSort": "ソート順"
+    },
+
+    "home": {
+        "searchKnowledgeBase": "ナレッジを検索"
+    },
+
+    "login": {
+        "login": "ログイン",
+        "logout": "ログアウト",
+        "username": "ユーザ名",
+        "password": "パスワード"
+    },
+
+    "page": {
+        "addCategory": "カテゴリを追加",
+        "addPage": "ページを追加",
+        "deletePage": "ページを削除",
+        "editPage": "ページを編集",
+        "actions": "アクション",
+
+        "needHelp": "助けが必要？",
+        "getInTouch": "連絡はこちら!"
+    },
+
+    "search": {
+        "resultsFor": "検索結果",
+        "noResultsFor": "以下の条件では見つかりませんでした。"
+    }
+}
