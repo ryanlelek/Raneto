@@ -4,19 +4,28 @@ Raneto [![](https://travis-ci.org/gilbitron/Raneto.svg?branch=master)](https://t
 [![Raneto Logo](https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
 
 
-[Raneto](http://raneto.com) is a free, open, simple Markdown powered Knowledgebase for Node.js.  
-[Find out more &rarr;](http://docs.raneto.com/what-is-raneto)  
+[Raneto](http://raneto.com) is a free, open, simple Markdown powered knowledge base for Node.js.
+[Find out more &rarr;](http://docs.raneto.com/what-is-raneto)
 
 Visit [http://docs.raneto.com](http://docs.raneto.com) to see a demo and get started!
 
 Quickstart
 ----------
 
-Run this in a terminal and then visit [http://localhost:3000](http://localhost:3000).  
-For full Installation instructions, see the [Installation Guide](http://docs.raneto.com/install/installing-raneto).  
-`git clone https://github.com/gilbitron/Raneto.git && cd Raneto && npm install && npm run gulp && npm start`
+1. In a terminal, run:
+
+   ```bash
+   git clone https://github.com/gilbitron/Raneto.git
+   cd Raneto
+   npm install && npm run gulp && npm start
+   ```
+
+1. Visit [http://localhost:3000](http://localhost:3000) to display the output.
+
+See the [installation guide](http://docs.raneto.com/install/installing-raneto) for more information.
 
 Supported Node Versions:
+
 - v10.x.x
 - v8.x.x
 
@@ -38,7 +47,7 @@ Related Projects
 Credits
 -------
 
-Raneto was created by [Gilbert Pellegrom](https://gilbitron.me) from [Dev7studios](http://dev7studios.co).  
-Maintained by [Ryan Lelek](http://www.ryanlelek.com) from [AnsibleTutorials.com](http://www.ansibletutorials.com).  
-Logo by [@mmamrila](https://github.com/mmamrila)  
+Raneto was created by [Gilbert Pellegrom](https://gilbitron.me) from [Dev7studios](http://dev7studios.co).
+Maintained by [Ryan Lelek](http://www.ryanlelek.com) from [AnsibleTutorials.com](http://www.ansibletutorials.com).
+Logo by [@mmamrila](https://github.com/mmamrila)
 Released under the [MIT license](https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE).
