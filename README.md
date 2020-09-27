@@ -17,8 +17,10 @@ For full Installation instructions, see the [Installation Guide](http://docs.ran
 `git clone https://github.com/gilbitron/Raneto.git && cd Raneto && npm install && npm run gulp && npm start`
 
 Supported Node Versions:
-- v10.x.x
-- v8.x.x
+- v14.x.x (Current)
+- v12.x.x (LTS)
+- v10.x.x (LTS)
+Please use the latest version available of the above major Node.js releases to ensure you have the latest security fixes! 
 
 Links
 ---------------
@@ -33,7 +35,7 @@ Related Projects
 
 - [Deploy Raneto to your servers with Ansible](https://github.com/ryanlelek/raneto-devops) (@ryanlelek)
 - [Run Raneto in a Vagrant container](https://github.com/draptik/vagrant-raneto) (@draptik)
-- [Deploy Raneto using Docker container](https://github.com/appsecco/raneto-docker)(@madhuakula)
+- [Deploy Raneto using Docker container](https://github.com/appsecco/raneto-docker) (@madhuakula)
 
 Credits
 -------
