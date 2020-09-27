@@ -14,6 +14,18 @@ is as follows:
 
 Remember you will need to restart the app after changing the template.
 
+## Enable Features on Pages by Altering Config Settings
+
+Some features can be enabled on your pages by changing settings in the `config.default.js` file.
+
+### Enable Table of Contents
+
+In `config.default.js` set `table_of_contents` to `true`. Raneto uses [markdown-toc](https://github.com/jonschlinkert/markdown-toc) to generate the table of contents on pages, so you can customize the apperance of the tables of contents by specifying values for parameters in the `table_of_contents_options` object in `config.default.js`.
+
+### Display Site Menu on Pages
+
+In `config.default.js` set `menu_on_pages` to `true`. To make the menu collapsible, so that category headings can be expanded or collapsed - useful for sites with lots of pages - set `menu_on_pages_collapsible` to `true`.
+
 ## Public Files
 
 All static files in Raneto (images, CSS, Javascript files etc.) are served from the `public` folder. This

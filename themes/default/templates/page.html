@@ -1,6 +1,7 @@
 
 <div class="row">
-  <div class="col-sm-3 d-sm-block d-none">
+
+  <div class="col-sm-3 d-sm-block{{^config.menu_on_pages}} d-none{{/config.menu_on_pages}}">
 
     <ul class="menu">
       {{#canEdit}}
@@ -10,12 +11,28 @@
       {{#pages}}
         <li class="category {{#active}} active{{/active}}">
           {{#is_index}}
-            <h5 class="category-title">{{lang.global.mainArticles}} {{#canEdit}}<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/canEdit}}</h5>
+            <h5 class="category-title">
+				{{^config.menu_on_page_collapsible}}{{lang.global.mainArticles}}{{/config.menu_on_page_collapsible}}
+				{{#config.menu_on_page_collapsible}}
+					<a href="#category_{{sort}}" data-toggle="collapse">{{lang.global.mainArticles}}</a>
+				{{/config.menu_on_page_collapsible}}
+				{{#canEdit}}
+					<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>
+				{{/canEdit}}
+			</h5>
           {{/is_index}}
           {{^is_index}}
-            <h5 class="category-title">{{title}} {{#canEdit}}<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>{{/canEdit}}</h5>
+            <h5 class="category-title">
+				{{^config.menu_on_page_collapsible}}{{title}}{{/config.menu_on_page_collapsible}}
+				{{#config.menu_on_page_collapsible}}
+					<a href="#category_{{sort}}" data-toggle="collapse">{{title}}</a>
+				{{/config.menu_on_page_collapsible}}
+				{{#canEdit}}
+					<a class="add-page" data-toggle="modal" data-target="#addModal" title="{{lang.page.addPage}}"><span style="font-weight: bold; font-size: 16px; cursor:pointer">&#43;</span></a>
+				{{/canEdit}}
+			</h5>
           {{/is_index}}
-          <ul class="pages">
+          <ul class="pages{{#config.menu_on_page_collapsible}} collapse{{#active}} show{{/active}}{{/config.menu_on_page_collapsible}}" {{#config.menu_on_page_collapsible}}id="category_{{sort}}"{{/config.menu_on_page_collapsible}}>
             {{#files}}
               {{^is_directory}}
                 <li class="page{{#active}} active{{/active}}"><a href="{{config.base_url}}/{{slug}}">{{title}}</a></li>
