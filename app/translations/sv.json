@@ -1,0 +1,68 @@
+{
+  "global": {
+    "yes"             : "Ja",
+    "no"              : "Nej",
+    "search"          : "Sök",
+    "cancel"          : "Avbryt",
+    "save"            : "Spara",
+    "close"           : "Stäng",
+    "lastUpdated"     : "Sidan uppdaterades den",
+
+    "pageName"        : "Sidnamn",
+    "addPage"         : "Lägg till sida",
+    "reallyDeletePage": "Är du säker på att du vill ta bort denna sidan?",
+    "mainArticles"    : "Huvudartikel",
+    "editor"          : "Textredigerare"
+  },
+
+  "api": {
+    "loginSuccessful"   : "Inloggningen lyckades",
+    "invalidCredentials": "Ogiltig kombination av användarnamn och lösenord",
+    "pageSaved"         : "Sidan sparad",
+    "pageDeleted"       : "Sidan borttagen",
+    "categoryCreated"   : "Kategori skapad",
+    "pageCreated"       : "Sidan skapad"
+  },
+
+  "error": {
+    "404": "Hoppsan. Det ser ut som denna sidan inte finns."
+  },
+
+  "edit": {
+    "preview"      : "Förhandsvisning",
+    "editor"       : "Editor",
+    "pageSaved"    : "Sidan har sparats",
+    "pageSaveError": "Ett fel uppstod vid försök att spara sidan",
+    "headerMetaInfo" : "Meta information",
+    "lableMetaTitle": "Titel",
+    "lableMetaDescription": "Beskrivning",
+    "lableMetaSort": "Sortering"
+  },
+
+  "home": {
+    "searchKnowledgeBase": "Sök i kunskapsbasen"
+  },
+
+  "login": {
+    "login"   : "Logga in",
+    "logout"  : "Logga ut",
+    "username": "Användarnamn",
+    "password": "Lösenord"
+  },
+
+  "page": {
+    "addCategory": "Lägg till kategori",
+    "addPage"    : "Lägg till sida",
+    "deletePage" : "Ta bort",
+    "editPage"   : "Redigera",
+    "actions"    : "Handling",
+
+    "needHelp"   : "Behöver du fortfarande hjälp?",
+    "getInTouch" : "Ta kontakt!"
+  },
+
+  "search": {
+    "resultsFor"  : "Sökresultat för",
+    "noResultsFor": "Inget sökresultat hittat för"
+  }
+}
