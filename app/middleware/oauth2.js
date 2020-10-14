@@ -91,14 +91,16 @@ function router (config) {
       const email = parsedProfile.email
       fetch('https://www.googleapis.com/admin/directory/v1/groups/' + groupName + '/hasMember/' + email + '?key=' + apiKey, {
         method: 'get',
-        headers: { 'Authorization': 'Bearer ' + accessToken },
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        }
       })
         .then(res => res.json())
         .then(res => {
-          if (res['isMember'] == true) {
+          if (res.isMember && res.isMember === true) {
             cb(null, parsedProfile);
           } else {
-            cb("Unauthorized user", null)
+            cb(new Error('Unauthorized user'), null)
           }
         });
     } else {
