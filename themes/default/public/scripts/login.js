@@ -28,7 +28,7 @@ jQuery(document).ready(function () {
         $.post(base_url + '/rn-login', $(this).serialize(), function (data) {
 
           Swal.fire({
-            type              : data.status ? 'success' : 'warning',
+            icon              : data.status ? 'success' : 'warning',
             title             : data.message,
             timer             : data.status ? 2000 : null,
             showConfirmButton : true
