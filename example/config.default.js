@@ -11,6 +11,7 @@ var config = {
 
   // The base URL of your site (can use %base_url% in Markdown files)
   base_url: '',
+  nowrap: true,
 
   // Used for the "Get in touch" page footer link
   support_email: '',
