@@ -10,7 +10,7 @@ var config = {
   site_title: 'Raneto Docs',
 
   // The base URL of your site (can use %base_url% in Markdown files)
-  base_url: 'https://docs.example.com',
+  base_url: '',
   nowrap: true,
 
   // Used for the "Get in touch" page footer link
