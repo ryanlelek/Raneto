@@ -86,7 +86,7 @@ function processMeta (markdownContent) {
     case _metaRegexYaml.test(markdownContent):
       metaArr = markdownContent.match(_metaRegexYaml);
       metaString = metaArr ? metaArr[1].trim() : '';
-      yamlObject = yaml.safeLoad(metaString);
+      yamlObject = yaml.load(metaString);
       meta = cleanObjectStrings(yamlObject);
       break;
 
