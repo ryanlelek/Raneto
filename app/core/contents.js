@@ -72,7 +72,7 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
     let dirMetadata = {};
     try {
       const metaFile = await fs.readFile(path.join(contentDir, shortPath, 'meta'));
-      dirMetadata = contentProcessors.cleanObjectStrings(yaml.safeLoad(metaFile.toString('utf-8')));
+      dirMetadata = contentProcessors.cleanObjectStrings(yaml.load(metaFile.toString('utf-8')));
     } catch (e) {
       if (config.debug) {
         console.log('No meta file for', contentDir + shortPath);
