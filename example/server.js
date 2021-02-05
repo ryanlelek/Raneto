@@ -23,6 +23,6 @@ var config = require('./config.default.js');
 var app = raneto(config);
 
 // Load the HTTP Server
-var server = app.listen(app.get('port'), function () {
+var server = app.listen(app.get('port'), app.get('host'), function () {
   debug('Express HTTP server listening on port ' + server.address().port);
 });
