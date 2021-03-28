@@ -30,8 +30,10 @@ mainApp.use('/en', appEn);
 mainApp.use('/es', appEs);
 
 // Load the HTTP Server
-const server = mainApp.listen(3000, function () {
+const server = mainApp.listen(appEn.get('port'), appEn.get('host'), function () {
   debug('Express HTTP server listening on port ' + server.address().port);
 });
 
-// Now navigate to http://localhost:3000/en and http://localhost:3000/es
+// Now you can navigate to both:
+// - http://localhost:3000/en
+// - http://localhost:3000/es
