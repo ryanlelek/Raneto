@@ -10,8 +10,21 @@ var config = {
   site_title: 'Raneto Docs',
 
   // The base URL of your site (can use %base_url% in Markdown files)
+  // This should be the full path to your Raneto installation:
+  //   example 1: https://raneto.mydomain.com
+  //   example 2: https://www.mydomain.com/raneto
+  // Do not include a trailing "/"
+  // Leave this as an empty string to use the default
   base_url: '',
   nowrap: true,
+
+  // Path Prefix
+  // If you are running Raneto on a subpath of your domain, add it here
+  // Leave it blank if you are not sure
+  //
+  // Example: if you are running Raneto at http://www.mydomain.com/raneto
+  //          then you would enter '/raneto' below
+  path_prefix: '',
 
   // Used for the "Get in touch" page footer link
   support_email: '',
