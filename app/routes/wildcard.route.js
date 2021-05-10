@@ -63,7 +63,7 @@ function route_wildcard (config) {
 
         // Edit Page
         if ((config.authentication || config.authentication_for_edit) && !req.session.loggedIn) {
-          res.redirect('/login');
+          res.redirect(config.base_url + '/login');
           return;
         }
         render  = 'edit';
