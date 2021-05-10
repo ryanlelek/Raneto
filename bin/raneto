@@ -3,16 +3,15 @@
 'use strict';
 
 // Hide Keymetrics banner on first time PM2 is required
-var consoleLog = console.log;
-console.log    = function () {};
+// var consoleLog = console.log;
+// console.log    = function () {};
 var pm2        = require('pm2');
-console.log    = consoleLog;
+// console.log    = consoleLog;
 
 // Modules
 var path    = require('path');
 var program = require('commander');
 var pkg     = require('../package.json');
-var Tail    = require('always-tail');
 
 process.chdir(path.normalize(path.join(__dirname, '..')));
 
@@ -95,17 +94,16 @@ program
           console.log('Raneto not running');
           process.exit(0);
         } else {
+          // var log       = new Tail(list[0].pm2_env.pm_out_log_path, '\n', { interval : 500 });
+          // var error_log = new Tail(list[0].pm2_env.pm_err_log_path, '\n', { interval : 500 });
 
-          var log       = new Tail(list[0].pm2_env.pm_out_log_path, '\n', { interval : 500 });
-          var error_log = new Tail(list[0].pm2_env.pm_err_log_path, '\n', { interval : 500 });
+          // log.on('line', function (data) {
+          //   console.log(data);
+          // });
 
-          log.on('line', function (data) {
-            console.log(data);
-          });
-
-          error_log.on('line', function (data) {
-            console.log(data);
-          });
+          // error_log.on('line', function (data) {
+          //   console.log(data);
+          // });
 
         }
       });
