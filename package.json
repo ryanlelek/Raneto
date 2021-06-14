@@ -75,7 +75,8 @@
     "sweetalert2": "10.16.7",
     "underscore": "1.13.1",
     "underscore.string": "3.3.5",
-    "validator": "13.6.0"
+    "validator": "13.6.0",
+    "gulp": "4.0.2"
   },
   "devDependencies": {
     "chai": "4.3.4",
@@ -84,7 +85,6 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.3.1",
-    "gulp": "4.0.2",
     "gulp-shell": "0.8.0",
     "mocha": "8.4.0",
     "pm2": "4.5.6",
