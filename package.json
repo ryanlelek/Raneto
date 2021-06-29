@@ -2,7 +2,7 @@
   "name": "raneto",
   "version": "0.17.0",
   "description": "Markdown powered Knowledgebase",
-  "author": "Gilbert Pellegrom <gilbert@pellegrom.me>",
+  "author": "Patric Gruber <me@patric-gruber.at>",
   "license": "MIT",
   "keywords": [
     "raneto",
@@ -14,16 +14,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gilbitron/Raneto.git"
+    "url": "https://github.com/patricgruber/Raneto.git"
   },
-  "bugs": "https://github.com/gilbitron/Raneto/issues",
+  "bugs": "https://github.com/patricgruber/Raneto/issues",
   "contributors": [
-    "https://github.com/gilbitron/Raneto/graphs/contributors"
+    "https://github.com/patricgruber/Raneto/graphs/contributors"
   ],
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE"
+      "url": "https://raw.githubusercontent.com/patricgruber/Raneto/master/LICENSE"
     }
   ],
   "bin": "./bin/raneto",
@@ -32,9 +32,9 @@
     "start": "DEBUG=raneto node example/server.js",
     "start_win": "set DEBUG=raneto&&node example/server.js",
     "test": "npm run lint && mocha --reporter spec test/*.js",
-    "gulp": "gulp",
-    "lint": "./node_modules/.bin/eslint bin/* app/**/*.js example/**/*.js test/*.js gulpfile.js",
-    "postinstall": "gulp default"
+    "lint": "./node_modules/.bin/eslint bin/* app/**/*.js example/**/*.js test/*.js",
+    "copy-libs": "mkdir themes/default/public/lib ; cp -R ./node_modules/bootstrap themes/default/public/lib/ && cp -R ./node_modules/jquery themes/default/public/lib/ && cp -R ./node_modules/popper.js themes/default/public/lib/ && cp -R ./node_modules/bootstrap-rtl themes/default/public/lib/ && cp -R ./node_modules/fitvids themes/default/public/lib/ && cp -R ./node_modules/highlightjs themes/default/public/lib/ && cp -R ./node_modules/masonry-layout themes/default/public/lib/ && cp -R ./node_modules/sweetalert2 themes/default/public/lib/ && cp -R ./node_modules/jquery-backstretch themes/default/public/lib/",
+    "postinstall": "npm run copy-libs"
   },
   "engines": {
     "node": ">=10.22.1"
@@ -84,8 +84,6 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.3.1",
-    "gulp": "4.0.2",
-    "gulp-shell": "0.8.0",
     "mocha": "8.4.0",
     "pm2": "4.5.6",
     "supertest": "6.1.3"
