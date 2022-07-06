@@ -98,17 +98,17 @@ function route_wildcard (config) {
       }
 
       return res.render(render, {
-        config        : config,
+        config,
         pages         : build_nested_pages(pageList),
-        meta          : meta,
-        content       : content,
+        meta,
+        content,
         current_url   : req.protocol + '://' + req.get('host') + config.path_prefix + req.originalUrl,
         body_class    : template + '-' + contentProcessors.cleanString(slug),
         last_modified : await utils.getLastModified(config, meta, file_path),
         lang          : config.lang,
-        loggedIn      : loggedIn,
+        loggedIn,
         username      : (config.authentication ? req.session.username : null),
-        canEdit       : canEdit
+        canEdit
       });
 
     }

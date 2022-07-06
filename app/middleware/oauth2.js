@@ -37,8 +37,8 @@ function extractProfile (profile) {
     id: profile.id,
     displayName: profile.displayName,
     image: imageUrl,
-    email: email,
-    domain: domain
+    email,
+    domain
   };
 }
 
@@ -182,8 +182,8 @@ function router (config) {
 }
 
 module.exports = {
-  extractProfile: extractProfile,
-  router: router,
+  extractProfile,
+  router,
   required: authRequired,
   template: addTemplateVariables
 };
