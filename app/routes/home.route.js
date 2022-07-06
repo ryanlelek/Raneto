@@ -48,7 +48,7 @@ function route_home (config) {
         .value());
 
     return res.render('home', {
-      config        : config,
+      config,
       pages         : build_nested_pages(pageList),
       body_class    : 'page-home',
       meta          : config.home_meta,

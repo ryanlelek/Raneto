@@ -9,7 +9,7 @@ function handler (config) {
 
     res.status(status);
     res.render('error', {
-      config     : config,
+      config,
       status     : err.status,
       message    : config.lang.error[status] || err.message,
       error      : {},

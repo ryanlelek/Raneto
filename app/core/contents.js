@@ -124,7 +124,7 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
       }
 
       return {
-        slug: slug,
+        slug,
         title: meta.title ? meta.title : contentProcessors.slugToTitle(slug),
         show_on_home: meta.show_on_home ? (meta.show_on_home === 'true') : config.show_on_home_default,
         is_directory: false,

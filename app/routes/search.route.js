@@ -39,10 +39,10 @@ function route_search (config) {
     });
 
     return res.render('search', {
-      config        : config,
+      config,
       pages         : pageListSearch,
       search        : searchQuery,
-      searchResults : searchResults,
+      searchResults,
       body_class    : 'page-search',
       lang          : config.lang,
       loggedIn      : ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false),
