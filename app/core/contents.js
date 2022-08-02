@@ -38,7 +38,13 @@ async function handler (activePageSlug, config) {
     } else if (result && result.is_directory === false) {
       const dirSlug = path.dirname(result.slug);
       const parent = _.find(filesProcessed, item => item.slug === dirSlug);
-      parent.files.push(result);
+      if (parent) {
+        parent.files.push(result);
+      } else {
+        if (config.debug) {
+          console.log('Content ignored', result.slug);
+        }
+      }
     }
   }
 
@@ -66,7 +72,11 @@ async function processFile (config, activePageSlug, contentDir, filePath) {
 
     const ignoreExists = await fs.lstat(ignoreFile).then(stat => stat.isFile(), () => {});
     if (ignoreExists) {
-      return true;
+      if (config.debug) {
+        console.log('Directory ignored', contentDir + shortPath);
+      }
+
+      return null;
     }
 
     let dirMetadata = {};
