@@ -22,6 +22,7 @@ function route_page_edit (config) {
     }
 
     // Generate Filepath
+    // Sanitized within function
     var filepath = get_filepath({
       content  : config.content_dir,
       category : file_category,

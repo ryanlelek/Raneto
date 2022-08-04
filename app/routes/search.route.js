@@ -2,11 +2,12 @@
 'use strict';
 
 // Modules
-var validator                      = require('validator');
+// TODO: This underscore function may not be functioning correctly
 var _s                             = require('underscore.string');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
+var sanitize                       = require('../functions/sanitize.js');
 
-const searchHandler = require('../core/search');
+const searchHandler   = require('../core/search');
 const contentsHandler = require('../core/contents');
 
 function route_search (config) {
@@ -17,15 +18,7 @@ function route_search (config) {
 
     // remove < and >
     var rawQuery   = _s.stripTags(req.query.search);
-
-    // TODO: Add Test
-    // remove /, ', " and & from query
-    // strip > < again (stripTags may not be working as intended)
-    var invalidChars   = '&\'"/><';
-    var sanitizedQuery = validator.blacklist(rawQuery, invalidChars);
-    // trim and escape
-    sanitizedQuery = validator.trim(sanitizedQuery);
-    sanitizedQuery = validator.escape(sanitizedQuery);
+    var sanitizedQuery = sanitize(rawQuery);
 
     // Using try/catch seems broken
     var searchResults = [];

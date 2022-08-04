@@ -8,6 +8,8 @@ var get_filepath = require('../functions/get_filepath.js');
 function route_page_create (config) {
   return function (req, res, next) {
 
+    // Generate filepath
+    // Sanitized within function
     var filepath = get_filepath({
       content  : config.content_dir,
       category : req.body.category,
