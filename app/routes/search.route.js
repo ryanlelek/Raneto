@@ -16,17 +16,26 @@ function route_search (config) {
     if (!req.query.search) { return next(); }
 
     // remove < and >
-    var tagFreeQuery   = _s.stripTags(req.query.search);
+    var rawQuery   = _s.stripTags(req.query.search);
 
+    // TODO: Add Test
     // remove /, ', " and & from query
-    var invalidChars   = '&\'"/';
-    var sanitizedQuery = validator.blacklist(tagFreeQuery, invalidChars);
+    // strip > < again (stripTags may not be working as intended)
+    var invalidChars   = '&\'"/><';
+    var sanitizedQuery = validator.blacklist(rawQuery, invalidChars);
+    // trim and escape
+    sanitizedQuery = validator.trim(sanitizedQuery);
+    sanitizedQuery = validator.escape(sanitizedQuery);
 
-    // trim and convert to string
-    var searchQuery    = sanitizedQuery.toString(sanitizedQuery).trim();
-
-    var searchResults  = await searchHandler(searchQuery, config);
-    var pageListSearch = remove_image_content_directory(config, await contentsHandler(null, config));
+    // Using try/catch seems broken
+    var searchResults = [];
+    var pageListSearch = [];
+    try {
+      searchResults = await searchHandler(sanitizedQuery, config);
+      pageListSearch = remove_image_content_directory(config, await contentsHandler(null, config));
+    } catch (e) {
+      // Continue with defaults of empty arrays
+    }
 
     // TODO: Move to Raneto Core
     // Loop through Results and Extract Category
@@ -41,7 +50,7 @@ function route_search (config) {
     return res.render('search', {
       config,
       pages         : pageListSearch,
-      search        : searchQuery,
+      search        : sanitizedQuery,
       searchResults,
       body_class    : 'page-search',
       lang          : config.lang,
