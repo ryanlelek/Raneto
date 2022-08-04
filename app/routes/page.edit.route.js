@@ -3,6 +3,7 @@
 
 // Modules
 var fs               = require('fs-extra');
+var validator        = require('validator');
 var get_filepath     = require('../functions/get_filepath.js');
 var create_meta_info = require('../functions/create_meta_info.js');
 
@@ -43,8 +44,14 @@ function route_page_edit (config) {
 
     var complete_content = create_content(req.body);
 
+    // Sanitize Content
+    // This will disallow <script> and <style> embeds
+    // because output will be HTML-encoded.
+    // If you need images, links, etc. use the Markdown format (see docs)
+    var sanitized_content = validator.escape(complete_content);
+
     try {
-      await fs.writeFile(filepath, complete_content);
+      await fs.writeFile(filepath, sanitized_content);
 
       res.json({
         status  : 0,

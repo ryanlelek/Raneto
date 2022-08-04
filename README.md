@@ -44,6 +44,11 @@ Make sure you edit the default username and password in your `config.js` file.
 // https://www.grc.com/passwords.htm
 ```
 
+Markdown Reference
+------------------
+If you want to embed links and images, you'll need to use the Markdown syntax.  
+[See this Markdown Guide](https://www.markdownguide.org/cheat-sheet)
+
 Links
 ---------------
 
