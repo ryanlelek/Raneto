@@ -2,8 +2,9 @@
 'use strict';
 
 // Modules
-var path     = require('path');
-var sanitize = require('sanitize-filename');
+var path              = require('path');
+var sanitizeFilename  = require('sanitize-filename');
+var sanitize          = require('./sanitize.js');
 
 function get_filepath (p) {
 
@@ -12,12 +13,12 @@ function get_filepath (p) {
 
   // Add Category
   if (p.category) {
-    filepath += '/' + sanitize(p.category);
+    filepath += '/' + sanitizeFilename(sanitize(p.category));
   }
 
   // Add File Name
   if (p.filename) {
-    filepath += '/' + sanitize(p.filename);
+    filepath += '/' + sanitizeFilename(sanitize(p.filename));
   }
 
   // Normalize

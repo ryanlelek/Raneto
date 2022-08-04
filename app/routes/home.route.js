@@ -14,7 +14,8 @@ const utils = require('../core/utils');
 function route_home (config) {
   return async function (req, res, next) {
 
-    // Generate Filepath
+    // Generate filepath
+    // Sanitized within function
     var filepath = get_filepath({
       content  : config.content_dir,
       filename : 'index'
@@ -32,6 +33,8 @@ function route_home (config) {
       filepath = filepath.slice(0, -suffix.length - 1);
     }
 
+    // Generate filepath
+    // Sanitized within function
     var template_filepath = get_filepath({
       content  : [config.theme_dir, config.theme_name, 'templates'].join('/'),
       filename : 'home.html'

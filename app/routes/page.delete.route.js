@@ -20,7 +20,8 @@ function route_page_delete (config) {
       file_name     = req_file[1];
     }
 
-    // Generate Filepath
+    // Generate filepath
+    // Sanitized within function
     var filepath = get_filepath({
       content  : config.content_dir,
       category : file_category,

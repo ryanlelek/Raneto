@@ -8,10 +8,14 @@ var get_filepath = require('../functions/get_filepath.js');
 function route_category_create (config) {
   return function (req, res, next) {
 
-    fs.mkdir(get_filepath({
+    // Generate filepath
+    // Sanitized within function
+    var filepath = get_filepath({
       content  : config.content_dir,
       category : req.body.category
-    }), function (error) {
+    });
+
+    fs.mkdir(filepath, function (error) {
       if (error) {
         return res.json({
           status  : 1,
