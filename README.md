@@ -56,12 +56,20 @@ If you want to embed links and images, you'll need to use the Markdown syntax.
 [See this Markdown Guide](https://www.markdownguide.org/cheat-sheet)
 
 Links
----------------
+-----
 
 - [Configuration](http://docs.raneto.com/usage/configuration)
 - [Production Notes](http://docs.raneto.com/install/production-notes)
 - [Deploying to Heroku](http://docs.raneto.com/tutorials/deploying-raneto-to-heroku)
 - [Contributing](https://github.com/ryanlelek/Raneto/blob/master/CONTRIBUTE.md)
+
+Showcase
+--------
+
+**Are you using Raneto in the wild?**
+We'd love to see it. Please add it to this list:
+* [Raneto Docs](http://docs.raneto.com)
+
 
 Related Projects
 ----------------
