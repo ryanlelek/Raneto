@@ -31,6 +31,15 @@ jobs:
       - image: cimg/node:14.20.0
     steps: *common
 
+  testdocker:
+    docker:
+      - image: docker:20.10.17
+    steps:
+      - checkout
+      - run:
+          name: Build Docker Image
+          command: make d_build
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -40,3 +49,4 @@ workflows:
       - test16
       # Disabling v14.x due to ESLint plugin problems
       #- test14
+      - testdocker

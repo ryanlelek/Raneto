@@ -54,3 +54,13 @@ deploy:
 
 	# Run Gulp
 	./node_modules/gulp/bin/gulp.js; true;
+
+.PHONY: d_build
+d_build:
+
+	docker build -t raneto-local:latest .;
+
+.PHONT: d_run
+d_run:
+
+	docker run --rm -it -p 3000:3000 raneto-local:latest;
