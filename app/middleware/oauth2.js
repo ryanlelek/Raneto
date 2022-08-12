@@ -14,7 +14,7 @@
 'use strict';
 
 var express = require('express');
-const fetch = require('node-fetch');
+const fetch = import('node-fetch');
 
 // [START setup]
 var passport = require('passport');

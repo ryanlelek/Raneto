@@ -5,7 +5,7 @@
 var path                           = require('path');
 var fs                             = require('fs-extra');
 var build_nested_pages             = require('../functions/build_nested_pages.js');
-var marked                         = require('marked');
+const { marked }                   = require('marked');
 var toc                            = require('markdown-toc');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
