@@ -21,13 +21,11 @@ Quickstart
 ----------
 
 1. In a terminal, run:
-
-```bash
-git clone https://github.com/ryanlelek/Raneto.git
-cd Raneto
-npm install && npm run gulp && npm start
-```
-
+    ```bash
+    git clone https://github.com/ryanlelek/Raneto.git
+    cd Raneto
+    npm install && npm run gulp && npm start
+   ```
 1. Visit [http://localhost:3000](http://localhost:3000) to display the output.
 
 See the [installation guide](http://docs.raneto.com/install/installing-raneto) for more information.  
@@ -35,11 +33,12 @@ See the [installation guide](http://docs.raneto.com/install/installing-raneto) f
 Supported Node Versions:
 - v18.x.x (Current)
 - v16.x.x (LTS)
+
 Please use the latest version available of the above major Node.js releases to ensure you have the latest security fixes!  
 
 Security
 --------
-Make sure you edit the default username and password in your `config.js` file.
+Make sure you edit the default username and password in your `config.js` file.  
 ```
 ##### WARNING #####
 // You MUST change the username and password for security
