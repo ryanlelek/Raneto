@@ -38,7 +38,7 @@ jobs:
       - checkout
       - run:
           name: Build Docker Image
-          command: make d_build
+          command: docker build -t raneto-local:latest .
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
