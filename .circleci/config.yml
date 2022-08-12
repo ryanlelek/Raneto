@@ -36,6 +36,7 @@ jobs:
       - image: docker:20.10.17
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Build Docker Image
           command: docker build -t raneto-local:latest .
