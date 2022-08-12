@@ -38,4 +38,5 @@ workflows:
     jobs:
       - test18
       - test16
-      - test14
+      # Disabling v14.x due to ESLint plugin problems
+      #- test14
