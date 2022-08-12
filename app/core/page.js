@@ -5,7 +5,7 @@ const path              = require('path');
 const fs                = require('fs-extra');
 const utils             = require('./utils');
 const _s                = require('underscore.string');
-const marked            = require('marked');
+const { marked }        = require('marked');
 const contentProcessors = require('../functions/contentProcessors');
 
 async function handler (filePath, config) {
