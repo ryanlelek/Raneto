@@ -65,7 +65,7 @@
     "masonry-layout": "4.2.2",
     "moment": "2.29.4",
     "morgan": "1.10.0",
-    "node-fetch": "2.6.7",
+    "node-fetch": "3.2.10",
     "passport": "0.6.0",
     "passport-google-oauth20": "2.0.0",
     "popper.js": "1.16.1",
