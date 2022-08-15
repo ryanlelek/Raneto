@@ -1,20 +1,24 @@
-/*
+---
 Title: Google OAuth Login Setup
 Sort: 3
-*/
+---
 
 ## TL;DR
-[Raneto](http://raneto.com/) allows only basic username/password authentication, so I added Google OAuth support. This option can be turned on by setting the `googleoauth` option in the `config.default.js` file to `true`, and by supplying the OAuth config object as outlined in the guides below. Additionally, you can allow only emails from the certain domain to use the service with one config setting.
+[Raneto](https://raneto.com/) allows only basic username/password authentication, so I added Google OAuth support.  
+This option can be turned on by setting the `googleoauth` option in the `config.default.js` file to `true`, and by supplying the OAuth config object as outlined in the guides below.  
+Additionally, you can allow only emails from the certain domain to use the service with one config setting.
 
 The basic idea was taken from the [Google Cloud Platform Node.js guide](https://github.com/GoogleCloudPlatform/nodejs-getting-started/tree/master/4-auth).
 
 This has been submitted as a [pull request]() on the official Raneto Github repository. This is my way of saying thanks to an awesome author of Raneto.
 
 ## Steps on how to reproduce this on fresh copy
-Below are the steps one needs to take to get this working on a fresh copy of Raneto. In case this won't make it to the official repo, you can clone my fork [here](https://github.com/Hitman666/Raneto). Just make sure you set your Google OAuth credentials properly (more about this in the **X** section).
+Below are the steps one needs to take to get this working on a fresh copy of Raneto.  
+In case this won't make it to the official repo, you can clone my fork [here](https://github.com/Hitman666/Raneto).  
+Just make sure you set your Google OAuth credentials properly (more about this in a coming section).  
 
 ### Install packages via npm
-_Make sure you first [install Raneto dependencies](http://docs.raneto.com/install/installing-raneto) after you clone it._
+_Make sure you first [install Raneto dependencies](https://docs.raneto.com/install/installing-raneto) after you clone it._
 
 Install the following packages:
 
@@ -107,7 +111,7 @@ Create a new file `oauth2.js` in the `app/middleware` folder with the following 
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
+//    https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -254,7 +258,8 @@ module.exports = {
 };
 ```
 
-This is a changed file based on the [Google Node.js official example](https://raw.githubusercontent.com/GoogleCloudPlatform/nodejs-getting-started/master/4-auth/lib/oauth2.js) file. Notable differences are in Google strategy settings which basically load settings from our settings config: 
+This is a changed file based on the [Google Node.js official example](https://raw.githubusercontent.com/GoogleCloudPlatform/nodejs-getting-started/master/4-auth/lib/oauth2.js) file.  
+Notable differences are in Google strategy settings which basically load settings from our settings config:  
 
 ```
 clientID: config.oauth2.client_id,
@@ -263,7 +268,7 @@ callbackURL: config.oauth2.callback,
 hostedDomain: config.hostedDomain || '',
 ```
 
-We'll define these settings the `config.default.js` file now.
+We'll define these settings the `config.default.js` file now.  
 
 ### Editing the `example/config.default.js` file
 Change/add the following settings:
@@ -284,21 +289,23 @@ secret: 'someCoolSecretRightHere',
 ### Google OAuth2 Credentials
 Oauth2 settings (`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET `) can be found in your `Google Cloud Console->API Manager->Credentials` project settings (create a project if you don't have one yet):
 
-![](http://i.imgur.com/TdkYKul.png)
+![](https://i.imgur.com/TdkYKul.png)
 
-The `callback`, if testing locally, can be set as shown above (`http://localhost:3000/auth/google/callback`). The `hostedDomain` option allows certain domains - for your use case you may want to set this to your domain.
+The `callback`, if testing locally, can be set as shown above (`http://localhost:3000/auth/google/callback`).  
+The `hostedDomain` option allows certain domains - for your use case you may want to set this to your domain.  
 
 #### Google+ API
 If you get an error like:
 
-> Access Not Configured. Google+ API has not been used in project 701766813496 before, or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/plus/overview?project=701766813496 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+> Access Not Configured. Google+ API has not been used in project 701766813496 before, or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/plus/overview?project=701766813496 then retry.  
+If you enabled this API recently, wait a few minutes for the action to propagate to Google's systems and retry.
 
 Make sure you enable Google+ API for your project:
 
-![](http://i.imgur.com/GcymtaZ.png)
+![](https://i.imgur.com/GcymtaZ.png)
 
 ### Adding Zocial CSS
-To add support for the nice [Zocial social buttons](http://zocial.smcllns.com/), download [this file](https://github.com/smcllns/css-social-buttons/blob/master/css/zocial.css) from their Github repo to the `themes/default/public/styles/` folder.
+To add support for the nice [Zocial social buttons](https://smcllns.github.io/css-social-buttons/), download [this file](https://github.com/smcllns/css-social-buttons/blob/master/css/zocial.css) from their Github repo to the `themes/default/public/styles/` folder.
 
 ### Editing the `themes/default/templates/layout.html` file
 Replace the login form with:
@@ -371,10 +378,10 @@ Same thing here as well. If we have Google OAuth enabled (`config.googleoauth`) 
 ## Testing
 Congratulations, you're done! Now, to test this locally just run the `npm start` from the root of your project and go to `http://localhost:3000` and you should see this:
 
-![](http://i.imgur.com/qTTwY4z.png)
+![](https://i.imgur.com/qTTwY4z.png)
 
 After logging in, you should see something like this:
 
-![](http://i.imgur.com/1YcdTou.png)
+![](https://i.imgur.com/1YcdTou.png)
 
 Hope this helps someone!

@@ -1,9 +1,9 @@
-/*
+---
 Title: Deploying Raneto to Heroku
 Sort: 1
-*/
+---
 
-[Heroku](https://www.heroku.com) is a cloud hosting platform which allows you to host your code.
+[Heroku](https://www.heroku.com) is a cloud hosting platform which allows you to host your websites.
 In this tutorial we are going to use Heroku to host our Raneto Knowledgebase on the [free 1 dyno plan](https://www.heroku.com/pricing).
 
 ## Prerequisites
@@ -22,12 +22,12 @@ Just follow the instructions.
 
     $ heroku login
     Enter your Heroku credentials.
-    Email: zeke@example.com
+    Email: user@example.com
     Password:
     Could not find an existing public key.
     Would you like to generate one? [Yn]
     Generating new SSH public key.
-    Uploading ssh public key /Users/adam/.ssh/id_rsa.pub
+    Uploading ssh public key /Users/username/.ssh/id_rsa.pub
 
 ## Clone Raneto and make edits
 
@@ -36,7 +36,7 @@ So we need to make your Raneto install is a Git repository.
 This also means you will need to commit any changes you make to Git before deploying them to Heroku.  
 Thankfully this is easy to setup:  
 
-    $ git clone https://github.com/gilbitron/Raneto.git
+    $ git clone https://github.com/ryanlelek/Raneto.git
     $ cd Raneto/
     [NOW EDIT FILES IN content/]
     $ git add content/
@@ -60,11 +60,11 @@ Next we need to "push" our Git repository to Heroku by running:
 
     $ git push heroku master
 
-You should see Heroku do a bunch of stuff and successfully deploy your app. Note that you will need to run the
-`git push heroku master` command after your commit changes every time you want to publish your Raneto site.
+You should see Heroku go through its deployment steps and successfully deploy your app.  
+Note that you will need to run the `git push heroku master` command after your commit changes every time you want to publish your Raneto site.
 
-Finally we just need to make sure that we have one dyno running our `web` process. This command only
-needs to be run this one time.
+Finally we just need to make sure that we have one dyno running our `web` process.  
+This command only needs to be run this one time.  
 
     $ heroku ps:scale web=1
 

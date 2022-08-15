@@ -33,6 +33,7 @@ function route_sitemap (config) {
       });
 
       // create sitemap.xml
+      // TODO: Make protocol dynamic
       var sitemap = sm.createSitemap({
         hostname: 'http://' + hostname,
         cacheTime: 600000

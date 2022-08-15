@@ -16,6 +16,7 @@ const yaml = require('js-yaml');
 // ---
 // {header string}
 // ---
+// TODO: DEPRECATED Non-YAML
 const _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
 const _metaRegexYaml = /^\uFEFF?---([\s\S]*?)---/i;
 

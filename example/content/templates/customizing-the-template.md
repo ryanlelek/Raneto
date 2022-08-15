@@ -1,8 +1,8 @@
-/*
+---
 Title: Customizing the Template
-*/
+---
 
-Templating in Raneto is powered by [Mustache](http://mustache.github.io). All of the template views can
+Templating in Raneto is powered by [Mustache](https://mustache.github.io/). All of the template views can
 be found in the `themes/default/` folder. Feel free to customize the template as you wish. The template structure
 is as follows:
 
@@ -20,21 +20,27 @@ Some features can be enabled on your pages by changing settings in the `config.d
 
 ### Enable Table of Contents
 
-In `config.default.js` set `table_of_contents` to `true`. Raneto uses [markdown-toc](https://github.com/jonschlinkert/markdown-toc) to generate the table of contents on pages, so you can customize the apperance of the tables of contents by specifying values for parameters in the `table_of_contents_options` object in `config.default.js`.
+In `config.default.js` set `table_of_contents` to `true`. Raneto uses 
+[markdown-toc](https://github.com/jonschlinkert/markdown-toc) to generate 
+the table of contents on pages, so you can customize the appearance of the 
+tables of contents by specifying values for parameters in 
+the `table_of_contents_options` object in `config.default.js`.
 
 ### Display Site Menu on Pages
 
-In `config.default.js` set `menu_on_pages` to `true`. To make the menu collapsible, so that category headings can be expanded or collapsed - useful for sites with lots of pages - set `menu_on_pages_collapsible` to `true`.
+In `config.default.js` set `menu_on_pages` to `true`.  
+To make the menu collapsible, so that category headings can be expanded or collapsed - 
+useful for sites with lots of pages - set `menu_on_pages_collapsible` to `true`.
 
 ## Public Files
 
-All static files in Raneto (images, CSS, Javascript files etc.) are served from the `public` folder. This
-is so that no one can access any other files in the install. Only files in the `public` folder are available
-to the public.
+All static files in Raneto (images, CSS, JavaScript files, etc.) are served from the `public` folder.  
+This is so that no one can access any other files in the install.  
+Only files in the `public` folder are available to visitors that are not logged in.  
 
-It's worth noting that when customising Raneto you should always make your own files rather than customising
-the existing Raneto files, so that your changes don't get lost when you
-[update Raneto](%base_url%/updates/updating-raneto).
+It's worth noting that when customising Raneto you should always make your
+own files rather than customizing the existing Raneto files,
+so that your changes don't get lost when you [update Raneto](%base_url%/updates/updating-raneto).
 
 ## Template Variables
 

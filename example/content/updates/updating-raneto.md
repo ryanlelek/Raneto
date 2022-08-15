@@ -1,6 +1,6 @@
-/*
+---
 Title: Updating Raneto
-*/
+---
 
 The update process for Raneto is as follows:
 
@@ -10,7 +10,7 @@ The update process for Raneto is as follows:
    - the `themes/default/` folder
    - any edited files in the `public` folder
 
-1. Download the latest version of Raneto from the [releases page](https://github.com/gilbitron/Raneto/releases).
+1. Download the latest version of Raneto from the [releases page](https://github.com/ryanlelek/Raneto/releases).
 
 1. Extract the Raneto archive to your project folder, replacing all existing files in your existing Raneto install.
 

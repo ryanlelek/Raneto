@@ -1,10 +1,10 @@
 Raneto [![CircleCI](https://dl.circleci.com/status-badge/img/gh/ryanlelek/Raneto/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ryanlelek/Raneto/tree/master)
 ======
 
-[![Raneto Logo](https://raw.githubusercontent.com/ryanlelek/Raneto/master/logo/logo_readme.png)](http://raneto.com/)
+[![Raneto Logo](https://raw.githubusercontent.com/ryanlelek/Raneto/master/logo/logo_readme.png)](https://raneto.com/)
 
-[Raneto](http://raneto.com) is a free, open, simple Markdown powered knowledge base for Node.js.
-[Find out more &rarr;](http://docs.raneto.com/what-is-raneto)
+[Raneto](https://raneto.com) is a free, open, simple Markdown powered knowledge base for Node.js.
+[Find out more &rarr;](https://docs.raneto.com/what-is-raneto)
 
 Important Updates
 -----------------
@@ -15,7 +15,7 @@ Important Updates
 Demo
 ----
 
-Visit [http://docs.raneto.com](http://docs.raneto.com) to see a demo and get started!
+Visit [https://docs.raneto.com](https://docs.raneto.com) to see a demo and get started!
 
 Quickstart
 ----------
@@ -28,7 +28,7 @@ Quickstart
    ```
 1. Visit [http://localhost:3000](http://localhost:3000) to display the output.
 
-See the [installation guide](http://docs.raneto.com/install/installing-raneto) for more information.  
+See the [installation guide](https://docs.raneto.com/install/installing-raneto) for more information.  
 
 Supported Node Versions:
 - v18.x.x (Current)
@@ -58,9 +58,9 @@ If you want to embed links and images, you'll need to use the Markdown syntax.
 Links
 -----
 
-- [Configuration](http://docs.raneto.com/usage/configuration)
-- [Production Notes](http://docs.raneto.com/install/production-notes)
-- [Deploying to Heroku](http://docs.raneto.com/tutorials/deploying-raneto-to-heroku)
+- [Configuration](https://docs.raneto.com/usage/configuration)
+- [Production Notes](https://docs.raneto.com/install/production-notes)
+- [Deploying to Heroku](https://docs.raneto.com/tutorials/deploying-raneto-to-heroku)
 - [Contributing](https://github.com/ryanlelek/Raneto/blob/master/CONTRIBUTE.md)
 
 Showcase
@@ -68,7 +68,7 @@ Showcase
 
 **Are you using Raneto in the wild?**
 We'd love to see it. Please add it to this list:
-* [Raneto Docs](http://docs.raneto.com)
+* [Raneto Docs](https://docs.raneto.com)
 
 
 Related Projects
@@ -81,7 +81,7 @@ Related Projects
 Credits
 -------
 
-- Raneto was created by [Gilbert Pellegrom](https://gilbitron.me) from [Dev7studios](https://gilbitron.me/projects/)
+- Raneto was created by [Gilbert Pellegrom](https://gilbitron.me)
 - Maintained by [Ryan Lelek](https://www.ryanlelek.com) from [AnsibleTutorials.com](https://www.ansibletutorials.com)
 - Logo by [@mmamrila](https://github.com/mmamrila)
 - Released under the [MIT license](https://github.com/ryanlelek/Raneto/blob/master/LICENSE)

@@ -2,7 +2,10 @@
   "name": "raneto",
   "version": "0.17.1",
   "description": "Markdown powered Knowledgebase",
-  "author": "Gilbert Pellegrom <gilbert@pellegrom.me>",
+  "authors": [
+    "Ryan Lelek <ryanlelek@gmail.com>",
+    "Gilbert Pellegrom <gilbert@pellegrom.me>"
+  ],
   "license": "MIT",
   "keywords": [
     "raneto",
@@ -14,16 +17,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gilbitron/Raneto.git"
+    "url": "https://github.com/ryanlelek/Raneto.git"
   },
-  "bugs": "https://github.com/gilbitron/Raneto/issues",
+  "bugs": "https://github.com/ryanlelek/Raneto/issues",
   "contributors": [
-    "https://github.com/gilbitron/Raneto/graphs/contributors"
+    "https://github.com/ryanlelek/Raneto/graphs/contributors"
   ],
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE"
+      "url": "https://raw.githubusercontent.com/ryanlelek/Raneto/master/LICENSE"
     }
   ],
   "bin": "./bin/raneto",

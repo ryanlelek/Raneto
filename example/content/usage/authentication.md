@@ -1,9 +1,9 @@
-/*
+---
 Title: Authentication
 Sort: 1
-*/
+---
 
-## Authentication
+# Authentication
 
 To enable basic Authentication in Raneto is very simple.
 

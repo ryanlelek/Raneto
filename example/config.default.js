@@ -30,7 +30,7 @@ var config = {
   support_email: '',
 
   // Footer Text / Copyright
-  copyright: 'Copyright &copy; ' + new Date().getFullYear() + ' - <a href="http://raneto.com">Powered by Raneto</a>',
+  copyright: 'Copyright &copy; ' + new Date().getFullYear() + ' - <a href="https://raneto.com">Powered by Raneto</a>',
 
   // Excerpt length (used in search)
   excerpt_length: 400,

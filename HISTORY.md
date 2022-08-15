@@ -1,6 +1,91 @@
 
 # Raneto Changelog
 
+2022.08.02 / v0.17.1
+====================
+# IMPORTANT - SECURITY FIXES
+
+* **[SECURITY]** Sanitization, DoS, Best Practices by @J-GainSec #368
+-- Mitigation @ryanlelek #370
+* **[New]** Finnish Translation by @Mixerboy24 #363  Oksanen / LocalghostFI Ltd
+* **[Fix]** Redirect Fix on server restart, suggested by @leofranke95 #340
+* **[Fix]** Docker image build process by @jj-style #355
+* **[Fix]** Top bar navigation by @norogoth #357 #358
+* **[Fix]** Add Page to Current Category @Meiwer #364
+
+2021.03.28 / v0.17.0
+====================
+Possible breaking changes, based on your implementation
+* **[Edit]** Listening on `127.0.0.1` instead of all interfaces #345
+
+2021.02.04 / v0.16.6
+====================
+
+* **[Fix]** Example configuration file #338
+  - contributed by **@ryanlelek**
+
+2020.12.25 / v0.16.5
+====================
+
+* **[New]** Swedish translation
+  - contributed by **@Synt3x**
+* **[New]** Japanese translation
+  - contributed by **@filunK**
+* **[New]** Add table of contents
+  - contributed by **@benruehl**
+* **[New]** Added side menu collapsing functionality
+  - contributed by **@philipstratford**
+* **[New]** Visibility of menu on pages toggle
+  - contributed by **@philipstratford**
+* **[New]** Google groups restriction
+  - contributed by **@Axadiw**
+* **[New]** Category meta description
+  - contributed by **@marcello.gorla**
+
+* **[Doc]** TOC and site menu on pages
+  - contributed by **@philipstratford**
+* **[Doc]** Updated install, guide, and README pages
+  - contributed by **@Arthur Flageul**
+
+* **[Fix]** Fixed bug highlighting of second-level page titles
+  - contributed by **@philipstratford**
+* **[Fix]** #189 base_url config
+  - contributed by **@ryanlelek**
+* **[Fix]** Side menu visibility
+  - contributed by **@Synt3x**
+* **[Fix]** lunr-languages/tinyseg instead of tiny-segmenter
+  - contributed by **@filunK**
+* **[Fix]** Travis, Yarn, NPM, etc.
+  - contributed by **@filunK**
+* **[Fix]** wrong fitvids js location
+  - contributed by **@jrichardsz**
+
+2019.08.11 / v0.16.4
+====================
+
+  * **[New]** Async IO Improvements #294
+    - contributed by **@pmoleri**
+  * **[New]** Danish Translation #292
+    - contributed by **@MortenHC**
+  * **[Fixed]** Heroku postinstall script #291
+    - contributed by **@shamork**
+  * **[Fixed]** Code fixes for upgraded dependencies
+    - contributed by **@ryanlelek**
+  * **[Misc]** Dependency upgrades
+
+2019.01.19 / v0.16.2
+====================
+
+  * **[New]** Polish Translation
+    - contributed by **@suprovsky - Radosław Serba**
+  * **[Fixed]** base_url ignored on login page #200
+    - contributed by **@GrahamDumpleton**
+  * **[Fixed]** Request for translations.json doesn't include base_url #279
+    - contributed by **@GrahamDumpleton**
+  * **[Fixed]** Proxy subfolders #189
+    - contributed by **@GrahamDumpleton**
+  * **[Misc]** Dependency upgrades
+
 2018.04.21 / v0.16.0
 ====================
 

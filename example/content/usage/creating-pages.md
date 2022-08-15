@@ -1,7 +1,7 @@
-/*
+---
 Title: Creating Pages
 Sort: 2
-*/
+---
 
 Creating pages in Raneto is as simple as creating a Markdown file (`.md`) with you favourite text editor.
 There are several important aspects to your files that you need to pay attention to when you create pages.
@@ -37,17 +37,17 @@ If a file cannot be found the `error.html` template will be shown.
 ## File Markup
 
 Pages are created using Markdown. If you are new to Markdown please refer to the
-[syntax guide](http://daringfireball.net/projects/markdown/syntax) for more information. Pages can also
-contain regular HTML.
+[syntax guide](https://daringfireball.net/projects/markdown/syntax) for more information.  
+Pages can also contain regular HTML.
 
 At the top of a page you can place a block comment to specify certain attributes of the page. For example
 you can specify the page title or a description to be used by search engines. Specifying page meta is
 optional.
 
-    /*
+    ---
     Title: My Page Title
     Description: Optional description for search engines
-    */
+    ---
 
 Note that if no meta title is specified the filename will be used to generate a page title.
 

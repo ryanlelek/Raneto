@@ -65,6 +65,7 @@ describe('#slugToTitle()', () => {
 describe('#processMeta()', () => {
 
   it('returns array of meta values', () => {
+    // TODO: DEPRECATED Non-YAML
     const result = contentProcessors.processMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
@@ -117,6 +118,7 @@ describe('#processMeta()', () => {
 describe('#stripMeta()', () => {
 
   it('strips meta comment block', () => {
+    // TODO: DEPRECATED Non-YAML
     const result = contentProcessors.stripMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
@@ -145,6 +147,7 @@ describe('#stripMeta()', () => {
   });
 
   it('only strips the first comment block', () => {
+    // TODO: DEPRECATED Non-YAML
     const result = contentProcessors.stripMeta('/*\n' +
       'Title: This is a title\n' +
       'Description: This is a description\n' +
