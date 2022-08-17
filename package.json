@@ -76,7 +76,7 @@
     "sanitize-filename": "1.6.3",
     "serve-favicon": "2.5.0",
     "sitemap": "7.1.1",
-    "sweetalert2": "11.4.26",
+    "sweetalert2": "11.4.27",
     "underscore": "1.13.4",
     "underscore.string": "3.3.6",
     "validator": "13.7.0",
@@ -84,7 +84,7 @@
   },
   "devDependencies": {
     "chai": "4.3.6",
-    "eslint": "8.21.0",
+    "eslint": "8.22.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-node": "11.1.0",
