@@ -7,6 +7,6 @@ ENV PORT 3000
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-RUN npm install --omit=dev && npx gulp
+RUN npm install --omit=dev
 
 CMD ["npm", "start"]

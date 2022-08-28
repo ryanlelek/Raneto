@@ -12,29 +12,16 @@ Important Updates
 - **Please ensure you're on Raneto v0.17.1 for the latest security fixes**
 - Join the [Roadmap Discussion](https://github.com/ryanlelek/Raneto/issues/374)
 
-Demo
-----
+Demo and Documentation
+----------------------
 
-Visit [https://docs.raneto.com](https://docs.raneto.com) to see a demo and get started!
+Visit [https://docs.raneto.com](https://docs.raneto.com) to see a demo.  
 
 Quickstart
 ----------
 
-1. In a terminal, run:
-    ```bash
-    git clone https://github.com/ryanlelek/Raneto.git
-    cd Raneto
-    npm install && npm run gulp && npm start
-   ```
-1. Visit [http://localhost:3000](http://localhost:3000) to display the output.
-
+Visit the [Example Repo](https://github.com/raneto/example)  
 See the [installation guide](https://docs.raneto.com/install/installing-raneto) for more information.  
-
-Supported Node Versions:
-- v18.x.x (Current)
-- v16.x.x (LTS)
-
-Please use the latest version available of the above major Node.js releases to ensure you have the latest security fixes!  
 
 Security
 --------
@@ -74,6 +61,7 @@ We'd love to see it. Please add it to this list:
 Related Projects
 ----------------
 
+- [Default Theme](https://github.com/raneto/theme-default)
 - [Deploy Raneto to your servers with Ansible](https://github.com/ryanlelek/raneto-devops) by @ryanlelek
 - [Run Raneto in a Vagrant container](https://github.com/draptik/vagrant-raneto) by @draptik
 - [Deploy Raneto using Docker container](https://github.com/appsecco/raneto-docker) by @madhuakula

@@ -1,6 +1,13 @@
 
 # Raneto Changelog
 
+Pending
+=======
+* Extract `themes/` to new repository/package [@raneto/theme-default](https://github.com/raneto/theme-default)
+* Extract `example/` to new [repository](https://github.com/raneto/example)
+* **[Removed]** Package `gulp-shell` (unused?)
+* **[Removed]** Package `markdown-it` (unused?)
+
 2022.08.28 / v0.17.2
 ====================
 * **[Fix]** Crash for ignored directories by @pmoleri #369

@@ -27,8 +27,7 @@ delint:
 		./app/**/*.js      \
 		./bin/*            \
 		./example/**/*.js  \
-		./test/*.js        \
-		./gulpfile.js;
+		./test/*.js;
 
 .PHONY: mocha
 mocha:
@@ -36,9 +35,7 @@ mocha:
 
 .PHONY: build
 build:
-
-	# Run Gulp
-	./node_modules/gulp/bin/gulp.js;
+	echo "REMOVED";
 
 .PHONY: start
 start:
@@ -51,9 +48,6 @@ deploy:
 
 	# Install Node.js Modules (Production)
 	npm install --production; true;
-
-	# Run Gulp
-	./node_modules/gulp/bin/gulp.js; true;
 
 .PHONY: d_build
 d_build:
