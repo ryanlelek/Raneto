@@ -52,6 +52,10 @@ deploy:
 d_build:
 	docker build -t raneto-local:latest .;
 
-.PHONT: d_run
+.PHONY: d_run
 d_run:
 	docker run --rm -it -p 3000:3000 raneto-local:latest;
+
+.PHONY: d_shell
+d_shell:
+	docker run --rm -it raneto-local:latest /bin/sh;

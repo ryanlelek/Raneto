@@ -1,4 +1,14 @@
 .git/
-node_modules/
+.circleci/
 bin/
+deprecated/
+logo/
+node_modules/
 test/
+.dockerignore
+.editorconfig
+.eslintrc
+.gitignore
+Dockerfile
+Makefile
+package-lock.json
