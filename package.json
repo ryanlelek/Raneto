@@ -32,16 +32,17 @@
   "bin": "./bin/raneto",
   "main": "./app/index.js",
   "scripts": {
-    "start": "DEBUG=raneto node example/server.js",
-    "start_win": "set DEBUG=raneto&&node example/server.js",
+    "start": "DEBUG=raneto node server.js",
+    "start_win": "set DEBUG=raneto&&node server.js",
     "test": "npm run lint && mocha --reporter spec test/*.js",
-    "lint": "eslint bin/* app/**/*.js example/**/*.js test/*.js"
+    "lint": "eslint bin/* app/**/*.js config/*.js test/*.js server.js"
   },
   "engines": {
     "node": ">=16.16.0",
     "npm": ">=8.11.0"
   },
   "dependencies": {
+    "@raneto/theme-default": "0.0.1",
     "body-parser": "1.20.0",
     "commander": "9.4.0",
     "cookie-parser": "1.4.6",

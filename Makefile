@@ -2,7 +2,7 @@
 
 # The first command listed is the default
 .PHONY: default
-default: clean install build;
+default: clean install;
 
 .PHONY: clean
 clean:
@@ -24,9 +24,8 @@ delint:
 
 	# ESLint
 	./node_modules/.bin/eslint \
-		./app/**/*.js      \
-		./bin/*            \
-		./example/**/*.js  \
+		./app/**/*.js \
+		./bin/*       \
 		./test/*.js;
 
 .PHONY: mocha
@@ -41,7 +40,7 @@ build:
 start:
 
 	# Start HTTP Server
-	node example/server.js
+	node ./server.js;
 
 .PHONY: deploy
 deploy:
@@ -51,10 +50,8 @@ deploy:
 
 .PHONY: d_build
 d_build:
-
 	docker build -t raneto-local:latest .;
 
 .PHONT: d_run
 d_run:
-
 	docker run --rm -it -p 3000:3000 raneto-local:latest;
