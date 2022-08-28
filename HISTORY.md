@@ -1,6 +1,14 @@
 
 # Raneto Changelog
 
+2022.08.28 / v0.17.2
+====================
+* **[Fix]** Crash for ignored directories by @pmoleri #369
+* **[Docs]** Updated, first pass
+* **[Misc]** Pipelines fixed after Travis CI shutdown
+* **[Misc]** Dependency upgrades
+-- Packages current as of today (exception: bootstrap)
+
 2022.08.02 / v0.17.1
 ====================
 # IMPORTANT - SECURITY FIXES
