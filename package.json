@@ -38,47 +38,47 @@
     "lint": "eslint bin/* app/**/*.js config/*.js test/*.js server.js"
   },
   "engines": {
-    "node": ">=16.16.0",
-    "npm": ">=8.11.0"
+    "node": ">=18.15.0",
+    "npm": ">=9.5.0"
   },
   "dependencies": {
     "@raneto/theme-default": "0.0.1",
-    "body-parser": "1.20.0",
-    "commander": "9.4.0",
+    "body-parser": "1.20.2",
+    "commander": "9.5.0",
     "cookie-parser": "1.4.6",
     "debug": "4.3.4",
-    "express": "4.18.1",
+    "express": "4.18.2",
     "express-session": "1.17.3",
     "extend": "3.0.2",
-    "fs-extra": "10.1.0",
-    "glob": "8.0.3",
+    "fs-extra": "11.1.1",
+    "glob": "8.1.0",
     "hogan-express": "0.5.2",
     "js-yaml": "4.1.0",
     "lunr": "2.3.9",
-    "lunr-languages": "1.9.0",
+    "lunr-languages": "1.10.0",
     "markdown-toc": "1.2.0",
-    "marked": "4.0.19",
+    "marked": "4.3.0",
     "moment": "2.29.4",
     "morgan": "1.10.0",
-    "node-fetch": "3.2.10",
+    "node-fetch": "3.3.1",
     "passport": "0.6.0",
     "passport-google-oauth20": "2.0.0",
     "sanitize-filename": "1.6.3",
     "serve-favicon": "2.5.0",
     "sitemap": "7.1.1",
-    "underscore": "1.13.4",
+    "underscore": "1.13.6",
     "underscore.string": "3.3.6",
-    "validator": "13.7.0"
+    "validator": "13.9.0"
   },
   "devDependencies": {
-    "chai": "4.3.6",
-    "eslint": "8.23.0",
+    "chai": "4.3.7",
+    "eslint": "8.38.0",
     "eslint-config-standard": "17.0.0",
-    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-import": "2.27.5",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "6.0.1",
-    "mocha": "10.0.0",
-    "pm2": "5.2.0",
-    "supertest": "6.2.4"
+    "eslint-plugin-promise": "6.1.1",
+    "mocha": "10.2.0",
+    "pm2": "5.3.0",
+    "supertest": "6.3.3"
   }
 }
