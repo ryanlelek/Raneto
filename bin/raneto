@@ -1,5 +1,23 @@
 #!/usr/bin/env node
 
+// ################################
+// ########## DEPRECATED ##########
+// ################################
+// PM2 is not officially recommended for
+// production use by Raneto authors.
+// Consider alternatives like systemd instead.
+// This has been kept for the time being
+// for those that use it and others that
+// don't want to use systemd
+
+// ###################
+// ##### WARNING #####
+// ###################
+// This can only be used when installing development modules
+// Additionally, the logs will only output the first process
+// and not multiple process logs. This should be easy to fix
+// by looping through the output but is not developed/tested
+
 // Hide Keymetrics banner on first time PM2 is required
 // var consoleLog = console.log;
 // console.log    = function () {};
@@ -9,6 +27,7 @@ var pm2 = require('pm2');
 // Modules
 var path = require('path');
 var program = require('commander');
+var Tail = require('tail').Tail;
 var pkg = require('../package.json');
 
 process.chdir(path.normalize(path.join(__dirname, '..')));
@@ -22,12 +41,15 @@ program
     pm2.connect(() => {
       pm2.start(
         {
-          script: path.normalize(
-            path.join(__dirname, '..', 'example', 'server.js')
-          ),
+          script: path.normalize(path.join(__dirname, '..', 'server.js')),
           exec_mode: 'fork',
           instances: 1,
           name: 'raneto',
+          env: {
+            PORT: 3000,
+            NODE_ENV: 'development',
+            DEBUG: 'raneto*',
+          },
         },
         // (error, apps)
         (error) => {
@@ -98,14 +120,21 @@ program
           console.log('Raneto not running');
           process.exit(0);
         } else {
-          // var log       = new Tail(list[0].pm2_env.pm_out_log_path, '\n', { interval : 500 });
-          // var error_log = new Tail(list[0].pm2_env.pm_err_log_path, '\n', { interval : 500 });
-          // log.on('line', function (data) {
-          //   console.log(data);
-          // });
-          // error_log.on('line', function (data) {
-          //   console.log(data);
-          // });
+          var log = new Tail(list[0].pm2_env.pm_out_log_path, '\n', {
+            interval: 500,
+          });
+          var error_log = new Tail(list[0].pm2_env.pm_err_log_path, '\n', {
+            interval: 500,
+          });
+          console.log('##### WARNING! THIS FEATURE IS UNTESTED #####');
+          console.log('FILEOUT', list[0].pm2_env.pm_out_log_path);
+          console.log('FILEERR', list[0].pm2_env.pm_err_log_path);
+          log.on('line', function (data) {
+            console.log(data);
+          });
+          error_log.on('line', function (data) {
+            console.log(data);
+          });
         }
       });
     });
