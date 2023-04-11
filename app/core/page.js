@@ -1,14 +1,11 @@
-
-'use strict';
-
 const path              = require('path');
 const fs                = require('fs-extra');
-const utils             = require('./utils');
 const _s                = require('underscore.string');
 const { marked }        = require('marked');
+const utils             = require('./utils');
 const contentProcessors = require('../functions/contentProcessors');
 
-async function handler (filePath, config) {
+async function handler(filePath, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
 
   try {
@@ -23,14 +20,16 @@ async function handler (filePath, config) {
     const meta = contentProcessors.processMeta(file.toString('utf-8'));
     const content = contentProcessors.processVars(
       contentProcessors.stripMeta(file.toString('utf-8')),
-      config
+      config,
     );
 
     const body = marked(content);
     const title = meta.title ? meta.title : contentProcessors.slugToTitle(slug);
     const excerpt = _s.prune(_s.stripTags(_s.unescapeHTML(body)), (config.excerpt_length || 400));
 
-    return { slug, title, body, excerpt };
+    return {
+      slug, title, body, excerpt,
+    };
 
   } catch (e) {
     if (config.debug) {

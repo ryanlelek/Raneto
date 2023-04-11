@@ -1,6 +1,3 @@
-
-'use strict';
-
 // Modules
 var path = require('path');
 
@@ -41,7 +38,7 @@ var config = {
   support_email: '',
 
   // Footer Text / Copyright
-  copyright: 'Copyright &copy; ' + new Date().getFullYear() + ' - <a href="https://raneto.com">Powered by Raneto</a>',
+  copyright: `Copyright &copy; ${new Date().getFullYear()} - <a href="https://raneto.com">Powered by Raneto</a>`,
 
   // Excerpt length (used in search)
   excerpt_length: 400,
@@ -94,13 +91,13 @@ var config = {
   google_group_restriction: {
     enabled: false,
     api_key: 'GOOGLE_API_KEY',
-    group_name : 'GOOGLE_GROUP_NAME'
+    group_name : 'GOOGLE_GROUP_NAME',
   },
   oauth2 : {
     client_id: 'GOOGLE_CLIENT_ID',
     client_secret: 'GOOGLE_CLIENT_SECRET',
     callback: 'http://localhost:3000/auth/google/callback',
-    hostedDomain: 'google.com'
+    hostedDomain: 'google.com',
   },
   secret: 'someCoolSecretRightHere',
 
@@ -115,12 +112,12 @@ var config = {
   credentials    : [
     {
       username : 'admin',
-      password : 'password'
+      password : 'password',
     },
     {
       username : 'admin2',
-      password : 'password'
-    }
+      password : 'password',
+    },
   ],
 
   locale: 'en',
@@ -162,7 +159,7 @@ var config = {
   },
 
   menu_on_pages: true,
-  menu_on_page_collapsible: true
+  menu_on_page_collapsible: true,
 };
 
 // Exports

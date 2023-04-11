@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 // Modules
 var debug = require('debug')('raneto');
 
@@ -20,6 +18,6 @@ var config = require('./config/config.js');
 var app = raneto(config);
 
 // Load the HTTP Server
-var server = app.listen(app.get('port'), app.get('host'), function () {
-  debug('Express HTTP server listening on port ' + server.address().port);
+var server = app.listen(app.get('port'), app.get('host'), () => {
+  debug(`Express HTTP server listening on port ${server.address().port}`);
 });

@@ -1,12 +1,9 @@
-
-'use strict';
-
 // Modules
 var fs           = require('fs-extra');
 var get_filepath = require('../functions/get_filepath.js');
 
-function route_page_delete (config) {
-  return async function (req, res, next) {
+function route_page_delete(config) {
+  return async function (req, res) {
 
     var file_category;
     var file_name;
@@ -25,7 +22,7 @@ function route_page_delete (config) {
     var filepath = get_filepath({
       content  : config.content_dir,
       category : file_category,
-      filename : file_name
+      filename : file_name,
     });
 
     // No file at that filepath?
@@ -37,16 +34,16 @@ function route_page_delete (config) {
     try {
       // Don't Delete
       // Rename to remove from listing
-      await fs.rename(filepath, filepath + '.del');
+      await fs.rename(filepath, `${filepath}.del`);
 
       res.json({
         status  : 0,
-        message : config.lang.api.pageDeleted
+        message : config.lang.api.pageDeleted,
       });
     } catch (error) {
       res.json({
         status  : 1,
-        message : error
+        message : error,
       });
     }
   };

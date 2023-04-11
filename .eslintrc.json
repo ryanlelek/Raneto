@@ -1,11 +1,17 @@
 {
   "root": true,
   "env": {
-    "browser": true,
+    "browser": false,
     "mocha": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
-  "extends": "standard",
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "2022"
+  },
   "plugins": [
     "promise"
   ],
@@ -15,7 +21,7 @@
     "eqeqeq": 2,
     "func-call-spacing": 0,
     "guard-for-in": 2,
-    "indent": 2,
+    "indent": ["error", 2],
     "key-spacing": 0,
     "max-depth": ["error",{"max" : 4}],
     "no-irregular-whitespace": 2,

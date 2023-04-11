@@ -1,6 +1,3 @@
-
-'use strict';
-
 // Modules
 // TODO: This underscore function may not be functioning correctly
 var _s                             = require('underscore.string');
@@ -10,7 +7,7 @@ var sanitize                       = require('../functions/sanitize.js');
 const searchHandler   = require('../core/search');
 const contentsHandler = require('../core/contents');
 
-function route_search (config) {
+function route_search(config) {
   return async function (req, res, next) {
 
     // Skip if Search not present
@@ -32,7 +29,7 @@ function route_search (config) {
 
     // TODO: Move to Raneto Core
     // Loop through Results and Extract Category
-    searchResults.forEach(function (result) {
+    searchResults.forEach((result) => {
       result.category = null;
       var split = result.slug.split('/');
       if (split.length > 1) {
@@ -48,7 +45,7 @@ function route_search (config) {
       body_class    : 'page-search',
       lang          : config.lang,
       loggedIn      : ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false),
-      username      : ((config.authentication || config.authentication_for_edit) ? req.session.username : null)
+      username      : ((config.authentication || config.authentication_for_edit) ? req.session.username : null),
     });
 
   };

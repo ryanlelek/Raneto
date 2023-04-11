@@ -11,16 +11,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-'use strict';
-
 var express = require('express');
+
 const fetch = import('node-fetch');
 
 // [START setup]
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-function extractProfile (profile) {
+function extractProfile(profile) {
   var imageUrl = '';
   var domain = '';
   var email = '';
@@ -38,7 +37,7 @@ function extractProfile (profile) {
     displayName: profile.displayName,
     image: imageUrl,
     email,
-    domain
+    domain,
   };
 }
 
@@ -46,7 +45,7 @@ function extractProfile (profile) {
 // Middleware that requires the user to be logged in. If the user is not logged
 // in, it will redirect the user to authorize the application and then return
 // them to the original URL they requested.
-function authRequired (req, res, next) {
+function authRequired(req, res, next) {
   if (!req.user) {
     req.session.oauth2return = req.originalUrl;
     return res.redirect('/login');
@@ -59,17 +58,17 @@ function authRequired (req, res, next) {
 
 // Middleware that exposes the user's profile as well as login/logout URLs to
 // any templates. These are available as `profile`, `login`, and `logout`.
-function addTemplateVariables (req, res, next) {
+function addTemplateVariables(req, res, next) {
   res.locals.profile = req.user;
-  res.locals.login = '/auth/login?return=' +
-    encodeURIComponent(req.originalUrl);
-  res.locals.logout = '/auth/logout?return=' +
-    encodeURIComponent(req.originalUrl);
+  res.locals.login = `/auth/login?return=${
+    encodeURIComponent(req.originalUrl)}`;
+  res.locals.logout = `/auth/logout?return=${
+    encodeURIComponent(req.originalUrl)}`;
   next();
 }
 // [END middleware]
 
-function router (config) {
+function router(config) {
   // Configure the Google strategy for use by Passport.js.
   //
   // OAuth 2-based strategies require a `verify` function which receives the
@@ -81,22 +80,22 @@ function router (config) {
     clientID: config.oauth2.client_id,
     clientSecret: config.oauth2.client_secret,
     callbackURL: config.oauth2.callback,
-    accessType: 'offline'
+    accessType: 'offline',
 
-  }, function (accessToken, refreshToken, profile, cb) {
+  }, ((accessToken, refreshToken, profile, cb) => {
     const parsedProfile = extractProfile(profile)
     if (config.google_group_restriction.enabled) {
       const groupName = config.google_group_restriction.group_name
       const apiKey = config.google_group_restriction.api_key
-      const email = parsedProfile.email
-      fetch('https://www.googleapis.com/admin/directory/v1/groups/' + groupName + '/hasMember/' + email + '?key=' + apiKey, {
+      const { email } = parsedProfile
+      fetch(`https://www.googleapis.com/admin/directory/v1/groups/${groupName}/hasMember/${email}?key=${apiKey}`, {
         method: 'get',
         headers: {
-          Authorization: 'Bearer ' + accessToken
-        }
+          Authorization: `Bearer ${accessToken}`,
+        },
       })
-        .then(res => res.json())
-        .then(res => {
+        .then((res) => res.json())
+        .then((res) => {
           if (res.isMember && res.isMember === true) {
             cb(null, parsedProfile);
           } else {
@@ -106,12 +105,12 @@ function router (config) {
     } else {
       cb(null, parsedProfile);
     }
-  }));
+  })));
 
-  passport.serializeUser(function (user, cb) {
+  passport.serializeUser((user, cb) => {
     cb(null, user);
   });
-  passport.deserializeUser(function (obj, cb) {
+  passport.deserializeUser((obj, cb) => {
     cb(null, obj);
   });
   // [END setup]
@@ -136,7 +135,7 @@ function router (config) {
 
     // Save the url of the user's current page so the app can redirect back to
     // it after authorization
-    function (req, res, next) {
+    (req, res, next) => {
       if (req.query.return) {
         req.session.oauth2return = req.query.return;
       }
@@ -144,7 +143,7 @@ function router (config) {
     },
 
     // Start OAuth 2 flow using Passport.js
-    passport.authenticate('google', { scope: scopes, hostedDomain: config.oauth2.hostedDomain || '' })
+    passport.authenticate('google', { scope: scopes, hostedDomain: config.oauth2.hostedDomain || '' }),
   );
   // [END authorize]
 
@@ -158,7 +157,7 @@ function router (config) {
     passport.authenticate('google'),
 
     // Redirect back to the original page, if any
-    function (req, res) {
+    (req, res) => {
       req.session.loggedIn = true;
       if (config.oauth2.validateHostedDomain) {
         req.session.allowedDomain = config.oauth2.hostedDomain;
@@ -166,13 +165,13 @@ function router (config) {
       var redirect = req.session.oauth2return || '/';
       delete req.session.oauth2return;
       res.redirect(redirect);
-    }
+    },
   );
   // [END callback]
 
   // Deletes the user's credentials and profile from the session.
   // This does not revoke any active tokens.
-  router.get('/auth/logout', function (req, res) {
+  router.get('/auth/logout', (req, res) => {
     req.session.loggedIn = false;
     req.logout();
     res.redirect('/login');
@@ -185,5 +184,5 @@ module.exports = {
   extractProfile,
   router,
   required: authRequired,
-  template: addTemplateVariables
+  template: addTemplateVariables,
 };

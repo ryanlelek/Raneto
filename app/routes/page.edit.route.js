@@ -1,14 +1,11 @@
-
-'use strict';
-
 // Modules
 var fs               = require('fs-extra');
 var validator        = require('validator');
 var get_filepath     = require('../functions/get_filepath.js');
 var create_meta_info = require('../functions/create_meta_info.js');
 
-function route_page_edit (config) {
-  return async function (req, res, next) {
+function route_page_edit(config) {
+  return async function (req, res) {
 
     var file_category;
     var file_name;
@@ -27,7 +24,7 @@ function route_page_edit (config) {
     var filepath = get_filepath({
       content  : config.content_dir,
       category : file_category,
-      filename : file_name
+      filename : file_name,
     });
 
     // No file at that filepath?
@@ -37,7 +34,7 @@ function route_page_edit (config) {
     }
 
     // Create content including meta information (i.e. title, description, sort)
-    function create_content (body) {
+    function create_content(body) {
       var meta = create_meta_info(body.meta_title, body.meta_description, body.meta_sort);
       return meta + body.content;
     }
@@ -55,12 +52,12 @@ function route_page_edit (config) {
 
       res.json({
         status  : 0,
-        message : config.lang.api.pageSaved
+        message : config.lang.api.pageSaved,
       });
     } catch (error) {
       res.json({
         status  : 1,
-        message : error
+        message : error,
       });
     }
   };

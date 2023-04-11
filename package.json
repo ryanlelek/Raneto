@@ -35,7 +35,8 @@
     "start": "DEBUG=raneto node server.js",
     "start_win": "set DEBUG=raneto&&node server.js",
     "test": "npm run lint && mocha --reporter spec test/*.js",
-    "lint": "eslint bin/* app/**/*.js config/*.js test/*.js server.js"
+    "lint": "eslint bin/* app/**/*.js config/*.js test/*.js server.js",
+    "lint:fix": "eslint --fix bin/* app/**/*.js config/*.js test/*.js server.js"
   },
   "engines": {
     "node": ">=18.15.0",

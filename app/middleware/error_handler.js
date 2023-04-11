@@ -1,9 +1,6 @@
-
-'use strict';
-
 // Error-Handling Middleware
-function handler (config) {
-  return function (err, req, res, next) {
+function handler(config) {
+  return function (err, req, res) {
 
     var status = err.status || 500;
 
@@ -14,7 +11,7 @@ function handler (config) {
       message    : config.lang.error[status] || err.message,
       error      : {},
       body_class : 'page-error',
-      loggedIn   : ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false)
+      loggedIn   : ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false),
     });
 
   };

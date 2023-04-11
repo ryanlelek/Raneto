@@ -1,6 +1,3 @@
-
-'use strict';
-
 // Modules
 var validator = require('validator');
 
@@ -8,7 +5,7 @@ var validator = require('validator');
 var invalidChars = '&\'"/><';
 
 // TODO: Add Test
-function sanitizer (str) {
+function sanitizer(str) {
   str = validator.blacklist(str, invalidChars);
   str = validator.trim(str);
   str = validator.escape(str);

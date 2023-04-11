@@ -1,19 +1,16 @@
-
-'use strict';
-
 // Modules
 var path                           = require('path');
 var fs                             = require('fs-extra');
-var build_nested_pages             = require('../functions/build_nested_pages.js');
 const { marked }                   = require('marked');
 var toc                            = require('markdown-toc');
+var build_nested_pages             = require('../functions/build_nested_pages.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
 const contentProcessors = require('../functions/contentProcessors');
 const contentsHandler = require('../core/contents');
 const utils = require('../core/utils');
 
-function route_wildcard (config) {
+function route_wildcard(config) {
   return async function (req, res, next) {
 
     // Skip if nothing matched the wildcard Regex
@@ -63,7 +60,7 @@ function route_wildcard (config) {
 
         // Edit Page
         if ((config.authentication || config.authentication_for_edit) && !req.session.loggedIn) {
-          res.redirect(config.base_url + '/login');
+          res.redirect(`${config.base_url}/login`);
           return;
         }
         render  = 'edit';
@@ -74,13 +71,13 @@ function route_wildcard (config) {
         if (config.table_of_contents) {
           var tableOfContents = toc(content, config.table_of_contents_options);
           if (tableOfContents.content) {
-            content = '#### Table of Contents\n' + tableOfContents.content + '\n\n' + content;
+            content = `#### Table of Contents\n${tableOfContents.content}\n\n${content}`;
           }
         }
 
         // Render Markdown
         marked.setOptions({
-          langPrefix : ''
+          langPrefix : '',
         });
         content = marked(content);
 
@@ -102,13 +99,13 @@ function route_wildcard (config) {
         pages         : build_nested_pages(pageList),
         meta,
         content,
-        current_url   : req.protocol + '://' + req.get('host') + config.path_prefix + req.originalUrl,
-        body_class    : template + '-' + contentProcessors.cleanString(slug),
+        current_url   : `${req.protocol}://${req.get('host')}${config.path_prefix}${req.originalUrl}`,
+        body_class    : `${template}-${contentProcessors.cleanString(slug)}`,
         last_modified : await utils.getLastModified(config, meta, file_path),
         lang          : config.lang,
         loggedIn,
         username      : (config.authentication ? req.session.username : null),
-        canEdit
+        canEdit,
       });
 
     }
