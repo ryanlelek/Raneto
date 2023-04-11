@@ -1,5 +1,4 @@
 function middleware_authenticate(config) {
-
   if (config.authentication === true) {
     // Authentication Middleware
     return function (req, res, next) {
@@ -12,14 +11,12 @@ function middleware_authenticate(config) {
       }
       return next();
     };
-
   }
 
   // No Authentication Required
   return function (req, res, next) {
     return next();
   };
-
 }
 
 // Exports

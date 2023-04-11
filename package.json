@@ -36,11 +36,17 @@
     "start_win": "set DEBUG=raneto&&node server.js",
     "test": "npm run lint && mocha --reporter spec test/*.js",
     "lint": "eslint bin/* app/**/*.js config/*.js test/*.js server.js",
-    "lint:fix": "eslint --fix bin/* app/**/*.js config/*.js test/*.js server.js"
+    "lint:fix": "eslint --fix bin/* app/**/*.js config/*.js test/*.js server.js",
+    "prettier": "prettier --check bin/* app/**/*.js config/*.js test/*.js server.js",
+    "prettier:fix": "prettier --write bin/* app/**/*.js config/*.js test/*.js server.js"
   },
   "engines": {
     "node": ">=18.15.0",
     "npm": ">=9.5.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2
   },
   "dependencies": {
     "@raneto/theme-default": "0.0.1",
@@ -75,11 +81,14 @@
     "chai": "4.3.7",
     "eslint": "8.38.0",
     "eslint-config-standard": "17.0.0",
+    "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-promise": "6.1.1",
     "mocha": "10.2.0",
     "pm2": "5.3.0",
+    "prettier": "2.8.7",
     "supertest": "6.3.3"
   }
 }

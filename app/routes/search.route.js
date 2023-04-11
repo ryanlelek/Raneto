@@ -1,20 +1,21 @@
 // Modules
 // TODO: This underscore function may not be functioning correctly
-var _s                             = require('underscore.string');
+var _s = require('underscore.string');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
-var sanitize                       = require('../functions/sanitize.js');
+var sanitize = require('../functions/sanitize.js');
 
-const searchHandler   = require('../core/search');
+const searchHandler = require('../core/search');
 const contentsHandler = require('../core/contents');
 
 function route_search(config) {
   return async function (req, res, next) {
-
     // Skip if Search not present
-    if (!req.query.search) { return next(); }
+    if (!req.query.search) {
+      return next();
+    }
 
     // remove < and >
-    var rawQuery   = _s.stripTags(req.query.search);
+    var rawQuery = _s.stripTags(req.query.search);
     var sanitizedQuery = sanitize(rawQuery);
 
     // Using try/catch seems broken
@@ -22,7 +23,10 @@ function route_search(config) {
     var pageListSearch = [];
     try {
       searchResults = await searchHandler(sanitizedQuery, config);
-      pageListSearch = remove_image_content_directory(config, await contentsHandler(null, config));
+      pageListSearch = remove_image_content_directory(
+        config,
+        await contentsHandler(null, config)
+      );
     } catch (e) {
       // Continue with defaults of empty arrays
     }
@@ -39,15 +43,20 @@ function route_search(config) {
 
     return res.render('search', {
       config,
-      pages         : pageListSearch,
-      search        : sanitizedQuery,
+      pages: pageListSearch,
+      search: sanitizedQuery,
       searchResults,
-      body_class    : 'page-search',
-      lang          : config.lang,
-      loggedIn      : ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false),
-      username      : ((config.authentication || config.authentication_for_edit) ? req.session.username : null),
+      body_class: 'page-search',
+      lang: config.lang,
+      loggedIn:
+        config.authentication || config.authentication_for_edit
+          ? req.session.loggedIn
+          : false,
+      username:
+        config.authentication || config.authentication_for_edit
+          ? req.session.username
+          : null,
     });
-
   };
 }
 

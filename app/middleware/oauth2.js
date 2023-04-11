@@ -50,7 +50,10 @@ function authRequired(req, res, next) {
     req.session.oauth2return = req.originalUrl;
     return res.redirect('/login');
   }
-  if (req.session.allowedDomain && req.session.allowedDomain !== req.user.domain) {
+  if (
+    req.session.allowedDomain &&
+    req.session.allowedDomain !== req.user.domain
+  ) {
     return res.redirect('/login');
   }
   next();
@@ -60,10 +63,12 @@ function authRequired(req, res, next) {
 // any templates. These are available as `profile`, `login`, and `logout`.
 function addTemplateVariables(req, res, next) {
   res.locals.profile = req.user;
-  res.locals.login = `/auth/login?return=${
-    encodeURIComponent(req.originalUrl)}`;
-  res.locals.logout = `/auth/logout?return=${
-    encodeURIComponent(req.originalUrl)}`;
+  res.locals.login = `/auth/login?return=${encodeURIComponent(
+    req.originalUrl
+  )}`;
+  res.locals.logout = `/auth/logout?return=${encodeURIComponent(
+    req.originalUrl
+  )}`;
   next();
 }
 // [END middleware]
@@ -76,36 +81,43 @@ function router(config) {
   // along with the user's profile. The function must invoke `cb` with a user
   // object, which will be set at `req.user` in route handlers after
   // authentication.
-  passport.use(new GoogleStrategy({
-    clientID: config.oauth2.client_id,
-    clientSecret: config.oauth2.client_secret,
-    callbackURL: config.oauth2.callback,
-    accessType: 'offline',
-
-  }, ((accessToken, refreshToken, profile, cb) => {
-    const parsedProfile = extractProfile(profile)
-    if (config.google_group_restriction.enabled) {
-      const groupName = config.google_group_restriction.group_name
-      const apiKey = config.google_group_restriction.api_key
-      const { email } = parsedProfile
-      fetch(`https://www.googleapis.com/admin/directory/v1/groups/${groupName}/hasMember/${email}?key=${apiKey}`, {
-        method: 'get',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.isMember && res.isMember === true) {
-            cb(null, parsedProfile);
-          } else {
-            cb(new Error('Unauthorized user'), null)
-          }
-        });
-    } else {
-      cb(null, parsedProfile);
-    }
-  })));
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: config.oauth2.client_id,
+        clientSecret: config.oauth2.client_secret,
+        callbackURL: config.oauth2.callback,
+        accessType: 'offline',
+      },
+      (accessToken, refreshToken, profile, cb) => {
+        const parsedProfile = extractProfile(profile);
+        if (config.google_group_restriction.enabled) {
+          const groupName = config.google_group_restriction.group_name;
+          const apiKey = config.google_group_restriction.api_key;
+          const { email } = parsedProfile;
+          fetch(
+            `https://www.googleapis.com/admin/directory/v1/groups/${groupName}/hasMember/${email}?key=${apiKey}`,
+            {
+              method: 'get',
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          )
+            .then((res) => res.json())
+            .then((res) => {
+              if (res.isMember && res.isMember === true) {
+                cb(null, parsedProfile);
+              } else {
+                cb(new Error('Unauthorized user'), null);
+              }
+            });
+        } else {
+          cb(null, parsedProfile);
+        }
+      }
+    )
+  );
 
   passport.serializeUser((user, cb) => {
     cb(null, user);
@@ -117,10 +129,13 @@ function router(config) {
 
   var router = express.Router();
 
-  var scopes = ['email', 'profile']
+  var scopes = ['email', 'profile'];
 
   if (config.google_group_restriction.enabled) {
-    scopes.push('https://www.googleapis.com/auth/admin.directory.group.readonly', 'https://www.googleapis.com/auth/admin.directory.user.readonly')
+    scopes.push(
+      'https://www.googleapis.com/auth/admin.directory.group.readonly',
+      'https://www.googleapis.com/auth/admin.directory.user.readonly'
+    );
   }
 
   // Begins the authorization flow. The user will be redirected to Google where
@@ -143,7 +158,10 @@ function router(config) {
     },
 
     // Start OAuth 2 flow using Passport.js
-    passport.authenticate('google', { scope: scopes, hostedDomain: config.oauth2.hostedDomain || '' }),
+    passport.authenticate('google', {
+      scope: scopes,
+      hostedDomain: config.oauth2.hostedDomain || '',
+    })
   );
   // [END authorize]
 
@@ -165,7 +183,7 @@ function router(config) {
       var redirect = req.session.oauth2return || '/';
       delete req.session.oauth2return;
       res.redirect(redirect);
-    },
+    }
   );
   // [END callback]
 

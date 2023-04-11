@@ -1,10 +1,9 @@
 // Modules
-var fs           = require('fs-extra');
+var fs = require('fs-extra');
 var get_filepath = require('../functions/get_filepath.js');
 
 function route_page_delete(config) {
   return async function (req, res) {
-
     var file_category;
     var file_name;
 
@@ -12,17 +11,17 @@ function route_page_delete(config) {
     var req_file = req.body.file.split('/');
     if (req_file.length > 2) {
       file_category = req_file[1];
-      file_name     = req_file[2];
+      file_name = req_file[2];
     } else {
-      file_name     = req_file[1];
+      file_name = req_file[1];
     }
 
     // Generate filepath
     // Sanitized within function
     var filepath = get_filepath({
-      content  : config.content_dir,
-      category : file_category,
-      filename : file_name,
+      content: config.content_dir,
+      category: file_category,
+      filename: file_name,
     });
 
     // No file at that filepath?
@@ -37,13 +36,13 @@ function route_page_delete(config) {
       await fs.rename(filepath, `${filepath}.del`);
 
       res.json({
-        status  : 0,
-        message : config.lang.api.pageDeleted,
+        status: 0,
+        message: config.lang.api.pageDeleted,
       });
     } catch (error) {
       res.json({
-        status  : 1,
-        message : error,
+        status: 1,
+        message: error,
       });
     }
   };

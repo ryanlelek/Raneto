@@ -7,7 +7,7 @@
     "es6": true
   },
   "extends": [
-    "eslint:recommended"
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": "2022"
@@ -21,7 +21,7 @@
     "eqeqeq": 2,
     "func-call-spacing": 0,
     "guard-for-in": 2,
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "key-spacing": 0,
     "max-depth": ["error",{"max" : 4}],
     "no-irregular-whitespace": 2,

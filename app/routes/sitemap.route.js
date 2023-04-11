@@ -1,14 +1,13 @@
 // Modules
-var path                = require('path');
-var fs                  = require('fs-extra');
-var sm                  = require('sitemap');
-var _                   = require('underscore');
+var path = require('path');
+var fs = require('fs-extra');
+var sm = require('sitemap');
+var _ = require('underscore');
 const contentProcessors = require('../functions/contentProcessors');
-const utils             = require('../core/utils');
+const utils = require('../core/utils');
 
 function route_sitemap(config) {
   return async function (req, res, next) {
-
     var hostname = config.hostname || req.headers.host;
     var content_dir = path.normalize(config.content_dir);
 
@@ -21,7 +20,9 @@ function route_sitemap(config) {
       var filesPath = files.map((file) => file.replace(content_dir, ''));
 
       // generate list urls
-      var urls = filesPath.map((file) => `/${file.replace('.md', '').replace('\\', '/')}`);
+      var urls = filesPath.map(
+        (file) => `/${file.replace('.md', '').replace('\\', '/')}`
+      );
 
       // create sitemap.xml
       // TODO: Make protocol dynamic
@@ -34,13 +35,17 @@ function route_sitemap(config) {
         var content = await fs.readFile(files[i], 'utf8');
         // Need to override the datetime format for sitemap
         var conf = {
-          datetime_format : 'YYYY-MM-DD',
+          datetime_format: 'YYYY-MM-DD',
         };
         sitemap.add({
           url: (config.prefix_url || '') + urls[i],
           changefreq: 'weekly',
           priority: 0.8,
-          lastmod: await utils.getLastModified(conf, contentProcessors.processMeta(content), files[i]),
+          lastmod: await utils.getLastModified(
+            conf,
+            contentProcessors.processMeta(content),
+            files[i]
+          ),
         });
       }
 
@@ -61,7 +66,7 @@ async function listFiles(dir) {
       const filePath = path.join(dir, entry);
       const isDir = (await fs.stat(filePath)).isDirectory();
       return isDir ? listFiles(filePath) : [filePath];
-    }),
+    })
   );
 
   // Return the flattened array

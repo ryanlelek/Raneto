@@ -12,7 +12,9 @@ function getLunr(config) {
     require('lunr-languages/lunr.stemmer.support')(instance);
     require('lunr-languages/lunr.multi')(instance);
     require('lunr-languages/tinyseg')(instance);
-    config.searchExtraLanguages.forEach((lang) => require(`lunr-languages/lunr.${lang}`)(instance));
+    config.searchExtraLanguages.forEach((lang) =>
+      require(`lunr-languages/lunr.${lang}`)(instance)
+    );
   }
   return instance;
 }
@@ -29,10 +31,11 @@ async function handler(query, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
   const rawDocuments = await utils.promiseGlob(`${contentDir}**/*.md`);
   const potentialDocuments = await Promise.all(
-    rawDocuments.map((filePath) => contentProcessors.extractDocument(contentDir, filePath, config.debug)),
+    rawDocuments.map((filePath) =>
+      contentProcessors.extractDocument(contentDir, filePath, config.debug)
+    )
   );
-  const documents = potentialDocuments
-    .filter((doc) => doc !== null);
+  const documents = potentialDocuments.filter((doc) => doc !== null);
 
   const lunrInstance = getLunr(config);
   const idx = lunrInstance(function () {
@@ -46,7 +49,9 @@ async function handler(query, config) {
   const results = idx.search(query);
 
   const searchResults = await Promise.all(
-    results.map((result) => processSearchResult(contentDir, config, query, result)),
+    results.map((result) =>
+      processSearchResult(contentDir, config, query, result)
+    )
   );
 
   return searchResults;
@@ -54,7 +59,10 @@ async function handler(query, config) {
 
 async function processSearchResult(contentDir, config, query, result) {
   const page = await pageHandler(contentDir + result.ref, config);
-  page.excerpt = page.excerpt.replace(new RegExp(`(${query})`, 'gim'), '<span class="search-query">$1</span>');
+  page.excerpt = page.excerpt.replace(
+    new RegExp(`(${query})`, 'gim'),
+    '<span class="search-query">$1</span>'
+  );
 
   return page;
 }

@@ -1,9 +1,9 @@
-const path              = require('path');
-const fs                = require('fs-extra');
-const _                 = require('underscore');
-const _s                = require('underscore.string');
-const yaml              = require('js-yaml');
-const utils             = require('./utils');
+const path = require('path');
+const fs = require('fs-extra');
+const _ = require('underscore');
+const _s = require('underscore.string');
+const yaml = require('js-yaml');
+const utils = require('./utils');
 const contentProcessors = require('../functions/contentProcessors');
 
 async function handler(activePageSlug, config) {
@@ -19,14 +19,16 @@ async function handler(activePageSlug, config) {
     title: '',
     show_on_home: true,
     is_index: true,
-    active: (baseSlug === ''),
+    active: baseSlug === '',
     class: 'category-index',
     sort: 0,
     files: [],
   });
 
   const results = await Promise.all(
-    files.map((filePath) => processFile(config, activePageSlug, contentDir, filePath)),
+    files.map((filePath) =>
+      processFile(config, activePageSlug, contentDir, filePath)
+    )
   );
 
   for (const result of results) {
@@ -60,12 +62,14 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
   const stat = await fs.stat(filePath);
 
   if (stat.isDirectory()) {
-
     let sort = 0;
     // ignore directories that has an ignore file under it
     const ignoreFile = `${contentDir + shortPath}/ignore`;
 
-    const ignoreExists = await fs.lstat(ignoreFile).then((stat) => stat.isFile(), () => {});
+    const ignoreExists = await fs.lstat(ignoreFile).then(
+      (stat) => stat.isFile(),
+      () => {}
+    );
     if (ignoreExists) {
       if (config.debug) {
         console.log('Directory ignored', contentDir + shortPath);
@@ -76,8 +80,12 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
 
     let dirMetadata = {};
     try {
-      const metaFile = await fs.readFile(path.join(contentDir, shortPath, 'meta'));
-      dirMetadata = contentProcessors.cleanObjectStrings(yaml.load(metaFile.toString('utf-8')));
+      const metaFile = await fs.readFile(
+        path.join(contentDir, shortPath, 'meta')
+      );
+      dirMetadata = contentProcessors.cleanObjectStrings(
+        yaml.load(metaFile.toString('utf-8'))
+      );
     } catch (e) {
       if (config.debug) {
         console.log('No meta file for', contentDir + shortPath);
@@ -86,7 +94,9 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
 
     if (category_sort && !dirMetadata.sort) {
       try {
-        const sortFile = await fs.readFile(path.join(contentDir, shortPath, 'sort'));
+        const sortFile = await fs.readFile(
+          path.join(contentDir, shortPath, 'sort')
+        );
         sort = parseInt(sortFile.toString('utf-8'), 10);
       } catch (e) {
         if (config.debug) {
@@ -97,8 +107,11 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
 
     return {
       slug: fileSlug,
-      title: dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
-      show_on_home: dirMetadata.show_on_home ? (dirMetadata.show_on_home === 'true') : config.show_on_home_default,
+      title:
+        dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
+      show_on_home: dirMetadata.show_on_home
+        ? dirMetadata.show_on_home === 'true'
+        : config.show_on_home_default,
       is_index: false,
       is_directory: true,
       active: activePageSlug.startsWith(`/${fileSlug}`),
@@ -107,7 +120,6 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
       description: dirMetadata.description || '',
       files: [],
     };
-
   }
 
   if (stat.isFile() && path.extname(shortPath) === '.md') {
@@ -131,12 +143,13 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
       return {
         slug,
         title: meta.title ? meta.title : contentProcessors.slugToTitle(slug),
-        show_on_home: meta.show_on_home ? (meta.show_on_home === 'true') : config.show_on_home_default,
+        show_on_home: meta.show_on_home
+          ? meta.show_on_home === 'true'
+          : config.show_on_home_default,
         is_directory: false,
-        active: (activePageSlug.trim() === `/${slug}`),
+        active: activePageSlug.trim() === `/${slug}`,
         sort: pageSort,
       };
-
     } catch (e) {
       if (config.debug) {
         console.log(e);

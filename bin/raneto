@@ -3,18 +3,17 @@
 // Hide Keymetrics banner on first time PM2 is required
 // var consoleLog = console.log;
 // console.log    = function () {};
-var pm2        = require('pm2');
+var pm2 = require('pm2');
 // console.log    = consoleLog;
 
 // Modules
-var path    = require('path');
+var path = require('path');
 var program = require('commander');
-var pkg     = require('../package.json');
+var pkg = require('../package.json');
 
 process.chdir(path.normalize(path.join(__dirname, '..')));
 
-program
-  .version(pkg.version);
+program.version(pkg.version);
 
 program
   .command('start')
@@ -23,10 +22,12 @@ program
     pm2.connect(() => {
       pm2.start(
         {
-          script    : path.normalize(path.join(__dirname, '..', 'example', 'server.js')),
-          exec_mode : 'fork',
-          instances : 1,
-          name      : 'raneto',
+          script: path.normalize(
+            path.join(__dirname, '..', 'example', 'server.js')
+          ),
+          exec_mode: 'fork',
+          instances: 1,
+          name: 'raneto',
         },
         // (error, apps)
         (error) => {
@@ -36,9 +37,8 @@ program
             console.log('Raneto Service Started.');
           }
           pm2.disconnect();
-        },
+        }
       );
-
     });
   });
 
@@ -100,15 +100,12 @@ program
         } else {
           // var log       = new Tail(list[0].pm2_env.pm_out_log_path, '\n', { interval : 500 });
           // var error_log = new Tail(list[0].pm2_env.pm_err_log_path, '\n', { interval : 500 });
-
           // log.on('line', function (data) {
           //   console.log(data);
           // });
-
           // error_log.on('line', function (data) {
           //   console.log(data);
           // });
-
         }
       });
     });
@@ -117,7 +114,9 @@ program
 // Show the config file location in the help
 function customHelp(text) {
   var textArray = text.split(/\r?\n/);
-  textArray[3]  = `  Config: ${path.normalize(path.join(__dirname, '..', 'example', 'config.default.js'))}\n`;
+  textArray[3] = `  Config: ${path.normalize(
+    path.join(__dirname, '..', 'example', 'config.default.js')
+  )}\n`;
   return textArray.join('\n');
 }
 

@@ -9,11 +9,15 @@ var path = require('path');
 //
 // Themes from NPM
 // use "dist" as the theme name for modules (for now)
-var theme_dir = path.join(__dirname, '..', 'node_modules', '@raneto/theme-default');
+var theme_dir = path.join(
+  __dirname,
+  '..',
+  'node_modules',
+  '@raneto/theme-default'
+);
 var theme_name = 'dist';
 
 var config = {
-
   // Your site title (format: page_title - site_title)
   site_title: 'Raneto Docs',
 
@@ -61,10 +65,10 @@ var config = {
 
   // Specify the path of your content folder where all your '.md' files are located
   // Fix: Cannot be an absolute path
-  content_dir : path.join(__dirname, '..', 'content', 'pages'),
+  content_dir: path.join(__dirname, '..', 'content', 'pages'),
 
   // Where is the public directory or document root?
-  public_dir  : path.join(theme_dir, theme_name, 'public'),
+  public_dir: path.join(theme_dir, theme_name, 'public'),
 
   // The base URL of your images folder,
   // Relative to config.public_dir
@@ -75,10 +79,10 @@ var config = {
   analytics: '',
 
   // Set to true to enable the web editor
-  allow_editing : true,
+  allow_editing: true,
 
   // Set to true to enable HTTP Basic Authentication
-  authentication : true,
+  authentication: true,
 
   // If editing is enabled, set this to true to only authenticate for editing, not for viewing
   authentication_for_edit: true,
@@ -91,9 +95,9 @@ var config = {
   google_group_restriction: {
     enabled: false,
     api_key: 'GOOGLE_API_KEY',
-    group_name : 'GOOGLE_GROUP_NAME',
+    group_name: 'GOOGLE_GROUP_NAME',
   },
-  oauth2 : {
+  oauth2: {
     client_id: 'GOOGLE_CLIENT_ID',
     client_secret: 'GOOGLE_CLIENT_SECRET',
     callback: 'http://localhost:3000/auth/google/callback',
@@ -109,14 +113,14 @@ var config = {
   // If you absolutely must use an online tool, here are some suggestions
   // https://bitwarden.com/password-generator/
   // https://www.grc.com/passwords.htm
-  credentials    : [
+  credentials: [
     {
-      username : 'admin',
-      password : 'password',
+      username: 'admin',
+      password: 'password',
     },
     {
-      username : 'admin2',
-      password : 'password',
+      username: 'admin2',
+      password: 'password',
     },
   ],
 
@@ -132,7 +136,7 @@ var config = {
   rtl_layout: false,
 
   // Edit Home Page title, description, etc.
-  home_meta : {
+  home_meta: {
     // title       : 'Custom Home Title',
     // description : 'Custom Home Description'
   },

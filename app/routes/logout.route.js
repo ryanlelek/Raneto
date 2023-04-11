@@ -3,7 +3,7 @@ function route_logout(config) {
     req.session.loggedIn = false;
     req.session.username = null;
     res.redirect(`${config.base_url}/login`);
-  }
+  };
 }
 
 // Exports

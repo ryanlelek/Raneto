@@ -1,5 +1,4 @@
 function middleware_authenticate(config) {
-
   return function (req, res, next) {
     if (!req.session.loggedIn) {
       res.redirect(403, `${config.base_url}/login`);
@@ -7,7 +6,6 @@ function middleware_authenticate(config) {
     }
     return next();
   };
-
 }
 
 // Exports

@@ -1,10 +1,9 @@
 // Modules
-var path              = require('path');
-var sanitizeFilename  = require('sanitize-filename');
-var sanitize          = require('./sanitize.js');
+var path = require('path');
+var sanitizeFilename = require('sanitize-filename');
+var sanitize = require('./sanitize.js');
 
 function get_filepath(p) {
-
   // Default
   var filepath = p.content;
 
@@ -22,7 +21,6 @@ function get_filepath(p) {
   filepath = path.normalize(filepath);
 
   return filepath;
-
 }
 
 // Exports
