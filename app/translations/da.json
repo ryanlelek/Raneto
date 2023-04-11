@@ -1,27 +1,27 @@
 {
   "global": {
-    "yes"             : "Ja",
-    "no"              : "Nej",
-    "search"          : "Søg",
-    "cancel"          : "Annuller",
-    "save"            : "Gem",
-    "close"           : "Luk",
-    "lastUpdated"     : "Sidst opdateret den",
+    "yes": "Ja",
+    "no": "Nej",
+    "search": "Søg",
+    "cancel": "Annuller",
+    "save": "Gem",
+    "close": "Luk",
+    "lastUpdated": "Sidst opdateret den",
 
-    "pageName"        : "Sidenavn",
-    "addPage"         : "Tilføj side",
+    "pageName": "Sidenavn",
+    "addPage": "Tilføj side",
     "reallyDeletePage": "Er du sikker på at du vil slette denne side?",
-    "mainArticles"    : "Hovedartikler",
-    "editor"          : "Teksteditor"
+    "mainArticles": "Hovedartikler",
+    "editor": "Teksteditor"
   },
 
   "api": {
-    "loginSuccessful"   : "Succesfuldt logget ind",
+    "loginSuccessful": "Succesfuldt logget ind",
     "invalidCredentials": "Ugyldig kombination af brugernavn/kode",
-    "pageSaved"         : "Siden blev gemt",
-    "pageDeleted"       : "Siden blev slettet",
-    "categoryCreated"   : "Kategorien blev oprettet",
-    "pageCreated"       : "Siden blev oprettet"
+    "pageSaved": "Siden blev gemt",
+    "pageDeleted": "Siden blev slettet",
+    "categoryCreated": "Kategorien blev oprettet",
+    "pageCreated": "Siden blev oprettet"
   },
 
   "error": {
@@ -29,11 +29,11 @@
   },
 
   "edit": {
-    "preview"      : "Eksempelvisning",
-    "editor"       : "Editor",
-    "pageSaved"    : "Siden blev succesfuldt gemt",
+    "preview": "Eksempelvisning",
+    "editor": "Editor",
+    "pageSaved": "Siden blev succesfuldt gemt",
     "pageSaveError": "Der opstod en fejl ved forsøget på at gemme siden",
-    "headerMetaInfo" : "Meta information",
+    "headerMetaInfo": "Meta information",
     "lableMetaTitle": "Titel",
     "lableMetaDescription": "Beskrivelse",
     "lableMetaSort": "Sortering"
@@ -44,25 +44,25 @@
   },
 
   "login": {
-    "login"   : "Log ind",
-    "logout"  : "Log ud",
+    "login": "Log ind",
+    "logout": "Log ud",
     "username": "Brugernavn",
     "password": "Kode"
   },
 
   "page": {
     "addCategory": "Tilføj kategori",
-    "addPage"    : "Tilføj side",
-    "deletePage" : "Slet",
-    "editPage"   : "Rediger",
-    "actions"    : "Handlinger",
+    "addPage": "Tilføj side",
+    "deletePage": "Slet",
+    "editPage": "Rediger",
+    "actions": "Handlinger",
 
-    "needHelp"   : "Har du stadig brug for hjælp?",
-    "getInTouch" : "Tag kontakt!"
+    "needHelp": "Har du stadig brug for hjælp?",
+    "getInTouch": "Tag kontakt!"
   },
 
   "search": {
-    "resultsFor"  : "Søgeresultater for",
+    "resultsFor": "Søgeresultater for",
     "noResultsFor": "Ingen resultater for"
   }
 }

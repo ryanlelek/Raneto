@@ -1,28 +1,27 @@
 {
   "global": {
-    "yes"             : "Ja",
-    "no"              : "Nein",
-    "search"          : "Suchen",
-    "cancel"          : "Abbrechen",
-    "save"            : "Speichern",
-    "close"           : "Schließen",
-    "lastUpdated"     : "Zuletzt aktualisiert am",
+    "yes": "Ja",
+    "no": "Nein",
+    "search": "Suchen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "close": "Schließen",
+    "lastUpdated": "Zuletzt aktualisiert am",
 
-    "pageName"        : "Artikelname",
-    "addPage"         : "Artikel hinzufügen",
+    "pageName": "Artikelname",
+    "addPage": "Artikel hinzufügen",
     "reallyDeletePage": "Sind Sie sicher, dass Sie diesen Artikel löschen möchten?",
-    "mainArticles"    : "Hauptartikel",
-    "editor"          : "Editor"
-
+    "mainArticles": "Hauptartikel",
+    "editor": "Editor"
   },
 
   "api": {
-    "loginSuccessful"   : "Anmeldung erfolgreich",
+    "loginSuccessful": "Anmeldung erfolgreich",
     "invalidCredentials": "Ungültige Zugangsdaten",
-    "pageSaved"         : "Artikel gespeichert",
-    "pageDeleted"       : "Seite gelöscht",
-    "categoryCreated"   : "Kategorie angelegt",
-    "pageCreated"       : "Artikel angelegt"
+    "pageSaved": "Artikel gespeichert",
+    "pageDeleted": "Seite gelöscht",
+    "categoryCreated": "Kategorie angelegt",
+    "pageCreated": "Artikel angelegt"
   },
 
   "error": {
@@ -30,11 +29,11 @@
   },
 
   "edit": {
-    "preview"      : "Vorschau",
-    "editor"       : "Editor",
-    "pageSaved"    : "Artikel erfolgreich gespeichert",
+    "preview": "Vorschau",
+    "editor": "Editor",
+    "pageSaved": "Artikel erfolgreich gespeichert",
     "pageSaveError": "Fehler beim Speichern des Artikels",
-    "headerMetaInfo" : "Meta Information",
+    "headerMetaInfo": "Meta Information",
     "lableMetaTitle": "Titel",
     "lableMetaDescription": "Beschreibung",
     "lableMetaSort": "Sortierung"
@@ -45,25 +44,25 @@
   },
 
   "login": {
-    "login"   : "Anmelden",
-    "logout"  : "Abmelden",
+    "login": "Anmelden",
+    "logout": "Abmelden",
     "username": "Benutzername",
     "password": "Passwort"
   },
 
   "page": {
     "addCategory": "Kategorie hinzufügen",
-    "addPage"    : "Artikel hinzufügen",
-    "deletePage" : "Löschen",
-    "editPage"   : "Bearbeiten",
-    "actions"    : "Aktionen",
+    "addPage": "Artikel hinzufügen",
+    "deletePage": "Löschen",
+    "editPage": "Bearbeiten",
+    "actions": "Aktionen",
 
-    "needHelp"   : "Brauchen Sie weitere Hilfe?",
-    "getInTouch" : "Schreiben Sie uns!"
+    "needHelp": "Brauchen Sie weitere Hilfe?",
+    "getInTouch": "Schreiben Sie uns!"
   },
 
   "search": {
-    "resultsFor"  : "Suchergebnisse für",
+    "resultsFor": "Suchergebnisse für",
     "noResultsFor": "Keine Ergebnisse für"
   }
 }

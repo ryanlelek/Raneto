@@ -1,27 +1,27 @@
 {
   "global": {
-    "yes"             : "Yes",
-    "no"              : "No",
-    "search"          : "Search",
-    "cancel"          : "Cancel",
-    "save"            : "Save",
-    "close"           : "Close",
-    "lastUpdated"     : "Last updated on",
+    "yes": "Yes",
+    "no": "No",
+    "search": "Search",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "lastUpdated": "Last updated on",
 
-    "pageName"        : "Page name",
-    "addPage"         : "Add page",
+    "pageName": "Page name",
+    "addPage": "Add page",
     "reallyDeletePage": "Are you sure you want to delete this page?",
-    "mainArticles"    : "Main articles",
-    "editor"          : "Editor"
+    "mainArticles": "Main articles",
+    "editor": "Editor"
   },
 
   "api": {
-    "loginSuccessful"   : "Login Successful",
+    "loginSuccessful": "Login Successful",
     "invalidCredentials": "Invalid Username/Password Combination",
-    "pageSaved"         : "Page Saved",
-    "pageDeleted"       : "Page Deleted",
-    "categoryCreated"   : "Category Created",
-    "pageCreated"       : "Page Created"
+    "pageSaved": "Page Saved",
+    "pageDeleted": "Page Deleted",
+    "categoryCreated": "Category Created",
+    "pageCreated": "Page Created"
   },
 
   "error": {
@@ -29,11 +29,11 @@
   },
 
   "edit": {
-    "preview"      : "Preview",
-    "editor"       : "Editor",
-    "pageSaved"    : "Page Successfully Saved",
+    "preview": "Preview",
+    "editor": "Editor",
+    "pageSaved": "Page Successfully Saved",
     "pageSaveError": "Error Saving Page",
-    "headerMetaInfo" : "Meta information",
+    "headerMetaInfo": "Meta information",
     "lableMetaTitle": "Title",
     "lableMetaDescription": "Description",
     "lableMetaSort": "Sort"
@@ -44,25 +44,25 @@
   },
 
   "login": {
-    "login"   : "Login",
-    "logout"  : "Logout",
+    "login": "Login",
+    "logout": "Logout",
     "username": "Username",
     "password": "Password"
   },
 
   "page": {
     "addCategory": "Add category",
-    "addPage"    : "Add page",
-    "deletePage" : "Delete",
-    "editPage"   : "Edit",
-    "actions"    : "Actions",
+    "addPage": "Add page",
+    "deletePage": "Delete",
+    "editPage": "Edit",
+    "actions": "Actions",
 
-    "needHelp"   : "Still need help?",
-    "getInTouch" : "Get in touch!"
+    "needHelp": "Still need help?",
+    "getInTouch": "Get in touch!"
   },
 
   "search": {
-    "resultsFor"  : "Search results for",
+    "resultsFor": "Search results for",
     "noResultsFor": "Nothing found for"
   }
 }

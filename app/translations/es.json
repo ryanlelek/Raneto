@@ -1,27 +1,27 @@
 {
   "global": {
-    "yes"             : "Sí",
-    "no"              : "No",
-    "search"          : "Buscar",
-    "cancel"          : "Cancelar",
-    "save"            : "Guardar",
-    "close"           : "Cerrar",
-    "lastUpdated"     : "Actualizado",
+    "yes": "Sí",
+    "no": "No",
+    "search": "Buscar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "lastUpdated": "Actualizado",
 
-    "pageName"        : "Nombre de la página",
-    "addPage"         : "Añadir página",
+    "pageName": "Nombre de la página",
+    "addPage": "Añadir página",
     "reallyDeletePage": "¿Está seguro de que desea borrar esta página?",
-    "mainArticles"    : "Artículos principales",
-    "editor"          : "Editor"
+    "mainArticles": "Artículos principales",
+    "editor": "Editor"
   },
 
   "api": {
-    "loginSuccessful"   : "Login Correcto",
+    "loginSuccessful": "Login Correcto",
     "invalidCredentials": "Combinación Nombre de Usuario/Password inválida",
-    "pageSaved"         : "Página Guardada",
-    "pageDeleted"       : "Página Borrada",
-    "categoryCreated"   : "Categoría Creada",
-    "pageCreated"       : "Página Creada"
+    "pageSaved": "Página Guardada",
+    "pageDeleted": "Página Borrada",
+    "categoryCreated": "Categoría Creada",
+    "pageCreated": "Página Creada"
   },
 
   "error": {
@@ -29,11 +29,11 @@
   },
 
   "edit": {
-    "preview"      : "Vista Previa",
-    "editor"       : "Editor",
-    "pageSaved"    : "Página Guardada con Exito",
+    "preview": "Vista Previa",
+    "editor": "Editor",
+    "pageSaved": "Página Guardada con Exito",
     "pageSaveError": "Error Guardando la Página",
-    "headerMetaInfo" : "Meta información",
+    "headerMetaInfo": "Meta información",
     "lableMetaTitle": "Título",
     "lableMetaDescription": "Descripción",
     "lableMetaSort": "Orden"
@@ -44,25 +44,25 @@
   },
 
   "login": {
-    "login"   : "Login",
-    "logout"  : "Logout",
+    "login": "Login",
+    "logout": "Logout",
     "username": "Nombre de Usuario",
     "password": "Password"
   },
 
   "page": {
     "addCategory": "Añadir categoría",
-    "addPage"    : "Añadir página",
-    "deletePage" : "Borrar",
-    "editPage"   : "Editar",
-    "actions"    : "Acciones",
+    "addPage": "Añadir página",
+    "deletePage": "Borrar",
+    "editPage": "Editar",
+    "actions": "Acciones",
 
-    "needHelp"   : "¿Todavía necesita ayuda?",
-    "getInTouch" : "Póngase en contacto!"
+    "needHelp": "¿Todavía necesita ayuda?",
+    "getInTouch": "Póngase en contacto!"
   },
 
   "search": {
-    "resultsFor"  : "Buscar",
+    "resultsFor": "Buscar",
     "noResultsFor": "Ninguna coincidencia para"
   }
 }

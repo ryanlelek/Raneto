@@ -1,27 +1,27 @@
 {
   "global": {
-    "yes"             : "Oui",
-    "no"              : "Non",
-    "search"          : "Rechercher",
-    "cancel"          : "Annuler",
-    "save"            : "Sauvegarder",
-    "close"           : "Fermer",
-    "lastUpdated"     : "Dernière mise à jour le",
+    "yes": "Oui",
+    "no": "Non",
+    "search": "Rechercher",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+    "close": "Fermer",
+    "lastUpdated": "Dernière mise à jour le",
 
-    "pageName"        : "Nom de page",
-    "addPage"         : "Ajout de page",
+    "pageName": "Nom de page",
+    "addPage": "Ajout de page",
     "reallyDeletePage": "Etes-vous sûr de vouloir supprimer cette page ?",
-    "mainArticles"    : "Articles principaux",
-    "editor"          : "Editeur"
+    "mainArticles": "Articles principaux",
+    "editor": "Editeur"
   },
 
   "api": {
-    "loginSuccessful"   : "Connexion avec succès",
+    "loginSuccessful": "Connexion avec succès",
     "invalidCredentials": "Login/Password invalide",
-    "pageSaved"         : "Page sauvegardé",
-    "pageDeleted"       : "Page supprimé",
-    "categoryCreated"   : "Categorie crée",
-    "pageCreated"       : "Page crée"
+    "pageSaved": "Page sauvegardé",
+    "pageDeleted": "Page supprimé",
+    "categoryCreated": "Categorie crée",
+    "pageCreated": "Page crée"
   },
 
   "error": {
@@ -29,11 +29,11 @@
   },
 
   "edit": {
-    "preview"      : "Prévisualisation",
-    "editor"       : "Editeur",
-    "pageSaved"    : "Page enregistrée avec succès",
+    "preview": "Prévisualisation",
+    "editor": "Editeur",
+    "pageSaved": "Page enregistrée avec succès",
     "pageSaveError": "Erreur lors de la sauvegarde de la page",
-    "headerMetaInfo" : "Meta information",
+    "headerMetaInfo": "Meta information",
     "lableMetaTitle": "Titre",
     "lableMetaDescription": "Description",
     "lableMetaSort": "Tri"
@@ -44,25 +44,25 @@
   },
 
   "login": {
-    "login"   : "Connexion",
-    "logout"  : "Déconnexion",
+    "login": "Connexion",
+    "logout": "Déconnexion",
     "username": "Utilisateur",
     "password": "Mot de passe"
   },
 
   "page": {
     "addCategory": "Ajouter une categorie",
-    "addPage"    : "Ajouter une page",
-    "deletePage" : "Supprimer",
-    "editPage"   : "Editer",
-    "actions"    : "Actions",
+    "addPage": "Ajouter une page",
+    "deletePage": "Supprimer",
+    "editPage": "Editer",
+    "actions": "Actions",
 
-    "needHelp"   : "Besoin d'aide ?",
-    "getInTouch" : "Rester en contact !"
+    "needHelp": "Besoin d'aide ?",
+    "getInTouch": "Rester en contact !"
   },
 
   "search": {
-    "resultsFor"  : "Résultats de la recherche pour",
+    "resultsFor": "Résultats de la recherche pour",
     "noResultsFor": "Aucun résultat pour"
   }
 }

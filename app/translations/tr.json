@@ -1,27 +1,27 @@
 {
   "global": {
-    "yes"             : "Evet",
-    "no"              : "Hayır",
-    "search"          : "Ara",
-    "cancel"          : "Vazgeç",
-    "save"            : "Kaydet",
-    "close"           : "Kapat",
-    "lastUpdated"     : "Son güncellenme tarihi",
+    "yes": "Evet",
+    "no": "Hayır",
+    "search": "Ara",
+    "cancel": "Vazgeç",
+    "save": "Kaydet",
+    "close": "Kapat",
+    "lastUpdated": "Son güncellenme tarihi",
 
-    "pageName"        : "Sayfa adı",
-    "addPage"         : "Sayfa ekle",
+    "pageName": "Sayfa adı",
+    "addPage": "Sayfa ekle",
     "reallyDeletePage": "Bu sayfayı silmek istediğinize emin misiniz?",
-    "mainArticles"    : "Başlıklar",
-    "editor"          : "Editör"
+    "mainArticles": "Başlıklar",
+    "editor": "Editör"
   },
 
   "api": {
-    "loginSuccessful"   : "Giriş Başarılı",
+    "loginSuccessful": "Giriş Başarılı",
     "invalidCredentials": "Geçersiz Kullanıcı Adı/Şifre",
-    "pageSaved"         : "Sayfa Kaydedildi",
-    "pageDeleted"       : "Sayfa Silindi",
-    "categoryCreated"   : "Kategori Yaratıldı",
-    "pageCreated"       : "Sayfa Yaratıldı"
+    "pageSaved": "Sayfa Kaydedildi",
+    "pageDeleted": "Sayfa Silindi",
+    "categoryCreated": "Kategori Yaratıldı",
+    "pageCreated": "Sayfa Yaratıldı"
   },
 
   "error": {
@@ -29,11 +29,11 @@
   },
 
   "edit": {
-    "preview"      : "Önizleme",
-    "editor"       : "Editör",
-    "pageSaved"    : "Sayfa Başarıyla Kaydedildi",
+    "preview": "Önizleme",
+    "editor": "Editör",
+    "pageSaved": "Sayfa Başarıyla Kaydedildi",
     "pageSaveError": "Sayfa Kaydedilirken Hata Alındı",
-    "headerMetaInfo" : "Meta Bilgiler",
+    "headerMetaInfo": "Meta Bilgiler",
     "lableMetaTitle": "Başlık",
     "lableMetaDescription": "Açıklama",
     "lableMetaSort": "Sırala"
@@ -44,25 +44,25 @@
   },
 
   "login": {
-    "login"   : "Giriş Yap",
-    "logout"  : "Çıkış Yap",
+    "login": "Giriş Yap",
+    "logout": "Çıkış Yap",
     "username": "Kullanıcı Adı",
     "password": "Şifre"
   },
 
   "page": {
     "addCategory": "Kategori ekle",
-    "addPage"    : "Sayfa ekle",
-    "deletePage" : "Sil",
-    "editPage"   : "Düzenle",
-    "actions"    : "Eylemler",
+    "addPage": "Sayfa ekle",
+    "deletePage": "Sil",
+    "editPage": "Düzenle",
+    "actions": "Eylemler",
 
-    "needHelp"   : "Hala mı yardıma ihtiyacınız var?",
-    "getInTouch" : "İletişime geç"
+    "needHelp": "Hala mı yardıma ihtiyacınız var?",
+    "getInTouch": "İletişime geç"
   },
 
   "search": {
-    "resultsFor"  : "Arama sonuçları",
+    "resultsFor": "Arama sonuçları",
     "noResultsFor": "Bir şey bulunamadı"
   }
 }

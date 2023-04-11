@@ -37,8 +37,8 @@
     "test": "npm run lint && mocha --reporter spec test/*.js",
     "lint": "eslint bin/* app/**/*.js config/*.js test/*.js server.js",
     "lint:fix": "eslint --fix bin/* app/**/*.js config/*.js test/*.js server.js",
-    "prettier": "prettier --check bin/* app/**/*.js config/*.js test/*.js server.js",
-    "prettier:fix": "prettier --write bin/* app/**/*.js config/*.js test/*.js server.js"
+    "prettier": "prettier --check bin/* app/**/*.js config/*.js test/*.js server.js app/translations/*json",
+    "prettier:fix": "prettier --write bin/* app/**/*.js config/*.js test/*.js server.js app/translations/*json"
   },
   "engines": {
     "node": ">=18.15.0",
