@@ -222,13 +222,13 @@ describe('#getPages()', () => {
   it('returns an array of categories and pages', async () => {
     const result = await contentsHandler(null, config);
     expect(result[0]).to.have.property('is_index', true);
-    expect(result[0].files[0]).to.have.property('title', 'Example Page');
+    expect(result[0].files[0]).to.have.property('title', 'Special Characters Page');
     expect(result[1]).to.have.property('slug', 'sub');
     expect(result[1].files[0]).to.have.property('title', 'Example Sub Page');
   });
 
   it('marks activePageSlug as active', async () => {
-    const result = await contentsHandler('/example-page', config);
+    const result = await contentsHandler('/special-chars', config);
     expect(result[0]).to.have.property('active', true);
     expect(result[0].files[0]).to.have.property('active', true);
     expect(result[1]).to.have.property('active', false);
