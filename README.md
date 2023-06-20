@@ -1,4 +1,4 @@
-Raneto [![CircleCI](https://dl.circleci.com/status-badge/img/gh/ryanlelek/Raneto/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ryanlelek/Raneto/tree/master)
+Raneto [![Node.js CI](https://github.com/ryanlelek/Raneto/actions/workflows/node.js.yml/badge.svg)](https://github.com/ryanlelek/Raneto/actions/workflows/node.js.yml)
 ======
 
 [![Raneto Logo](https://raw.githubusercontent.com/ryanlelek/Raneto/master/logo/logo_readme.png)](https://raneto.com/)
