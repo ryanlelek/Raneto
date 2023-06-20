@@ -1,0 +1,10 @@
+.dockerignore
+.editorconfig
+.eslintrc.json
+.gitignore
+.github
+deprecated
+Dockerfile
+logo
+Makefile
+test
