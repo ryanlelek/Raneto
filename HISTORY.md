@@ -1,12 +1,26 @@
 
 # Raneto Changelog
 
-Pending
+2023.06.20 / v0.17.5
+====================
+  * **[Misc]** Dependency upgrades
+
+2023.04.11 / v0.17.3
 =======
+* **[New]** Linter Updates
+-- https://github.com/ryanlelek/Raneto/commit/dddade7e5b8f49f8ec9171265d2201bfad11fa50 (ESLint 1)
+-- https://github.com/ryanlelek/Raneto/commit/563756816957f7389fe7d615604f2f486f9155e5 (ESLint 2)
+-- https://github.com/ryanlelek/Raneto/commit/878e95b3a0a7398d9e7baf708398745ffcca44a8 (Prettier)
+* **[Fix]** Commander/PM2 (Unsupported)
+-- https://github.com/ryanlelek/Raneto/commit/19605c228353d2971bd6fbb126a24b696f085851
+* **[Misc]** Dependency upgrades
+-- Packages current as of today (exception: `glob`)
+-- https://github.com/ryanlelek/Raneto/commit/66e08c615eec2fa141ea5512f94f21167e00036d (Container Image)
+-- https://github.com/ryanlelek/Raneto/commit/bf6d33ec9f2c9ac31c144155b00091d56e020f6a (NPM Packages)
 * Extract `themes/` to new repository/package [@raneto/theme-default](https://github.com/raneto/theme-default)
 * Extract `example/` to new [repository](https://github.com/raneto/example)
-* **[Removed]** Package `gulp-shell` (unused?)
-* **[Removed]** Package `markdown-it` (unused?)
+* **[Removed]** Package `gulp-shell`
+* **[Removed]** Package `markdown-it`
 
 2022.08.28 / v0.17.2
 ====================
