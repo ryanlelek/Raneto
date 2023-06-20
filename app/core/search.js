@@ -1,4 +1,5 @@
 const path = require('path');
+const { glob } = require('glob')
 const contentProcessors = require('../functions/contentProcessors');
 const utils = require('./utils');
 const pageHandler = require('./page');
@@ -29,7 +30,7 @@ function getStemmers(config) {
 
 async function handler(query, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
-  const rawDocuments = await utils.promiseGlob(`${contentDir}**/*.md`);
+  const rawDocuments = await glob(`${contentDir}**/*.md`);
   const potentialDocuments = await Promise.all(
     rawDocuments.map((filePath) =>
       contentProcessors.extractDocument(contentDir, filePath, config.debug)

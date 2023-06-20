@@ -89,8 +89,9 @@ function route_wildcard(config) {
         }
 
         // Render Markdown
-        marked.setOptions({
-          langPrefix: '',
+        marked.use({
+          mangle: false,
+          headerIds: false,
         });
         content = marked(content);
       }

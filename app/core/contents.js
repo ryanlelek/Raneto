@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
+const { glob } = require('glob')
 const _ = require('underscore');
 const _s = require('underscore.string');
 const yaml = require('js-yaml');
@@ -11,7 +12,7 @@ async function handler(activePageSlug, config) {
   const baseSlug = activePageSlug.split(/[\\/]/).slice(0, -1).join('/');
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
 
-  const files = await utils.promiseGlob(`${contentDir}**/*`);
+  const files = await glob(`${contentDir}**/*`);
   const filesProcessed = [];
 
   filesProcessed.push({

@@ -23,6 +23,11 @@ async function handler(filePath, config) {
       config
     );
 
+    // Render Markdown
+    marked.use({
+      mangle: false,
+      headerIds: false,
+    });
     const body = marked(content);
     const title = meta.title ? meta.title : contentProcessors.slugToTitle(slug);
     const excerpt = _s.prune(

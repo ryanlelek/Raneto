@@ -1,9 +1,5 @@
-const glob = require('glob');
 const fs = require('fs-extra');
-const util = require('util');
 const moment = require('moment');
-
-const promiseGlob = util.promisify(glob);
 
 const normalizeDir = (dir) => dir.replace(/\\/g, '/');
 const getSlug = (filePath, contentDir) =>
@@ -21,7 +17,6 @@ exports.default = {
   normalizeDir,
   getLastModified,
   getSlug,
-  promiseGlob,
 };
 
 module.exports = exports.default;
