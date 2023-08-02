@@ -1,6 +1,7 @@
 ---
 # https://github.com/marketplace/actions/build-and-push-docker-images
 # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
+# https://github.com/docker/login-action
 
 name: Docker Image CI
 
@@ -13,6 +14,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: Docker
 
     steps:
       # - uses: actions/checkout@v3
