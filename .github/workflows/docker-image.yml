@@ -32,4 +32,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: raneto:latest-$(date +%s)
+          tags: raneto:latest
