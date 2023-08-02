@@ -1,0 +1,33 @@
+---
+# https://github.com/marketplace/actions/build-and-push-docker-images
+# https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
+
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # - uses: actions/checkout@v3
+      #   name: Build the Docker image
+      #   run: docker build . --file Dockerfile --tag raento/raneto:latest-$(date +%s)
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: raneto/raneto:latest-$(date +%s)
