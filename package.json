@@ -62,9 +62,9 @@
     "hogan-express": "0.5.2",
     "js-yaml": "4.1.0",
     "lunr": "2.3.9",
-    "lunr-languages": "1.12.0",
+    "lunr-languages": "1.13.0",
     "markdown-toc": "1.2.0",
-    "marked": "5.1.2",
+    "marked": "7.0.4",
     "moment": "2.29.4",
     "morgan": "1.10.0",
     "node-fetch": "3.3.2",
@@ -75,20 +75,20 @@
     "sitemap": "7.1.1",
     "underscore": "1.13.6",
     "underscore.string": "3.3.6",
-    "validator": "13.9.0"
+    "validator": "13.11.0"
   },
   "devDependencies": {
-    "chai": "4.3.7",
-    "eslint": "8.46.0",
+    "chai": "4.3.8",
+    "eslint": "8.48.0",
     "eslint-config-standard": "17.1.0",
-    "eslint-config-prettier": "8.9.0",
-    "eslint-plugin-import": "2.28.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-import": "2.28.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-promise": "6.1.1",
     "mocha": "10.2.0",
     "pm2": "5.3.0",
-    "prettier": "3.0.0",
+    "prettier": "3.0.2",
     "supertest": "6.3.3",
     "tail": "2.2.6"
   }
