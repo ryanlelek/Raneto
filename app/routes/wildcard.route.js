@@ -129,7 +129,9 @@ function route_wildcard(config) {
         pages: build_nested_pages(pageList),
         meta,
         content,
-        current_url: `${req.protocol}://${req.get('host')}${config.path_prefix}${req.originalUrl}`,
+        current_url: `${req.protocol}://${req.get('host')}${
+          config.path_prefix
+        }${req.originalUrl}`,
         body_class: `${template}-${contentProcessors.cleanString(slug)}`,
         last_modified: await utils.getLastModified(config, meta, file_path),
         lang: config.lang,

@@ -12,7 +12,8 @@ var path = require('path');
 var theme_dir = path.join(
   __dirname,
   '..',
-  'themes'
+  'node_modules',
+  '@raneto/theme-default'
 );
 var theme_name = 'dist';
 
