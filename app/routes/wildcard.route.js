@@ -1,5 +1,6 @@
 // Modules
 var path = require('path');
+var _ = require('underscore');
 var fs = require('fs-extra');
 const { marked } = require('marked');
 var toc = require('markdown-toc');
@@ -98,7 +99,17 @@ function route_wildcard(config) {
 
       var pageList = remove_image_content_directory(
         config,
-        await contentsHandler(slug, config)
+        _.chain(await contentsHandler(slug, config))
+          .filter((page) => page.show_on_menu)
+          .map((page) => {
+            page.files = _.filter(page.files, (file) => {
+              console.log(file)
+              return file.show_on_menu
+            });
+            return page;
+          })
+          .value()
+
       );
 
       var loggedIn =
@@ -118,9 +129,7 @@ function route_wildcard(config) {
         pages: build_nested_pages(pageList),
         meta,
         content,
-        current_url: `${req.protocol}://${req.get('host')}${
-          config.path_prefix
-        }${req.originalUrl}`,
+        current_url: `${req.protocol}://${req.get('host')}${config.path_prefix}${req.originalUrl}`,
         body_class: `${template}-${contentProcessors.cleanString(slug)}`,
         last_modified: await utils.getLastModified(config, meta, file_path),
         lang: config.lang,

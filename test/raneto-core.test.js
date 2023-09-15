@@ -18,6 +18,7 @@ const config = {
   page_sort_meta: 'sort',
   category_sort: true,
   show_on_home_default: true,
+  show_on_menu_default: true,
   searchExtraLanguages: ['ru'],
   debug: false,
   content_dir: path.join(__dirname, 'content/'),
@@ -284,7 +285,58 @@ describe('#getPages()', () => {
     );
     expect(result[0]).to.have.property('show_on_home', true);
   });
+
+  it('adds show_on_menu property to directory', async () => {
+    const result = await contentsHandler(null, config);
+    expect(result[0]).to.have.property('show_on_menu', true);
+  });
+
+  it('adds show_on_menu property to files', async () => {
+    const result = await contentsHandler(null, config);
+    expect(result[0].files[0]).to.have.property('show_on_menu', true);
+  });
+
+  it('loads meta show_on_menu value from directory', async () => {
+    const result = await contentsHandler(null, config);
+    expect(result[3]).to.have.property('show_on_menu', false);
+  });
+
+  it('loads meta show_on_menu value from file', async () => {
+    const result = await contentsHandler(null, config);
+    expect(result[0].files[4]).to.have.property('show_on_menu', false);
+  });
+
+  it('applies show_on_menu_default in absence of meta for directories', async () => {
+    const result = await contentsHandler(
+      null,
+      Object.assign(config, {
+        show_on_menu_default: false,
+      })
+    );
+    expect(result[1]).to.have.property('show_on_menu', false);
+  });
+
+  it('applies show_on_menu_default in absence of meta for files', async () => {
+    const result = await contentsHandler(
+      null,
+      Object.assign(config, {
+        show_on_menu_default: false,
+      })
+    );
+    expect(result[1].files[0]).to.have.property('show_on_menu', false);
+  });
+
+  it('category main always shows on menu', async () => {
+    const result = await contentsHandler(
+      null,
+      Object.assign(config, {
+        show_on_menu_default: false,
+      })
+    );
+    expect(result[0]).to.have.property('show_on_menu', true);
+  });
 });
+
 
 describe('#doSearch()', () => {
   it('returns an array of search results', async () => {

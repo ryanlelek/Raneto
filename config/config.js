@@ -12,8 +12,7 @@ var path = require('path');
 var theme_dir = path.join(
   __dirname,
   '..',
-  'node_modules',
-  '@raneto/theme-default'
+  'themes'
 );
 var theme_name = 'dist';
 
@@ -58,6 +57,10 @@ var config = {
   // Controls behavior of home page if meta ShowOnHome is not present. If set to true
   // all categories or files that do not specify ShowOnHome meta property will be shown
   show_on_home_default: true,
+
+  // Controls behavior of the menu if meta ShowOnMenu is not present. If set to true
+  // all categories or files that do not specify ShowOnMenu meta property will be shown
+  show_on_menu_default: true,
 
   // Theme (see top of file)
   theme_dir,
