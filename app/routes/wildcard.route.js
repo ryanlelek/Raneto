@@ -103,7 +103,6 @@ function route_wildcard(config) {
           .filter((page) => page.show_on_menu)
           .map((page) => {
             page.files = _.filter(page.files, (file) => {
-              console.log(file)
               return file.show_on_menu
             });
             return page;
