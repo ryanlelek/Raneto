@@ -25,8 +25,10 @@ async function handler(filePath, config) {
 
     // Render Markdown
     marked.use({
-      mangle: false,
-      headerIds: false,
+      // Removed in v8.x
+      // https://github.com/markedjs/marked/releases/tag/v8.0.0
+      // mangle: false,
+      // headerIds: false,
     });
     const body = marked(content);
     const title = meta.title ? meta.title : contentProcessors.slugToTitle(slug);

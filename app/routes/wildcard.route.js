@@ -90,8 +90,10 @@ function route_wildcard(config) {
 
         // Render Markdown
         marked.use({
-          mangle: false,
-          headerIds: false,
+          // Removed in v8.x
+          // https://github.com/markedjs/marked/releases/tag/v8.0.0
+          // mangle: false,
+          // headerIds: false,
         });
         content = marked(content);
       }

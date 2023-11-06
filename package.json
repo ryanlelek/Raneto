@@ -64,7 +64,7 @@
     "lunr": "2.3.9",
     "lunr-languages": "1.14.0",
     "markdown-toc": "1.2.0",
-    "marked": "7.0.5",
+    "marked": "9.1.5",
     "moment": "2.29.4",
     "morgan": "1.10.0",
     "node-fetch": "3.3.2",
