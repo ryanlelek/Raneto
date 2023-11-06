@@ -1,6 +1,10 @@
 
 # Raneto Changelog
 
+2023.11.05 / v0.17.6
+====================
+  * **[Misc]** Dependency upgrades
+
 2023.06.20 / v0.17.5
 ====================
   * **[Misc]** Dependency upgrades
