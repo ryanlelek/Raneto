@@ -19,6 +19,7 @@ async function handler(activePageSlug, config) {
     slug: '.',
     title: '',
     show_on_home: true,
+    show_on_menu: true,
     is_index: true,
     active: baseSlug === '',
     class: 'category-index',
@@ -115,6 +116,9 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
         : config.show_on_home_default,
       is_index: false,
       is_directory: true,
+      show_on_menu: dirMetadata.show_on_menu
+        ? dirMetadata.show_on_menu === 'true'
+        : config.show_on_menu_default,
       active: activePageSlug.startsWith(`/${fileSlug}`),
       class: `category-${contentProcessors.cleanString(fileSlug)}`,
       sort: dirMetadata.sort || sort,
@@ -148,6 +152,9 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
           ? meta.show_on_home === 'true'
           : config.show_on_home_default,
         is_directory: false,
+        show_on_menu: meta.show_on_menu
+          ? meta.show_on_menu === 'true'
+          : config.show_on_menu_default,
         active: activePageSlug.trim() === `/${slug}`,
         sort: pageSort,
       };

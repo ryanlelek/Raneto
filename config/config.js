@@ -59,6 +59,10 @@ var config = {
   // all categories or files that do not specify ShowOnHome meta property will be shown
   show_on_home_default: true,
 
+  // Controls behavior of the menu if meta ShowOnMenu is not present. If set to true
+  // all categories or files that do not specify ShowOnMenu meta property will be shown
+  show_on_menu_default: true,
+
   // Theme (see top of file)
   theme_dir,
   theme_name,

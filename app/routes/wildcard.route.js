@@ -1,5 +1,6 @@
 // Modules
 var path = require('path');
+var _ = require('underscore');
 var fs = require('fs-extra');
 const { marked } = require('marked');
 var toc = require('markdown-toc');
@@ -100,7 +101,16 @@ function route_wildcard(config) {
 
       var pageList = remove_image_content_directory(
         config,
-        await contentsHandler(slug, config)
+        _.chain(await contentsHandler(slug, config))
+          .filter((page) => page.show_on_menu)
+          .map((page) => {
+            page.files = _.filter(page.files, (file) => {
+              return file.show_on_menu
+            });
+            return page;
+          })
+          .value()
+
       );
 
       var loggedIn =
