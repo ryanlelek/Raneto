@@ -1,6 +1,11 @@
 
 # Raneto Changelog
 
+2024.02.21 / v0.17.7
+====================
+  * **[Fix]** Markdown content parser/sanitization (https://github.com/ryanlelek/Raneto/commit/863aaf5095010e1013715e16e4fd474166c2591a)
+  * **[Misc]** Dependency upgrades (https://github.com/ryanlelek/Raneto/commit/ed4f09780539644ac82b7767f911a061c7395d40)
+
 2023.11.05 / v0.17.6
 ====================
   * **[Misc]** Dependency upgrades
