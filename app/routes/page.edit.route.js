@@ -1,8 +1,8 @@
 // Modules
 var fs = require('fs-extra');
-var validator = require('validator');
 var get_filepath = require('../functions/get_filepath.js');
 var create_meta_info = require('../functions/create_meta_info.js');
+var sanitize_markdown = require('../functions/sanitize_markdown.js');
 
 function route_page_edit(config) {
   return async function (req, res) {
@@ -43,12 +43,7 @@ function route_page_edit(config) {
     }
 
     var complete_content = create_content(req.body);
-
-    // Sanitize Content
-    // This will disallow <script> and <style> embeds
-    // because output will be HTML-encoded.
-    // If you need images, links, etc. use the Markdown format (see docs)
-    var sanitized_content = validator.escape(complete_content);
+    var sanitized_content = sanitize_markdown(complete_content);
 
     try {
       await fs.writeFile(filepath, sanitized_content);
