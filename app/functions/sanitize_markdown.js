@@ -1,4 +1,3 @@
-
 // Modules
 // var validator = require('validator');
 
@@ -19,9 +18,7 @@
 
 // TODO: Add Test
 function sanitize_markdown(str) {
-  return str
-    .replace(/</g, '&lt;')
-    .replace(/(\s)&(\s)/g, ' &amp; ');
+  return str.replace(/</g, '&lt;').replace(/(\s)&(\s)/g, ' &amp; ');
 }
 
 // Exports

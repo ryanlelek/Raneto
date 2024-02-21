@@ -76,7 +76,7 @@ describe('#processMeta()', () => {
         'Description: This is a description\n' +
         'Sort: 4\n' +
         'Multi word: Value\n' +
-        '*/\n'
+        '*/\n',
     );
     expect(result).to.have.property('title', 'This is a title');
     expect(result).to.have.property('description', 'This is a description');
@@ -93,7 +93,7 @@ describe('#processMeta()', () => {
   it('returns proper meta from file starting with a BOM character', async () => {
     const result = await pageHandler(
       path.join(config.content_dir, 'page-with-bom.md'),
-      config
+      config,
     );
     expect(result).to.have.property('title', 'Example Page With BOM');
   });
@@ -105,7 +105,7 @@ describe('#processMeta()', () => {
         'Description: This is a description\n' +
         'Sort: 4\n' +
         'Multi word: Value\n' +
-        '---\n'
+        '---\n',
     );
     expect(result).to.have.property('title', 'This is a title');
     expect(result).to.have.property('description', 'This is a description');
@@ -116,7 +116,7 @@ describe('#processMeta()', () => {
   it('returns proper meta from file starting with a BOM character (YAML)', async () => {
     const result = await pageHandler(
       path.join(config.content_dir, 'page-with-bom-yaml.md'),
-      config
+      config,
     );
     expect(result).to.have.property('title', 'Example Page With BOM for YAML');
   });
@@ -131,7 +131,7 @@ describe('#stripMeta()', () => {
         'Description: This is a description\n' +
         'Sort: 4\n' +
         'Multi word: Value\n' +
-        '*/\nThis is the content'
+        '*/\nThis is the content',
     );
     result.should.equal('This is the content');
   });
@@ -141,7 +141,7 @@ describe('#stripMeta()', () => {
       '---\n' +
         'Title: + This is a title\n' +
         '---\n' +
-        'This is the content\n---'
+        'This is the content\n---',
     );
     result.should.equal('This is the content\n---');
   });
@@ -166,10 +166,10 @@ describe('#stripMeta()', () => {
         'Multi word: Value\n' +
         '*/\nThis is the content/*\n' +
         'Title: This is a title\n' +
-        '*/'
+        '*/',
     );
     result.should.equal(
-      'This is the content/*\n' + 'Title: This is a title\n' + '*/'
+      'This is the content/*\n' + 'Title: This is a title\n' + '*/',
     );
   });
 });
@@ -201,7 +201,7 @@ describe('#getPage()', () => {
   it('returns an array of values for a given page', async () => {
     const result = await pageHandler(
       path.join(config.content_dir, 'example-page.md'),
-      config
+      config,
     );
     expect(result).to.have.property('slug', 'example-page');
     expect(result).to.have.property('title', 'Example Page');
@@ -212,7 +212,7 @@ describe('#getPage()', () => {
   it('returns null if no page found', async () => {
     const result = await pageHandler(
       path.join(config.content_dir, 'nonexistent-page.md'),
-      config
+      config,
     );
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.null;
@@ -223,7 +223,10 @@ describe('#getPages()', () => {
   it('returns an array of categories and pages', async () => {
     const result = await contentsHandler(null, config);
     expect(result[0]).to.have.property('is_index', true);
-    expect(result[0].files[0]).to.have.property('title', 'Special Characters Page');
+    expect(result[0].files[0]).to.have.property(
+      'title',
+      'Special Characters Page',
+    );
     expect(result[1]).to.have.property('slug', 'sub');
     expect(result[1].files[0]).to.have.property('title', 'Example Sub Page');
   });
@@ -261,7 +264,7 @@ describe('#getPages()', () => {
       null,
       Object.assign(config, {
         show_on_home_default: false,
-      })
+      }),
     );
     expect(result[1]).to.have.property('show_on_home', false);
   });
@@ -271,7 +274,7 @@ describe('#getPages()', () => {
       null,
       Object.assign(config, {
         show_on_home_default: false,
-      })
+      }),
     );
     expect(result[1].files[0]).to.have.property('show_on_home', false);
   });
@@ -281,7 +284,7 @@ describe('#getPages()', () => {
       null,
       Object.assign(config, {
         show_on_home_default: false,
-      })
+      }),
     );
     expect(result[0]).to.have.property('show_on_home', true);
   });
@@ -311,7 +314,7 @@ describe('#getPages()', () => {
       null,
       Object.assign(config, {
         show_on_menu_default: false,
-      })
+      }),
     );
     expect(result[1]).to.have.property('show_on_menu', false);
   });
@@ -321,7 +324,7 @@ describe('#getPages()', () => {
       null,
       Object.assign(config, {
         show_on_menu_default: false,
-      })
+      }),
     );
     expect(result[1].files[0]).to.have.property('show_on_menu', false);
   });
@@ -331,12 +334,11 @@ describe('#getPages()', () => {
       null,
       Object.assign(config, {
         show_on_menu_default: false,
-      })
+      }),
     );
     expect(result[0]).to.have.property('show_on_menu', true);
   });
 });
-
 
 describe('#doSearch()', () => {
   it('returns an array of search results', async () => {

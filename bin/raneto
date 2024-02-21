@@ -59,7 +59,7 @@ program
             console.log('Raneto Service Started.');
           }
           pm2.disconnect();
-        }
+        },
       );
     });
   });
@@ -144,7 +144,7 @@ program
 function customHelp(text) {
   var textArray = text.split(/\r?\n/);
   textArray[3] = `  Config: ${path.normalize(
-    path.join(__dirname, '..', 'example', 'config.default.js')
+    path.join(__dirname, '..', 'example', 'config.default.js'),
   )}\n`;
   return textArray.join('\n');
 }

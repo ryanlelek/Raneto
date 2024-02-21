@@ -34,7 +34,7 @@ describe('#get_last_modified()', () => {
     const modified = await utils.getLastModified(
       config,
       contentProcessors.processMeta(content),
-      file_path
+      file_path,
     );
     expect(modified).to.be.equal('14th Sep 2016');
   });
@@ -45,10 +45,10 @@ describe('#get_last_modified()', () => {
     const modified = await utils.getLastModified(
       config,
       contentProcessors.processMeta(content),
-      file_path
+      file_path,
     );
     const fstime = moment(fs.lstatSync(file_path).mtime).format(
-      config.datetime_format
+      config.datetime_format,
     );
     expect(modified).to.be.equal(fstime);
   });

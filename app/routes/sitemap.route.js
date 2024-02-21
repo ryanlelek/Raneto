@@ -21,7 +21,7 @@ function route_sitemap(config) {
 
       // generate list urls
       var urls = filesPath.map(
-        (file) => `/${file.replace('.md', '').replace('\\', '/')}`
+        (file) => `/${file.replace('.md', '').replace('\\', '/')}`,
       );
 
       // create sitemap.xml
@@ -44,7 +44,7 @@ function route_sitemap(config) {
           lastmod: await utils.getLastModified(
             conf,
             contentProcessors.processMeta(content),
-            files[i]
+            files[i],
           ),
         });
       }
@@ -66,7 +66,7 @@ async function listFiles(dir) {
       const filePath = path.join(dir, entry);
       const isDir = (await fs.stat(filePath)).isDirectory();
       return isDir ? listFiles(filePath) : [filePath];
-    })
+    }),
   );
 
   // Return the flattened array

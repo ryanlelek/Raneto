@@ -13,7 +13,7 @@ var theme_dir = path.join(
   __dirname,
   '..',
   'node_modules',
-  '@raneto/theme-default'
+  '@raneto/theme-default',
 );
 var theme_name = 'dist';
 

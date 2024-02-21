@@ -20,7 +20,7 @@ async function handler(filePath, config) {
     const meta = contentProcessors.processMeta(file.toString('utf-8'));
     const content = contentProcessors.processVars(
       contentProcessors.stripMeta(file.toString('utf-8')),
-      config
+      config,
     );
 
     // Render Markdown
@@ -34,7 +34,7 @@ async function handler(filePath, config) {
     const title = meta.title ? meta.title : contentProcessors.slugToTitle(slug);
     const excerpt = _s.prune(
       _s.stripTags(_s.unescapeHTML(body)),
-      config.excerpt_length || 400
+      config.excerpt_length || 400,
     );
 
     return {

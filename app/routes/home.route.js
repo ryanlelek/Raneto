@@ -45,7 +45,7 @@ function route_home(config) {
           page.files = _.filter(page.files, (file) => file.show_on_home);
           return page;
         })
-        .value()
+        .value(),
     );
 
     return res.render('home', {
@@ -56,7 +56,7 @@ function route_home(config) {
       last_modified: await utils.getLastModified(
         config,
         config.home_meta,
-        template_filepath
+        template_filepath,
       ),
       lang: config.lang,
       loggedIn:

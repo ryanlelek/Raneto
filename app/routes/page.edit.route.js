@@ -37,7 +37,7 @@ function route_page_edit(config) {
       var meta = create_meta_info(
         body.meta_title,
         body.meta_description,
-        body.meta_sort
+        body.meta_sort,
       );
       return meta + body.content;
     }

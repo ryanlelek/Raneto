@@ -68,7 +68,7 @@ function route_wildcard(config) {
       if (
         file_path_orig.indexOf(
           suffix,
-          file_path_orig.length - suffix.length
+          file_path_orig.length - suffix.length,
         ) !== -1
       ) {
         // Edit Page
@@ -105,12 +105,11 @@ function route_wildcard(config) {
           .filter((page) => page.show_on_menu)
           .map((page) => {
             page.files = _.filter(page.files, (file) => {
-              return file.show_on_menu
+              return file.show_on_menu;
             });
             return page;
           })
-          .value()
-
+          .value(),
       );
 
       var loggedIn =

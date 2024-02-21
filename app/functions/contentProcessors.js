@@ -100,7 +100,7 @@ function processVars(markdownContent, config) {
     config.variables.forEach((v) => {
       markdownContent = markdownContent.replace(
         new RegExp(`%${v.name}%`, 'g'),
-        v.content
+        v.content,
       );
     });
   }

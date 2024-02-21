@@ -16,7 +16,7 @@ function build_nested_pages(pages) {
 
 function find_by_slug(pages, page) {
   return pages.find(
-    (element) => element.slug === page.slug.split('/').slice(0, -1).join('/')
+    (element) => element.slug === page.slug.split('/').slice(0, -1).join('/'),
   );
 }
 

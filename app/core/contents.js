@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { glob } = require('glob')
+const { glob } = require('glob');
 const _ = require('underscore');
 const _s = require('underscore.string');
 const yaml = require('js-yaml');
@@ -29,8 +29,8 @@ async function handler(activePageSlug, config) {
 
   const results = await Promise.all(
     files.map((filePath) =>
-      processFile(config, activePageSlug, contentDir, filePath)
-    )
+      processFile(config, activePageSlug, contentDir, filePath),
+    ),
   );
 
   for (const result of results) {
@@ -70,7 +70,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
 
     const ignoreExists = await fs.lstat(ignoreFile).then(
       (stat) => stat.isFile(),
-      () => {}
+      () => {},
     );
     if (ignoreExists) {
       if (config.debug) {
@@ -83,10 +83,10 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
     let dirMetadata = {};
     try {
       const metaFile = await fs.readFile(
-        path.join(contentDir, shortPath, 'meta')
+        path.join(contentDir, shortPath, 'meta'),
       );
       dirMetadata = contentProcessors.cleanObjectStrings(
-        yaml.load(metaFile.toString('utf-8'))
+        yaml.load(metaFile.toString('utf-8')),
       );
     } catch (e) {
       if (config.debug) {
@@ -97,7 +97,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
     if (category_sort && !dirMetadata.sort) {
       try {
         const sortFile = await fs.readFile(
-          path.join(contentDir, shortPath, 'sort')
+          path.join(contentDir, shortPath, 'sort'),
         );
         sort = parseInt(sortFile.toString('utf-8'), 10);
       } catch (e) {

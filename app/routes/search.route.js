@@ -25,7 +25,7 @@ function route_search(config) {
       searchResults = await searchHandler(sanitizedQuery, config);
       pageListSearch = remove_image_content_directory(
         config,
-        await contentsHandler(null, config)
+        await contentsHandler(null, config),
       );
     } catch (e) {
       // Continue with defaults of empty arrays
