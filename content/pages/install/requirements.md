@@ -4,8 +4,8 @@ Sort: 1
 ---
 
 To run Raneto you need to have [Node.js](https://nodejs.org)
-- **v20.x.x** (or later)
-- **v18.x.x** (LTS)
+- **v21.x.x** (or later)
+- **v20.x.x** (LTS)
 
 Please use the latest version available of the above major Node.js releases to ensure you have the latest security fixes!  
 

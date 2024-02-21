@@ -41,8 +41,8 @@
     "prettier:fix": "prettier --write bin/* app/**/*.js config/*.js test/*.js server.js app/translations/*json"
   },
   "engines": {
-    "node": ">=18.15.0",
-    "npm": ">=9.5.0"
+    "node": ">=18.19.1",
+    "npm": ">=10.2.4"
   },
   "prettier": {
     "singleQuote": true,
