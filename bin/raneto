@@ -26,7 +26,7 @@ var pm2 = require('pm2');
 
 // Modules
 var path = require('path');
-var program = require('commander');
+var { program } = require('commander');
 var Tail = require('tail').Tail;
 var pkg = require('../package.json');
 
