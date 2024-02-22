@@ -1,6 +1,12 @@
 
 # Raneto Changelog
 
+2024.02.22 / v0.17.8
+====================
+  * **[New]** ShowOnMenu by @mgdesign #388
+  * **[Misc]** Upgrading to latest Node.js LTS v18.x and v20.x
+  * **[Misc]** Linting / Prettier
+
 2024.02.21 / v0.17.7
 ====================
   * **[Fix]** Markdown content parser/sanitization (https://github.com/ryanlelek/Raneto/commit/863aaf5095010e1013715e16e4fd474166c2591a)
