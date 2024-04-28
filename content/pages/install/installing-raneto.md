@@ -5,7 +5,7 @@ Sort: 2
 
 Make sure you have met the [minimum requirements](%base_url%/install/requirements) then install Raneto:
 
-**Note:** It is recommended to create a new Git repository to store your documentation files and then install Raneto as a dependency into it. See the [example directory](https://github.com/ryanlelek/Raneto/tree/master/example) to see how this is done.
+**Note:** It is recommended to create a new Git repository to store your documentation files and then install Raneto as a dependency into it. See the [example directory](https://github.com/ryanlelek/Raneto/tree/main/example) to see how this is done.
 
 1. Switch to your existing or new project directory.
 2. Add Raneto to your project via NPM's package.json file or downloading the latest version from the [releases page](https://github.com/ryanlelek/Raneto/releases)

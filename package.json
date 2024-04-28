@@ -26,7 +26,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.githubusercontent.com/ryanlelek/Raneto/master/LICENSE"
+      "url": "https://raw.githubusercontent.com/ryanlelek/Raneto/main/LICENSE"
     }
   ],
   "bin": "./bin/raneto",
@@ -41,8 +41,8 @@
     "prettier:fix": "prettier --write bin/* app/**/*.js config/*.js test/*.js server.js app/translations/*json"
   },
   "engines": {
-    "node": ">=18.19.1",
-    "npm": ">=10.2.4"
+    "node": ">=20.12.2",
+    "npm": ">=10.5.0"
   },
   "prettier": {
     "singleQuote": true,

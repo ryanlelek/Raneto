@@ -58,10 +58,10 @@ Heroku will assign you a random subdomain that your app will be available at.
 
 Next we need to "push" our Git repository to Heroku by running:
 
-    $ git push heroku master
+    $ git push heroku main
 
 You should see Heroku go through its deployment steps and successfully deploy your app.  
-Note that you will need to run the `git push heroku master` command after your commit changes every time you want to publish your Raneto site.
+Note that you will need to run the `git push heroku main` command after your commit changes every time you want to publish your Raneto site.
 
 Finally we just need to make sure that we have one dyno running our `web` process.  
 This command only needs to be run this one time.  

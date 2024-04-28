@@ -1,7 +1,7 @@
 Raneto [![Node.js CI](https://github.com/ryanlelek/Raneto/actions/workflows/node.js.yml/badge.svg)](https://github.com/ryanlelek/Raneto/actions/workflows/node.js.yml)
 ======
 
-[![Raneto Logo](https://raw.githubusercontent.com/ryanlelek/Raneto/master/logo/logo_readme.png)](https://raneto.com/)
+[![Raneto Logo](https://raw.githubusercontent.com/ryanlelek/Raneto/main/logo/logo_readme.png)](https://raneto.com/)
 
 [Raneto](https://raneto.com) is a free, open, simple Markdown powered knowledge base for Node.js.
 [Find out more &rarr;](https://docs.raneto.com/what-is-raneto)
@@ -66,7 +66,7 @@ Links
 - [Configuration](https://docs.raneto.com/usage/configuration)
 - [Production Notes](https://docs.raneto.com/install/production-notes)
 - [Deploying to Heroku](https://docs.raneto.com/tutorials/deploying-raneto-to-heroku)
-- [Contributing](https://github.com/ryanlelek/Raneto/blob/master/CONTRIBUTE.md)
+- [Contributing](https://github.com/ryanlelek/Raneto/blob/main/CONTRIBUTE.md)
 
 Showcase
 --------
@@ -90,4 +90,4 @@ Credits
 - Raneto was created by [Gilbert Pellegrom](https://gilbitron.me)
 - Maintained by [Ryan Lelek](https://www.ryanlelek.com) from [AnsibleTutorials.com](https://www.ansibletutorials.com)
 - Logo by [@mmamrila](https://github.com/mmamrila)
-- Released under the [MIT license](https://github.com/ryanlelek/Raneto/blob/master/LICENSE)
+- Released under the [MIT license](https://github.com/ryanlelek/Raneto/blob/main/LICENSE)

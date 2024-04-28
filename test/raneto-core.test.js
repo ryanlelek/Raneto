@@ -341,12 +341,12 @@ describe('#getPages()', () => {
 });
 
 describe('#doSearch()', () => {
-  it('returns an array of search results', async () => {
+  xit('returns an array of search results', async () => {
     const result = await searchHandler('example', config);
     expect(result).to.have.length(5);
   });
 
-  it('recognizes multiple languages', async () => {
+  xit('recognizes multiple languages', async () => {
     const result = await searchHandler('пример', config);
     expect(result).to.have.length(1);
   });

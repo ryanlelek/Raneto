@@ -9,7 +9,7 @@ Thanks for your contributions!
 
 1) Fork the Raneto repository
 2) Make your edits
-3) Open a Pull Request against the `master` branch ([Here's How](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github#create-pull-request))
+3) Open a Pull Request against the `main` branch ([Here's How](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github#create-pull-request))
 4) Ensure all tests pass in the PR with CircleCI (and hopefully you added a few tests too?)
 5) Wait for review and discussion. It's ok to bump your request after a few days to remind us if you haven't gotten a response.
 6) Your code will be merged if accepted!

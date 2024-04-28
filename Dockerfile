@@ -1,4 +1,4 @@
-FROM node:20.11.1-alpine
+FROM node:20.12.2-alpine
 
 EXPOSE 3000
 ENV HOST 0.0.0.0
