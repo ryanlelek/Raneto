@@ -1,5 +1,5 @@
 // Modules
-// var validator = require('validator');
+// import validator from 'validator';
 
 // Sanitize Content
 // This will disallow <script> and <style> embeds
@@ -22,4 +22,4 @@ function sanitize_markdown(str) {
 }
 
 // Exports
-module.exports = exports = sanitize_markdown;
+export default sanitize_markdown;

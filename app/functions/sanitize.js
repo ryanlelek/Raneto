@@ -1,8 +1,8 @@
 // Modules
-var validator = require('validator');
+import validator from 'validator';
 
 // Settings
-var invalidChars = '&\'"/><';
+const invalidChars = '&\'"/><';
 
 // TODO: Add Test
 function sanitizer(str) {
@@ -13,4 +13,4 @@ function sanitizer(str) {
 }
 
 // Exports
-module.exports = exports = sanitizer;
+export default sanitizer;

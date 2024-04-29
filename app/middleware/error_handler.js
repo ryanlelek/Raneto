@@ -1,7 +1,7 @@
 // Error-Handling Middleware
 function handler(config) {
   return function (err, req, res) {
-    var status = err.status || 500;
+    const status = err.status || 500;
 
     res.status(status);
     res.render('error', {
@@ -19,4 +19,4 @@ function handler(config) {
 }
 
 // Exports
-module.exports = handler;
+export default handler;

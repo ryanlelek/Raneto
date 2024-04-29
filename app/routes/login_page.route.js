@@ -11,4 +11,4 @@ function route_login_page(config) {
 }
 
 // Exports
-module.exports = route_login_page;
+export default route_login_page;

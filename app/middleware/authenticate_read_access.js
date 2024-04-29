@@ -24,4 +24,4 @@ function middleware_authenticate_read_access(config) {
 }
 
 // Exports
-module.exports = middleware_authenticate_read_access;
+export default middleware_authenticate_read_access;

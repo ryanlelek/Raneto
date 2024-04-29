@@ -1,12 +1,12 @@
 // Modules
-var fs = require('fs');
-var get_filepath = require('../functions/get_filepath.js');
+import fs from 'node:fs';
+import get_filepath from '../functions/get_filepath.js';
 
 function route_page_create(config) {
   return function (req, res) {
     // Generate filepath
     // Sanitized within function
-    var filepath = get_filepath({
+    const filepath = get_filepath({
       content: config.content_dir,
       category: req.body.category,
       filename: `${req.body.name}.md`,
@@ -36,4 +36,4 @@ function route_page_create(config) {
 }
 
 // Exports
-module.exports = route_page_create;
+export default route_page_create;

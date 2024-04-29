@@ -1,40 +1,40 @@
 // Modules
-var path = require('path');
-var fs = require('fs-extra');
-var sm = require('sitemap');
-var _ = require('underscore');
-const contentProcessors = require('../functions/contentProcessors');
-const utils = require('../core/utils');
+import path from 'node:path';
+import fs from 'fs-extra';
+import sm from 'sitemap';
+import _ from 'underscore';
+import content_processors from '../functions/contentProcessors.js';
+import utils from '../core/utils.js';
 
 function route_sitemap(config) {
   return async function (req, res, next) {
-    var hostname = config.hostname || req.headers.host;
-    var content_dir = path.normalize(config.content_dir);
+    const hostname = config.hostname || req.headers.host;
+    const content_dir = path.normalize(config.content_dir);
 
     // get list md files
     try {
-      var files = await listFiles(content_dir);
+      const _files = await listFiles(content_dir);
 
-      files = _.filter(files, (file) => file.substr(-3) === '.md');
+      const files = _.filter(_files, (file) => file.substr(-3) === '.md');
 
-      var filesPath = files.map((file) => file.replace(content_dir, ''));
+      const filesPath = files.map((file) => file.replace(content_dir, ''));
 
       // generate list urls
-      var urls = filesPath.map(
+      const urls = filesPath.map(
         (file) => `/${file.replace('.md', '').replace('\\', '/')}`,
       );
 
       // create sitemap.xml
       // TODO: Make protocol dynamic
-      var sitemap = sm.createSitemap({
+      const sitemap = sm.createSitemap({
         hostname: `http://${hostname}`,
         cacheTime: 600000,
       });
 
-      for (var i = 0, len = urls.length; i < len; i++) {
-        var content = await fs.readFile(files[i], 'utf8');
+      for (let i = 0, len = urls.length; i < len; i++) {
+        const content = await fs.readFile(files[i], 'utf8');
         // Need to override the datetime format for sitemap
-        var conf = {
+        const conf = {
           datetime_format: 'YYYY-MM-DD',
         };
         sitemap.add({
@@ -43,7 +43,7 @@ function route_sitemap(config) {
           priority: 0.8,
           lastmod: await utils.getLastModified(
             conf,
-            contentProcessors.processMeta(content),
+            content_processors.processMeta(content),
             files[i],
           ),
         });
@@ -74,4 +74,4 @@ async function listFiles(dir) {
 }
 
 // Exports
-module.exports = route_sitemap;
+export default route_sitemap;

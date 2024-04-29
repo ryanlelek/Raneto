@@ -1,11 +1,11 @@
-const path = require('path');
-const fs = require('fs-extra');
-const { glob } = require('glob');
-const _ = require('underscore');
-const _s = require('underscore.string');
-const yaml = require('js-yaml');
-const utils = require('./utils');
-const contentProcessors = require('../functions/contentProcessors');
+import path from 'node:path';
+import fs from 'fs-extra';
+import { glob } from 'glob';
+import _ from 'underscore';
+import _s from 'underscore.string';
+import yaml from 'js-yaml';
+import utils from './utils.js';
+import content_processors from '../functions/contentProcessors.js';
 
 async function handler(activePageSlug, config) {
   activePageSlug = activePageSlug || '';
@@ -85,7 +85,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
       const metaFile = await fs.readFile(
         path.join(contentDir, shortPath, 'meta'),
       );
-      dirMetadata = contentProcessors.cleanObjectStrings(
+      dirMetadata = content_processors.cleanObjectStrings(
         yaml.load(metaFile.toString('utf-8')),
       );
     } catch (e) {
@@ -120,7 +120,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
         ? dirMetadata.show_on_menu === 'true'
         : config.show_on_menu_default,
       active: activePageSlug.startsWith(`/${fileSlug}`),
-      class: `category-${contentProcessors.cleanString(fileSlug)}`,
+      class: `category-${content_processors.cleanString(fileSlug)}`,
       sort: dirMetadata.sort || sort,
       description: dirMetadata.description || '',
       files: [],
@@ -139,7 +139,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
 
       slug = slug.replace('.md', '').trim();
 
-      const meta = contentProcessors.processMeta(file.toString('utf-8'));
+      const meta = content_processors.processMeta(file.toString('utf-8'));
 
       if (page_sort_meta && meta[page_sort_meta]) {
         pageSort = parseInt(meta[page_sort_meta], 10);
@@ -147,7 +147,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
 
       return {
         slug,
-        title: meta.title ? meta.title : contentProcessors.slugToTitle(slug),
+        title: meta.title ? meta.title : content_processors.slugToTitle(slug),
         show_on_home: meta.show_on_home
           ? meta.show_on_home === 'true'
           : config.show_on_home_default,
@@ -166,5 +166,4 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
   }
 }
 
-exports.default = handler;
-module.exports = exports.default;
+export default handler;

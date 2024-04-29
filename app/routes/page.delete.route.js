@@ -1,14 +1,14 @@
 // Modules
-var fs = require('fs-extra');
-var get_filepath = require('../functions/get_filepath.js');
+import fs from 'fs-extra';
+import get_filepath from '../functions/get_filepath.js';
 
 function route_page_delete(config) {
   return async function (req, res) {
-    var file_category;
-    var file_name;
+    let file_category = '';
+    let file_name = '';
 
     // Handle category in file path
-    var req_file = req.body.file.split('/');
+    const req_file = req.body.file.split('/');
     if (req_file.length > 2) {
       file_category = req_file[1];
       file_name = req_file[2];
@@ -18,7 +18,7 @@ function route_page_delete(config) {
 
     // Generate filepath
     // Sanitized within function
-    var filepath = get_filepath({
+    let filepath = get_filepath({
       content: config.content_dir,
       category: file_category,
       filename: file_name,
@@ -49,4 +49,4 @@ function route_page_delete(config) {
 }
 
 // Exports
-module.exports = route_page_delete;
+export default route_page_delete;

@@ -1,19 +1,18 @@
-const fs = require('fs');
-const path = require('path');
-const chai = require('chai');
-
-const { expect } = chai;
-const moment = require('moment');
-
-const build_nested_pages = require('../app/functions/build_nested_pages.js');
-const contentProcessors = require('../app/functions/contentProcessors');
-
-const contentsHandler = require('../app/core/contents');
-const utils = require('../app/core/utils');
+// Modules
+import fs from 'node:fs';
+import path from 'node:path';
+import { expect } from 'chai';
+import * as chai from 'chai';
+import moment from 'moment';
+import build_nested_pages from '../app/functions/build_nested_pages.js';
+import content_processors from '../app/functions/contentProcessors.js';
+import contents_handler from '../app/core/contents.js';
+import utils from '../app/core/utils.js';
 
 chai.should();
 chai.config.truncateThreshold = 0;
 
+const __dirname = import.meta.dirname;
 const config = {
   base_url: '',
   image_url: '/images',
@@ -33,7 +32,7 @@ describe('#get_last_modified()', () => {
     const content = fs.readFileSync(file_path, 'utf8');
     const modified = await utils.getLastModified(
       config,
-      contentProcessors.processMeta(content),
+      content_processors.processMeta(content),
       file_path,
     );
     expect(modified).to.be.equal('14th Sep 2016');
@@ -44,7 +43,7 @@ describe('#get_last_modified()', () => {
     const content = fs.readFileSync(file_path, 'utf8');
     const modified = await utils.getLastModified(
       config,
-      contentProcessors.processMeta(content),
+      content_processors.processMeta(content),
       file_path,
     );
     const fstime = moment(fs.lstatSync(file_path).mtime).format(
@@ -56,7 +55,7 @@ describe('#get_last_modified()', () => {
 
 describe('#build_nested_pages()', () => {
   it('builds tree of pages', async () => {
-    const pages = await contentsHandler(null, config);
+    const pages = await contents_handler(null, config);
     const result = build_nested_pages(pages);
 
     expect(result.length).to.be.equal(2);

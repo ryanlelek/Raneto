@@ -6,15 +6,12 @@
     "node": true,
     "es6": true
   },
-  "extends": [
-    "prettier"
-  ],
+  "extends": ["eslint:recommended"],
   "parserOptions": {
-    "ecmaVersion": "2022"
+    "ecmaVersion": "2022",
+    "sourceType": "module"
   },
-  "plugins": [
-    "promise"
-  ],
+  "plugins": ["promise", "unused-imports"],
   "rules": {
     "camelcase": 0,
     "curly": 2,
@@ -27,11 +24,12 @@
     "no-irregular-whitespace": 2,
     "no-multi-spaces": 0,
     "padded-blocks": 0,
-    "quotes": ["error","single"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "semi": 0,
     "no-path-concat": 1,
     "no-undef": 2,
+    "unused-imports/no-unused-imports": "error",
     "no-unused-vars": 2,
-    "no-var": 0
+    "no-var": 1
   }
 }

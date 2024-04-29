@@ -19,17 +19,18 @@
 // by looping through the output but is not developed/tested
 
 // Hide Keymetrics banner on first time PM2 is required
-// var consoleLog = console.log;
+// const consoleLog = console.log;
 // console.log    = function () {};
-var pm2 = require('pm2');
+import pm2 from 'pm2';
 // console.log    = consoleLog;
 
 // Modules
-var path = require('path');
-var { program } = require('commander');
-var Tail = require('tail').Tail;
-var pkg = require('../package.json');
+import path from 'node:path';
+import { program } from 'commander';
+import { Tail } from 'tail';
+import pkg from './package.json' assert { type: 'json' };
 
+const __dirname = import.meta.dirname;
 process.chdir(path.normalize(path.join(__dirname, '..')));
 
 program.version(pkg.version);
@@ -120,10 +121,10 @@ program
           console.log('Raneto not running');
           process.exit(0);
         } else {
-          var log = new Tail(list[0].pm2_env.pm_out_log_path, '\n', {
+          const log = new Tail(list[0].pm2_env.pm_out_log_path, '\n', {
             interval: 500,
           });
-          var error_log = new Tail(list[0].pm2_env.pm_err_log_path, '\n', {
+          const error_log = new Tail(list[0].pm2_env.pm_err_log_path, '\n', {
             interval: 500,
           });
           console.log('##### WARNING! THIS FEATURE IS UNTESTED #####');
@@ -142,7 +143,7 @@ program
 
 // Show the config file location in the help
 function customHelp(text) {
-  var textArray = text.split(/\r?\n/);
+  const textArray = text.split(/\r?\n/);
   textArray[3] = `  Config: ${path.normalize(
     path.join(__dirname, '..', 'example', 'config.default.js'),
   )}\n`;

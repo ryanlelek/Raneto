@@ -11,18 +11,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var express = require('express');
+import express from 'express';
 
-const fetch = import('node-fetch');
+import fetch from 'node-fetch';
 
 // [START setup]
-var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+import passport from 'passport';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 function extractProfile(profile) {
-  var imageUrl = '';
-  var domain = '';
-  var email = '';
+  let imageUrl = '';
+  let domain = '';
+  let email = '';
   if (profile.photos && profile.photos.length) {
     imageUrl = profile.photos[0].value;
   }
@@ -127,9 +127,9 @@ function router(config) {
   });
   // [END setup]
 
-  var router = express.Router();
+  const router = express.Router();
 
-  var scopes = ['email', 'profile'];
+  const scopes = ['email', 'profile'];
 
   if (config.google_group_restriction.enabled) {
     scopes.push(
@@ -180,7 +180,7 @@ function router(config) {
       if (config.oauth2.validateHostedDomain) {
         req.session.allowedDomain = config.oauth2.hostedDomain;
       }
-      var redirect = req.session.oauth2return || '/';
+      const redirect = req.session.oauth2return || '/';
       delete req.session.oauth2return;
       res.redirect(redirect);
     },
@@ -198,7 +198,7 @@ function router(config) {
   return router;
 }
 
-module.exports = {
+export default {
   extractProfile,
   router,
   required: authRequired,

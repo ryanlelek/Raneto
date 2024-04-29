@@ -1,16 +1,15 @@
-const path = require('path');
-const chai = require('chai');
-
-const { expect } = chai;
-const contentProcessors = require('../app/functions/contentProcessors');
-
-const searchHandler = require('../app/core/search');
-const pageHandler = require('../app/core/page');
-const contentsHandler = require('../app/core/contents');
+import path from 'node:path';
+import { expect } from 'chai';
+import * as chai from 'chai';
+import content_processors from '../app/functions/contentProcessors.js';
+import search_handler from '../app/core/search.js';
+import page_handler from '../app/core/page.js';
+import contents_handler from '../app/core/contents.js';
 
 chai.should();
 chai.config.truncateThreshold = 0;
 
+const __dirname = import.meta.dirname;
 const config = {
   base_url: '',
   image_url: '/images',
@@ -27,29 +26,29 @@ const config = {
 
 describe('#cleanString()', () => {
   it('converts "Hello World" into "hello-world"', () => {
-    contentProcessors.cleanString('Hello World').should.equal('hello-world');
+    content_processors.cleanString('Hello World').should.equal('hello-world');
   });
 
   it('converts "/some/directory-example/hello/" into "some-directory-example-hello"', () => {
-    contentProcessors
+    content_processors
       .cleanString('/some/directory-example/hello/')
       .should.equal('some-directory-example-hello');
   });
 
   it('converts "with trailing space " into "with-trailing-space"', () => {
-    contentProcessors
+    content_processors
       .cleanString('with trailing space ')
       .should.equal('with-trailing-space');
   });
 
   it('converts "also does underscores" into "also_does_underscores"', () => {
-    contentProcessors
+    content_processors
       .cleanString('also does underscores', true)
       .should.equal('also_does_underscores');
   });
 
   it('converts "/some/directory-example/underscores/" into "some_directory_example_underscores"', () => {
-    contentProcessors
+    content_processors
       .cleanString('/some/directory-example/underscores/', true)
       .should.equal('some_directory_example_underscores');
   });
@@ -57,11 +56,11 @@ describe('#cleanString()', () => {
 
 describe('#slugToTitle()', () => {
   it('converts "hello-world" into "Hello World"', () => {
-    contentProcessors.slugToTitle('hello-world').should.equal('Hello World');
+    content_processors.slugToTitle('hello-world').should.equal('Hello World');
   });
 
   it('converts "dir/some-example-file.md" into "Some Example File"', () => {
-    contentProcessors
+    content_processors
       .slugToTitle('dir/some-example-file.md')
       .should.equal('Some Example File');
   });
@@ -70,7 +69,7 @@ describe('#slugToTitle()', () => {
 describe('#processMeta()', () => {
   it('returns array of meta values', () => {
     // TODO: DEPRECATED Non-YAML
-    const result = contentProcessors.processMeta(
+    const result = content_processors.processMeta(
       '/*\n' +
         'Title: This is a title\n' +
         'Description: This is a description\n' +
@@ -85,13 +84,13 @@ describe('#processMeta()', () => {
   });
 
   it('returns an empty array if no meta specified', () => {
-    const result = contentProcessors.processMeta('no meta here');
+    const result = content_processors.processMeta('no meta here');
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });
 
   it('returns proper meta from file starting with a BOM character', async () => {
-    const result = await pageHandler(
+    const result = await page_handler(
       path.join(config.content_dir, 'page-with-bom.md'),
       config,
     );
@@ -99,7 +98,7 @@ describe('#processMeta()', () => {
   });
 
   it('returns array of meta values (YAML)', () => {
-    const result = contentProcessors.processMeta(
+    const result = content_processors.processMeta(
       '---\n' +
         'Title: This is a title\n' +
         'Description: This is a description\n' +
@@ -114,7 +113,7 @@ describe('#processMeta()', () => {
   });
 
   it('returns proper meta from file starting with a BOM character (YAML)', async () => {
-    const result = await pageHandler(
+    const result = await page_handler(
       path.join(config.content_dir, 'page-with-bom-yaml.md'),
       config,
     );
@@ -125,7 +124,7 @@ describe('#processMeta()', () => {
 describe('#stripMeta()', () => {
   it('strips meta comment block', () => {
     // TODO: DEPRECATED Non-YAML
-    const result = contentProcessors.stripMeta(
+    const result = content_processors.stripMeta(
       '/*\n' +
         'Title: This is a title\n' +
         'Description: This is a description\n' +
@@ -137,7 +136,7 @@ describe('#stripMeta()', () => {
   });
 
   it('strips yaml meta comment block with horizontal rule in content', () => {
-    const result = contentProcessors.stripMeta(
+    const result = content_processors.stripMeta(
       '---\n' +
         'Title: + This is a title\n' +
         '---\n' +
@@ -147,18 +146,18 @@ describe('#stripMeta()', () => {
   });
 
   it('leaves content if no meta comment block', () => {
-    const result = contentProcessors.stripMeta('This is the content');
+    const result = content_processors.stripMeta('This is the content');
     result.should.equal('This is the content');
   });
 
   it('leaves content with horizontal rule if no meta comment block', () => {
-    const result = contentProcessors.stripMeta('This is the content\n---');
+    const result = content_processors.stripMeta('This is the content\n---');
     result.should.equal('This is the content\n---');
   });
 
   it('only strips the first comment block', () => {
     // TODO: DEPRECATED Non-YAML
-    const result = contentProcessors.stripMeta(
+    const result = content_processors.stripMeta(
       '/*\n' +
         'Title: This is a title\n' +
         'Description: This is a description\n' +
@@ -177,7 +176,7 @@ describe('#stripMeta()', () => {
 describe('#processVars()', () => {
   it('replaces config vars in Markdown content', () => {
     const config = { base_url: '/base/url' };
-    contentProcessors
+    content_processors
       .processVars('This is some Markdown with a %base_url%.', config)
       .should.equal('This is some Markdown with a /base/url.');
   });
@@ -191,7 +190,7 @@ describe('#processVars()', () => {
         },
       ],
     };
-    contentProcessors
+    content_processors
       .processVars('This is some Markdown with a %test_variable%.', config)
       .should.equal('This is some Markdown with a Test Variable.');
   });
@@ -199,7 +198,7 @@ describe('#processVars()', () => {
 
 describe('#getPage()', () => {
   it('returns an array of values for a given page', async () => {
-    const result = await pageHandler(
+    const result = await page_handler(
       path.join(config.content_dir, 'example-page.md'),
       config,
     );
@@ -210,7 +209,7 @@ describe('#getPage()', () => {
   });
 
   it('returns null if no page found', async () => {
-    const result = await pageHandler(
+    const result = await page_handler(
       path.join(config.content_dir, 'nonexistent-page.md'),
       config,
     );
@@ -221,7 +220,7 @@ describe('#getPage()', () => {
 
 describe('#getPages()', () => {
   it('returns an array of categories and pages', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[0]).to.have.property('is_index', true);
     expect(result[0].files[0]).to.have.property(
       'title',
@@ -232,7 +231,7 @@ describe('#getPages()', () => {
   });
 
   it('marks activePageSlug as active', async () => {
-    const result = await contentsHandler('/special-chars', config);
+    const result = await contents_handler('/special-chars', config);
     expect(result[0]).to.have.property('active', true);
     expect(result[0].files[0]).to.have.property('active', true);
     expect(result[1]).to.have.property('active', false);
@@ -240,27 +239,27 @@ describe('#getPages()', () => {
   });
 
   it('adds show_on_home property to directory', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[0]).to.have.property('show_on_home', true);
   });
 
   it('adds show_on_home property to files', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[0].files[0]).to.have.property('show_on_home', true);
   });
 
   it('loads meta show_on_home value from directory', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[3]).to.have.property('show_on_home', false);
   });
 
   it('loads meta show_on_home value from file', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[0].files[4]).to.have.property('show_on_home', false);
   });
 
   it('applies show_on_home_default in absence of meta for directories', async () => {
-    const result = await contentsHandler(
+    const result = await contents_handler(
       null,
       Object.assign(config, {
         show_on_home_default: false,
@@ -270,7 +269,7 @@ describe('#getPages()', () => {
   });
 
   it('applies show_on_home_default in absence of meta for files', async () => {
-    const result = await contentsHandler(
+    const result = await contents_handler(
       null,
       Object.assign(config, {
         show_on_home_default: false,
@@ -280,7 +279,7 @@ describe('#getPages()', () => {
   });
 
   it('category index always shows on home', async () => {
-    const result = await contentsHandler(
+    const result = await contents_handler(
       null,
       Object.assign(config, {
         show_on_home_default: false,
@@ -290,27 +289,27 @@ describe('#getPages()', () => {
   });
 
   it('adds show_on_menu property to directory', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[0]).to.have.property('show_on_menu', true);
   });
 
   it('adds show_on_menu property to files', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[0].files[0]).to.have.property('show_on_menu', true);
   });
 
   it('loads meta show_on_menu value from directory', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[3]).to.have.property('show_on_menu', false);
   });
 
   it('loads meta show_on_menu value from file', async () => {
-    const result = await contentsHandler(null, config);
+    const result = await contents_handler(null, config);
     expect(result[0].files[4]).to.have.property('show_on_menu', false);
   });
 
   it('applies show_on_menu_default in absence of meta for directories', async () => {
-    const result = await contentsHandler(
+    const result = await contents_handler(
       null,
       Object.assign(config, {
         show_on_menu_default: false,
@@ -320,7 +319,7 @@ describe('#getPages()', () => {
   });
 
   it('applies show_on_menu_default in absence of meta for files', async () => {
-    const result = await contentsHandler(
+    const result = await contents_handler(
       null,
       Object.assign(config, {
         show_on_menu_default: false,
@@ -330,7 +329,7 @@ describe('#getPages()', () => {
   });
 
   it('category main always shows on menu', async () => {
-    const result = await contentsHandler(
+    const result = await contents_handler(
       null,
       Object.assign(config, {
         show_on_menu_default: false,
@@ -342,17 +341,17 @@ describe('#getPages()', () => {
 
 describe('#doSearch()', () => {
   xit('returns an array of search results', async () => {
-    const result = await searchHandler('example', config);
+    const result = await search_handler('example', config);
     expect(result).to.have.length(5);
   });
 
   xit('recognizes multiple languages', async () => {
-    const result = await searchHandler('пример', config);
+    const result = await search_handler('пример', config);
     expect(result).to.have.length(1);
   });
 
   it('returns an empty array if nothing found', async () => {
-    const result = await searchHandler('qwerty', config);
+    const result = await search_handler('qwerty', config);
     /* eslint-disable no-unused-expressions */
     expect(result).to.be.empty;
   });

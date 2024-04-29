@@ -6,9 +6,11 @@ RELEASE TBD / v0.18.0
 This is a modernization refactor.
   * **[Breaking]** Minimum Node.js is v20.x LTS
   * **[Breaking]** Rename branch to "main" from "master"
+  * **[Breaking]** Packages removed: `pm2`, `commander`, `tail`, `serve-favicon`
   * **[Breaking]** `bin/raneto` removed as it is out of scope. Please do not use PM2 and instead use `npm start`, containers, systemd, etc.
-  * **[Misc]** Move to ESModules
+  * **[BREAKING]** Modernizing, moving to ESModules, `require => import`, `const/let`, `node:` import prefix, `module.exports => export`, `'use strict';` etc.
   * **[Misc]** Dependency upgrades
+  * **[Fix]** Windows support (mainline versions only)
   * STRETCH CI GitHub Actions tests on branches/forks
   * STRETCH CI GitHub Actions container build
 

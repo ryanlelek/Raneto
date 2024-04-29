@@ -1,8 +1,9 @@
-const path = require('path');
-const fs = require('fs-extra');
-const _ = require('underscore');
-const _s = require('underscore.string');
-const yaml = require('js-yaml');
+// Modules
+import path from 'node:path';
+import fs from 'fs-extra';
+import _ from 'underscore';
+import _s from 'underscore.string';
+import yaml from 'js-yaml';
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
 // Look for the the following header formats at the beginning of the file:
@@ -131,7 +132,7 @@ async function extractDocument(contentDir, filePath, debug) {
   }
 }
 
-exports.default = {
+export default {
   cleanString,
   cleanObjectStrings,
   extractDocument,
@@ -140,4 +141,3 @@ exports.default = {
   processMeta,
   processVars,
 };
-module.exports = exports.default;

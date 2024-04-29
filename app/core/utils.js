@@ -1,5 +1,6 @@
-const fs = require('fs-extra');
-const moment = require('moment');
+// Modules
+import fs from 'fs-extra';
+import moment from 'moment';
 
 const normalizeDir = (dir) => dir.replace(/\\/g, '/');
 const getSlug = (filePath, contentDir) =>
@@ -13,10 +14,8 @@ async function getLastModified(config, meta, file_path) {
   return moment(mtime).format(config.datetime_format);
 }
 
-exports.default = {
+export default {
   normalizeDir,
   getLastModified,
   getSlug,
 };
-
-module.exports = exports.default;

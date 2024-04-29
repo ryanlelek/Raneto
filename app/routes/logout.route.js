@@ -7,4 +7,4 @@ function route_logout(config) {
 }
 
 // Exports
-module.exports = route_logout;
+export default route_logout;

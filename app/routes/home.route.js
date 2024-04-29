@@ -1,18 +1,17 @@
 // Modules
-var fs = require('fs-extra');
-var _ = require('underscore');
-var build_nested_pages = require('../functions/build_nested_pages.js');
-var get_filepath = require('../functions/get_filepath.js');
-var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
-
-const contentsHandler = require('../core/contents');
-const utils = require('../core/utils');
+import fs from 'fs-extra';
+import _ from 'underscore';
+import build_nested_pages from '../functions/build_nested_pages.js';
+import get_filepath from '../functions/get_filepath.js';
+import remove_image_content_directory from '../functions/remove_image_content_directory.js';
+import contents_handler from '../core/contents.js';
+import utils from '../core/utils.js';
 
 function route_home(config) {
   return async function (req, res, next) {
     // Generate filepath
     // Sanitized within function
-    var filepath = get_filepath({
+    let filepath = get_filepath({
       content: config.content_dir,
       filename: 'index',
     });
@@ -24,22 +23,22 @@ function route_home(config) {
     }
 
     // Otherwise, we're generating the home page listing
-    var suffix = 'edit';
+    const suffix = 'edit';
     if (filepath.indexOf(suffix, filepath.length - suffix.length) !== -1) {
       filepath = filepath.slice(0, -suffix.length - 1);
     }
 
     // Generate filepath
     // Sanitized within function
-    var template_filepath = get_filepath({
+    const template_filepath = get_filepath({
       content: [config.theme_dir, config.theme_name, 'templates'].join('/'),
       filename: 'home.html',
     });
 
     // Filter out the image content directory and items with show_on_home == false
-    var pageList = remove_image_content_directory(
+    const pageList = remove_image_content_directory(
       config,
-      _.chain(await contentsHandler('/index', config))
+      _.chain(await contents_handler('/index', config))
         .filter((page) => page.show_on_home)
         .map((page) => {
           page.files = _.filter(page.files, (file) => file.show_on_home);
@@ -72,4 +71,4 @@ function route_home(config) {
 }
 
 // Exports
-module.exports = route_home;
+export default route_home;

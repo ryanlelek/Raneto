@@ -1,15 +1,14 @@
 // Modules
-var path = require('path');
-var _ = require('underscore');
-var fs = require('fs-extra');
-const { marked } = require('marked');
-var toc = require('markdown-toc');
-var build_nested_pages = require('../functions/build_nested_pages.js');
-var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
-
-const contentProcessors = require('../functions/contentProcessors');
-const contentsHandler = require('../core/contents');
-const utils = require('../core/utils');
+import path from 'node:path';
+import _ from 'underscore';
+import fs from 'fs-extra';
+import { marked } from 'marked';
+import toc from 'markdown-toc';
+import build_nested_pages from '../functions/build_nested_pages.js';
+import remove_image_content_directory from '../functions/remove_image_content_directory.js';
+import content_processors from '../functions/contentProcessors.js';
+import contents_handler from '../core/contents.js';
+import utils from '../core/utils.js';
 
 function route_wildcard(config) {
   return async function (req, res, next) {
@@ -18,17 +17,17 @@ function route_wildcard(config) {
       return next();
     }
 
-    var suffix = 'edit';
-    var slug = req.params[0];
+    const suffix = 'edit';
+    let slug = req.params[0];
     if (slug === '/') {
       slug = '/index';
     }
 
     // Normalize and strip trailing slash
-    var file_path = path
+    let file_path = path
       .normalize(config.content_dir + slug)
       .replace(/\/$|\\$/g, '');
-    var file_path_orig = file_path;
+    const file_path_orig = file_path;
 
     // Remove "/edit" suffix
     if (file_path.indexOf(suffix, file_path.length - suffix.length) !== -1) {
@@ -51,18 +50,18 @@ function route_wildcard(config) {
     // Process Markdown files
     if (path.extname(file_path) === '.md') {
       // Meta
-      var meta = contentProcessors.processMeta(content);
+      const meta = content_processors.processMeta(content);
       meta.custom_title = meta.title;
       if (!meta.title) {
-        meta.title = contentProcessors.slugToTitle(file_path);
+        meta.title = content_processors.slugToTitle(file_path);
       }
 
       // Content
-      content = contentProcessors.stripMeta(content);
-      content = contentProcessors.processVars(content, config);
+      content = content_processors.stripMeta(content);
+      content = content_processors.processVars(content, config);
 
-      var template = meta.template || 'page';
-      var render = template;
+      const template = meta.template || 'page';
+      let render = template;
 
       // Check for "/edit" suffix
       if (
@@ -83,7 +82,10 @@ function route_wildcard(config) {
       } else {
         // Render Table of Contents
         if (config.table_of_contents) {
-          var tableOfContents = toc(content, config.table_of_contents_options);
+          const tableOfContents = toc(
+            content,
+            config.table_of_contents_options,
+          );
           if (tableOfContents.content) {
             content = `#### Table of Contents\n${tableOfContents.content}\n\n${content}`;
           }
@@ -99,9 +101,9 @@ function route_wildcard(config) {
         content = marked(content);
       }
 
-      var pageList = remove_image_content_directory(
+      const pageList = remove_image_content_directory(
         config,
-        _.chain(await contentsHandler(slug, config))
+        _.chain(await contents_handler(slug, config))
           .filter((page) => page.show_on_menu)
           .map((page) => {
             page.files = _.filter(page.files, (file) => {
@@ -112,12 +114,12 @@ function route_wildcard(config) {
           .value(),
       );
 
-      var loggedIn =
+      const loggedIn =
         config.authentication || config.authentication_for_edit
           ? req.session.loggedIn
           : false;
 
-      var canEdit = false;
+      let canEdit = false;
       if (config.authentication || config.authentication_for_edit) {
         canEdit = loggedIn && config.allow_editing;
       } else {
@@ -132,7 +134,7 @@ function route_wildcard(config) {
         current_url: `${req.protocol}://${req.get('host')}${
           config.path_prefix
         }${req.originalUrl}`,
-        body_class: `${template}-${contentProcessors.cleanString(slug)}`,
+        body_class: `${template}-${content_processors.cleanString(slug)}`,
         last_modified: await utils.getLastModified(config, meta, file_path),
         lang: config.lang,
         loggedIn,
@@ -144,4 +146,4 @@ function route_wildcard(config) {
 }
 
 // Exports
-module.exports = route_wildcard;
+export default route_wildcard;

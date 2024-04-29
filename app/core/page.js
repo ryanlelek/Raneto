@@ -1,9 +1,9 @@
-const path = require('path');
-const fs = require('fs-extra');
-const _s = require('underscore.string');
-const { marked } = require('marked');
-const utils = require('./utils');
-const contentProcessors = require('../functions/contentProcessors');
+import path from 'node:path';
+import fs from 'fs-extra';
+import _s from 'underscore.string';
+import { marked } from 'marked';
+import utils from './utils.js';
+import content_processors from '../functions/contentProcessors.js';
 
 async function handler(filePath, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
@@ -17,9 +17,9 @@ async function handler(filePath, config) {
     }
     slug = slug.replace('.md', '').trim();
 
-    const meta = contentProcessors.processMeta(file.toString('utf-8'));
-    const content = contentProcessors.processVars(
-      contentProcessors.stripMeta(file.toString('utf-8')),
+    const meta = content_processors.processMeta(file.toString('utf-8'));
+    const content = content_processors.processVars(
+      content_processors.stripMeta(file.toString('utf-8')),
       config,
     );
 
@@ -31,7 +31,9 @@ async function handler(filePath, config) {
       // headerIds: false,
     });
     const body = marked(content);
-    const title = meta.title ? meta.title : contentProcessors.slugToTitle(slug);
+    const title = meta.title
+      ? meta.title
+      : content_processors.slugToTitle(slug);
     const excerpt = _s.prune(
       _s.stripTags(_s.unescapeHTML(body)),
       config.excerpt_length || 400,
@@ -51,5 +53,4 @@ async function handler(filePath, config) {
   }
 }
 
-exports.default = handler;
-module.exports = exports.default;
+export default handler;

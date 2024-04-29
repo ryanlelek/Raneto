@@ -1,6 +1,6 @@
 function route_login(config) {
   return function (req, res) {
-    for (var i = 0; i < config.credentials.length; i++) {
+    for (let i = 0; i < config.credentials.length; i++) {
       if (
         req.body.username === config.credentials[i].username &&
         req.body.password === config.credentials[i].password
@@ -23,4 +23,4 @@ function route_login(config) {
 }
 
 // Exports
-module.exports = route_login;
+export default route_login;

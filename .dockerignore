@@ -1,6 +1,5 @@
 .git/
 .github/
-bin/
 deprecated/
 logo/
 node_modules/

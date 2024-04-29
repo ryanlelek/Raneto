@@ -1,23 +1,24 @@
 // Modules
-var path = require('path');
+import path from 'node:path';
 
 // Which Theme to Use?
 //
 // Local Directory Example (for development or custom themes)
-// var theme_dir = path.join(__dirname, 'themes');
-// var theme_name = 'my-theme-directory';
+// const theme_dir = path.join(__dirname, 'themes');
+// const theme_name = 'my-theme-directory';
 //
 // Themes from NPM
 // use "dist" as the theme name for modules (for now)
-var theme_dir = path.join(
+const __dirname = import.meta.dirname;
+const theme_dir = path.join(
   __dirname,
   '..',
   'node_modules',
   '@raneto/theme-default',
 );
-var theme_name = 'dist';
+const theme_name = 'dist';
 
-var config = {
+const config = {
   // Your site title (format: page_title - site_title)
   site_title: 'Raneto Docs',
 
@@ -171,4 +172,4 @@ var config = {
 };
 
 // Exports
-module.exports = config;
+export default config;

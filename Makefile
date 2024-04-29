@@ -25,7 +25,6 @@ delint:
 	# ESLint
 	./node_modules/.bin/eslint \
 		./app/**/*.js \
-		./bin/*       \
 		./test/*.js;
 
 .PHONY: mocha

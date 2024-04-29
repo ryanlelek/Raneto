@@ -1,16 +1,31 @@
-'use strict';
-
 // Modules
-var path = require('path');
-var express = require('express');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookie_parser = require('cookie-parser');
-var body_parser = require('body-parser');
-var moment = require('moment');
-var hogan = require('hogan-express');
-var session = require('express-session');
-var passport = require('passport');
+import path from 'node:path';
+import express from 'express';
+import logger from 'morgan';
+import cookie_parser from 'cookie-parser';
+import body_parser from 'body-parser';
+import moment from 'moment';
+import hogan from 'hogan-express';
+import session from 'express-session';
+import passport from 'passport';
+import language_load from './core/language.js';
+import mw_authenticate from './middleware/authenticate.js';
+import mw_always_auth from './middleware/always_authenticate.js';
+import mw_auth_readonly from './middleware/authenticate_read_access.js';
+import mw_error_handler from './middleware/error_handler.js';
+import mw_oauth2 from './middleware/oauth2.js';
+import route_login from './routes/login.route.js';
+import route_login_page from './routes/login_page.route.js';
+import route_logout from './routes/logout.route.js';
+import route_page_edit from './routes/page.edit.route.js';
+import route_page_delete from './routes/page.delete.route.js';
+import route_page_create from './routes/page.create.route.js';
+import route_category_create from './routes/category.create.route.js';
+import route_search from './routes/search.route.js';
+import route_home from './routes/home.route.js';
+import route_wildcard from './routes/wildcard.route.js';
+import route_sitemap from './routes/sitemap.route.js';
+const __dirname = import.meta.dirname;
 
 function initialize(config) {
   // Load Translations
@@ -18,7 +33,7 @@ function initialize(config) {
     config.locale = 'en';
   }
   if (!config.lang) {
-    config.lang = require('./translations/' + config.locale + '.json');
+    config.lang = language_load(config.locale);
   }
 
   // Content_Dir requires trailing slash
@@ -26,32 +41,21 @@ function initialize(config) {
     config.content_dir += path.sep;
   }
 
-  // Load Files
-  var authenticate = require('./middleware/authenticate.js')(config);
-  var always_authenticate = require('./middleware/always_authenticate.js')(
-    config,
-  );
-  var authenticate_read_access =
-    require('./middleware/authenticate_read_access.js')(config);
-  var error_handler = require('./middleware/error_handler.js')(config);
-  var oauth2 = require('./middleware/oauth2.js');
-  var route_login = require('./routes/login.route.js')(config);
-  var route_login_page = require('./routes/login_page.route.js')(config);
-  var route_logout = require('./routes/logout.route.js')(config);
-  var route_page_edit = require('./routes/page.edit.route.js')(config);
-  var route_page_delete = require('./routes/page.delete.route.js')(config);
-  var route_page_create = require('./routes/page.create.route.js')(config);
-  var route_category_create = require('./routes/category.create.route.js')(
-    config,
-  );
-  var route_search = require('./routes/search.route.js')(config);
-  var route_home = require('./routes/home.route.js')(config);
-  var route_wildcard = require('./routes/wildcard.route.js')(config);
-  var route_sitemap = require('./routes/sitemap.route.js')(config);
+  // Load Middleware
+  const authenticate = mw_authenticate(config);
+  const always_authenticate = mw_always_auth(config);
+  const authenticate_read_access = mw_auth_readonly(config);
+  const error_handler = mw_error_handler(config);
+
+  // Load Multiple-Use Pages
+  const route_search_init = route_search(config);
+  const route_home_init = route_home(config);
+  const route_wildcard_init = route_wildcard(config);
+  const route_sitemap_init = route_sitemap(config);
 
   // New Express App
-  var app = express();
-  var router = express.Router();
+  const app = express();
+  const router = express.Router();
 
   // Set IP Address and Port
   app.set('host', process.env.HOST || '127.0.0.1');
@@ -81,7 +85,6 @@ function initialize(config) {
   app.engine('html', hogan);
 
   // Setup Express
-  app.use(favicon(config.public_dir + '/favicon.ico'));
   app.use(logger('dev'));
   app.use(body_parser.json());
   app.use(body_parser.urlencoded({ extended: false }));
@@ -120,43 +123,57 @@ function initialize(config) {
     if (config.googleoauth === true) {
       app.use(passport.initialize());
       app.use(passport.session());
-      router.use(oauth2.router(config));
-      app.use(oauth2.template);
+      router.use(mw_oauth2.router(config));
+      app.use(mw_oauth2.template);
     }
 
-    router.post('/rn-login', route_login);
-    router.get('/logout', route_logout);
-    router.get('/login', route_login_page);
+    router.post('/rn-login', route_login(config));
+    router.get('/logout', route_logout(config));
+    router.get('/login', route_login_page(config));
   }
 
   // Online Editor Routes
   if (config.allow_editing === true) {
-    var middlewareToUse = authenticate;
+    let middlewareToUse = authenticate;
     if (config.authentication_for_edit === true) {
       middlewareToUse = always_authenticate;
     }
     if (config.googleoauth === true) {
-      middlewareToUse = oauth2.required;
+      middlewareToUse = mw_oauth2.required;
     }
 
-    router.post('/rn-edit', middlewareToUse, route_page_edit);
-    router.post('/rn-delete', middlewareToUse, route_page_delete);
-    router.post('/rn-add-page', middlewareToUse, route_page_create);
-    router.post('/rn-add-category', middlewareToUse, route_category_create);
+    router.post('/rn-edit', middlewareToUse, route_page_edit(config));
+    router.post('/rn-delete', middlewareToUse, route_page_delete(config));
+    router.post('/rn-add-page', middlewareToUse, route_page_create(config));
+    router.post(
+      '/rn-add-category',
+      middlewareToUse,
+      route_category_create(config),
+    );
   }
 
   // Router for / and /index with or without search parameter
   if (config.googleoauth === true) {
-    router.get('/:var(index)?', oauth2.required, route_search, route_home);
-    router.get(/^([^.]*)/, oauth2.required, route_wildcard);
+    router.get(
+      '/:var(index)?',
+      mw_oauth2.required,
+      route_search_init,
+      route_home_init,
+    );
+    router.get(/^([^.]*)/, mw_oauth2.required, route_wildcard_init);
   } else if (config.authentication_for_read === true) {
-    router.get('/sitemap.xml', authenticate, route_sitemap);
-    router.get('/:var(index)?', authenticate, route_search, route_home);
-    router.get(/^([^.]*)/, authenticate, route_wildcard);
+    router.get('/sitemap.xml', authenticate, route_sitemap_init);
+    router.get(
+      '/:var(index)?',
+      authenticate,
+      route_search_init,
+      route_home_init,
+    );
+    router.get(/^([^.]*)/, authenticate, route_wildcard_init);
   } else {
-    router.get('/sitemap.xml', route_sitemap);
-    router.get('/:var(index)?', route_search, route_home);
-    router.get(/^([^.]*)/, route_wildcard);
+    router.get('/sitemap.xml', route_sitemap_init);
+    router.get('/:var(index)?', route_search_init, route_home_init);
+    router.get(/^([^.]*)/, route_wildcard_init);
   }
 
   // Handle Errors
@@ -165,7 +182,7 @@ function initialize(config) {
 
   // Wrap App if base_url is set
   if (config.base_url !== '' && config.nowrap !== true) {
-    var wrap_app = express();
+    const wrap_app = express();
     wrap_app.set('port', process.env.PORT || 3000);
     wrap_app.use(config.base_url, app);
     return wrap_app;
@@ -175,4 +192,4 @@ function initialize(config) {
 }
 
 // Exports
-module.exports = initialize;
+export default initialize;

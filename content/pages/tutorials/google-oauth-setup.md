@@ -27,8 +27,8 @@ Install the following packages:
 
 ### Editing the `app/index.js` file
 
-+ Add passport: `var passport=require('passport');` just after raneto is required.
-+ Add oauth2 middleware: `var oauth2= require('./middleware/oauth2.js');` in the config block, just afer `error_handler.js` middleware.
++ Add passport: `import passport from 'passport';` just after raneto is required.
++ Add oauth2 middleware: `import oauth2 from './middleware/oauth2.js';` in the config block, just afer `error_handler.js` middleware.
 + Change `secret` to `secret:config.secret,` in the `// HTTP Authentication` section.
 + >>> Remove the rn-login route `app.post('/rn-login', route_login);`
 + >>> Remove the logout route: `app.get('/logout', route_logout);`
@@ -119,17 +119,16 @@ Create a new file `oauth2.js` in the `app/middleware` folder with the following 
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-'use strict';
-
-var express = require('express');
-var debug = require('debug')('raneto');
+import express from 'express';
+import _debug from 'debug';
+const debug = _debug('raneto');
 
 // [START setup]
-var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+import passport from 'passport';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 function extractProfile (profile) {
-  var imageUrl = '';
+  const imageUrl = '';
   if (profile.photos && profile.photos.length) {
     imageUrl = profile.photos[0].value;
   }
@@ -193,7 +192,7 @@ function router(config) {
   });
   // [END setup]
 
-  var router = express.Router();
+  const router = express.Router();
 
   // Begins the authorization flow. The user will be redirected to Google where
   // they can authorize the application to have access to their basic profile
@@ -231,7 +230,7 @@ function router(config) {
     // Redirect back to the original page, if any
     function (req, res) {
       req.session.loggedIn = true;
-      var redirect = req.session.oauth2return || '/';
+      const redirect = req.session.oauth2return || '/';
       delete req.session.oauth2return;
       res.redirect(redirect);
     }
@@ -250,7 +249,7 @@ function router(config) {
   return router;
 }
 
-module.exports = {
+export default {
   extractProfile: extractProfile,
   router: router,
   required: authRequired,

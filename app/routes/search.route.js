@@ -1,11 +1,10 @@
 // Modules
 // TODO: This underscore function may not be functioning correctly
-var _s = require('underscore.string');
-var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
-var sanitize = require('../functions/sanitize.js');
-
-const searchHandler = require('../core/search');
-const contentsHandler = require('../core/contents');
+import _s from 'underscore.string';
+import remove_image_content_directory from '../functions/remove_image_content_directory.js';
+import sanitize from '../functions/sanitize.js';
+import search_handler from '../core/search.js';
+import contents_handler from '../core/contents.js';
 
 function route_search(config) {
   return async function (req, res, next) {
@@ -15,17 +14,17 @@ function route_search(config) {
     }
 
     // remove < and >
-    var rawQuery = _s.stripTags(req.query.search);
-    var sanitizedQuery = sanitize(rawQuery);
+    const rawQuery = _s.stripTags(req.query.search);
+    const sanitizedQuery = sanitize(rawQuery);
 
-    // Using try/catch seems broken
-    var searchResults = [];
-    var pageListSearch = [];
+    // TODO: Using try/catch seems broken
+    let searchResults = [];
+    let pageListSearch = [];
     try {
-      searchResults = await searchHandler(sanitizedQuery, config);
+      searchResults = await search_handler(sanitizedQuery, config);
       pageListSearch = remove_image_content_directory(
         config,
-        await contentsHandler(null, config),
+        await contents_handler(null, config),
       );
     } catch (e) {
       // Continue with defaults of empty arrays
@@ -35,7 +34,7 @@ function route_search(config) {
     // Loop through Results and Extract Category
     searchResults.forEach((result) => {
       result.category = null;
-      var split = result.slug.split('/');
+      const split = result.slug.split('/');
       if (split.length > 1) {
         result.category = split[0];
       }
@@ -61,4 +60,4 @@ function route_search(config) {
 }
 
 // Exports
-module.exports = route_search;
+export default route_search;

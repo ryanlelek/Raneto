@@ -1,11 +1,11 @@
 // Modules
-var path = require('path');
-var sanitizeFilename = require('sanitize-filename');
-var sanitize = require('./sanitize.js');
+import path from 'node:path';
+import sanitizeFilename from 'sanitize-filename';
+import sanitize from './sanitize.js';
 
 function get_filepath(p) {
   // Default
-  var filepath = p.content;
+  let filepath = p.content;
 
   // Add Category
   if (p.category) {
@@ -24,4 +24,4 @@ function get_filepath(p) {
 }
 
 // Exports
-module.exports = get_filepath;
+export default get_filepath;

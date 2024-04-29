@@ -9,4 +9,4 @@ function middleware_authenticate(config) {
 }
 
 // Exports
-module.exports = middleware_authenticate;
+export default middleware_authenticate;
