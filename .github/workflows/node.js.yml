@@ -12,6 +12,7 @@ on:
 jobs:
   build:
 
+    environment: build
     strategy:
       matrix:
         # Windows is currently borked
@@ -39,3 +40,8 @@ jobs:
       - run: npm test
       - run: npm run lint
       - run: npm run prettier
+      # Upload to CodeCov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
