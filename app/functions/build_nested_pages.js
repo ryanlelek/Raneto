@@ -5,7 +5,9 @@ function build_nested_pages(pages) {
   while (i--) {
     if (pages[i].slug.split('/').length > 1) {
       const parent = find_by_slug(pages, pages[i]);
-      parent.files.unshift(pages[i]);
+      if (parent) {
+        parent.files.unshift(pages[i]);
+      }
     } else {
       result.unshift(pages[i]);
     }

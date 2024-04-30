@@ -17,19 +17,15 @@ install:
 	npm install;
 
 .PHONY: test
-test: delint mocha
+test: delint unit
 
 .PHONY: delint
 delint:
+	npm run lint;
 
-	# ESLint
-	./node_modules/.bin/eslint \
-		./app/**/*.js \
-		./test/*.js;
-
-.PHONY: mocha
-mocha:
-	npm test;
+.PHONY: unit
+unit:
+	npm run unit;
 
 .PHONY: build
 build:
@@ -39,13 +35,13 @@ build:
 start:
 
 	# Start HTTP Server
-	node ./server.js;
+	node server.js;
 
 .PHONY: deploy
 deploy:
 
 	# Install Node.js Modules (Production)
-	npm install --production; true;
+	npm install --omit=dev;
 
 .PHONY: d_build
 d_build:

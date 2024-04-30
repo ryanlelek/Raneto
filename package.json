@@ -34,9 +34,9 @@
   "exports": "./app/index.js",
   "type": "module",
   "scripts": {
-    "start": "DEBUG=raneto node server.js",
-    "start_win": "set DEBUG=raneto&&node server.js",
-    "test": "npm run lint && mocha --reporter spec test/*.js",
+    "start": "node server.js",
+    "test": "npm run unit&&npm run lint&&npm run prettier",
+    "unit": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage --detectOpenHandles",
     "lint": "eslint app/**/*.js config/*.js test/*.js server.js",
     "lint:fix": "eslint --fix app/**/*.js config/*.js test/*.js server.js",
     "prettier": "prettier --check app/**/*.js config/*.js test/*.js server.js app/translations/*json",
@@ -49,6 +49,11 @@
   "prettier": {
     "singleQuote": true,
     "tabWidth": 2
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "dependencies": {
     "@raneto/theme-default": "0.1.0",
@@ -78,16 +83,17 @@
     "validator": "13.11.0"
   },
   "devDependencies": {
-    "chai": "4.4.1",
+    "cross-env": "7.0.3",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-jest": "28.3.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "5.1.3",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-unused-imports": "3.1.0",
-    "mocha": "10.4.0",
+    "jest": "29.7.0",
     "prettier": "3.2.5",
     "supertest": "7.0.0"
   }

@@ -2,16 +2,16 @@
   "root": true,
   "env": {
     "browser": false,
-    "mocha": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "extends": ["eslint:recommended"],
   "parserOptions": {
     "ecmaVersion": "2022",
     "sourceType": "module"
   },
-  "plugins": ["promise", "unused-imports"],
+  "plugins": ["promise", "unused-imports", "jest"],
   "rules": {
     "camelcase": 0,
     "curly": 2,

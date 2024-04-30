@@ -7,11 +7,13 @@ import yaml from 'js-yaml';
 import utils from './utils.js';
 import content_processors from '../functions/contentProcessors.js';
 
+// TODO: Scan on start/change, not on every request
 async function handler(activePageSlug, config) {
   activePageSlug = activePageSlug || '';
   const baseSlug = activePageSlug.split(/[\\/]/).slice(0, -1).join('/');
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
 
+  // TODO: Fix extra trailing /
   const files = await glob(`${contentDir}**/*`);
   const filesProcessed = [];
 
