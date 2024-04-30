@@ -2,7 +2,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Code Analysis
 on:
   push:
     branches: ["main"]
@@ -13,28 +13,28 @@ jobs:
   build:
 
     environment: build
-    strategy:
-      matrix:
-        # Windows is currently borked
-        # https://github.com/nodejs/node/issues/52682
-        # Disabling for now
-        # windows-latest
-        os: [ubuntu-latest]
-        node_version: [20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     # OS List
     # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/checkout
       - uses: actions/checkout@v4
       # https://github.com/marketplace/actions/setup-node-js-environment
-      - name: Use Node.js ${{ matrix.node_version }}
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node_version }}
+          node-version: 20.x
           #cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm test
+      - run: npm run unit
+      # https://github.com/marketplace/actions/codecov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+      # https://github.com/marketplace/actions/official-fossa-action
+      - name: Upload to FOSSA
+        uses: fossas/fossa-action@v1
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}
