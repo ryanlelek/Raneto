@@ -11,11 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Modules
 import express from 'express';
-
 import fetch from 'node-fetch';
-
-// [START setup]
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 

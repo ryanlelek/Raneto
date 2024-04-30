@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import _s from 'underscore.string';
 import { marked } from 'marked';
 import utils from './utils.js';
-import content_processors from '../functions/contentProcessors.js';
+import content_processors from '../functions/content_processors.js';
 
 async function handler(filePath, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));

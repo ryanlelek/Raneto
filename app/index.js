@@ -9,11 +9,11 @@ import hogan from 'hogan-express';
 import session from 'express-session';
 import passport from 'passport';
 import language_load from './core/language.js';
-import mw_authenticate from './middleware/authenticate.js';
-import mw_always_auth from './middleware/always_authenticate.js';
-import mw_auth_readonly from './middleware/authenticate_read_access.js';
-import mw_error_handler from './middleware/error_handler.js';
-import mw_oauth2 from './middleware/oauth2.js';
+import mw_authenticate from './middleware/authenticate.mw.js';
+import mw_always_auth from './middleware/always_authenticate.mw.js';
+import mw_auth_readonly from './middleware/authenticate_read_access.mw.js';
+import mw_error_handler from './middleware/error_handler.mw.js';
+import mw_oauth2 from './middleware/oauth2.mw.js';
 import route_login from './routes/login.route.js';
 import route_login_page from './routes/login_page.route.js';
 import route_logout from './routes/logout.route.js';
@@ -44,7 +44,6 @@ function initialize(config) {
   // Load Middleware
   const authenticate = mw_authenticate(config);
   const always_authenticate = mw_always_auth(config);
-  const authenticate_read_access = mw_auth_readonly(config);
   const error_handler = mw_error_handler(config);
 
   // Load Multiple-Use Pages
@@ -118,7 +117,7 @@ function initialize(config) {
         saveUninitialized: false,
       }),
     );
-    app.use(authenticate_read_access);
+    app.use(mw_auth_readonly(config));
     // OAuth2
     if (config.googleoauth === true) {
       app.use(passport.initialize());

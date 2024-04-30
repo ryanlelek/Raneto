@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import moment from 'moment';
 import build_nested_pages from '../app/functions/build_nested_pages.js';
-import content_processors from '../app/functions/contentProcessors.js';
+import content_processors from '../app/functions/content_processors.js';
 import contents_handler from '../app/core/contents.js';
 import utils from '../app/core/utils.js';
 

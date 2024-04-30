@@ -5,7 +5,7 @@ import _ from 'underscore';
 import _s from 'underscore.string';
 import yaml from 'js-yaml';
 import utils from './utils.js';
-import content_processors from '../functions/contentProcessors.js';
+import content_processors from '../functions/content_processors.js';
 
 // TODO: Scan on start/change, not on every request
 async function handler(activePageSlug, config) {

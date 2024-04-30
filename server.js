@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-// Modules
-import _debug from 'debug';
-
 // Here is where we load Raneto.
 // When you are in your own project repository,
 // Raneto should be installed via NPM and loaded as:
@@ -18,7 +15,6 @@ import config from './config/config.js';
 const app = raneto(config);
 
 // Load the HTTP Server
-const debug = _debug('raneto');
 const server = app.listen(app.get('port'), app.get('host'), () => {
-  debug(`Express HTTP server listening on port ${server.address().port}`);
+  console.log(`HTTP server listening on port ${server.address().port}`);
 });

@@ -6,7 +6,7 @@ import { marked } from 'marked';
 import toc from 'markdown-toc';
 import build_nested_pages from '../functions/build_nested_pages.js';
 import remove_image_content_directory from '../functions/remove_image_content_directory.js';
-import content_processors from '../functions/contentProcessors.js';
+import content_processors from '../functions/content_processors.js';
 import contents_handler from '../core/contents.js';
 import utils from '../core/utils.js';
 

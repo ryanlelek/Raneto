@@ -3,7 +3,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import sm from 'sitemap';
 import _ from 'underscore';
-import content_processors from '../functions/contentProcessors.js';
+import content_processors from '../functions/content_processors.js';
 import utils from '../core/utils.js';
 
 function route_sitemap(config) {

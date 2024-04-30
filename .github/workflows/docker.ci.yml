@@ -1,7 +1,7 @@
 ---
 # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
 
-name: Docker Image CI
+name: Docker CI
 on:
   push:
     branches: ["main"]

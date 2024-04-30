@@ -1,5 +1,5 @@
 // Error-Handling Middleware
-function handler(config) {
+function mw_error_handler(config) {
   return function (err, req, res) {
     const status = err.status || 500;
 
@@ -19,4 +19,4 @@ function handler(config) {
 }
 
 // Exports
-export default handler;
+export default mw_error_handler;

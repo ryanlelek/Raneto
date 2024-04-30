@@ -28,7 +28,7 @@ Install the following packages:
 ### Editing the `app/index.js` file
 
 + Add passport: `import passport from 'passport';` just after raneto is required.
-+ Add oauth2 middleware: `import oauth2 from './middleware/oauth2.js';` in the config block, just afer `error_handler.js` middleware.
++ Add oauth2 middleware: `import oauth2 from './middleware/oauth2.mw.js';` in the config block, just afer `error_handler.mw.js` middleware.
 + Change `secret` to `secret:config.secret,` in the `// HTTP Authentication` section.
 + >>> Remove the rn-login route `app.post('/rn-login', route_login);`
 + >>> Remove the logout route: `app.get('/logout', route_logout);`
@@ -78,7 +78,7 @@ else {
 }
 ```
 
-### Editing the `app/middleware/authenticate.js` file
+### Editing the `app/middleware/authenticate.mw.js` file
 Change the `res.redirect(403, '/login');` line to be:
 
 ```
@@ -102,8 +102,8 @@ return res.render('login', {
 });
 ```
 
-### Add the oauth2.js file
-Create a new file `oauth2.js` in the `app/middleware` folder with the following content:
+### Add the oauth2.mw.js file
+Create a new file `oauth2.mw.js` in the `app/middleware` folder with the following content:
 
 ```
 // Copyright 2015-2016, Google, Inc.

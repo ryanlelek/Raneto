@@ -1,5 +1,5 @@
 import path from 'node:path';
-import content_processors from '../app/functions/contentProcessors.js';
+import content_processors from '../app/functions/content_processors.js';
 import search_handler from '../app/core/search.js';
 import page_handler from '../app/core/page.js';
 import contents_handler from '../app/core/contents.js';

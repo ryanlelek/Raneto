@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { glob } from 'glob';
-import content_processors from '../functions/contentProcessors.js';
+import content_processors from '../functions/content_processors.js';
 import utils from './utils.js';
 import page_handler from './page.js';
 import lunr from './lunr.js';
