@@ -56,6 +56,7 @@
     ]
   },
   "dependencies": {
+    "@fixhq/markdown-toc": "2.0.0",
     "@raneto/theme-default": "0.3.0",
     "body-parser": "1.20.2",
     "cookie-parser": "1.4.6",
@@ -69,7 +70,6 @@
     "js-yaml": "4.1.0",
     "lunr": "2.3.9",
     "lunr-languages": "1.14.0",
-    "markdown-toc": "1.2.0",
     "marked": "12.0.2",
     "moment": "2.30.1",
     "morgan": "1.10.0",

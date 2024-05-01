@@ -3,7 +3,7 @@ import path from 'node:path';
 import _ from 'underscore';
 import fs from 'fs-extra';
 import { marked } from 'marked';
-import toc from 'markdown-toc';
+import toc from '@fixhq/markdown-toc';
 import build_nested_pages from '../functions/build_nested_pages.js';
 import remove_image_content_directory from '../functions/remove_image_content_directory.js';
 import content_processors from '../functions/content_processors.js';
