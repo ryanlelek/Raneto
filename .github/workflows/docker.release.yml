@@ -34,11 +34,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      # TODO: Auto-tag "latest" from version, but do not rebuild
       # https://github.com/marketplace/actions/build-and-push-docker-images
+      # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
       - name: Build and push "version"
         uses: docker/build-push-action@v5
         with:
           #context: .
           push: true
-          tags: "raneto/raneto:${{ github.event.inputs.version }}"
+          tags:
+            - "raneto/raneto:${{ github.event.inputs.version }}"
+            - "raneto/raneto:latest"
