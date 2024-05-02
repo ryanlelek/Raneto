@@ -27,21 +27,31 @@ async function handler(query, config) {
   const results = idx.search(query);
 
   const searchResults = await Promise.all(
-    results.map((result) =>
-      processSearchResult(contentDir, config, query, result),
-    ),
+    results.map(async (result) => {
+      const processed = await processSearchResult(
+        contentDir,
+        config,
+        query,
+        result,
+      );
+      return processed;
+    }),
   );
 
   return searchResults;
 }
 
 async function processSearchResult(contentDir, config, query, result) {
-  const page = await page_handler(contentDir + result.ref, config);
-  page.excerpt = page.excerpt.replace(
-    new RegExp(`(${query})`, 'gim'),
-    '<span class="search-query">$1</span>',
-  );
-
+  // Removed
+  // contentDir +
+  const page = await page_handler(result.ref, config);
+  // TODO: Improve handling
+  if (page && page.excerpt) {
+    page.excerpt = page.excerpt.replace(
+      new RegExp(`(${query})`, 'gim'),
+      '<span class="search-query">$1</span>',
+    );
+  }
   return page;
 }
 
