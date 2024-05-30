@@ -65,7 +65,7 @@
     "express-session": "1.18.0",
     "extend": "3.0.2",
     "fs-extra": "11.2.0",
-    "glob": "10.3.12",
+    "glob": "10.3.14",
     "hogan-express": "0.5.2",
     "js-yaml": "4.1.0",
     "lunr": "2.3.9",
