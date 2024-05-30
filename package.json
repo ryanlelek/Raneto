@@ -80,7 +80,7 @@
     "sitemap": "7.1.1",
     "underscore": "1.13.6",
     "underscore.string": "3.3.6",
-    "validator": "13.11.0"
+    "validator": "13.12.0"
   },
   "devDependencies": {
     "cross-env": "7.0.3",
