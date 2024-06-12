@@ -77,7 +77,7 @@
     "passport": "0.7.0",
     "passport-google-oauth20": "2.0.0",
     "sanitize-filename": "1.6.3",
-    "sitemap": "7.1.1",
+    "sitemap": "7.1.2",
     "underscore": "1.13.6",
     "underscore.string": "3.3.6",
     "validator": "13.11.0"
