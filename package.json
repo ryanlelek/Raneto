@@ -70,7 +70,7 @@
     "js-yaml": "4.1.0",
     "lunr": "2.3.9",
     "lunr-languages": "1.14.0",
-    "marked": "12.0.2",
+    "marked": "13.0.0",
     "moment": "2.30.1",
     "morgan": "1.10.0",
     "node-fetch": "3.3.2",
