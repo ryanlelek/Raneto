@@ -66,6 +66,7 @@
     "extend": "3.0.2",
     "fs-extra": "11.2.0",
     "glob": "10.4.2",
+    "helmet": "7.1.0",
     "hogan-express": "0.5.2",
     "js-yaml": "4.1.0",
     "lunr": "2.3.9",

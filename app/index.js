@@ -5,6 +5,7 @@ import logger from 'morgan';
 import cookie_parser from 'cookie-parser';
 import body_parser from 'body-parser';
 import moment from 'moment';
+import helmet from 'helmet';
 import hogan from 'hogan-express';
 import session from 'express-session';
 import passport from 'passport';
@@ -85,6 +86,7 @@ function initialize(config) {
 
   // Setup Express
   app.use(logger('dev'));
+  app.use(helmet());
   app.use(body_parser.json());
   app.use(body_parser.urlencoded({ extended: false }));
   app.use(cookie_parser());
