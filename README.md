@@ -20,3 +20,8 @@ Raneto [![Node.js CI](https://github.com/ryanlelek/Raneto/actions/workflows/node
 
 # License Report
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B44615%2Fgithub.com%2Fryanlelek%2FRaneto.svg?type=large&issueType=license)](https://app.fossa.com/projects/custom%2B44615%2Fgithub.com%2Fryanlelek%2FRaneto?ref=badge_large&issueType=license)
+
+Temporarily Removed Packages
+```bash
+"eslint-config-standard": "17.1.0",
+```
