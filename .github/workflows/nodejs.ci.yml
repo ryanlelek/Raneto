@@ -5,13 +5,12 @@
 name: Node.js CI
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   build:
-
     environment: build
     strategy:
       matrix:
@@ -28,10 +27,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       # https://github.com/marketplace/actions/checkout
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2
       # https://github.com/marketplace/actions/setup-node-js-environment
       - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.1.0
         with:
           node-version: ${{ matrix.node_version }}
           #cache: 'npm'
