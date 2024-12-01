@@ -20,7 +20,7 @@ jobs:
         # Disabling for now
         # windows-latest
         os: [ubuntu-latest]
-        node_version: [20.x, 22.x]
+        node_version: [22.x, 23.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     # OS List

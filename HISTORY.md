@@ -4,7 +4,7 @@
 RELEASE TBD / v0.18.0
 =====================
 This is a modernization refactor.
-  * **[Breaking]** Minimum Node.js is v20.x LTS
+  * **[Breaking]** Minimum Node.js is v22.x LTS
   * **[Breaking]** Rename branch to "main" from "master"
   * **[Breaking]** Packages removed: `pm2`, `commander`, `tail`, `serve-favicon`
   * **[Breaking]** `bin/raneto` removed as it is out of scope. Please do not use PM2 and instead use `npm start`, containers, systemd, etc.
