@@ -43,7 +43,7 @@
     "prettier:fix": "prettier --write app/**/*.js config/*.js test/*.js server.js app/translations/*json"
   },
   "engines": {
-    "node": ">=22.11.0",
+    "node": ">=22.12.0",
     "npm": ">=10.9.0"
   },
   "prettier": {
