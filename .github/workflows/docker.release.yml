@@ -40,6 +40,4 @@ jobs:
         with:
           #context: .
           push: true
-          tags:
-            - 'raneto/raneto:${{ github.event.inputs.version }}'
-            - 'raneto/raneto:latest'
+          tags: raneto/raneto:${{ github.event.inputs.version }},raneto/raneto:latest
