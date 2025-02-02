@@ -25,12 +25,12 @@ The name of the file defines what URL or "slug" is used to navigate to that page
 a file called `my-example-page.md` you would visit that page be navigation to `example.com/my-example-page`.
 Below is a table of example folder and file names and the URL's they would have in Raneto.
 
-File Location | URL
-------------- | -------------
-`content/hello.md` | `/hello`
-`content/my-example-page.md` | `/my-example-page`
-`content/hello/my-example-page.md` | `/hello/my-example-page`
-`content/some/sub/folder/page.md` | `/some/sub/folder/page`
+| File Location                      | URL                      |
+| ---------------------------------- | ------------------------ |
+| `content/hello.md`                 | `/hello`                 |
+| `content/my-example-page.md`       | `/my-example-page`       |
+| `content/hello/my-example-page.md` | `/hello/my-example-page` |
+| `content/some/sub/folder/page.md`  | `/some/sub/folder/page`  |
 
 If a file cannot be found the `error.html` template will be shown.
 
@@ -54,5 +54,5 @@ Note that if no meta title is specified the filename will be used to generate a 
 You can also use certain variables in your Markdown pages which will be replaced with the values
 you set in [your config](%base_url%/usage/configuration).
 
-* *&#37;base_url&#37;*: The base URL of your site
-* *&#37;image_url&#37;*: The base URL of your images folder (`public/images`)
+- _&#37;base_url&#37;_: The base URL of your site
+- _&#37;image_url&#37;_: The base URL of your images folder (`public/images`)

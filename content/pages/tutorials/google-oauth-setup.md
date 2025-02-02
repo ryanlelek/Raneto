@@ -4,6 +4,7 @@ Sort: 3
 ---
 
 ## TL;DR
+
 [Raneto](https://raneto.com/) allows only basic username/password authentication, so I added Google OAuth support.  
 This option can be turned on by setting the `googleoauth` option in the `config.default.js` file to `true`, and by supplying the OAuth config object as outlined in the guides below.  
 Additionally, you can allow only emails from the certain domain to use the service with one config setting.
@@ -13,26 +14,28 @@ The basic idea was taken from the [Google Cloud Platform Node.js guide](https://
 This has been submitted as a [pull request]() on the official Raneto Github repository. This is my way of saying thanks to an awesome author of Raneto.
 
 ## Steps on how to reproduce this on fresh copy
+
 Below are the steps one needs to take to get this working on a fresh copy of Raneto.  
 In case this won't make it to the official repo, you can clone my fork [here](https://github.com/Hitman666/Raneto).  
-Just make sure you set your Google OAuth credentials properly (more about this in a coming section).  
+Just make sure you set your Google OAuth credentials properly (more about this in a coming section).
 
 ### Install packages via npm
+
 _Make sure you first [install Raneto dependencies](https://docs.raneto.com/install/installing-raneto) after you clone it._
 
 Install the following packages:
 
-+ `npm install passport --save-dev`
-+ `npm install passport-google-oauth20 --save-dev`
+- `npm install passport --save-dev`
+- `npm install passport-google-oauth20 --save-dev`
 
 ### Editing the `app/index.js` file
 
-+ Add passport: `import passport from 'passport';` just after raneto is required.
-+ Add oauth2 middleware: `import oauth2 from './middleware/oauth2.mw.js';` in the config block, just afer `error_handler.mw.js` middleware.
-+ Change `secret` to `secret:config.secret,` in the `// HTTP Authentication` section.
-+ >>> Remove the rn-login route `app.post('/rn-login', route_login);`
-+ >>> Remove the logout route: `app.get('/logout', route_logout);`
-+ Add the following Oauth settings, just before the `app.post('/rn-login', route_login);` line:
+- Add passport: `import passport from 'passport';` just after raneto is required.
+- Add oauth2 middleware: `import oauth2 from './middleware/oauth2.mw.js';` in the config block, just afer `error_handler.mw.js` middleware.
+- Change `secret` to `secret:config.secret,` in the `// HTTP Authentication` section.
+- > > > Remove the rn-login route `app.post('/rn-login', route_login);`
+- > > > Remove the logout route: `app.get('/logout', route_logout);`
+- Add the following Oauth settings, just before the `app.post('/rn-login', route_login);` line:
 
 ```
 // OAuth2
@@ -44,7 +47,7 @@ if (config.googleoauth === true) {
 }
 ```
 
-+ Change the `Online Editor Routes` to look like this now:
+- Change the `Online Editor Routes` to look like this now:
 
 ```
 // Online Editor Routes
@@ -64,7 +67,7 @@ if (config.allow_editing === true) {
 }
 ```
 
-+ Set the root routes to be like this:
+- Set the root routes to be like this:
 
 ```
 // Router for / and /index with or without search parameter
@@ -79,6 +82,7 @@ else {
 ```
 
 ### Editing the `app/middleware/authenticate.mw.js` file
+
 Change the `res.redirect(403, '/login');` line to be:
 
 ```
@@ -86,11 +90,12 @@ if (config.googleoauth === true) {
   res.redirect('/login');
 }
 else {
-  res.redirect(403, '/login');  
+  res.redirect(403, '/login');
 }
 ```
 
 ### Editing the `app/routes/login_page.route.js` file
+
 Add the `googleoauth` variable to the return object like this:
 
 ```
@@ -103,6 +108,7 @@ return res.render('login', {
 ```
 
 ### Add the oauth2.mw.js file
+
 Create a new file `oauth2.mw.js` in the `app/middleware` folder with the following content:
 
 ```
@@ -258,7 +264,7 @@ export default {
 ```
 
 This is a changed file based on the [Google Node.js official example](https://raw.githubusercontent.com/GoogleCloudPlatform/nodejs-getting-started/master/4-auth/lib/oauth2.js) file.  
-Notable differences are in Google strategy settings which basically load settings from our settings config:  
+Notable differences are in Google strategy settings which basically load settings from our settings config:
 
 ```
 clientID: config.oauth2.client_id,
@@ -267,9 +273,10 @@ callbackURL: config.oauth2.callback,
 hostedDomain: config.hostedDomain || '',
 ```
 
-We'll define these settings the `config.default.js` file now.  
+We'll define these settings the `config.default.js` file now.
 
 ### Editing the `example/config.default.js` file
+
 Change/add the following settings:
 
 ```
@@ -286,27 +293,31 @@ secret: 'someCoolSecretRightHere',
 ```
 
 ### Google OAuth2 Credentials
+
 Oauth2 settings (`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET `) can be found in your `Google Cloud Console->API Manager->Credentials` project settings (create a project if you don't have one yet):
 
 ![](https://i.imgur.com/TdkYKul.png)
 
 The `callback`, if testing locally, can be set as shown above (`http://localhost:3000/auth/google/callback`).  
-The `hostedDomain` option allows certain domains - for your use case you may want to set this to your domain.  
+The `hostedDomain` option allows certain domains - for your use case you may want to set this to your domain.
 
 #### Google+ API
+
 If you get an error like:
 
 > Access Not Configured. Google+ API has not been used in project 701766813496 before, or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/plus/overview?project=701766813496 then retry.  
-If you enabled this API recently, wait a few minutes for the action to propagate to Google's systems and retry.
+> If you enabled this API recently, wait a few minutes for the action to propagate to Google's systems and retry.
 
 Make sure you enable Google+ API for your project:
 
 ![](https://i.imgur.com/GcymtaZ.png)
 
 ### Adding Zocial CSS
+
 To add support for the nice [Zocial social buttons](https://smcllns.github.io/css-social-buttons/), download [this file](https://github.com/smcllns/css-social-buttons/blob/master/css/zocial.css) from their Github repo to the `themes/default/public/styles/` folder.
 
 ### Editing the `themes/default/templates/layout.html` file
+
 Replace the login form with:
 
 ```
@@ -344,6 +355,7 @@ Replace the login form with:
 We added two scenarios for when we have Google OAuth enabled (`config.googleoauth`) and when we don't (defaulting to the current Raneto behavior).
 
 ### Editing the `themes/default/templates/login.html` file
+
 Add zocial reference:
 
 `<link rel="stylesheet" href="{{config.base_url}}/styles/zocial.css">`
@@ -375,6 +387,7 @@ Replace the whole `form-bottom` classed div with the following code:
 Same thing here as well. If we have Google OAuth enabled (`config.googleoauth`) then we show the new Google login button and hide the rest. Otherwise, we default it to the current Raneto behavior.
 
 ## Testing
+
 Congratulations, you're done! Now, to test this locally just run the `npm start` from the root of your project and go to `http://localhost:3000` and you should see this:
 
 ![](https://i.imgur.com/qTTwY4z.png)

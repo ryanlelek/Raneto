@@ -1,5 +1,4 @@
-Credits
--------
+## Credits
 
 - Raneto was created by [Gilbert Pellegrom](https://gilbitron.me)
 - Maintained by [Ryan Lelek](https://www.ryanlelek.com) from [AnsibleTutorials.com](https://www.ansibletutorials.com)

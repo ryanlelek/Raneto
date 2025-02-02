@@ -4,7 +4,9 @@ Sort: 8
 ---
 
 # Default Password
-Make sure you edit the default username and password in your `config.js` file.  
+
+Make sure you edit the default username and password in your `config.js` file.
+
 ```
 ##### WARNING #####
 // You MUST change the username and password for security

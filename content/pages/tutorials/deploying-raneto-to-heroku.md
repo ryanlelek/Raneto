@@ -34,7 +34,7 @@ Just follow the instructions.
 Heroku works by deploying a Git repository to their servers.  
 So we need to make your Raneto install is a Git repository.  
 This also means you will need to commit any changes you make to Git before deploying them to Heroku.  
-Thankfully this is easy to setup:  
+Thankfully this is easy to setup:
 
     $ git clone https://github.com/ryanlelek/Raneto.git
     $ cd Raneto/
@@ -64,7 +64,7 @@ You should see Heroku go through its deployment steps and successfully deploy yo
 Note that you will need to run the `git push heroku main` command after your commit changes every time you want to publish your Raneto site.
 
 Finally we just need to make sure that we have one dyno running our `web` process.  
-This command only needs to be run this one time.  
+This command only needs to be run this one time.
 
     $ heroku ps:scale web=1
 
@@ -75,7 +75,7 @@ You can now visit your live Raneto install in the browser by running the `heroku
 
 ## Further Reading
 
-* [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-* [Process Types and the Procfile](https://devcenter.heroku.com/articles/procfile)
-* [Dynos and the Dyno Manager](https://devcenter.heroku.com/articles/dynos)
-* [Custom Domains](https://devcenter.heroku.com/articles/custom-domains)
+- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+- [Process Types and the Procfile](https://devcenter.heroku.com/articles/procfile)
+- [Dynos and the Dyno Manager](https://devcenter.heroku.com/articles/dynos)
+- [Custom Domains](https://devcenter.heroku.com/articles/custom-domains)

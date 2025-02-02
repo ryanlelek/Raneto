@@ -5,12 +5,13 @@ Sort: 8
 
 # Containers (Docker)
 
-Official Raneto container images on [Docker Hub](https://hub.docker.com/r/raneto/raneto/tags)  
+Official Raneto container images on [Docker Hub](https://hub.docker.com/r/raneto/raneto/tags)
 
 Run the default container, and access on [localhost:3000](http://localhost:3000)  
 `docker run --rm -it --publish 3000:3000 raneto/raneto:latest`
 
-Same as above, but provide your own content and configuration  
+Same as above, but provide your own content and configuration
+
 ```
 docker run --rm -it --publish 3000:3000 \
   --volume \
