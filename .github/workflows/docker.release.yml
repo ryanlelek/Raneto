@@ -23,7 +23,7 @@ jobs:
 
       # https://github.com/marketplace/actions/docker-setup-buildx
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.7.1
+        uses: docker/setup-buildx-action@v3.8.0
 
       # https://github.com/marketplace/actions/docker-login
       # https://github.com/docker/login-action
@@ -36,7 +36,7 @@ jobs:
       # https://github.com/marketplace/actions/build-and-push-docker-images
       # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
       - name: Build and push "version"
-        uses: docker/build-push-action@v6.10.0
+        uses: docker/build-push-action@v6.13.0
         with:
           #context: .
           push: true
