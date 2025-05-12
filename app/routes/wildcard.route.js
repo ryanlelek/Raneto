@@ -9,6 +9,7 @@ import remove_image_content_directory from '../functions/remove_image_content_di
 import content_processors from '../functions/content_processors.js';
 import contents_handler from '../core/contents.js';
 import utils from '../core/utils.js';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
 
 function route_wildcard(config) {
   return async function (req, res, next) {
@@ -90,6 +91,8 @@ function route_wildcard(config) {
             content = `#### Table of Contents\n${tableOfContents.content}\n\n${content}`;
           }
         }
+
+        marked.use(gfmHeadingId());
 
         // Render Markdown
         marked.use({
