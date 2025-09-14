@@ -33,7 +33,7 @@
     "editor": "Editor",
     "pageSaved": "Page Successfully Saved",
     "pageSaveError": "Error Saving Page",
-    "headerMetaInfo": "Meta information",
+    "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Title",
     "lableMetaDescription": "Description",
     "lableMetaSort": "Sort"

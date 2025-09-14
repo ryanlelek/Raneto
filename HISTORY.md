@@ -17,6 +17,7 @@ This is a modernization refactor.
 - **[Misc]** Remove node-fetch, using native Node.js version
 - **[Misc]** Remove extend, explicitly declaring @eslint/js dependency
 - **[Misc]** Remove hogan-express in favor of mustache-express
+- **[Misc]** Change "Meta information" to "metadata"
 - **[Misc]** Dependency upgrades
 - **[Add]** Container build (raneto:latest) on push to main
 - **[Add]** Container build (raneto:tag) on tag creation

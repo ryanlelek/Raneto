@@ -55,7 +55,7 @@ function stripMeta(markdownContent) {
   }
 }
 
-// Get meta information from Markdown content
+// Get metadata from Markdown content
 function processMeta(markdownContent) {
   let meta = {};
   let metaArr;
@@ -88,7 +88,7 @@ function processMeta(markdownContent) {
       break;
 
     default:
-    // No meta information
+    // No metadata
   }
 
   return meta;

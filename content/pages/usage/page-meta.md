@@ -1,6 +1,6 @@
 ---
 Title: Page Meta
-Description: This page describes how the Meta information works.
+Description: This page describes how the Metadata works.
 Modified: 2023-09-15T19:00:00-0100
 ---
 

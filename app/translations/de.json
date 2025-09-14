@@ -33,7 +33,7 @@
     "editor": "Editor",
     "pageSaved": "Artikel erfolgreich gespeichert",
     "pageSaveError": "Fehler beim Speichern des Artikels",
-    "headerMetaInfo": "Meta Information",
+    "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Titel",
     "lableMetaDescription": "Beschreibung",
     "lableMetaSort": "Sortierung"

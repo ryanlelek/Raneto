@@ -45,7 +45,7 @@ function route_page_edit(config) {
       filepath += '.md';
     }
 
-    // Create content including meta information (i.e. title, description, sort)
+    // Create content including metadata (i.e. title, description, sort)
     function create_content(body) {
       const meta = create_meta_info(
         body.meta_title,

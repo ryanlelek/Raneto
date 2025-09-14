@@ -33,7 +33,7 @@
     "editor": "Editor",
     "pageSaved": "Siden blev succesfuldt gemt",
     "pageSaveError": "Der opstod en fejl ved forsøget på at gemme siden",
-    "headerMetaInfo": "Meta information",
+    "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Titel",
     "lableMetaDescription": "Beskrivelse",
     "lableMetaSort": "Sortering"

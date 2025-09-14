@@ -33,7 +33,7 @@
     "editor": "Editor",
     "pageSaved": "Sidan har sparats",
     "pageSaveError": "Ett fel uppstod vid försök att spara sidan",
-    "headerMetaInfo": "Meta information",
+    "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Titel",
     "lableMetaDescription": "Beskrivning",
     "lableMetaSort": "Sortering"
