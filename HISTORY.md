@@ -10,9 +10,9 @@ This is a modernization refactor.
 - **[BREAKING]** `bin/raneto` removed as it is out of scope. Please do not use PM2 and instead use `npm start`, containers, systemd, etc.
 - **[BREAKING]** Modernizing, moving to ESModules, `require => import`, `const/let`, `node:` import prefix, `module.exports => export`, `'use strict';` etc.
 - **[Misc]** Dependency upgrades
+- **[Add]** Container build (raneto:latest) on push to main
+- **[Add]** Container build (raneto:tag) on tag creation
 - **[Fix]** Windows support (mainline versions only)
-- STRETCH CI GitHub Actions tests on branches/forks
-- STRETCH CI GitHub Actions container build
 
 ## 2024.02.22 / v0.17.8
 

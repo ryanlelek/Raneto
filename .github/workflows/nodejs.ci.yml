@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v5.0.0
         with:
           node-version: ${{ matrix.node_version }}
-          #cache: 'npm'
-      - run: npm ci
+          cache: 'npm'
+      - run: npm ci --ignore-scripts
       - run: npm run build --if-present
       - run: npm test
