@@ -47,7 +47,7 @@ program
           instances: 1,
           name: 'raneto',
           env: {
-            PORT: 3000,
+            PORT: 8080,
             NODE_ENV: 'development',
             DEBUG: 'raneto*',
           },

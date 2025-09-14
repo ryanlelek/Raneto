@@ -4,6 +4,7 @@
 
 This is a modernization refactor.
 
+- **[BREAKING]** Default port is 8080 and not 3000
 - **[BREAKING]** Minimum Node.js is v22.x LTS
 - **[BREAKING]** Rename branch to "main" from "master"
 - **[BREAKING]** Packages removed: `pm2`, `commander`, `tail`, `serve-favicon`

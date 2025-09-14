@@ -59,7 +59,7 @@ function initialize(config) {
 
   // Set IP Address and Port
   app.set('host', process.env.HOST || '127.0.0.1');
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 8080);
 
   // set locale as date and time format
   moment.locale(config.locale);
@@ -189,7 +189,7 @@ function initialize(config) {
   // Wrap App if base_url is set
   if (config.base_url !== '' && config.nowrap !== true) {
     const wrap_app = express();
-    wrap_app.set('port', process.env.PORT || 3000);
+    wrap_app.set('port', process.env.PORT || 8080);
     wrap_app.use(config.base_url, app);
     return wrap_app;
   } else {

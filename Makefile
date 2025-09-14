@@ -49,7 +49,7 @@ d_build:
 
 .PHONY: d_run
 d_run:
-	docker run --rm -it -p 3000:3000 raneto-local:latest;
+	docker run --rm -it -p 8080:8080 raneto-local:latest;
 
 .PHONY: d_shell
 d_shell:

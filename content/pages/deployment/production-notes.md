@@ -3,7 +3,7 @@ Title: Production Notes
 Sort: 3
 ---
 
-When running a live site you'll want to set the `PORT` env variable to `80` so you don't need to add `:3000` to the URL.
+When running a live site you'll want to set the `PORT` env variable to `80` so you don't need to add `:8080` to the URL.
 This requires root privileges and is not recommended.
 
 Instead it is preferred to use a reverse proxy for security reasons.

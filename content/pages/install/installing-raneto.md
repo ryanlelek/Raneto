@@ -11,7 +11,7 @@ Make sure you have met the [minimum requirements](%base_url%/install/requirement
 2. Add Raneto to your project via NPM's package.json file or downloading the latest version from the [releases page](https://github.com/ryanlelek/Raneto/releases)
 3. In a terminal, run `npm install` to install the node dependencies
 4. To start Raneto, run `npm start` (or `npm run start_win` on Windows)
-5. Visit `http://localhost:3000` in your web browser
+5. Visit `http://localhost:8080` in your web browser
 
 You can now start [creating pages](%base_url%/usage/creating-pages).
 

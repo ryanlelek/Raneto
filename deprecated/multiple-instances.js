@@ -41,5 +41,5 @@ const server = mainApp.listen(
 );
 
 // Now you can navigate to both:
-// - http://localhost:3000/en
-// - http://localhost:3000/es
+// - http://localhost:8080/en
+// - http://localhost:8080/es

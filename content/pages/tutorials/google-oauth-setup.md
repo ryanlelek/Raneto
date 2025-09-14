@@ -286,7 +286,7 @@ googleoauth: true,
 oauth2 : {
     client_id: 'GOOGLE_CLIENT_ID',
     client_secret: 'GOOGLE_CLIENT_SECRET',
-    callback: 'http://localhost:3000/auth/google/callback',
+    callback: 'http://localhost:8080/auth/google/callback',
     hostedDomain: 'google.com'
 },
 secret: 'someCoolSecretRightHere',
@@ -298,7 +298,7 @@ Oauth2 settings (`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET `) can be found in
 
 ![](https://i.imgur.com/TdkYKul.png)
 
-The `callback`, if testing locally, can be set as shown above (`http://localhost:3000/auth/google/callback`).  
+The `callback`, if testing locally, can be set as shown above (`http://localhost:8080/auth/google/callback`).  
 The `hostedDomain` option allows certain domains - for your use case you may want to set this to your domain.
 
 #### Google+ API
@@ -388,7 +388,7 @@ Same thing here as well. If we have Google OAuth enabled (`config.googleoauth`) 
 
 ## Testing
 
-Congratulations, you're done! Now, to test this locally just run the `npm start` from the root of your project and go to `http://localhost:3000` and you should see this:
+Congratulations, you're done! Now, to test this locally just run the `npm start` from the root of your project and go to `http://localhost:8080` and you should see this:
 
 ![](https://i.imgur.com/qTTwY4z.png)
 

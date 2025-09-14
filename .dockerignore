@@ -1,13 +1,14 @@
 .git/
 .github/
-deprecated/
 logo/
 node_modules/
 test/
 .dockerignore
 .editorconfig
-.eslintrc
 .gitignore
+.npmignore
+.prettierignore
 Dockerfile
 Makefile
+eslint.config.js
 package-lock.json
