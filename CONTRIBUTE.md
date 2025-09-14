@@ -1,5 +1,4 @@
-Contribute
-==========
+# Contribute
 
 We do our best to accept all PRs that help advance the project.  
 Thanks for your contributions!

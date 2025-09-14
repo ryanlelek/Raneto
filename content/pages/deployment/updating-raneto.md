@@ -7,7 +7,6 @@ The update process for Raneto is as follows:
 1. Make a backup of your `content` folder and your `config.js` outside of your project.
 
 1. (Optional) If you have edited the template, backup the following paths:
-
    - the `themes/default/` folder
    - any edited files in the `public` folder
 

@@ -19,8 +19,12 @@ import raneto from '../app/index.js';
 import config from './config.default.js';
 
 // Create two subapps with different configurations
-const appEn = raneto(Object.assign({}, config, { base_url : '/en', locale : 'en', nowrap : true }));
-const appEs = raneto(Object.assign({}, config, { base_url : '/es', locale : 'es', nowrap : true }));
+const appEn = raneto(
+  Object.assign({}, config, { base_url: '/en', locale: 'en', nowrap: true }),
+);
+const appEs = raneto(
+  Object.assign({}, config, { base_url: '/es', locale: 'es', nowrap: true }),
+);
 
 // Create the main app
 const mainApp = express();
@@ -28,9 +32,13 @@ mainApp.use('/en', appEn);
 mainApp.use('/es', appEs);
 
 // Load the HTTP Server
-const server = mainApp.listen(appEn.get('port'), appEn.get('host'), function () {
-  debug('Express HTTP server listening on port ' + server.address().port);
-});
+const server = mainApp.listen(
+  appEn.get('port'),
+  appEn.get('host'),
+  function () {
+    debug('Express HTTP server listening on port ' + server.address().port);
+  },
+);
 
 // Now you can navigate to both:
 // - http://localhost:3000/en

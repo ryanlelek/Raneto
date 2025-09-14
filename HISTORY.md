@@ -96,13 +96,11 @@ Possible breaking changes, based on your implementation
 - **[New]** Google groups restriction
   - contributed by **@Axadiw**
 - **[New]** Category meta description
-
   - contributed by **@marcello.gorla**
 
 - **[Doc]** TOC and site menu on pages
   - contributed by **@philipstratford**
 - **[Doc]** Updated install, guide, and README pages
-
   - contributed by **@Arthur Flageul**
 
 - **[Fix]** Fixed bug highlighting of second-level page titles

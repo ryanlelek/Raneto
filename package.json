@@ -39,8 +39,8 @@
     "unit": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage --detectOpenHandles",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "prettier": "prettier --check app/**/*.js config/*.js test/*.js server.js app/translations/*json",
-    "prettier:fix": "prettier --write app/**/*.js config/*.js test/*.js server.js app/translations/*json"
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "engines": {
     "node": ">=22.19.0",

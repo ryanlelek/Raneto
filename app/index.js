@@ -86,10 +86,12 @@ function initialize(config) {
 
   // Setup Express
   app.use(logger('dev'));
-  app.use(helmet({
-    // TODO: Refine
-    contentSecurityPolicy: false,
-  }));
+  app.use(
+    helmet({
+      // TODO: Refine
+      contentSecurityPolicy: false,
+    }),
+  );
   app.use(body_parser.json());
   app.use(body_parser.urlencoded({ extended: false }));
   app.use(cookie_parser());
