@@ -1,14 +1,14 @@
-.git/
-.github/
-logo/
-node_modules/
-test/
-.dockerignore
-.editorconfig
-.gitignore
-.npmignore
-.prettierignore
-Dockerfile
-Makefile
-eslint.config.js
-package-lock.json
+# Ignore everything
+*
+
+# Allow list
+!CONTRIBUTE.md
+!HISTORY.md
+!LICENSE
+!README.md
+!SECURITY.md
+!app
+!config
+!content
+!package.json
+!server.js
