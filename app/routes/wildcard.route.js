@@ -1,6 +1,6 @@
 // Modules
 import path from 'node:path';
-import _ from 'underscore';
+import _ from 'lodash';
 import fs from 'fs-extra';
 import { marked } from 'marked';
 import toc from '@fixhq/markdown-toc';

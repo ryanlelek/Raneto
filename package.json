@@ -69,6 +69,7 @@
     "helmet": "8.1.0",
     "hogan-express": "0.5.2",
     "js-yaml": "4.1.0",
+    "lodash": "4.17.21",
     "lunr": "2.3.9",
     "lunr-languages": "1.14.0",
     "marked": "16.2.1",
@@ -78,9 +79,8 @@
     "passport": "0.7.0",
     "passport-google-oauth20": "2.0.0",
     "sanitize-filename": "1.6.3",
+    "sanitize-html": "2.17.0",
     "sitemap": "8.0.0",
-    "underscore": "1.13.7",
-    "underscore.string": "3.3.6",
     "validator": "13.15.15"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import path from 'node:path';
 import fs from 'fs-extra';
-import _s from 'underscore.string';
+import _ from 'lodash';
+import sanitizeHtml from 'sanitize-html';
 import { marked } from 'marked';
 import utils from './utils.js';
 import content_processors from '../functions/content_processors.js';
@@ -34,10 +35,14 @@ async function handler(filePath, config) {
     const title = meta.title
       ? meta.title
       : content_processors.slugToTitle(slug);
-    const excerpt = _s.prune(
-      _s.stripTags(_s.unescapeHTML(body)),
-      config.excerpt_length || 400,
+    const cleanText = _.unescape(
+      sanitizeHtml(body, { allowedTags: [], allowedAttributes: {} }),
     );
+    const maxLength = config.excerpt_length || 400;
+    const excerpt =
+      cleanText.length > maxLength
+        ? cleanText.substring(0, maxLength).replace(/\s+\S*$/, '') + '...'
+        : cleanText;
 
     return {
       slug,

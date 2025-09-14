@@ -1,6 +1,6 @@
 // Modules
 import fs from 'fs-extra';
-import _ from 'underscore';
+import _ from 'lodash';
 import build_nested_pages from '../functions/build_nested_pages.js';
 import get_filepath from '../functions/get_filepath.js';
 import remove_image_content_directory from '../functions/remove_image_content_directory.js';

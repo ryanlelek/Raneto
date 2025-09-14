@@ -1,6 +1,5 @@
 // Modules
-// TODO: This underscore function may not be functioning correctly
-import _s from 'underscore.string';
+import sanitizeHtml from 'sanitize-html';
 import remove_image_content_directory from '../functions/remove_image_content_directory.js';
 import sanitize from '../functions/sanitize.js';
 import search_handler from '../core/search.js';
@@ -13,8 +12,11 @@ function route_search(config) {
       return next();
     }
 
-    // remove < and >
-    const rawQuery = _s.stripTags(req.query.search);
+    // Strip HTML tags from search query using well-tested library
+    const rawQuery = sanitizeHtml(req.query.search, {
+      allowedTags: [],
+      allowedAttributes: {},
+    });
     const sanitizedQuery = sanitize(rawQuery);
 
     // TODO: Using try/catch seems broken

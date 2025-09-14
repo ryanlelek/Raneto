@@ -1,8 +1,7 @@
 // Modules
 import path from 'node:path';
 import fs from 'fs-extra';
-import _ from 'underscore';
-import _s from 'underscore.string';
+import _ from 'lodash';
 import yaml from 'js-yaml';
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
@@ -22,9 +21,9 @@ function cleanString(str, use_underscore) {
   const u = use_underscore || false;
   str = str.replace(/\//g, ' ').trim();
   if (u) {
-    return _s.underscored(str);
+    return _.snakeCase(str);
   }
-  return _s.trim(_s.dasherize(str), '-');
+  return _.trim(_.kebabCase(str), '-');
 }
 
 // Clean object strings.
@@ -41,7 +40,7 @@ function cleanObjectStrings(obj) {
 // Convert a slug to a title
 function slugToTitle(slug) {
   slug = slug.replace('.md', '').trim();
-  return _s.titleize(_s.humanize(path.basename(slug)));
+  return _.startCase(path.basename(slug).replace(/[-_]/g, ' '));
 }
 
 // Strip meta from Markdown content

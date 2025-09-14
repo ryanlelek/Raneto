@@ -1,8 +1,7 @@
 import path from 'node:path';
 import fs from 'fs-extra';
 import { glob } from 'glob';
-import _ from 'underscore';
-import _s from 'underscore.string';
+import _ from 'lodash';
 import yaml from 'js-yaml';
 import utils from './utils.js';
 import content_processors from '../functions/content_processors.js';
@@ -112,7 +111,8 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
     return {
       slug: fileSlug,
       title:
-        dirMetadata.title || _s.titleize(_s.humanize(path.basename(shortPath))),
+        dirMetadata.title ||
+        _.startCase(path.basename(shortPath).replace(/[-_]/g, ' ')),
       show_on_home: dirMetadata.show_on_home
         ? dirMetadata.show_on_home === 'true'
         : config.show_on_home_default,
