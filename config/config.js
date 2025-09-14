@@ -43,7 +43,7 @@ const config = {
   support_email: '',
 
   // Footer Text / Copyright
-  copyright: `Copyright &copy; ${new Date().getFullYear()} - <a href="https://raneto.com" target="_blank">Powered by Raneto</a>`,
+  copyright: `Copyright &copy; ${new Date().getFullYear()} Raneto Team`,
 
   // Excerpt length (used in search)
   excerpt_length: 400,

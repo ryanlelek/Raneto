@@ -1,6 +1,6 @@
 // Error-Handling Middleware
 function mw_error_handler(config) {
-  return function (err, req, res) {
+  return function (err, req, res, next) {
     const status = err.status || 500;
 
     res.status(status);

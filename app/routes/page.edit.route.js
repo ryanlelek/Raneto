@@ -6,6 +6,14 @@ import sanitize_markdown from '../functions/sanitize_markdown.js';
 
 function route_page_edit(config) {
   return async function (req, res) {
+    // Check if file parameter exists and is not empty
+    if (!req.body.file || req.body.file.trim() === '') {
+      return res.json({
+        status: 1,
+        message: config.lang.api.invalidFile || 'Invalid file path',
+      });
+    }
+
     let file_category = '';
     let file_name = '';
 
@@ -14,8 +22,13 @@ function route_page_edit(config) {
     if (req_file.length > 2) {
       file_category = req_file[1];
       file_name = req_file[2];
-    } else {
+    } else if (req_file.length === 2) {
       file_name = req_file[1];
+    } else {
+      return res.json({
+        status: 1,
+        message: config.lang.api.invalidFile || 'Invalid file path',
+      });
     }
 
     // Generate Filepath
