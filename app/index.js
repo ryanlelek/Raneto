@@ -6,7 +6,7 @@ import cookie_parser from 'cookie-parser';
 import body_parser from 'body-parser';
 import moment from 'moment';
 import helmet from 'helmet';
-import hogan from 'hogan-express';
+import mustacheExpress from 'mustache-express';
 import session from 'express-session';
 import passport from 'passport';
 import language_load from './core/language.js';
@@ -78,11 +78,11 @@ function initialize(config) {
       'public',
     );
   }
-  app.set('views', path.join(config.theme_dir, config.theme_name, 'templates'));
-  app.set('layout', 'layout');
+  const viewsDir = path.join(config.theme_dir, config.theme_name, 'templates');
+  app.set('views', viewsDir);
   app.set('view engine', 'html');
   app.enable('view cache');
-  app.engine('html', hogan);
+  app.engine('html', mustacheExpress(path.join(viewsDir, 'partials'), '.html'));
 
   // Setup Express
   app.use(logger('dev'));
