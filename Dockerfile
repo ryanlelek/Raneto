@@ -6,13 +6,15 @@ ENV NODE_ENV production
 
 WORKDIR /opt/raneto
 RUN chown node:node /opt/raneto
-USER node
+
+# User node (Group node 1000)
+USER 1000
 
 # Copy package.json and install to cache
-COPY ./package.json .
+COPY --chown=1000:1000 ./package.json .
 RUN npm install --omit=dev
 
-COPY . .
+COPY --chown=1000:1000 . .
 
 EXPOSE 8080
 CMD ["node", "server.js"]

@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 // Here is where we load Raneto.
 // When you are in your own project repository,
