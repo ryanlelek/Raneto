@@ -1,3 +1,7 @@
+
+# Sessions
+sessions/
+
 # Logs
 logs
 *.log
@@ -29,6 +33,4 @@ themes/default/public/lib/
 *.pages
 *.pdf
 .DS_Store
-
 .idea
-

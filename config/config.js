@@ -18,6 +18,10 @@ const theme_dir = path.join(
 );
 const theme_name = 'dist';
 
+if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET === "" || process.env.SESSION_SECRET.length < 16) {
+  throw new Error("EnvVar SESSION_SECRET needs a value at least 16 characters")
+}
+
 const config = {
   // Your site title (format: page_title - site_title)
   site_title: 'Raneto Docs',
@@ -108,7 +112,7 @@ const config = {
     callback: 'http://localhost:8080/auth/google/callback',
     hostedDomain: 'google.com',
   },
-  secret: 'someCoolSecretRightHere',
+  secret: process.env.SESSION_SECRET,
 
   // ##### WARNING #####
   // You MUST change the username and password for security

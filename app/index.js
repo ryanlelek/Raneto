@@ -8,6 +8,7 @@ import moment from 'moment';
 import helmet from 'helmet';
 import mustacheExpress from 'mustache-express';
 import session from 'express-session';
+import FileStore from 'session-file-store';
 import passport from 'passport';
 import language_load from './core/language.js';
 import mw_authenticate from './middleware/authenticate.mw.js';
@@ -116,12 +117,24 @@ function initialize(config) {
     config.authentication_for_edit ||
     config.authentication_for_read
   ) {
+    const SessionFileStore = FileStore(session);
     app.use(
       session({
+        store: new SessionFileStore({
+          path: './sessions',
+          ttl: 86400,
+          retries: 0,
+          reapInterval: 3600,
+        }),
         secret: config.secret,
         name: 'raneto.sid',
         resave: false,
         saveUninitialized: false,
+        cookie: {
+          maxAge: 86400000,
+          secure: process.env.NODE_ENV === 'production',
+          httpOnly: true,
+        },
       }),
     );
     app.use(mw_auth_readonly(config));
