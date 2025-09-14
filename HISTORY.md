@@ -12,6 +12,7 @@ This is a modernization refactor.
 - **[BREAKING]** Modernizing, moving to ESModules, `require => import`, `const/let`, `node:` import prefix, `module.exports => export`, `'use strict';` etc.
 - **[New]** Table of Contents Link Targets (marked-gfm-heading-id)
   - contributed by **@dkuhlman**
+- **[Fix]** Better searching (fuzzy, partial matches)
 - **[Misc]** Replacing underscore with lodash and sanitize-html
 - **[Misc]** Remove node-fetch, using native Node.js version
 - **[Misc]** Remove extend, explicitly declaring @eslint/js dependency

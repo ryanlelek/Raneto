@@ -34,8 +34,11 @@ function route_search(config) {
     }
 
     // TODO: Move to Raneto Core
-    // Loop through Results and Extract Category
-    searchResults.forEach((result) => {
+    // Filter out null results and extract category
+    const validResults = searchResults.filter(
+      (result) => result !== null && result !== undefined,
+    );
+    validResults.forEach((result) => {
       result.category = null;
       const split = result.slug.split('/');
       if (split.length > 1) {
@@ -47,7 +50,7 @@ function route_search(config) {
       config,
       pages: pageListSearch,
       search: sanitizedQuery,
-      searchResults,
+      searchResults: validResults,
       body_class: 'page-search',
       lang: config.lang,
       loggedIn:

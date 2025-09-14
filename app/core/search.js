@@ -18,13 +18,42 @@ async function handler(query, config) {
   const lunrInstance = lunr.getLunr(config);
   const idx = lunrInstance(function () {
     this.use(lunr.getStemmers(config));
-    this.field('title');
+    this.field('title', { boost: 10 }); // Boost title matches
     this.field('body');
     this.ref('id');
     documents.forEach((doc) => this.add(doc), this);
   });
 
-  const results = idx.search(query);
+  // Clean and prepare the query
+  const cleanQuery = query.trim();
+
+  // Try exact search first
+  let results = idx.search(cleanQuery);
+
+  // If no results, try with OR operator for multi-word queries
+  if (results.length === 0 && cleanQuery.includes(' ')) {
+    const orQuery = cleanQuery.split(/\s+/).join(' OR ');
+    results = idx.search(orQuery);
+  }
+
+  // If no results, try fuzzy search with edit distance 1
+  if (results.length === 0 && cleanQuery.length > 2) {
+    results = idx.search(`${cleanQuery}~1`);
+  }
+
+  // If still no results, try wildcard search
+  if (results.length === 0) {
+    results = idx.search(`${cleanQuery}*`);
+  }
+
+  // If still no results, try searching each word with fuzzy matching
+  if (results.length === 0) {
+    const words = cleanQuery.split(/\s+/).filter((word) => word.length > 2);
+    const fuzzyQuery = words.map((word) => `${word}~1`).join(' OR ');
+    if (fuzzyQuery) {
+      results = idx.search(fuzzyQuery);
+    }
+  }
 
   const searchResults = await Promise.all(
     results.map(async (result) => {
@@ -42,9 +71,9 @@ async function handler(query, config) {
 }
 
 async function processSearchResult(contentDir, config, query, result) {
-  // Removed
-  // contentDir +
-  const page = await page_handler(result.ref, config);
+  // result.ref is the relative path from contentDir, we need to prepend contentDir
+  const fullPath = path.join(contentDir, result.ref);
+  const page = await page_handler(fullPath, config);
   // TODO: Improve handling
   if (page && page.excerpt) {
     page.excerpt = page.excerpt.replace(
