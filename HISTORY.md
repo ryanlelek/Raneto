@@ -10,6 +10,10 @@ This is a modernization refactor.
 - **[BREAKING]** Packages removed: `pm2`, `commander`, `tail`, `serve-favicon`
 - **[BREAKING]** `bin/raneto` removed as it is out of scope. Please do not use PM2 and instead use `npm start`, containers, systemd, etc.
 - **[BREAKING]** Modernizing, moving to ESModules, `require => import`, `const/let`, `node:` import prefix, `module.exports => export`, `'use strict';` etc.
+- **[New]** Table of Contents Link Targets (marked-gfm-heading-id)
+  - contributed by **@dkuhlman**
+- **[Misc]** Replacing underscore with lodash and sanitize-html
+- **[Misc]** Remove node-fetch, using native Node.js version
 - **[Misc]** Dependency upgrades
 - **[Add]** Container build (raneto:latest) on push to main
 - **[Add]** Container build (raneto:tag) on tag creation
