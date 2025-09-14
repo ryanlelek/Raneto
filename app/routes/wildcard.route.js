@@ -42,7 +42,7 @@ function route_wildcard(config) {
     try {
       content = await fs.readFile(file_path, 'utf8');
     } catch (error) {
-      error.status = '404';
+      error.status = 404;
       error.message = config.lang.error['404'];
       return next(error);
     }

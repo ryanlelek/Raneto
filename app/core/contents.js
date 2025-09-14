@@ -92,7 +92,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
       );
     } catch (e) {
       if (config.debug) {
-        console.log('No meta file for', contentDir + shortPath);
+        console.log('No meta file for', contentDir + shortPath, e.message);
       }
     }
 
@@ -104,7 +104,7 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
         sort = parseInt(sortFile.toString('utf-8'), 10);
       } catch (e) {
         if (config.debug) {
-          console.log('No sort file for', contentDir + shortPath);
+          console.log('No sort file for', contentDir + shortPath, e.message);
         }
       }
     }

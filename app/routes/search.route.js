@@ -28,6 +28,7 @@ function route_search(config) {
       );
     } catch (e) {
       // Continue with defaults of empty arrays
+      console.log(e.message);
     }
 
     // TODO: Move to Raneto Core
