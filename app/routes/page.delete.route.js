@@ -9,11 +9,11 @@ function route_page_delete(config) {
 
     // Handle category in file path
     const req_file = req.body.file.split('/');
-    if (req_file.length > 2) {
-      file_category = req_file[1];
-      file_name = req_file[2];
-    } else {
+    if (req_file.length > 1) {
+      file_category = req_file[0];
       file_name = req_file[1];
+    } else {
+      file_name = req_file[0];
     }
 
     // Generate filepath

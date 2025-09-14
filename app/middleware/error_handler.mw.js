@@ -10,6 +10,7 @@ function mw_error_handler(config) {
       message: config.lang.error[status] || err.message,
       error: {},
       body_class: 'page-error',
+      lang: config.lang,
       loggedIn:
         config.authentication || config.authentication_for_edit
           ? req.session.loggedIn
