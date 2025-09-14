@@ -10,6 +10,8 @@ This is a modernization refactor.
 - **[BREAKING]** Packages removed: `pm2`, `commander`, `tail`, `serve-favicon`
 - **[BREAKING]** `bin/raneto` removed as it is out of scope. Please do not use PM2 and instead use `npm start`, containers, systemd, etc.
 - **[BREAKING]** Modernizing, moving to ESModules, `require => import`, `const/let`, `node:` import prefix, `module.exports => export`, `'use strict';` etc.
+- **[BREAKING]** CSP (Content Security Policy) is now enforcing
+- **[New]** Theme redesign
 - **[New]** Table of Contents Link Targets (marked-gfm-heading-id)
   - contributed by **@dkuhlman**
 - **[New]** File-based sessions to prevent requiring login on restart

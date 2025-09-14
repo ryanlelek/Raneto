@@ -89,8 +89,20 @@ function initialize(config) {
   app.use(logger('dev'));
   app.use(
     helmet({
-      // TODO: Refine
-      contentSecurityPolicy: false,
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", 'https://cdnjs.cloudflare.com'],
+          styleSrc: ["'self'"],
+          imgSrc: ["'self'", 'data:', 'https:'],
+          fontSrc: ["'self'", 'data:'],
+          connectSrc: ["'self'"],
+          frameSrc: ["'none'"],
+          objectSrc: ["'none'"],
+          upgradeInsecureRequests: [],
+        },
+      },
+      crossOriginEmbedderPolicy: false,
     }),
   );
   app.use(body_parser.json());

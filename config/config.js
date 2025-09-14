@@ -18,8 +18,12 @@ const theme_dir = path.join(
 );
 const theme_name = 'dist';
 
-if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET === "" || process.env.SESSION_SECRET.length < 16) {
-  throw new Error("EnvVar SESSION_SECRET needs a value at least 16 characters")
+if (
+  !process.env.SESSION_SECRET ||
+  process.env.SESSION_SECRET === '' ||
+  process.env.SESSION_SECRET.length < 16
+) {
+  throw new Error('EnvVar SESSION_SECRET needs a value at least 16 characters');
 }
 
 const config = {
