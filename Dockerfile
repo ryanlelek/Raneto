@@ -1,4 +1,4 @@
-FROM node:22.19.0-alpine
+FROM --platform=$TARGETPLATFORM node:22.19.0-alpine
 
 ENV HOST 0.0.0.0
 ENV PORT 8080

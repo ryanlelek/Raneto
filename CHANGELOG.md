@@ -14,6 +14,7 @@ This is a modernization refactor.
 - **[New]** Theme redesign
 - **[New]** Table of Contents Link Targets (marked-gfm-heading-id)
   - contributed by **@dkuhlman**
+- **[New]** Multi-architecture container builds
 - **[New]** File-based sessions to prevent requiring login on restart
 - **[Fix]** Better searching (fuzzy, partial matches)
 - **[Misc]** Replacing underscore with lodash and sanitize-html
