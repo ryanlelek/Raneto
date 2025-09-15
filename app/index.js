@@ -187,25 +187,15 @@ function initialize(config) {
 
   // Router for / and /index with or without search parameter
   if (config.googleoauth === true) {
-    router.get(
-      '/:var(index)?',
-      mw_oauth2.required,
-      route_search_init,
-      route_home_init,
-    );
+    router.get('/', mw_oauth2.required, route_search_init, route_home_init);
     router.get(/^([^.]*)/, mw_oauth2.required, route_wildcard_init);
   } else if (config.authentication_for_read === true) {
     router.get('/sitemap.xml', authenticate, route_sitemap_init);
-    router.get(
-      '/:var(index)?',
-      authenticate,
-      route_search_init,
-      route_home_init,
-    );
+    router.get('/', authenticate, route_search_init, route_home_init);
     router.get(/^([^.]*)/, authenticate, route_wildcard_init);
   } else {
     router.get('/sitemap.xml', route_sitemap_init);
-    router.get('/:var(index)?', route_search_init, route_home_init);
+    router.get('/', route_search_init, route_home_init);
     router.get(/^([^.]*)/, route_wildcard_init);
   }
 
