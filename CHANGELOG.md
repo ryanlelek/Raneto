@@ -1,6 +1,6 @@
 # Raneto Changelog
 
-## RELEASE TBD / v0.18.0
+## 2025.09.15 / v0.18.0
 
 This is a modernization refactor.
 
