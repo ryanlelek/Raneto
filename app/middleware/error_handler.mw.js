@@ -1,6 +1,6 @@
 // Error-Handling Middleware
 function mw_error_handler(config) {
-  return function (err, req, res, next) {
+  return function (err, req, res, _next) {
     const status = err.status || 500;
 
     res.status(status);
@@ -16,7 +16,6 @@ function mw_error_handler(config) {
           ? req.session.loggedIn
           : false,
     });
-    return next();
   };
 }
 

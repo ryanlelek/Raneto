@@ -38,7 +38,7 @@ export default [
       'no-path-concat': 1,
       'no-undef': 2,
       'unused-imports/no-unused-imports': 'error',
-      'no-unused-vars': 2,
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-var': 1,
     },
   },
