@@ -16,6 +16,7 @@ function mw_error_handler(config) {
           ? req.session.loggedIn
           : false,
     });
+    return next();
   };
 }
 

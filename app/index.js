@@ -91,6 +91,7 @@ function initialize(config) {
     helmet({
       contentSecurityPolicy: {
         directives: {
+          /* eslint-disable quotes */
           defaultSrc: ["'self'"],
           scriptSrc: ["'self'", 'https://cdnjs.cloudflare.com'],
           styleSrc: ["'self'"],
@@ -100,6 +101,7 @@ function initialize(config) {
           frameSrc: ["'none'"],
           objectSrc: ["'none'"],
           upgradeInsecureRequests: [],
+          /* eslint-enable quotes */
         },
       },
       crossOriginEmbedderPolicy: false,
