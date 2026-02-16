@@ -1,5 +1,9 @@
 # Raneto Changelog
 
+## UNRELEASED / v0.18.1
+
+- **[BREAKING]** Minimum Node.js is v24.x LTS
+
 ## 2025.09.15 / v0.18.0
 
 This is a modernization refactor.
