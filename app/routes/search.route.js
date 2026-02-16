@@ -6,7 +6,7 @@ import getAuthContext from '../functions/get_auth_context.js';
 import search_handler from '../core/search.js';
 import contents_handler from '../core/contents.js';
 
-function route_search(config) {
+function routeSearch(config) {
   return async function (req, res, next) {
     // Skip if Search not present
     if (!req.query.search) {
@@ -29,7 +29,7 @@ function route_search(config) {
         await contents_handler(null, config),
       );
     } catch (e) {
-      console.log(e.message);
+      console.error('Search error:', e.message);
     }
 
     return res.render('search', {
@@ -45,4 +45,4 @@ function route_search(config) {
 }
 
 // Exports
-export default route_search;
+export default routeSearch;

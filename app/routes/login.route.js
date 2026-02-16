@@ -12,7 +12,7 @@ function safeEqual(a, b) {
   return timingSafeEqual(bufA, bufB);
 }
 
-function route_login(config) {
+function routeLogin(config) {
   return function (req, res) {
     const credential = config.credentials.find(
       (c) =>
@@ -38,4 +38,4 @@ function route_login(config) {
 }
 
 // Exports
-export default route_login;
+export default routeLogin;

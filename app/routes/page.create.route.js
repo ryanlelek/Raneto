@@ -2,7 +2,7 @@
 import fs from 'fs-extra';
 import getFilepath from '../functions/get_filepath.js';
 
-function route_page_create(config) {
+function routePageCreate(config) {
   return async function (req, res) {
     // Generate filepath
     // Sanitized within function
@@ -26,13 +26,14 @@ function route_page_create(config) {
         message: config.lang.api.pageCreated,
       });
     } catch (error) {
+      console.error('Page create error:', error.message);
       res.json({
         status: 1,
-        message: error.message,
+        message: config.lang.api.pageNotCreated || 'An error occurred',
       });
     }
   };
 }
 
 // Exports
-export default route_page_create;
+export default routePageCreate;

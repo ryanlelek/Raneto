@@ -1,5 +1,5 @@
 import search_handler from '../app/core/search.js';
-import { createConfig } from './config.helpers.js';
+import { createConfig } from './config-helpers.js';
 
 const config = createConfig();
 

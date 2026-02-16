@@ -1,5 +1,7 @@
 // Error-Handling Middleware
-function mw_error_handler(config) {
+import getAuthContext from '../functions/get_auth_context.js';
+
+function errorHandler(config) {
   return function (err, req, res, _next) {
     const status = err.status || 500;
 
@@ -11,13 +13,10 @@ function mw_error_handler(config) {
       error: {},
       body_class: 'page-error',
       lang: config.lang,
-      loggedIn:
-        config.authentication || config.authentication_for_edit
-          ? req.session.loggedIn
-          : false,
+      ...getAuthContext(config, req.session),
     });
   };
 }
 
 // Exports
-export default mw_error_handler;
+export default errorHandler;

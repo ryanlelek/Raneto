@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import contents_handler from '../app/core/contents.js';
-import { createConfig } from './config.helpers.js';
+import { createConfig } from './config-helpers.js';
 
 const config = createConfig();
 

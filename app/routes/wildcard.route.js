@@ -13,7 +13,7 @@ import contents_handler from '../core/contents.js';
 import utils from '../core/utils.js';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 
-function route_wildcard(config) {
+function routeWildcard(config) {
   return async function (req, res, next) {
     // Skip if nothing matched the wildcard Regex
     if (!req.params[0]) {
@@ -91,7 +91,7 @@ function route_wildcard(config) {
           (config.authentication || config.authentication_for_edit) &&
           !req.session.loggedIn
         ) {
-          res.redirect(`${config.base_url}/login`);
+          res.redirect(302, `${config.base_url}/login`);
           return;
         }
         render = 'edit';
@@ -141,4 +141,4 @@ function route_wildcard(config) {
 }
 
 // Exports
-export default route_wildcard;
+export default routeWildcard;

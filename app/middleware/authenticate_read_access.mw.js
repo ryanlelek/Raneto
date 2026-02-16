@@ -1,4 +1,4 @@
-function mw_authenticate_read_access(config) {
+function authenticateReadAccess(config) {
   if (
     config.authentication === true &&
     config.authentication_for_edit === false
@@ -24,4 +24,4 @@ function mw_authenticate_read_access(config) {
 }
 
 // Exports
-export default mw_authenticate_read_access;
+export default authenticateReadAccess;

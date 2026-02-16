@@ -1,4 +1,4 @@
-function middleware_authenticate(config, { required = false } = {}) {
+function middlewareAuthenticate(config, { required = false } = {}) {
   if (required || config.authentication === true) {
     return function (req, res, next) {
       if (!req.session.loggedIn) {
@@ -16,4 +16,4 @@ function middleware_authenticate(config, { required = false } = {}) {
 }
 
 // Exports
-export default middleware_authenticate;
+export default middlewareAuthenticate;

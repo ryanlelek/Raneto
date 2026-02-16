@@ -1,6 +1,6 @@
 import path from 'node:path';
 import validateConfig from '../app/core/config_validation.js';
-import language_load from '../app/core/language.js';
+import languageLoad from '../app/core/language.js';
 
 const validBase = {
   secret: 'a-valid-secret-1234',
@@ -206,19 +206,19 @@ describe('#validateConfig()', () => {
   });
 });
 
-describe('#language_load()', () => {
+describe('#languageLoad()', () => {
   it('loads English translations', () => {
-    const lang = language_load('en');
+    const lang = languageLoad('en');
     expect(lang).toHaveProperty('home');
     expect(lang).toHaveProperty('search');
   });
 
   it('loads Russian translations', () => {
-    const lang = language_load('ru');
+    const lang = languageLoad('ru');
     expect(lang).toHaveProperty('home');
   });
 
   it('throws for nonexistent locale', () => {
-    expect(() => language_load('nonexistent')).toThrow();
+    expect(() => languageLoad('nonexistent')).toThrow();
   });
 });

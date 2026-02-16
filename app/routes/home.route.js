@@ -7,7 +7,7 @@ import getAuthContext from '../functions/get_auth_context.js';
 import contents_handler from '../core/contents.js';
 import utils from '../core/utils.js';
 
-function route_home(config) {
+function routeHome(config) {
   return async function (req, res, next) {
     // Generate filepath
     // Sanitized within function
@@ -56,4 +56,4 @@ function route_home(config) {
 }
 
 // Exports
-export default route_home;
+export default routeHome;

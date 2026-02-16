@@ -21,8 +21,8 @@ const allowedAttributes = {
   pre: ['class'],
 };
 
-function sanitize(html) {
+function sanitizeHtmlOutput(html) {
   return sanitizeHtml(html, { allowedTags, allowedAttributes });
 }
 
-export default sanitize;
+export default sanitizeHtmlOutput;

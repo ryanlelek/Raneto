@@ -6,16 +6,16 @@ import { SitemapStream, streamToPromise } from 'sitemap';
 import content_processors from '../functions/content_processors.js';
 import utils from '../core/utils.js';
 
-function route_sitemap(config) {
+function routeSitemap(config) {
   return async function (req, res, next) {
     const hostname = config.hostname || req.headers.host;
-    const content_dir = path.normalize(config.content_dir);
+    const contentDir = path.normalize(config.content_dir);
 
     try {
-      const _files = await listFiles(content_dir);
-      const files = _files.filter((file) => file.endsWith('.md'));
-      const filesPath = files.map((file) => file.replace(content_dir, ''));
-      const urls = filesPath.map(
+      const allFiles = await listFiles(contentDir);
+      const files = allFiles.filter((file) => file.endsWith('.md'));
+      const filePaths = files.map((file) => file.replace(contentDir, ''));
+      const urls = filePaths.map(
         (file) => `/${file.replace('.md', '').replace(/\\/g, '/')}`,
       );
 
@@ -65,8 +65,8 @@ async function listFiles(dir) {
   );
 
   // Return the flattened array
-  return paths.reduce((list, paths) => list.concat(paths), []);
+  return paths.reduce((list, subPaths) => list.concat(subPaths), []);
 }
 
 // Exports
-export default route_sitemap;
+export default routeSitemap;

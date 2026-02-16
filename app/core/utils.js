@@ -7,7 +7,7 @@ const normalizeDir = (dir) => dir.replace(/\\/g, '/');
 const getSlug = (filePath, contentDir) =>
   normalizeDir(filePath).replace(normalizeDir(contentDir), '').trim();
 
-async function getLastModified(config, meta, file_path) {
+async function getLastModified(config, meta, filePath) {
   if (typeof meta.modified !== 'undefined') {
     return moment(meta.modified).format(config.datetime_format);
   }
@@ -23,7 +23,7 @@ async function getLastModified(config, meta, file_path) {
     allowedRoots.some((root) => p.startsWith(root + path.sep) || p === root);
 
   // Validate resolved path before any filesystem operations
-  const resolved = path.resolve(file_path);
+  const resolved = path.resolve(filePath);
   if (!isWithinAllowed(resolved)) {
     throw new Error('Access denied: file path is outside allowed directories');
   }

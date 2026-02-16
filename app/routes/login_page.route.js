@@ -1,4 +1,4 @@
-function route_login_page(config) {
+function routeLoginPage(config) {
   return function (req, res) {
     return res.render('login', {
       config,
@@ -11,4 +11,4 @@ function route_login_page(config) {
 }
 
 // Exports
-export default route_login_page;
+export default routeLoginPage;

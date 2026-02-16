@@ -2,19 +2,19 @@
 import yaml from 'js-yaml';
 
 // Returns an empty string if all input strings are empty
-function createMetaInfo(meta_title, meta_description, meta_sort) {
+function createMetaInfo(metaTitle, metaDescription, metaSort) {
   const yamlDocument = {};
-  const meta_info_is_present = meta_title || meta_description || meta_sort;
+  const metaInfoIsPresent = metaTitle || metaDescription || metaSort;
 
-  if (meta_info_is_present) {
-    if (meta_title) {
-      yamlDocument.Title = meta_title;
+  if (metaInfoIsPresent) {
+    if (metaTitle) {
+      yamlDocument.Title = metaTitle;
     }
-    if (meta_description) {
-      yamlDocument.Description = meta_description;
+    if (metaDescription) {
+      yamlDocument.Description = metaDescription;
     }
-    if (meta_sort) {
-      yamlDocument.Sort = parseInt(meta_sort, 10);
+    if (metaSort) {
+      yamlDocument.Sort = parseInt(metaSort, 10);
     }
 
     return `---\n${yaml.dump(yamlDocument)}---\n`;

@@ -2,7 +2,7 @@
 import fs from 'fs-extra';
 import getFilepath from '../functions/get_filepath.js';
 
-function route_category_create(config) {
+function routeCategoryCreate(config) {
   return async function (req, res) {
     // Generate filepath
     // Sanitized within function
@@ -25,13 +25,14 @@ function route_category_create(config) {
         message: config.lang.api.categoryCreated,
       });
     } catch (error) {
+      console.error('Category create error:', error.message);
       res.json({
         status: 1,
-        message: error.message,
+        message: config.lang.api.categoryNotCreated || 'An error occurred',
       });
     }
   };
 }
 
 // Exports
-export default route_category_create;
+export default routeCategoryCreate;

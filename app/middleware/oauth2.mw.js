@@ -17,18 +17,9 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 function extractProfile(profile) {
-  let imageUrl = '';
-  let domain = '';
-  let email = '';
-  if (profile.photos && profile.photos.length) {
-    imageUrl = profile.photos[0].value;
-  }
-  if (profile.emails && profile.emails.length) {
-    email = profile.emails[0].value;
-  }
-  if (profile._json && profile._json.domain) {
-    domain = profile._json.domain;
-  }
+  const imageUrl = profile.photos?.[0]?.value || '';
+  const email = profile.emails?.[0]?.value || '';
+  const domain = profile._json?.domain || '';
   return {
     id: profile.id,
     displayName: profile.displayName,

@@ -5,7 +5,7 @@ import getFilepath, {
   parseFileParam,
 } from '../functions/get_filepath.js';
 
-function route_page_delete(config) {
+function routePageDelete(config) {
   return async function (req, res) {
     const parsed = parseFileParam(req.body.file);
     if (!parsed) {
@@ -42,13 +42,14 @@ function route_page_delete(config) {
         message: config.lang.api.pageDeleted,
       });
     } catch (error) {
+      console.error('Page delete error:', error.message);
       res.json({
         status: 1,
-        message: error.message,
+        message: config.lang.api.pageNotDeleted || 'An error occurred',
       });
     }
   };
 }
 
 // Exports
-export default route_page_delete;
+export default routePageDelete;

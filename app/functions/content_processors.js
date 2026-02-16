@@ -1,7 +1,10 @@
 // Modules
 import path from 'node:path';
 import fs from 'fs-extra';
-import _ from 'lodash';
+import snakeCase from 'lodash/snakeCase.js';
+import kebabCase from 'lodash/kebabCase.js';
+import startCase from 'lodash/startCase.js';
+import trim from 'lodash/trim.js';
 import yaml from 'js-yaml';
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
@@ -14,16 +17,16 @@ import yaml from 'js-yaml';
 // {header string}
 // ---
 // TODO: DEPRECATED Non-YAML
-const _metaRegex = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
-const _metaRegexYaml = /^\uFEFF?---([\s\S]*?)---/i;
+const META_REGEX = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
+const META_REGEX_YAML = /^\uFEFF?---([\s\S]*?)---/i;
 
-function cleanString(str, use_underscore) {
-  const u = use_underscore || false;
+function cleanString(str, useUnderscore) {
+  const u = useUnderscore || false;
   str = str.replace(/\//g, ' ').trim();
   if (u) {
-    return _.snakeCase(str);
+    return snakeCase(str);
   }
-  return _.trim(_.kebabCase(str), '-');
+  return trim(kebabCase(str), '-');
 }
 
 // Clean object strings.
@@ -40,25 +43,25 @@ function cleanObjectStrings(obj) {
 // Convert a slug to a title
 function slugToTitle(slug) {
   slug = slug.replace('.md', '').trim();
-  return _.startCase(path.basename(slug).replace(/[-_]/g, ' '));
+  return startCase(path.basename(slug).replace(/[-_]/g, ' '));
 }
 
 // Strip meta from Markdown content
 function stripMeta(markdownContent) {
-  if (_metaRegex.test(markdownContent)) {
-    return markdownContent.replace(_metaRegex, '').trim();
+  if (META_REGEX.test(markdownContent)) {
+    return markdownContent.replace(META_REGEX, '').trim();
   }
-  if (_metaRegexYaml.test(markdownContent)) {
-    return markdownContent.replace(_metaRegexYaml, '').trim();
+  if (META_REGEX_YAML.test(markdownContent)) {
+    return markdownContent.replace(META_REGEX_YAML, '').trim();
   }
   return markdownContent.trim();
 }
 
 // Get metadata from Markdown content
 function processMeta(markdownContent) {
-  if (_metaRegex.test(markdownContent)) {
+  if (META_REGEX.test(markdownContent)) {
     const meta = {};
-    const metaArr = markdownContent.match(_metaRegex);
+    const metaArr = markdownContent.match(META_REGEX);
     const metaString = metaArr?.[1]?.trim() ?? '';
 
     if (metaString) {
@@ -73,8 +76,8 @@ function processMeta(markdownContent) {
     return meta;
   }
 
-  if (_metaRegexYaml.test(markdownContent)) {
-    const metaArr = markdownContent.match(_metaRegexYaml);
+  if (META_REGEX_YAML.test(markdownContent)) {
+    const metaArr = markdownContent.match(META_REGEX_YAML);
     const metaString = metaArr?.[1]?.trim() ?? '';
     const yamlObject = yaml.load(metaString);
     return cleanObjectStrings(yamlObject);

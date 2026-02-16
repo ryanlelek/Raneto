@@ -7,7 +7,7 @@ import getFilepath, {
 import createMetaInfo from '../functions/create_meta_info.js';
 import sanitizeMarkdown from '../functions/sanitize_markdown.js';
 
-function route_page_edit(config) {
+function routePageEdit(config) {
   return async function (req, res) {
     const parsed = parseFileParam(req.body.file);
     if (!parsed) {
@@ -50,13 +50,14 @@ function route_page_edit(config) {
         message: config.lang.api.pageSaved,
       });
     } catch (error) {
+      console.error('Page edit error:', error.message);
       res.json({
         status: 1,
-        message: error.message,
+        message: config.lang.api.pageNotSaved || 'An error occurred',
       });
     }
   };
 }
 
 // Exports
-export default route_page_edit;
+export default routePageEdit;

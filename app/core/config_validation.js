@@ -1,15 +1,13 @@
 import fs from 'fs-extra';
 
-const errors = [];
-
-function require(field, message) {
-  if (!field) {
-    errors.push(message);
-  }
-}
-
 function validateConfig(config) {
-  errors.length = 0;
+  const errors = [];
+
+  function require(field, message) {
+    if (!field) {
+      errors.push(message);
+    }
+  }
 
   // Secret
   if (!config.secret || config.secret === '' || config.secret.length < 16) {

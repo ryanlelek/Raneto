@@ -1,4 +1,4 @@
-function route_logout(config) {
+function routeLogout(config) {
   return function (req, res) {
     req.session.destroy((err) => {
       if (err) {
@@ -11,4 +11,4 @@ function route_logout(config) {
 }
 
 // Exports
-export default route_logout;
+export default routeLogout;

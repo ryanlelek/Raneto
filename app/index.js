@@ -12,22 +12,22 @@ import session from 'express-session';
 import FileStore from 'session-file-store';
 import passport from 'passport';
 import validateConfig from './core/config_validation.js';
-import language_load from './core/language.js';
-import mw_authenticate from './middleware/authenticate.mw.js';
-import mw_auth_readonly from './middleware/authenticate_read_access.mw.js';
-import mw_error_handler from './middleware/error_handler.mw.js';
-import mw_oauth2 from './middleware/oauth2.mw.js';
-import route_login from './routes/login.route.js';
-import route_login_page from './routes/login_page.route.js';
-import route_logout from './routes/logout.route.js';
-import route_page_edit from './routes/page.edit.route.js';
-import route_page_delete from './routes/page.delete.route.js';
-import route_page_create from './routes/page.create.route.js';
-import route_category_create from './routes/category.create.route.js';
-import route_search from './routes/search.route.js';
-import route_home from './routes/home.route.js';
-import route_wildcard from './routes/wildcard.route.js';
-import route_sitemap from './routes/sitemap.route.js';
+import languageLoad from './core/language.js';
+import authenticate from './middleware/authenticate.mw.js';
+import authReadonly from './middleware/authenticate_read_access.mw.js';
+import errorHandler from './middleware/error_handler.mw.js';
+import oauth2 from './middleware/oauth2.mw.js';
+import routeLogin from './routes/login.route.js';
+import routeLoginPage from './routes/login_page.route.js';
+import routeLogout from './routes/logout.route.js';
+import routePageEdit from './routes/page.edit.route.js';
+import routePageDelete from './routes/page.delete.route.js';
+import routePageCreate from './routes/page.create.route.js';
+import routeCategoryCreate from './routes/category.create.route.js';
+import routeSearch from './routes/search.route.js';
+import routeHome from './routes/home.route.js';
+import routeWildcard from './routes/wildcard.route.js';
+import routeSitemap from './routes/sitemap.route.js';
 const __dirname = import.meta.dirname;
 
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
@@ -45,7 +45,7 @@ function initialize(config) {
     config.locale = 'en';
   }
   if (!config.lang) {
-    config.lang = language_load(config.locale);
+    config.lang = languageLoad(config.locale);
   }
 
   // Content_Dir requires trailing slash
@@ -54,15 +54,15 @@ function initialize(config) {
   }
 
   // Load Middleware
-  const authenticate = mw_authenticate(config);
-  const always_authenticate = mw_authenticate(config, { required: true });
-  const error_handler = mw_error_handler(config);
+  const authMiddleware = authenticate(config);
+  const alwaysAuthenticate = authenticate(config, { required: true });
+  const handleError = errorHandler(config);
 
   // Load Multiple-Use Pages
-  const route_search_init = route_search(config);
-  const route_home_init = route_home(config);
-  const route_wildcard_init = route_wildcard(config);
-  const route_sitemap_init = route_sitemap(config);
+  const searchInit = routeSearch(config);
+  const homeInit = routeHome(config);
+  const wildcardInit = routeWildcard(config);
+  const sitemapInit = routeSitemap(config);
 
   // New Express App
   const app = express();
@@ -171,62 +171,62 @@ function initialize(config) {
         },
       }),
     );
-    app.use(mw_auth_readonly(config));
+    app.use(authReadonly(config));
     // OAuth2
     if (config.googleoauth === true) {
       app.use(passport.initialize());
       app.use(passport.session());
-      router.use(mw_oauth2.router(config));
-      app.use(mw_oauth2.template);
+      router.use(oauth2.router(config));
+      app.use(oauth2.template);
     }
 
-    router.post('/rn-login', route_login(config));
-    router.get('/logout', route_logout(config));
-    router.get('/login', route_login_page(config));
+    router.post('/rn-login', routeLogin(config));
+    router.get('/logout', routeLogout(config));
+    router.get('/login', routeLoginPage(config));
   }
 
   // Online Editor Routes
   if (config.allow_editing === true) {
-    let middlewareToUse = authenticate;
+    let middlewareToUse = authMiddleware;
     if (config.authentication_for_edit === true) {
-      middlewareToUse = always_authenticate;
+      middlewareToUse = alwaysAuthenticate;
     }
     if (config.googleoauth === true) {
-      middlewareToUse = mw_oauth2.required;
+      middlewareToUse = oauth2.required;
     }
 
-    router.post('/rn-edit', middlewareToUse, route_page_edit(config));
-    router.post('/rn-delete', middlewareToUse, route_page_delete(config));
-    router.post('/rn-add-page', middlewareToUse, route_page_create(config));
+    router.post('/rn-edit', middlewareToUse, routePageEdit(config));
+    router.post('/rn-delete', middlewareToUse, routePageDelete(config));
+    router.post('/rn-add-page', middlewareToUse, routePageCreate(config));
     router.post(
       '/rn-add-category',
       middlewareToUse,
-      route_category_create(config),
+      routeCategoryCreate(config),
     );
   }
 
   // Select read-access middleware based on auth config
   let readMiddleware = (req, res, next) => next();
   if (config.googleoauth) {
-    readMiddleware = mw_oauth2.required;
+    readMiddleware = oauth2.required;
   } else if (config.authentication_for_read) {
-    readMiddleware = authenticate;
+    readMiddleware = authMiddleware;
   }
 
-  router.get('/sitemap.xml', readMiddleware, route_sitemap_init);
-  router.get('/', readMiddleware, route_search_init, route_home_init);
-  router.get(/^([^.]*)/, readMiddleware, route_wildcard_init);
+  router.get('/sitemap.xml', readMiddleware, sitemapInit);
+  router.get('/', readMiddleware, searchInit, homeInit);
+  router.get(/^([^.]*)/, readMiddleware, wildcardInit);
 
   // Handle Errors
-  router.use(error_handler);
+  router.use(handleError);
   app.use(config.prefix_url || '/', router);
 
   // Wrap App if base_url is set
   if (config.base_url !== '' && config.nowrap !== true) {
-    const wrap_app = express();
-    wrap_app.set('port', process.env.PORT || 8080);
-    wrap_app.use(config.base_url, app);
-    return wrap_app;
+    const wrapApp = express();
+    wrapApp.set('port', process.env.PORT || 8080);
+    wrapApp.use(config.base_url, app);
+    return wrapApp;
   } else {
     return app;
   }
