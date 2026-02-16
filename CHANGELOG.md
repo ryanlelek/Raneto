@@ -7,6 +7,7 @@
 - **[Fix]** Path traversal vulnerability
 - **[Fix]** Sitemap string escaping
 - **[Fix]** GitHub Actions repository permissions: read-only
+- **[Add]** Rate Limiting (200 req/min)
 - **[Add]** Configuration verification function (only checks config.secret for now)
 
 ## 2025.09.15 / v0.18.0

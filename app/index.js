@@ -6,6 +6,7 @@ import cookie_parser from 'cookie-parser';
 import body_parser from 'body-parser';
 import moment from 'moment';
 import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import mustacheExpress from 'mustache-express';
 import session from 'express-session';
 import FileStore from 'session-file-store';
@@ -91,6 +92,17 @@ function initialize(config) {
 
   // Setup Express
   app.use(logger('dev'));
+
+  // Rate limiting - 200 requests per minute per IP
+  app.use(
+    rateLimit({
+      windowMs: 60 * 1000,
+      max: 200,
+      standardHeaders: true,
+      legacyHeaders: false,
+    }),
+  );
+
   app.use(
     helmet({
       contentSecurityPolicy: {
