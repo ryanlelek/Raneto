@@ -36,12 +36,8 @@ function route_wildcard(config) {
       file_path = file_path.slice(0, -suffix.length - 1);
     }
 
-    if (!(await fs.pathExists(file_path))) {
-      file_path += '.md';
-    }
-
-    // Normalize final path and prevent path traversal outside content directory
-    const safe_file_path = path.resolve(
+    // Normalize path and prevent path traversal outside content directory
+    let safe_file_path = path.resolve(
       config.content_dir,
       path.relative(config.content_dir, file_path),
     );
@@ -49,6 +45,10 @@ function route_wildcard(config) {
       const error = new Error(config.lang.error['404']);
       error.status = 404;
       return next(error);
+    }
+
+    if (!(await fs.pathExists(safe_file_path))) {
+      safe_file_path += '.md';
     }
 
     let content;
