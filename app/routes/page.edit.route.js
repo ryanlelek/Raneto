@@ -45,18 +45,13 @@ function route_page_edit(config) {
       filepath += '.md';
     }
 
-    // Create content including metadata (i.e. title, description, sort)
-    function create_content(body) {
-      const meta = create_meta_info(
-        body.meta_title,
-        body.meta_description,
-        body.meta_sort,
-      );
-      return meta + body.content;
-    }
-
-    const complete_content = create_content(req.body);
-    const sanitized_content = sanitize_markdown(complete_content);
+    // Create content with metadata header and sanitized body
+    const meta = create_meta_info(
+      req.body.meta_title,
+      req.body.meta_description,
+      req.body.meta_sort,
+    );
+    const sanitized_content = meta + sanitize_markdown(req.body.content);
 
     try {
       await fs.writeFile(filepath, sanitized_content);

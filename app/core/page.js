@@ -5,6 +5,7 @@ import sanitizeHtml from 'sanitize-html';
 import { marked } from 'marked';
 import utils from './utils.js';
 import content_processors from '../functions/content_processors.js';
+import sanitizeHtmlOutput from '../functions/sanitize_html_output.js';
 
 async function handler(filePath, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
@@ -24,7 +25,7 @@ async function handler(filePath, config) {
       config,
     );
 
-    const body = marked(content);
+    const body = sanitizeHtmlOutput(marked(content));
     const title = meta.title
       ? meta.title
       : content_processors.slugToTitle(slug);

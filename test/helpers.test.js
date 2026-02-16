@@ -139,7 +139,7 @@ describe('#sanitize_markdown()', () => {
   it('escapes < to &lt;', () => {
     const result = sanitize_markdown('<script>alert("xss")</script>');
     expect(result).toContain('&lt;');
-    expect(result).not.toMatch(/<script>/);
+    expect(result).not.toContain('<');
   });
 
   it('escapes standalone & to &amp;', () => {

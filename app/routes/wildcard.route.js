@@ -3,6 +3,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import { marked } from 'marked';
 import toc from '@fixhq/markdown-toc';
+import sanitizeHtmlOutput from '../functions/sanitize_html_output.js';
 import build_nested_pages from '../functions/build_nested_pages.js';
 import remove_image_content_directory from '../functions/remove_image_content_directory.js';
 import content_processors from '../functions/content_processors.js';
@@ -107,7 +108,7 @@ function route_wildcard(config) {
         }
 
         marked.use(gfmHeadingId());
-        content = marked(content);
+        content = sanitizeHtmlOutput(marked(content));
       }
 
       const pageList = remove_image_content_directory(
