@@ -24,11 +24,19 @@ function route_wildcard(config) {
       slug = '/index';
     }
 
-    // Normalize and strip trailing slash
+    // Resolve and strip trailing slash
+    const content_dir_resolved = path.resolve(config.content_dir);
     let file_path = path
-      .normalize(config.content_dir + slug)
+      .resolve(config.content_dir, slug.replace(/^\//, ''))
       .replace(/\/$|\\$/g, '');
     const file_path_orig = file_path;
+
+    // Prevent path traversal outside content directory
+    if (!file_path.startsWith(content_dir_resolved)) {
+      const error = new Error(config.lang.error['404']);
+      error.status = 404;
+      return next(error);
+    }
 
     // Remove "/edit" suffix
     if (file_path.indexOf(suffix, file_path.length - suffix.length) !== -1) {

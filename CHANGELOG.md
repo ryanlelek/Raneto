@@ -4,6 +4,7 @@
 
 - **[BREAKING]** Minimum Node.js is v24.x LTS
 - **[Fix]** Filepath location for language translations
+- **[Fix]** Path traversal vulnerability
 - **[Fix]** Sitemap string escaping
 - **[Add]** Configuration verification function (only checks config.secret for now)
 
