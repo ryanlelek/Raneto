@@ -14,6 +14,7 @@
 - **[Fix]** Authentication redirect continues with flow
 - **[Fix]** Prevent error details leakage
 - **[Fix]** Ensure redirect "return" is relative path only
+- **[Fix]** Using callback for logout
 - **[Fix]** Explicitly specify "Lax" for cookies
 - **[Add]** Rate Limiting (200 req/min)
 - **[Add]** Configuration verification function

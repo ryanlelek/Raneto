@@ -192,10 +192,14 @@ function router(config) {
 
   // Deletes the user's credentials and profile from the session.
   // This does not revoke any active tokens.
-  router.get('/auth/logout', (req, res) => {
+  router.get('/auth/logout', (req, res, next) => {
     req.session.loggedIn = false;
-    req.logout();
-    res.redirect('/login');
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/login');
+    });
   });
 
   return router;
