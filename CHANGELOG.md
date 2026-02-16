@@ -18,6 +18,7 @@
 - **[Fix]** Explicitly specify "Lax" for cookies
 - **[Add]** Rate Limiting (200 req/min)
 - **[Add]** Configuration verification function
+- **[Add]** CSP Nonce with res.locals.csp_nonce
 - **[Edit]** Refactoring (simplify, use native functions)
 - **[Deps]** Upgrading marked from v16.4.2 to v17.0.2
 

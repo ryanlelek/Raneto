@@ -1,4 +1,5 @@
 // Modules
+import crypto from 'node:crypto';
 import path from 'node:path';
 import express from 'express';
 import logger from 'morgan';
@@ -108,13 +109,19 @@ function initialize(config) {
     }),
   );
 
+  // Generate CSP nonce per request
+  app.use((req, res, next) => {
+    res.locals.csp_nonce = crypto.randomBytes(16).toString('base64');
+    next();
+  });
+
   app.use(
     helmet({
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
           scriptSrc: ["'self'", 'https://cdnjs.cloudflare.com'],
-          styleSrc: ["'self'"],
+          styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.csp_nonce}'`],
           imgSrc: ["'self'", 'data:', 'https:'],
           fontSrc: ["'self'", 'data:'],
           connectSrc: ["'self'"],
