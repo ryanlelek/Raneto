@@ -1,6 +1,6 @@
 import path from 'node:path';
 import fs from 'fs-extra';
-import _ from 'lodash';
+import unescape from 'lodash/unescape.js';
 import sanitizeHtml from 'sanitize-html';
 import { marked } from 'marked';
 import utils from './utils.js';
@@ -29,7 +29,7 @@ async function handler(filePath, config) {
     const title = meta.title
       ? meta.title
       : content_processors.slugToTitle(slug);
-    const cleanText = _.unescape(
+    const cleanText = unescape(
       sanitizeHtml(body, { allowedTags: [], allowedAttributes: {} }),
     );
     const maxLength = config.excerpt_length || 400;

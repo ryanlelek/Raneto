@@ -1,13 +1,13 @@
-import build_nested_pages from '../app/functions/build_nested_pages.js';
+import buildNestedPages from '../app/functions/build_nested_pages.js';
 import contents_handler from '../app/core/contents.js';
 import { createConfig } from './config.helpers.js';
 
 const config = createConfig();
 
-describe('#build_nested_pages()', () => {
+describe('#buildNestedPages()', () => {
   it('builds tree of pages', async () => {
     const pages = await contents_handler(null, config);
-    const result = build_nested_pages(pages);
+    const result = buildNestedPages(pages);
 
     expect(result.length).toEqual(2);
     expect(result[1].files.length).toEqual(4);
@@ -15,7 +15,7 @@ describe('#build_nested_pages()', () => {
   });
 
   it('returns empty array for empty input', () => {
-    const result = build_nested_pages([]);
+    const result = buildNestedPages([]);
     expect(result).toEqual([]);
   });
 
@@ -24,7 +24,7 @@ describe('#build_nested_pages()', () => {
       { slug: 'page-a', files: [] },
       { slug: 'page-b', files: [] },
     ];
-    const result = build_nested_pages(pages);
+    const result = buildNestedPages(pages);
     expect(result).toHaveLength(2);
     expect(result[0].slug).toBe('page-a');
     expect(result[1].slug).toBe('page-b');
@@ -35,7 +35,7 @@ describe('#build_nested_pages()', () => {
       { slug: 'parent', files: [] },
       { slug: 'parent/child', files: [] },
     ];
-    const result = build_nested_pages(pages);
+    const result = buildNestedPages(pages);
     expect(result).toHaveLength(1);
     expect(result[0].slug).toBe('parent');
     expect(result[0].files).toHaveLength(1);
@@ -44,7 +44,7 @@ describe('#build_nested_pages()', () => {
 
   it('handles orphaned child pages without a parent', () => {
     const pages = [{ slug: 'missing-parent/child', files: [] }];
-    const result = build_nested_pages(pages);
+    const result = buildNestedPages(pages);
     expect(result).toHaveLength(0);
   });
 
@@ -53,7 +53,7 @@ describe('#build_nested_pages()', () => {
       { slug: 'a', files: [] },
       { slug: 'a/b', files: [] },
     ];
-    const result = build_nested_pages(pages);
+    const result = buildNestedPages(pages);
     expect(result).toHaveLength(1);
     expect(result[0].files[0].slug).toBe('a/b');
   });

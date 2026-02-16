@@ -30,6 +30,12 @@ import route_wildcard from './routes/wildcard.route.js';
 import route_sitemap from './routes/sitemap.route.js';
 const __dirname = import.meta.dirname;
 
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 200;
+const SESSION_TTL_SECONDS = 86400; // 24 hours
+const SESSION_REAP_INTERVAL_SECONDS = 3600; // 1 hour
+const COOKIE_MAX_AGE_MS = 86400000; // 24 hours
+
 function initialize(config) {
   // Validate configuration
   validateConfig(config);
@@ -95,8 +101,8 @@ function initialize(config) {
   // Rate limiting - 200 requests per minute per IP
   app.use(
     rateLimit({
-      windowMs: 60 * 1000,
-      max: 200,
+      windowMs: RATE_LIMIT_WINDOW_MS,
+      max: RATE_LIMIT_MAX_REQUESTS,
       standardHeaders: true,
       legacyHeaders: false,
     }),
@@ -149,16 +155,16 @@ function initialize(config) {
       session({
         store: new SessionFileStore({
           path: './sessions',
-          ttl: 86400,
+          ttl: SESSION_TTL_SECONDS,
           retries: 0,
-          reapInterval: 3600,
+          reapInterval: SESSION_REAP_INTERVAL_SECONDS,
         }),
         secret: config.secret,
         name: 'raneto.sid',
         resave: false,
         saveUninitialized: false,
         cookie: {
-          maxAge: 86400000,
+          maxAge: COOKIE_MAX_AGE_MS,
           secure: process.env.NODE_ENV === 'production',
           httpOnly: true,
           sameSite: 'Lax',
@@ -199,19 +205,17 @@ function initialize(config) {
     );
   }
 
-  // Router for / and /index with or without search parameter
-  if (config.googleoauth === true) {
-    router.get('/', mw_oauth2.required, route_search_init, route_home_init);
-    router.get(/^([^.]*)/, mw_oauth2.required, route_wildcard_init);
-  } else if (config.authentication_for_read === true) {
-    router.get('/sitemap.xml', authenticate, route_sitemap_init);
-    router.get('/', authenticate, route_search_init, route_home_init);
-    router.get(/^([^.]*)/, authenticate, route_wildcard_init);
-  } else {
-    router.get('/sitemap.xml', route_sitemap_init);
-    router.get('/', route_search_init, route_home_init);
-    router.get(/^([^.]*)/, route_wildcard_init);
+  // Select read-access middleware based on auth config
+  let readMiddleware = (req, res, next) => next();
+  if (config.googleoauth) {
+    readMiddleware = mw_oauth2.required;
+  } else if (config.authentication_for_read) {
+    readMiddleware = authenticate;
   }
+
+  router.get('/sitemap.xml', readMiddleware, route_sitemap_init);
+  router.get('/', readMiddleware, route_search_init, route_home_init);
+  router.get(/^([^.]*)/, readMiddleware, route_wildcard_init);
 
   // Handle Errors
   router.use(error_handler);

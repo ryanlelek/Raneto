@@ -6,7 +6,7 @@ import route_page_edit from '../app/routes/page.edit.route.js';
 import route_page_delete from '../app/routes/page.delete.route.js';
 import route_page_create from '../app/routes/page.create.route.js';
 import route_category_create from '../app/routes/category.create.route.js';
-import get_filepath from '../app/functions/get_filepath.js';
+import getFilepath from '../app/functions/get_filepath.js';
 
 let tmpDir;
 let config;
@@ -42,13 +42,13 @@ function createRes() {
   return res;
 }
 
-// get_filepath path traversal prevention
+// getFilepath path traversal prevention
 
-describe('get_filepath - path traversal prevention', () => {
+describe('getFilepath - path traversal prevention', () => {
   const content = '/var/content';
 
   it('returns valid path for normal category and filename', () => {
-    const result = get_filepath({
+    const result = getFilepath({
       content,
       category: 'docs',
       filename: 'page.md',
@@ -58,12 +58,12 @@ describe('get_filepath - path traversal prevention', () => {
   });
 
   it('returns null when path resolves to content dir itself', () => {
-    expect(get_filepath({ content })).toBeNull();
-    expect(get_filepath({ content, category: '', filename: '' })).toBeNull();
+    expect(getFilepath({ content })).toBeNull();
+    expect(getFilepath({ content, category: '', filename: '' })).toBeNull();
   });
 
   it('returns null when category is ..', () => {
-    const result = get_filepath({
+    const result = getFilepath({
       content,
       category: '..',
       filename: 'evil.md',
@@ -78,7 +78,7 @@ describe('get_filepath - path traversal prevention', () => {
   });
 
   it('returns null when both category and filename sanitize to empty', () => {
-    const result = get_filepath({
+    const result = getFilepath({
       content,
       category: '..',
       filename: '..',
@@ -96,7 +96,7 @@ describe('get_filepath - path traversal prevention', () => {
     ];
     const contentRoot = path.resolve(content);
     for (const a of attacks) {
-      const result = get_filepath({ content, ...a });
+      const result = getFilepath({ content, ...a });
       if (result !== null) {
         const resolved = path.resolve(result);
         expect(resolved.startsWith(contentRoot + path.sep)).toBe(true);

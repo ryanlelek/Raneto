@@ -4,8 +4,10 @@ import fs from 'fs-extra';
 import { marked } from 'marked';
 import toc from '@fixhq/markdown-toc';
 import sanitizeHtmlOutput from '../functions/sanitize_html_output.js';
-import build_nested_pages from '../functions/build_nested_pages.js';
-import remove_image_content_directory from '../functions/remove_image_content_directory.js';
+import buildNestedPages from '../functions/build_nested_pages.js';
+import excludeImageDirectory from '../functions/exclude_image_directory.js';
+import getAuthContext from '../functions/get_auth_context.js';
+import { resolveFilepath } from '../functions/get_filepath.js';
 import content_processors from '../functions/content_processors.js';
 import contents_handler from '../core/contents.js';
 import utils from '../core/utils.js';
@@ -25,35 +27,33 @@ function route_wildcard(config) {
     }
 
     // Resolve and strip trailing slash
-    const content_dir_resolved = path.resolve(config.content_dir);
-    let file_path = path
+    const contentDirResolved = path.resolve(config.content_dir);
+    let filePath = path
       .resolve(config.content_dir, slug.replace(/^\//, ''))
       .replace(/\/$|\\$/g, '');
-    const file_path_orig = file_path;
+    const filePathOrig = filePath;
 
     // Remove "/edit" suffix
-    if (file_path.endsWith(suffix)) {
-      file_path = file_path.slice(0, -suffix.length - 1);
+    if (filePath.endsWith(suffix)) {
+      filePath = filePath.slice(0, -suffix.length - 1);
     }
 
     // Normalize path and prevent path traversal outside content directory
-    let safe_file_path = path.resolve(
+    let safeFilePath = path.resolve(
       config.content_dir,
-      path.relative(config.content_dir, file_path),
+      path.relative(config.content_dir, filePath),
     );
-    if (!safe_file_path.startsWith(content_dir_resolved)) {
+    if (!safeFilePath.startsWith(contentDirResolved)) {
       const error = new Error(config.lang.error['404']);
       error.status = 404;
       return next(error);
     }
 
-    if (!(await fs.pathExists(safe_file_path))) {
-      safe_file_path += '.md';
-    }
+    safeFilePath = await resolveFilepath(safeFilePath);
 
     // Re-validate after .md append
-    safe_file_path = path.resolve(safe_file_path);
-    if (!safe_file_path.startsWith(content_dir_resolved)) {
+    safeFilePath = path.resolve(safeFilePath);
+    if (!safeFilePath.startsWith(contentDirResolved)) {
       const error = new Error(config.lang.error['404']);
       error.status = 404;
       return next(error);
@@ -61,7 +61,7 @@ function route_wildcard(config) {
 
     let content;
     try {
-      content = await fs.readFile(safe_file_path, 'utf8');
+      content = await fs.readFile(safeFilePath, 'utf8');
     } catch (error) {
       error.status = 404;
       error.message = config.lang.error['404'];
@@ -69,12 +69,12 @@ function route_wildcard(config) {
     }
 
     // Process Markdown files
-    if (path.extname(safe_file_path) === '.md') {
+    if (path.extname(safeFilePath) === '.md') {
       // Meta
       const meta = content_processors.processMeta(content);
       meta.custom_title = meta.title;
       if (!meta.title) {
-        meta.title = content_processors.slugToTitle(safe_file_path);
+        meta.title = content_processors.slugToTitle(safeFilePath);
       }
 
       // Content
@@ -85,7 +85,7 @@ function route_wildcard(config) {
       let render = template;
 
       // Check for "/edit" suffix
-      if (file_path_orig.endsWith(suffix)) {
+      if (filePathOrig.endsWith(suffix)) {
         // Edit Page
         if (
           (config.authentication || config.authentication_for_edit) &&
@@ -111,7 +111,7 @@ function route_wildcard(config) {
         content = sanitizeHtmlOutput(marked(content));
       }
 
-      const pageList = remove_image_content_directory(
+      const pageList = excludeImageDirectory(
         config,
         (await contents_handler(slug, config))
           .filter((page) => page.show_on_menu)
@@ -121,36 +121,20 @@ function route_wildcard(config) {
           }),
       );
 
-      const loggedIn =
-        config.authentication || config.authentication_for_edit
-          ? req.session.loggedIn
-          : false;
-
-      let canEdit = false;
-      if (config.authentication || config.authentication_for_edit) {
-        canEdit = loggedIn && config.allow_editing;
-      } else {
-        canEdit = config.allow_editing;
-      }
+      const authContext = getAuthContext(config, req.session);
 
       return res.render(render, {
         config,
-        pages: build_nested_pages(pageList),
+        pages: buildNestedPages(pageList),
         meta,
         content,
         current_url: `${req.protocol}://${req.get('host')}${
           config.path_prefix
         }${req.originalUrl}`,
         body_class: `${template}-${content_processors.cleanString(slug)}`,
-        last_modified: await utils.getLastModified(
-          config,
-          meta,
-          safe_file_path,
-        ),
+        last_modified: await utils.getLastModified(config, meta, safeFilePath),
         lang: config.lang,
-        loggedIn,
-        username: config.authentication ? req.session.username : null,
-        canEdit,
+        ...authContext,
       });
     }
   };

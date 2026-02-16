@@ -1,35 +1,26 @@
 // Modules
 import fs from 'fs-extra';
-import get_filepath from '../functions/get_filepath.js';
+import getFilepath, {
+  resolveFilepath,
+  parseFileParam,
+} from '../functions/get_filepath.js';
 
 function route_page_delete(config) {
   return async function (req, res) {
-    // Check if file parameter exists and is not empty
-    if (!req.body.file || req.body.file.trim() === '') {
+    const parsed = parseFileParam(req.body.file);
+    if (!parsed) {
       return res.json({
         status: 1,
         message: config.lang.api.invalidFile || 'Invalid file path',
       });
     }
 
-    let file_category = '';
-    let file_name = '';
-
-    // Handle category in file path
-    const req_file = req.body.file.split('/');
-    if (req_file.length > 1) {
-      file_category = req_file[0];
-      file_name = req_file[1];
-    } else {
-      file_name = req_file[0];
-    }
-
     // Generate filepath
     // Sanitized within function
-    let filepath = get_filepath({
+    let filepath = getFilepath({
       content: config.content_dir,
-      category: file_category,
-      filename: file_name,
+      category: parsed.category,
+      filename: parsed.filename,
     });
 
     if (!filepath) {
@@ -39,11 +30,7 @@ function route_page_delete(config) {
       });
     }
 
-    // No file at that filepath?
-    // Add ".md" extension to try again
-    if (!(await fs.pathExists(filepath))) {
-      filepath += '.md';
-    }
+    filepath = await resolveFilepath(filepath);
 
     try {
       // Don't Delete

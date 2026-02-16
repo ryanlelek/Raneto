@@ -1,7 +1,8 @@
 // Modules
 import sanitizeHtml from 'sanitize-html';
-import remove_image_content_directory from '../functions/remove_image_content_directory.js';
+import excludeImageDirectory from '../functions/exclude_image_directory.js';
 import sanitize from '../functions/sanitize.js';
+import getAuthContext from '../functions/get_auth_context.js';
 import search_handler from '../core/search.js';
 import contents_handler from '../core/contents.js';
 
@@ -13,17 +14,17 @@ function route_search(config) {
     }
 
     // Strip HTML tags from search query using well-tested library
-    const rawQuery = sanitizeHtml(req.query.search, {
+    const strippedQuery = sanitizeHtml(req.query.search, {
       allowedTags: [],
       allowedAttributes: {},
     });
-    const sanitizedQuery = sanitize(rawQuery);
+    const sanitizedQuery = sanitize(strippedQuery);
 
     let searchResults = [];
     let pageListSearch = [];
     try {
       searchResults = await search_handler(sanitizedQuery, config);
-      pageListSearch = remove_image_content_directory(
+      pageListSearch = excludeImageDirectory(
         config,
         await contents_handler(null, config),
       );
@@ -38,14 +39,7 @@ function route_search(config) {
       searchResults,
       body_class: 'page-search',
       lang: config.lang,
-      loggedIn:
-        config.authentication || config.authentication_for_edit
-          ? req.session.loggedIn
-          : false,
-      username:
-        config.authentication || config.authentication_for_edit
-          ? req.session.username
-          : null,
+      ...getAuthContext(config, req.session),
     });
   };
 }

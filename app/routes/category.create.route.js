@@ -1,12 +1,12 @@
 // Modules
 import fs from 'fs-extra';
-import get_filepath from '../functions/get_filepath.js';
+import getFilepath from '../functions/get_filepath.js';
 
 function route_category_create(config) {
   return async function (req, res) {
     // Generate filepath
     // Sanitized within function
-    const filepath = get_filepath({
+    const filepath = getFilepath({
       content: config.content_dir,
       category: req.body.category,
     });

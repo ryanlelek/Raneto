@@ -2,7 +2,7 @@
 import yaml from 'js-yaml';
 
 // Returns an empty string if all input strings are empty
-function create_meta_info(meta_title, meta_description, meta_sort) {
+function createMetaInfo(meta_title, meta_description, meta_sort) {
   const yamlDocument = {};
   const meta_info_is_present = meta_title || meta_description || meta_sort;
 
@@ -23,4 +23,4 @@ function create_meta_info(meta_title, meta_description, meta_sort) {
 }
 
 // Exports
-export default create_meta_info;
+export default createMetaInfo;
