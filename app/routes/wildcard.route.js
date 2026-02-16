@@ -31,13 +31,6 @@ function route_wildcard(config) {
       .replace(/\/$|\\$/g, '');
     const file_path_orig = file_path;
 
-    // Prevent path traversal outside content directory
-    if (!file_path.startsWith(content_dir_resolved)) {
-      const error = new Error(config.lang.error['404']);
-      error.status = 404;
-      return next(error);
-    }
-
     // Remove "/edit" suffix
     if (file_path.indexOf(suffix, file_path.length - suffix.length) !== -1) {
       file_path = file_path.slice(0, -suffix.length - 1);
@@ -47,9 +40,20 @@ function route_wildcard(config) {
       file_path += '.md';
     }
 
+    // Normalize final path and prevent path traversal outside content directory
+    const safe_file_path = path.resolve(
+      config.content_dir,
+      path.relative(config.content_dir, file_path),
+    );
+    if (!safe_file_path.startsWith(content_dir_resolved)) {
+      const error = new Error(config.lang.error['404']);
+      error.status = 404;
+      return next(error);
+    }
+
     let content;
     try {
-      content = await fs.readFile(file_path, 'utf8');
+      content = await fs.readFile(safe_file_path, 'utf8');
     } catch (error) {
       error.status = 404;
       error.message = config.lang.error['404'];
@@ -57,12 +61,12 @@ function route_wildcard(config) {
     }
 
     // Process Markdown files
-    if (path.extname(file_path) === '.md') {
+    if (path.extname(safe_file_path) === '.md') {
       // Meta
       const meta = content_processors.processMeta(content);
       meta.custom_title = meta.title;
       if (!meta.title) {
-        meta.title = content_processors.slugToTitle(file_path);
+        meta.title = content_processors.slugToTitle(safe_file_path);
       }
 
       // Content
@@ -146,7 +150,11 @@ function route_wildcard(config) {
           config.path_prefix
         }${req.originalUrl}`,
         body_class: `${template}-${content_processors.cleanString(slug)}`,
-        last_modified: await utils.getLastModified(config, meta, file_path),
+        last_modified: await utils.getLastModified(
+          config,
+          meta,
+          safe_file_path,
+        ),
         lang: config.lang,
         loggedIn,
         username: config.authentication ? req.session.username : null,

@@ -12,21 +12,27 @@ async function getLastModified(config, meta, file_path) {
     return moment(meta.modified).format(config.datetime_format);
   }
 
-  // Validate file_path is within an allowed directory
-  const resolved = path.resolve(file_path);
-  const allowedDirs = [path.resolve(config.content_dir)];
+  // Normalize path against allowed root directories and resolve symlinks
+  const contentRoot = path.resolve(config.content_dir);
+  const allowedRoots = [contentRoot];
   if (config.theme_dir) {
-    allowedDirs.push(path.resolve(config.theme_dir));
+    allowedRoots.push(path.resolve(config.theme_dir));
   }
+
+  // Resolve the candidate path and collapse symlinks
+  const resolved = path.resolve(file_path);
+  const realPath = await fs.realpath(resolved);
+
+  // Verify the real path is contained within an allowed root
   if (
-    !allowedDirs.some(
-      (dir) => resolved.startsWith(dir + path.sep) || resolved === dir,
+    !allowedRoots.some(
+      (root) => realPath.startsWith(root + path.sep) || realPath === root,
     )
   ) {
     throw new Error('Access denied: file path is outside allowed directories');
   }
 
-  const { mtime } = await fs.lstat(resolved);
+  const { mtime } = await fs.lstat(realPath);
   return moment(mtime).format(config.datetime_format);
 }
 

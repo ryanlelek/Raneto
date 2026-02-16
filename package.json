@@ -53,6 +53,9 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "app/**/*.{js,mjs}"
     ]
   },
   "dependencies": {
