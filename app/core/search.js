@@ -7,7 +7,7 @@ import lunr from './lunr.js';
 
 async function handler(query, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
-  const rawDocuments = await glob(`${contentDir}**/*.md`);
+  const rawDocuments = await glob(path.join(contentDir, '**', '*.md'));
   const potentialDocuments = await Promise.all(
     rawDocuments.map((filePath) =>
       content_processors.extractDocument(contentDir, filePath, config.debug),
@@ -56,28 +56,26 @@ async function handler(query, config) {
   }
 
   const searchResults = await Promise.all(
-    results.map(async (result) => {
-      const processed = await processSearchResult(
-        contentDir,
-        config,
-        query,
-        result,
-      );
-      return processed;
-    }),
+    results.map((result) =>
+      processSearchResult(contentDir, config, query, result),
+    ),
   );
 
-  return searchResults;
+  return searchResults.filter((result) => result !== null);
 }
 
 async function processSearchResult(contentDir, config, query, result) {
-  // result.ref is the relative path from contentDir, we need to prepend contentDir
   const fullPath = path.join(contentDir, result.ref);
   const page = await page_handler(fullPath, config);
-  // TODO: Improve handling
-  if (page && page.excerpt) {
+  if (!page) {
+    return null;
+  }
+  const parts = page.slug.split('/');
+  page.category = parts.length > 1 ? parts[0] : null;
+  if (page.excerpt) {
+    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     page.excerpt = page.excerpt.replace(
-      new RegExp(`(${query})`, 'gim'),
+      new RegExp(`(${escaped})`, 'gim'),
       '<span class="search-query">$1</span>',
     );
   }

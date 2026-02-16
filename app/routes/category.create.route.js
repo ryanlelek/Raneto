@@ -1,9 +1,9 @@
 // Modules
-import fs from 'node:fs';
+import fs from 'fs-extra';
 import get_filepath from '../functions/get_filepath.js';
 
 function route_category_create(config) {
-  return function (req, res) {
+  return async function (req, res) {
     // Generate filepath
     // Sanitized within function
     const filepath = get_filepath({
@@ -11,18 +11,18 @@ function route_category_create(config) {
       category: req.body.category,
     });
 
-    fs.mkdir(filepath, (error) => {
-      if (error) {
-        return res.json({
-          status: 1,
-          message: error,
-        });
-      }
+    try {
+      await fs.mkdir(filepath);
       res.json({
         status: 0,
         message: config.lang.api.categoryCreated,
       });
-    });
+    } catch (error) {
+      res.json({
+        status: 1,
+        message: error,
+      });
+    }
   };
 }
 

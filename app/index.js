@@ -107,7 +107,6 @@ function initialize(config) {
     helmet({
       contentSecurityPolicy: {
         directives: {
-          /* eslint-disable quotes */
           defaultSrc: ["'self'"],
           scriptSrc: ["'self'", 'https://cdnjs.cloudflare.com'],
           styleSrc: ["'self'"],
@@ -117,7 +116,6 @@ function initialize(config) {
           frameSrc: ["'none'"],
           objectSrc: ["'none'"],
           upgradeInsecureRequests: [],
-          /* eslint-enable quotes */
         },
       },
       crossOriginEmbedderPolicy: false,
@@ -134,7 +132,7 @@ function initialize(config) {
   }
   router.use(
     config.image_url,
-    express.static(path.normalize(config.content_dir + config.image_url)),
+    express.static(path.join(config.content_dir, config.image_url)),
   );
   router.use(
     '/translations',

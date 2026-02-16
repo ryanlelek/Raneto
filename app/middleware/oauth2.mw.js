@@ -86,29 +86,31 @@ function router(config) {
         callbackURL: config.oauth2.callback,
         accessType: 'offline',
       },
-      (accessToken, refreshToken, profile, cb) => {
+      async (accessToken, refreshToken, profile, cb) => {
         const parsedProfile = extractProfile(profile);
         if (config.google_group_restriction.enabled) {
           const groupName = config.google_group_restriction.group_name;
           const apiKey = config.google_group_restriction.api_key;
           const { email } = parsedProfile;
-          fetch(
-            `https://www.googleapis.com/admin/directory/v1/groups/${groupName}/hasMember/${email}?key=${apiKey}`,
-            {
-              method: 'get',
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
+          try {
+            const response = await fetch(
+              `https://www.googleapis.com/admin/directory/v1/groups/${groupName}/hasMember/${email}?key=${apiKey}`,
+              {
+                method: 'get',
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                },
               },
-            },
-          )
-            .then((res) => res.json())
-            .then((res) => {
-              if (res.isMember && res.isMember === true) {
-                cb(null, parsedProfile);
-              } else {
-                cb(new Error('Unauthorized user'), null);
-              }
-            });
+            );
+            const data = await response.json();
+            if (data.isMember === true) {
+              cb(null, parsedProfile);
+            } else {
+              cb(new Error('Unauthorized user'), null);
+            }
+          } catch (err) {
+            cb(err, null);
+          }
         } else {
           cb(null, parsedProfile);
         }

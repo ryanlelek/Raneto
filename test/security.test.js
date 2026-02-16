@@ -5,12 +5,9 @@ import path from 'node:path';
 import os from 'node:os';
 import utils from '../app/core/utils.js';
 import route_wildcard from '../app/routes/wildcard.route.js';
+import { createConfig } from './config.helpers.js';
 
-const config = {
-  base_url: '',
-  content_dir: path.join('test', 'content') + path.sep,
-  datetime_format: 'Do MMM YYYY',
-};
+const config = createConfig();
 
 // utils.getLastModified path traversal
 
@@ -204,26 +201,18 @@ describe('wildcard route - path traversal prevention', () => {
     return res;
   }
 
-  const routeConfig = {
-    base_url: '',
-    content_dir: path.join('test', 'content') + path.sep,
-    image_url: '/images',
-    datetime_format: 'Do MMM YYYY',
+  const routeConfig = createConfig({
     path_prefix: '',
     table_of_contents: false,
     authentication: false,
     authentication_for_edit: false,
     allow_editing: false,
-    page_sort_meta: 'sort',
-    category_sort: true,
-    show_on_home_default: true,
-    show_on_menu_default: true,
     lang: {
       error: {
         404: 'Page Not Found',
       },
     },
-  };
+  });
 
   it('returns 404 for path traversal via ../', async () => {
     const handler = route_wildcard(routeConfig);

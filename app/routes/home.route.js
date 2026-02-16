@@ -1,6 +1,5 @@
 // Modules
 import fs from 'fs-extra';
-import _ from 'lodash';
 import build_nested_pages from '../functions/build_nested_pages.js';
 import get_filepath from '../functions/get_filepath.js';
 import remove_image_content_directory from '../functions/remove_image_content_directory.js';
@@ -24,7 +23,7 @@ function route_home(config) {
 
     // Otherwise, we're generating the home page listing
     const suffix = 'edit';
-    if (filepath.indexOf(suffix, filepath.length - suffix.length) !== -1) {
+    if (filepath.endsWith(suffix)) {
       filepath = filepath.slice(0, -suffix.length - 1);
     }
 
@@ -38,13 +37,12 @@ function route_home(config) {
     // Filter out the image content directory and items with show_on_home == false
     const pageList = remove_image_content_directory(
       config,
-      _.chain(await contents_handler('/index', config))
+      (await contents_handler('/index', config))
         .filter((page) => page.show_on_home)
         .map((page) => {
-          page.files = _.filter(page.files, (file) => file.show_on_home);
+          page.files = page.files.filter((file) => file.show_on_home);
           return page;
-        })
-        .value(),
+        }),
     );
 
     return res.render('home', {

@@ -20,9 +20,7 @@ async function getLastModified(config, meta, file_path) {
   }
 
   const isWithinAllowed = (p) =>
-    allowedRoots.some(
-      (root) => p.startsWith(root + path.sep) || p === root,
-    );
+    allowedRoots.some((root) => p.startsWith(root + path.sep) || p === root);
 
   // Validate resolved path before any filesystem operations
   const resolved = path.resolve(file_path);

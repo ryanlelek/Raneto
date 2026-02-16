@@ -30,7 +30,7 @@ function cleanString(str, use_underscore) {
 function cleanObjectStrings(obj) {
   const cleanObj = {};
   for (const field in obj) {
-    if (_.has(obj, field)) {
+    if (Object.hasOwn(obj, field)) {
       cleanObj[cleanString(field, true)] = `${obj[field]}`.trim();
     }
   }
@@ -45,53 +45,42 @@ function slugToTitle(slug) {
 
 // Strip meta from Markdown content
 function stripMeta(markdownContent) {
-  switch (true) {
-    case _metaRegex.test(markdownContent):
-      return markdownContent.replace(_metaRegex, '').trim();
-    case _metaRegexYaml.test(markdownContent):
-      return markdownContent.replace(_metaRegexYaml, '').trim();
-    default:
-      return markdownContent.trim();
+  if (_metaRegex.test(markdownContent)) {
+    return markdownContent.replace(_metaRegex, '').trim();
   }
+  if (_metaRegexYaml.test(markdownContent)) {
+    return markdownContent.replace(_metaRegexYaml, '').trim();
+  }
+  return markdownContent.trim();
 }
 
 // Get metadata from Markdown content
 function processMeta(markdownContent) {
-  let meta = {};
-  let metaArr;
-  let metaString;
-  let metas;
+  if (_metaRegex.test(markdownContent)) {
+    const meta = {};
+    const metaArr = markdownContent.match(_metaRegex);
+    const metaString = metaArr?.[1]?.trim() ?? '';
 
-  let yamlObject;
-
-  switch (true) {
-    case _metaRegex.test(markdownContent):
-      metaArr = markdownContent.match(_metaRegex);
-      metaString = metaArr ? metaArr[1].trim() : '';
-
-      if (metaString) {
-        metas = metaString.match(/(.*): (.*)/gi);
-        metas.forEach((item) => {
-          const parts = item.split(': ');
-          if (parts[0] && parts[1]) {
-            meta[cleanString(parts[0], true)] = parts[1].trim();
-          }
-        });
-      }
-      break;
-
-    case _metaRegexYaml.test(markdownContent):
-      metaArr = markdownContent.match(_metaRegexYaml);
-      metaString = metaArr ? metaArr[1].trim() : '';
-      yamlObject = yaml.load(metaString);
-      meta = cleanObjectStrings(yamlObject);
-      break;
-
-    default:
-    // No metadata
+    if (metaString) {
+      const metas = metaString.match(/(.*): (.*)/gi);
+      metas.forEach((item) => {
+        const parts = item.split(': ');
+        if (parts[0] && parts[1]) {
+          meta[cleanString(parts[0], true)] = parts[1].trim();
+        }
+      });
+    }
+    return meta;
   }
 
-  return meta;
+  if (_metaRegexYaml.test(markdownContent)) {
+    const metaArr = markdownContent.match(_metaRegexYaml);
+    const metaString = metaArr?.[1]?.trim() ?? '';
+    const yamlObject = yaml.load(metaString);
+    return cleanObjectStrings(yamlObject);
+  }
+
+  return {};
 }
 
 // Replace content variables in Markdown content
@@ -115,12 +104,12 @@ function processVars(markdownContent, config) {
 
 async function extractDocument(contentDir, filePath, debug) {
   try {
-    const file = await fs.readFile(filePath);
-    const meta = processMeta(file.toString('utf-8'));
+    const file = await fs.readFile(filePath, 'utf8');
+    const meta = processMeta(file);
 
     const id = filePath.replace(contentDir, '').trim();
     const title = meta.title ? meta.title : slugToTitle(id);
-    const body = file.toString('utf-8');
+    const body = file;
 
     return { id, title, body };
   } catch (e) {

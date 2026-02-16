@@ -8,12 +8,12 @@ const __dirname = path.dirname(__filename);
 
 function language_load(locale_code) {
   // Path is relative to this module's location
-  const lang_json = JSON.parse(
+  return JSON.parse(
     readFileSync(
       path.join(__dirname, '..', 'translations', locale_code + '.json'),
+      'utf8',
     ),
   );
-  return lang_json;
 }
 
 export default language_load;

@@ -1,10 +1,6 @@
 function remove_image_content_directory(config, pageList) {
-  for (let i = 0; i < pageList.length; i++) {
-    if (pageList[i].slug === config.image_url.replace(/\//g, '')) {
-      pageList.splice(i, 1);
-    }
-  }
-  return pageList;
+  const imageSlug = config.image_url.replace(/\//g, '');
+  return pageList.filter((page) => page.slug !== imageSlug);
 }
 
 // Exports

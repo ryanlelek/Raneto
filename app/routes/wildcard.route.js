@@ -1,6 +1,5 @@
 // Modules
 import path from 'node:path';
-import _ from 'lodash';
 import fs from 'fs-extra';
 import { marked } from 'marked';
 import toc from '@fixhq/markdown-toc';
@@ -32,7 +31,7 @@ function route_wildcard(config) {
     const file_path_orig = file_path;
 
     // Remove "/edit" suffix
-    if (file_path.indexOf(suffix, file_path.length - suffix.length) !== -1) {
+    if (file_path.endsWith(suffix)) {
       file_path = file_path.slice(0, -suffix.length - 1);
     }
 
@@ -85,12 +84,7 @@ function route_wildcard(config) {
       let render = template;
 
       // Check for "/edit" suffix
-      if (
-        file_path_orig.indexOf(
-          suffix,
-          file_path_orig.length - suffix.length,
-        ) !== -1
-      ) {
+      if (file_path_orig.endsWith(suffix)) {
         // Edit Page
         if (
           (config.authentication || config.authentication_for_edit) &&
@@ -113,28 +107,17 @@ function route_wildcard(config) {
         }
 
         marked.use(gfmHeadingId());
-
-        // Render Markdown
-        marked.use({
-          // Removed in v8.x
-          // https://github.com/markedjs/marked/releases/tag/v8.0.0
-          // mangle: false,
-          // headerIds: false,
-        });
         content = marked(content);
       }
 
       const pageList = remove_image_content_directory(
         config,
-        _.chain(await contents_handler(slug, config))
+        (await contents_handler(slug, config))
           .filter((page) => page.show_on_menu)
           .map((page) => {
-            page.files = _.filter(page.files, (file) => {
-              return file.show_on_menu;
-            });
+            page.files = page.files.filter((file) => file.show_on_menu);
             return page;
-          })
-          .value(),
+          }),
       );
 
       const loggedIn =

@@ -6,14 +6,15 @@ import yaml from 'js-yaml';
 import utils from './utils.js';
 import content_processors from '../functions/content_processors.js';
 
+const metaBool = (value, fallback) => (value ? value === 'true' : fallback);
+
 // TODO: Scan on start/change, not on every request
 async function handler(activePageSlug, config) {
   activePageSlug = activePageSlug || '';
   const baseSlug = activePageSlug.split(/[\\/]/).slice(0, -1).join('/');
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));
 
-  // TODO: Fix extra trailing /
-  const files = await glob(`${contentDir}**/*`);
+  const files = await glob(path.join(contentDir, '**', '*'));
   const filesProcessed = [];
 
   filesProcessed.push({
@@ -39,7 +40,7 @@ async function handler(activePageSlug, config) {
       filesProcessed.push(result);
     } else if (result && result.is_directory === false) {
       const dirSlug = path.dirname(result.slug);
-      const parent = _.find(filesProcessed, (item) => item.slug === dirSlug);
+      const parent = filesProcessed.find((item) => item.slug === dirSlug);
       if (parent) {
         parent.files.push(result);
       } else if (config.debug) {
@@ -48,34 +49,33 @@ async function handler(activePageSlug, config) {
     }
   }
 
-  const sortedFiles = _.sortBy(filesProcessed, (cat) => cat.sort);
+  const sortedFiles = filesProcessed.toSorted((a, b) => a.sort - b.sort);
   sortedFiles.forEach((category) => {
-    category.files = _.sortBy(category.files, (file) => file.sort);
+    category.files = category.files.toSorted((a, b) => a.sort - b.sort);
   });
 
   return sortedFiles;
 }
 
 async function processFile(config, activePageSlug, contentDir, filePath) {
-  const content_dir = path.normalize(contentDir);
   const page_sort_meta = config.page_sort_meta || '';
   const category_sort = config.category_sort || false;
-  const shortPath = path.normalize(filePath).replace(content_dir, '').trim();
+  const shortPath = path.relative(contentDir, filePath);
   const fileSlug = shortPath.split('\\').join('/');
   const stat = await fs.stat(filePath);
 
   if (stat.isDirectory()) {
     let sort = 0;
     // ignore directories that has an ignore file under it
-    const ignoreFile = `${contentDir + shortPath}/ignore`;
+    const ignoreFile = path.join(contentDir, shortPath, 'ignore');
 
     const ignoreExists = await fs.lstat(ignoreFile).then(
       (stat) => stat.isFile(),
-      () => {},
+      () => false,
     );
     if (ignoreExists) {
       if (config.debug) {
-        console.log('Directory ignored', contentDir + shortPath);
+        console.log('Directory ignored', path.join(contentDir, shortPath));
       }
 
       return null;
@@ -85,13 +85,16 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
     try {
       const metaFile = await fs.readFile(
         path.join(contentDir, shortPath, 'meta'),
+        'utf8',
       );
-      dirMetadata = content_processors.cleanObjectStrings(
-        yaml.load(metaFile.toString('utf-8')),
-      );
+      dirMetadata = content_processors.cleanObjectStrings(yaml.load(metaFile));
     } catch (e) {
       if (config.debug) {
-        console.log('No meta file for', contentDir + shortPath, e.message);
+        console.log(
+          'No meta file for',
+          path.join(contentDir, shortPath),
+          e.message,
+        );
       }
     }
 
@@ -99,11 +102,16 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
       try {
         const sortFile = await fs.readFile(
           path.join(contentDir, shortPath, 'sort'),
+          'utf8',
         );
-        sort = parseInt(sortFile.toString('utf-8'), 10);
+        sort = parseInt(sortFile, 10);
       } catch (e) {
         if (config.debug) {
-          console.log('No sort file for', contentDir + shortPath, e.message);
+          console.log(
+            'No sort file for',
+            path.join(contentDir, shortPath),
+            e.message,
+          );
         }
       }
     }
@@ -113,14 +121,16 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
       title:
         dirMetadata.title ||
         _.startCase(path.basename(shortPath).replace(/[-_]/g, ' ')),
-      show_on_home: dirMetadata.show_on_home
-        ? dirMetadata.show_on_home === 'true'
-        : config.show_on_home_default,
+      show_on_home: metaBool(
+        dirMetadata.show_on_home,
+        config.show_on_home_default,
+      ),
       is_index: false,
       is_directory: true,
-      show_on_menu: dirMetadata.show_on_menu
-        ? dirMetadata.show_on_menu === 'true'
-        : config.show_on_menu_default,
+      show_on_menu: metaBool(
+        dirMetadata.show_on_menu,
+        config.show_on_menu_default,
+      ),
       active: activePageSlug.startsWith(`/${fileSlug}`),
       class: `category-${content_processors.cleanString(fileSlug)}`,
       sort: dirMetadata.sort || sort,
@@ -131,17 +141,17 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
 
   if (stat.isFile() && path.extname(shortPath) === '.md') {
     try {
-      const file = await fs.readFile(filePath);
+      const file = await fs.readFile(filePath, 'utf8');
       let slug = fileSlug;
       let pageSort = 0;
 
-      if (fileSlug.indexOf('index.md') > -1) {
+      if (fileSlug.includes('index.md')) {
         slug = slug.replace('index.md', '');
       }
 
       slug = slug.replace('.md', '').trim();
 
-      const meta = content_processors.processMeta(file.toString('utf-8'));
+      const meta = content_processors.processMeta(file);
 
       if (page_sort_meta && meta[page_sort_meta]) {
         pageSort = parseInt(meta[page_sort_meta], 10);
@@ -150,13 +160,9 @@ async function processFile(config, activePageSlug, contentDir, filePath) {
       return {
         slug,
         title: meta.title ? meta.title : content_processors.slugToTitle(slug),
-        show_on_home: meta.show_on_home
-          ? meta.show_on_home === 'true'
-          : config.show_on_home_default,
+        show_on_home: metaBool(meta.show_on_home, config.show_on_home_default),
         is_directory: false,
-        show_on_menu: meta.show_on_menu
-          ? meta.show_on_menu === 'true'
-          : config.show_on_menu_default,
+        show_on_menu: metaBool(meta.show_on_menu, config.show_on_menu_default),
         active: activePageSlug.trim() === `/${slug}`,
         sort: pageSort,
       };

@@ -1,9 +1,9 @@
 // Modules
-import fs from 'node:fs';
+import fs from 'fs-extra';
 import get_filepath from '../functions/get_filepath.js';
 
 function route_page_create(config) {
-  return function (req, res) {
+  return async function (req, res) {
     // Generate filepath
     // Sanitized within function
     const filepath = get_filepath({
@@ -12,26 +12,18 @@ function route_page_create(config) {
       filename: `${req.body.name}.md`,
     });
 
-    fs.open(filepath, 'a', (error, fd) => {
-      if (error) {
-        return res.json({
-          status: 1,
-          message: error,
-        });
-      }
-      fs.close(fd, (error) => {
-        if (error) {
-          return res.json({
-            status: 1,
-            message: error,
-          });
-        }
-        res.json({
-          status: 0,
-          message: config.lang.api.pageCreated,
-        });
+    try {
+      await fs.ensureFile(filepath);
+      res.json({
+        status: 0,
+        message: config.lang.api.pageCreated,
       });
-    });
+    } catch (error) {
+      res.json({
+        status: 1,
+        message: error,
+      });
+    }
   };
 }
 

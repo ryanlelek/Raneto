@@ -4,7 +4,6 @@ import validator from 'validator';
 // Settings
 const invalidChars = '&\'"/><';
 
-// TODO: Add Test
 function sanitizer(str) {
   str = validator.blacklist(str, invalidChars);
   str = validator.trim(str);

@@ -1,8 +1,8 @@
 // Modules
+import { Readable } from 'node:stream';
 import path from 'node:path';
 import fs from 'fs-extra';
-import sm from 'sitemap';
-import _ from 'lodash';
+import { SitemapStream, streamToPromise } from 'sitemap';
 import content_processors from '../functions/content_processors.js';
 import utils from '../core/utils.js';
 
@@ -11,33 +11,23 @@ function route_sitemap(config) {
     const hostname = config.hostname || req.headers.host;
     const content_dir = path.normalize(config.content_dir);
 
-    // get list md files
     try {
       const _files = await listFiles(content_dir);
-
-      const files = _.filter(_files, (file) => file.substr(-3) === '.md');
-
+      const files = _files.filter((file) => file.endsWith('.md'));
       const filesPath = files.map((file) => file.replace(content_dir, ''));
-
-      // generate list urls
       const urls = filesPath.map(
         (file) => `/${file.replace('.md', '').replace(/\\/g, '/')}`,
       );
 
-      // create sitemap.xml
-      // TODO: Make protocol dynamic
-      const sitemap = sm.createSitemap({
-        hostname: `http://${hostname}`,
-        cacheTime: 600000,
-      });
-
+      const links = [];
       for (let i = 0, len = urls.length; i < len; i++) {
         const content = await fs.readFile(files[i], 'utf8');
-        // Need to override the datetime format for sitemap
         const conf = {
+          content_dir: config.content_dir,
+          theme_dir: config.theme_dir,
           datetime_format: 'YYYY-MM-DD',
         };
-        sitemap.add({
+        links.push({
           url: (config.prefix_url || '') + urls[i],
           changefreq: 'weekly',
           priority: 0.8,
@@ -49,8 +39,13 @@ function route_sitemap(config) {
         });
       }
 
+      const stream = new SitemapStream({
+        hostname: `https://${hostname}`,
+      });
+      const xml = await streamToPromise(Readable.from(links).pipe(stream));
+
       res.header('Content-Type', 'application/xml');
-      res.send(sitemap.toString());
+      res.send(xml.toString());
     } catch (error) {
       next(error);
     }

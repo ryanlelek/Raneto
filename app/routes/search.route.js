@@ -19,7 +19,6 @@ function route_search(config) {
     });
     const sanitizedQuery = sanitize(rawQuery);
 
-    // TODO: Using try/catch seems broken
     let searchResults = [];
     let pageListSearch = [];
     try {
@@ -29,28 +28,14 @@ function route_search(config) {
         await contents_handler(null, config),
       );
     } catch (e) {
-      // Continue with defaults of empty arrays
       console.log(e.message);
     }
-
-    // TODO: Move to Raneto Core
-    // Filter out null results and extract category
-    const validResults = searchResults.filter(
-      (result) => result !== null && result !== undefined,
-    );
-    validResults.forEach((result) => {
-      result.category = null;
-      const split = result.slug.split('/');
-      if (split.length > 1) {
-        result.category = split[0];
-      }
-    });
 
     return res.render('search', {
       config,
       pages: pageListSearch,
       search: sanitizedQuery,
-      searchResults: validResults,
+      searchResults,
       body_class: 'page-search',
       lang: config.lang,
       loggedIn:
