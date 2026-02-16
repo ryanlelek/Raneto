@@ -43,4 +43,22 @@ describe('#doSearch()', () => {
     const result = await search_handler('zzzznotreal yyyyfakeword', config);
     expect(result).toBeDefined();
   });
+
+  it('strips lunr operators to prevent DoS via large edit distance', async () => {
+    const start = Date.now();
+    const result = await search_handler('a~999999', config);
+    const elapsed = Date.now() - start;
+    expect(elapsed).toBeLessThan(5000);
+    expect(result).toBeDefined();
+  });
+
+  it('strips other lunr metacharacters', async () => {
+    const result = await search_handler('+required -excluded ^boost', config);
+    expect(result).toBeDefined();
+  });
+
+  it('handles query that is only operators', async () => {
+    const result = await search_handler('~*+:-^', config);
+    expect(result).toEqual([]);
+  });
 });

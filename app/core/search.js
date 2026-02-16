@@ -24,8 +24,15 @@ async function handler(query, config) {
     documents.forEach((doc) => this.add(doc), this);
   });
 
-  // Clean and prepare the query
-  const cleanQuery = query.trim();
+  // Strip lunr query operators to prevent DoS (e.g. ~999999 causes hang)
+  const cleanQuery = query
+    .replace(/[~*+\-^:]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (!cleanQuery) {
+    return [];
+  }
 
   // Try exact search first
   let results = idx.search(cleanQuery);

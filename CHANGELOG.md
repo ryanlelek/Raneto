@@ -8,6 +8,7 @@
 - **[Fix]** Sitemap string escaping
 - **[Fix]** Better escaping and sanitization for markdown rendering
 - **[Fix]** GitHub Actions repository permissions: read-only
+- **[Fix]** Search ReDoS with lunr
 - **[Add]** Rate Limiting (200 req/min)
 - **[Add]** Configuration verification function (only checks config.secret for now)
 - **[Edit]** Refactoring (simplify, use native functions)
