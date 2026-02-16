@@ -4,6 +4,14 @@ import get_filepath from '../functions/get_filepath.js';
 
 function route_page_delete(config) {
   return async function (req, res) {
+    // Check if file parameter exists and is not empty
+    if (!req.body.file || req.body.file.trim() === '') {
+      return res.json({
+        status: 1,
+        message: config.lang.api.invalidFile || 'Invalid file path',
+      });
+    }
+
     let file_category = '';
     let file_name = '';
 
@@ -49,7 +57,7 @@ function route_page_delete(config) {
     } catch (error) {
       res.json({
         status: 1,
-        message: error,
+        message: error.message,
       });
     }
   };

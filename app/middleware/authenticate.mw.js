@@ -1,9 +1,8 @@
-function middleware_authenticate(config) {
-  if (config.authentication === true) {
-    // Authentication Middleware
+function middleware_authenticate(config, { required = false } = {}) {
+  if (required || config.authentication === true) {
     return function (req, res, next) {
       if (!req.session.loggedIn) {
-        res.redirect(403, `${config.base_url}/login`);
+        res.redirect(302, `${config.base_url}/login`);
         return;
       }
       return next();

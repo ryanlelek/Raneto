@@ -7,7 +7,7 @@ function mw_error_handler(config) {
     res.render('error', {
       config,
       status: err.status,
-      message: config.lang.error[status] || err.message,
+      message: config.lang.error[status] || 'An unexpected error occurred',
       error: {},
       body_class: 'page-error',
       lang: config.lang,

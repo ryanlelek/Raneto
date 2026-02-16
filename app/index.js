@@ -14,7 +14,6 @@ import passport from 'passport';
 import validateConfig from './core/config_validation.js';
 import language_load from './core/language.js';
 import mw_authenticate from './middleware/authenticate.mw.js';
-import mw_always_auth from './middleware/always_authenticate.mw.js';
 import mw_auth_readonly from './middleware/authenticate_read_access.mw.js';
 import mw_error_handler from './middleware/error_handler.mw.js';
 import mw_oauth2 from './middleware/oauth2.mw.js';
@@ -50,7 +49,7 @@ function initialize(config) {
 
   // Load Middleware
   const authenticate = mw_authenticate(config);
-  const always_authenticate = mw_always_auth(config);
+  const always_authenticate = mw_authenticate(config, { required: true });
   const error_handler = mw_error_handler(config);
 
   // Load Multiple-Use Pages

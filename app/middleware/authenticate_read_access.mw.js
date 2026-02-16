@@ -12,7 +12,7 @@ function mw_authenticate_read_access(config) {
         ) {
           return next();
         }
-        return res.redirect(403, `${config.base_url}/login`);
+        return res.redirect(302, `${config.base_url}/login`);
       }
       return next();
     };

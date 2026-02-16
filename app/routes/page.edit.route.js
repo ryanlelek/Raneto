@@ -70,7 +70,7 @@ function route_page_edit(config) {
     } catch (error) {
       res.json({
         status: 1,
-        message: error,
+        message: error.message,
       });
     }
   };
