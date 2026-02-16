@@ -10,6 +10,7 @@ import mustacheExpress from 'mustache-express';
 import session from 'express-session';
 import FileStore from 'session-file-store';
 import passport from 'passport';
+import validateConfig from './core/config_validation.js';
 import language_load from './core/language.js';
 import mw_authenticate from './middleware/authenticate.mw.js';
 import mw_always_auth from './middleware/always_authenticate.mw.js';
@@ -30,6 +31,9 @@ import route_sitemap from './routes/sitemap.route.js';
 const __dirname = import.meta.dirname;
 
 function initialize(config) {
+  // Validate configuration
+  validateConfig(config);
+
   // Load Translations
   if (!config.locale) {
     config.locale = 'en';

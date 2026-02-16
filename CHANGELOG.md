@@ -4,6 +4,7 @@
 
 - **[BREAKING]** Minimum Node.js is v24.x LTS
 - **[Fix]** Filepath location for language translations
+- **[Add]** Configuration verification function (only checks config.secret for now)
 
 ## 2025.09.15 / v0.18.0
 
