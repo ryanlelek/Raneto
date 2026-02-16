@@ -1,8 +1,23 @@
+import { timingSafeEqual } from 'node:crypto';
+
+function safeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') {
+    return false;
+  }
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) {
+    return false;
+  }
+  return timingSafeEqual(bufA, bufB);
+}
+
 function route_login(config) {
   return function (req, res) {
     const credential = config.credentials.find(
       (c) =>
-        req.body.username === c.username && req.body.password === c.password,
+        safeEqual(req.body.username, c.username) &&
+        safeEqual(req.body.password, c.password),
     );
 
     if (credential) {
