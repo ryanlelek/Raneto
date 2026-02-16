@@ -21,7 +21,7 @@ function route_sitemap(config) {
 
       // generate list urls
       const urls = filesPath.map(
-        (file) => `/${file.replace('.md', '').replace('\\', '/')}`,
+        (file) => `/${file.replace('.md', '').replace(/\\/g, '/')}`,
       );
 
       // create sitemap.xml
