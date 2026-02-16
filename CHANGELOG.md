@@ -10,6 +10,7 @@
 - **[Add]** Rate Limiting (200 req/min)
 - **[Add]** Configuration verification function (only checks config.secret for now)
 - **[Edit]** Refactoring (simplify, use native functions)
+- **[Deps]** Upgrading marked from v16.4.2 to v17.0.2
 
 ## 2025.09.15 / v0.18.0
 
