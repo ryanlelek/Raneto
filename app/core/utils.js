@@ -19,16 +19,20 @@ async function getLastModified(config, meta, file_path) {
     allowedRoots.push(path.resolve(config.theme_dir));
   }
 
-  // Resolve the candidate path and collapse symlinks
-  const resolved = path.resolve(file_path);
-  const realPath = await fs.realpath(resolved);
+  const isWithinAllowed = (p) =>
+    allowedRoots.some(
+      (root) => p.startsWith(root + path.sep) || p === root,
+    );
 
-  // Verify the real path is contained within an allowed root
-  if (
-    !allowedRoots.some(
-      (root) => realPath.startsWith(root + path.sep) || realPath === root,
-    )
-  ) {
+  // Validate resolved path before any filesystem operations
+  const resolved = path.resolve(file_path);
+  if (!isWithinAllowed(resolved)) {
+    throw new Error('Access denied: file path is outside allowed directories');
+  }
+
+  // Resolve symlinks and re-validate the real path
+  const realPath = await fs.realpath(resolved);
+  if (!isWithinAllowed(realPath)) {
     throw new Error('Access denied: file path is outside allowed directories');
   }
 

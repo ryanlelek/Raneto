@@ -51,6 +51,14 @@ function route_wildcard(config) {
       safe_file_path += '.md';
     }
 
+    // Re-validate after .md append
+    safe_file_path = path.resolve(safe_file_path);
+    if (!safe_file_path.startsWith(content_dir_resolved)) {
+      const error = new Error(config.lang.error['404']);
+      error.status = 404;
+      return next(error);
+    }
+
     let content;
     try {
       content = await fs.readFile(safe_file_path, 'utf8');
