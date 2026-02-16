@@ -150,7 +150,11 @@ function router(config) {
     // Save the url of the user's current page so the app can redirect back to
     // it after authorization
     (req, res, next) => {
-      if (req.query.return) {
+      if (
+        req.query.return &&
+        req.query.return.startsWith('/') &&
+        !req.query.return.startsWith('//')
+      ) {
         req.session.oauth2return = req.query.return;
       }
       next();
