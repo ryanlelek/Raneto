@@ -12,6 +12,13 @@ function route_page_create(config) {
       filename: `${req.body.name}.md`,
     });
 
+    if (!filepath) {
+      return res.json({
+        status: 1,
+        message: config.lang.api.invalidFile || 'Invalid file path',
+      });
+    }
+
     try {
       await fs.ensureFile(filepath);
       res.json({

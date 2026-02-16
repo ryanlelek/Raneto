@@ -24,6 +24,13 @@ function route_page_delete(config) {
       filename: file_name,
     });
 
+    if (!filepath) {
+      return res.json({
+        status: 1,
+        message: config.lang.api.invalidFile || 'Invalid file path',
+      });
+    }
+
     // No file at that filepath?
     // Add ".md" extension to try again
     if (!(await fs.pathExists(filepath))) {

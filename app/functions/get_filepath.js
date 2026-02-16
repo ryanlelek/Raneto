@@ -20,6 +20,13 @@ function get_filepath(p) {
   // Normalize
   filepath = path.normalize(filepath);
 
+  // Ensure resolved path is strictly inside the content directory
+  const resolved = path.resolve(filepath);
+  const contentRoot = path.resolve(p.content);
+  if (!resolved.startsWith(contentRoot + path.sep)) {
+    return null;
+  }
+
   return filepath;
 }
 

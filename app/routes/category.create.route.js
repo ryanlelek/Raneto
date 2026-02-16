@@ -11,6 +11,13 @@ function route_category_create(config) {
       category: req.body.category,
     });
 
+    if (!filepath) {
+      return res.json({
+        status: 1,
+        message: config.lang.api.invalidCategory || 'Invalid category path',
+      });
+    }
+
     try {
       await fs.mkdir(filepath);
       res.json({

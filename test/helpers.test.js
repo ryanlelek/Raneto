@@ -72,11 +72,11 @@ describe('#get_filepath()', () => {
     expect(result).toBe(path.normalize('/var/content/docs'));
   });
 
-  it('returns content dir alone when no category or filename', () => {
+  it('returns null when no category or filename (path is content dir itself)', () => {
     const result = get_filepath({
       content: '/var/content',
     });
-    expect(result).toBe(path.normalize('/var/content'));
+    expect(result).toBeNull();
   });
 
   it('sanitizes category names by stripping path separators', () => {

@@ -10,6 +10,7 @@
 - **[Fix]** GitHub Actions repository permissions: read-only
 - **[Fix]** Search ReDoS with lunr
 - **[Fix]** Login password comparison
+- **[Fix]** Path traversal outside of content directory
 - **[Add]** Rate Limiting (200 req/min)
 - **[Add]** Configuration verification function (only checks config.secret for now)
 - **[Edit]** Refactoring (simplify, use native functions)
