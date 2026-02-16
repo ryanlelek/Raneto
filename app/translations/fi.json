@@ -7,27 +7,29 @@
     "save": "Tallenna",
     "close": "Sulje",
     "lastUpdated": "Viimeksi muokattu",
-
     "pageName": "Sivun nimi",
     "addPage": "Lisää sivu",
     "reallyDeletePage": "Oletko varma että haluat poistaa sivun?",
     "mainArticles": "Tärkeimmät artikkelit",
     "editor": "Editori"
   },
-
   "api": {
     "loginSuccessful": "Kirjautuminen onnistui",
     "invalidCredentials": "Väärä käyttäjänimen ja salasanan yhdistelmä",
+    "invalidFile": "Invalid file path",
+    "invalidCategory": "Invalid category path",
     "pageSaved": "Sivu tallennettu",
+    "pageNotSaved": "Error saving page",
     "pageDeleted": "Sivu poistettu",
+    "pageNotDeleted": "Error deleting page",
     "categoryCreated": "Kategoria luotu",
-    "pageCreated": "Sivu luotu"
+    "categoryNotCreated": "Error creating category",
+    "pageCreated": "Sivu luotu",
+    "pageNotCreated": "Error creating page"
   },
-
   "error": {
     "404": "Whoops. Näyttää siltä, että tätä sivua ei ole olemassa."
   },
-
   "edit": {
     "preview": "Esikatselu",
     "editor": "Editori",
@@ -35,32 +37,30 @@
     "pageSaveError": "Virhe sivun tallentamisessa",
     "headerMetaInfo": "Meta tiedot",
     "lableMetaTitle": "Otsikko",
+    "labelMetaTitle": "Otsikko",
     "lableMetaDescription": "Kuvaus",
-    "lableMetaSort": "Lajittelu"
+    "labelMetaDescription": "Kuvaus",
+    "lableMetaSort": "Lajittelu",
+    "labelMetaSort": "Lajittelu"
   },
-
   "home": {
     "searchKnowledgeBase": "Etsi tietokannasta"
   },
-
   "login": {
     "login": "Kirjaudu",
     "logout": "Kirjaudu ulos",
     "username": "Käyttäjätunnus",
     "password": "Salasana"
   },
-
   "page": {
     "addCategory": "Lisää kategoria",
     "addPage": "Lisää sivu",
     "deletePage": "Poista",
     "editPage": "Muokkaa",
     "actions": "Toiminnot",
-
     "needHelp": "Tarvitsetko vielä apua?",
     "getInTouch": "Ota yhteyttä!"
   },
-
   "search": {
     "resultsFor": "Etsi tuloksia",
     "noResultsFor": "Ei löytynyt mitään"

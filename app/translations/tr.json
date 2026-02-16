@@ -7,27 +7,29 @@
     "save": "Kaydet",
     "close": "Kapat",
     "lastUpdated": "Son güncellenme tarihi",
-
     "pageName": "Sayfa adı",
     "addPage": "Sayfa ekle",
     "reallyDeletePage": "Bu sayfayı silmek istediğinize emin misiniz?",
     "mainArticles": "Başlıklar",
     "editor": "Editör"
   },
-
   "api": {
     "loginSuccessful": "Giriş Başarılı",
     "invalidCredentials": "Geçersiz Kullanıcı Adı/Şifre",
+    "invalidFile": "Invalid file path",
+    "invalidCategory": "Invalid category path",
     "pageSaved": "Sayfa Kaydedildi",
+    "pageNotSaved": "Error saving page",
     "pageDeleted": "Sayfa Silindi",
+    "pageNotDeleted": "Error deleting page",
     "categoryCreated": "Kategori Yaratıldı",
-    "pageCreated": "Sayfa Yaratıldı"
+    "categoryNotCreated": "Error creating category",
+    "pageCreated": "Sayfa Yaratıldı",
+    "pageNotCreated": "Error creating page"
   },
-
   "error": {
     "404": "Amman! Sayfa bulunamadı"
   },
-
   "edit": {
     "preview": "Önizleme",
     "editor": "Editör",
@@ -35,32 +37,30 @@
     "pageSaveError": "Sayfa Kaydedilirken Hata Alındı",
     "headerMetaInfo": "Meta Bilgiler",
     "lableMetaTitle": "Başlık",
+    "labelMetaTitle": "Başlık",
     "lableMetaDescription": "Açıklama",
-    "lableMetaSort": "Sırala"
+    "labelMetaDescription": "Açıklama",
+    "lableMetaSort": "Sırala",
+    "labelMetaSort": "Sırala"
   },
-
   "home": {
     "searchKnowledgeBase": "Bilgi dağarcığında ara"
   },
-
   "login": {
     "login": "Giriş Yap",
     "logout": "Çıkış Yap",
     "username": "Kullanıcı Adı",
     "password": "Şifre"
   },
-
   "page": {
     "addCategory": "Kategori ekle",
     "addPage": "Sayfa ekle",
     "deletePage": "Sil",
     "editPage": "Düzenle",
     "actions": "Eylemler",
-
     "needHelp": "Hala mı yardıma ihtiyacınız var?",
     "getInTouch": "İletişime geç"
   },
-
   "search": {
     "resultsFor": "Arama sonuçları",
     "noResultsFor": "Bir şey bulunamadı"

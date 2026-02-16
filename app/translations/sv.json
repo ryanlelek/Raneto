@@ -7,27 +7,29 @@
     "save": "Spara",
     "close": "Stäng",
     "lastUpdated": "Sidan uppdaterades den",
-
     "pageName": "Sidnamn",
     "addPage": "Lägg till sida",
     "reallyDeletePage": "Är du säker på att du vill ta bort denna sidan?",
     "mainArticles": "Huvudartikel",
     "editor": "Textredigerare"
   },
-
   "api": {
     "loginSuccessful": "Inloggningen lyckades",
     "invalidCredentials": "Ogiltig kombination av användarnamn och lösenord",
+    "invalidFile": "Invalid file path",
+    "invalidCategory": "Invalid category path",
     "pageSaved": "Sidan sparad",
+    "pageNotSaved": "Error saving page",
     "pageDeleted": "Sidan borttagen",
+    "pageNotDeleted": "Error deleting page",
     "categoryCreated": "Kategori skapad",
-    "pageCreated": "Sidan skapad"
+    "categoryNotCreated": "Error creating category",
+    "pageCreated": "Sidan skapad",
+    "pageNotCreated": "Error creating page"
   },
-
   "error": {
     "404": "Hoppsan. Det ser ut som denna sidan inte finns."
   },
-
   "edit": {
     "preview": "Förhandsvisning",
     "editor": "Editor",
@@ -35,32 +37,30 @@
     "pageSaveError": "Ett fel uppstod vid försök att spara sidan",
     "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Titel",
+    "labelMetaTitle": "Titel",
     "lableMetaDescription": "Beskrivning",
-    "lableMetaSort": "Sortering"
+    "labelMetaDescription": "Beskrivning",
+    "lableMetaSort": "Sortering",
+    "labelMetaSort": "Sortering"
   },
-
   "home": {
     "searchKnowledgeBase": "Sök i kunskapsbasen"
   },
-
   "login": {
     "login": "Logga in",
     "logout": "Logga ut",
     "username": "Användarnamn",
     "password": "Lösenord"
   },
-
   "page": {
     "addCategory": "Lägg till kategori",
     "addPage": "Lägg till sida",
     "deletePage": "Ta bort",
     "editPage": "Redigera",
     "actions": "Handling",
-
     "needHelp": "Behöver du fortfarande hjälp?",
     "getInTouch": "Ta kontakt!"
   },
-
   "search": {
     "resultsFor": "Sökresultat för",
     "noResultsFor": "Inget sökresultat hittat för"

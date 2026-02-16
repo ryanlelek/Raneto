@@ -7,27 +7,29 @@
     "save": "Save",
     "close": "Close",
     "lastUpdated": "Last updated on",
-
     "pageName": "Page name",
     "addPage": "Add page",
     "reallyDeletePage": "Are you sure you want to delete this page?",
     "mainArticles": "Main articles",
     "editor": "Editor"
   },
-
   "api": {
     "loginSuccessful": "Login Successful",
     "invalidCredentials": "Invalid Username/Password Combination",
+    "invalidFile": "Invalid file path",
+    "invalidCategory": "Invalid category path",
     "pageSaved": "Page Saved",
+    "pageNotSaved": "Error saving page",
     "pageDeleted": "Page Deleted",
+    "pageNotDeleted": "Error deleting page",
     "categoryCreated": "Category Created",
-    "pageCreated": "Page Created"
+    "categoryNotCreated": "Error creating category",
+    "pageCreated": "Page Created",
+    "pageNotCreated": "Error creating page"
   },
-
   "error": {
     "404": "Whoops. Looks like this page doesn't exist."
   },
-
   "edit": {
     "preview": "Preview",
     "editor": "Editor",
@@ -35,32 +37,30 @@
     "pageSaveError": "Error Saving Page",
     "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Title",
+    "labelMetaTitle": "Title",
     "lableMetaDescription": "Description",
-    "lableMetaSort": "Sort"
+    "labelMetaDescription": "Description",
+    "lableMetaSort": "Sort",
+    "labelMetaSort": "Sort"
   },
-
   "home": {
     "searchKnowledgeBase": "Search the knowledge base"
   },
-
   "login": {
     "login": "Login",
     "logout": "Logout",
     "username": "Username",
     "password": "Password"
   },
-
   "page": {
     "addCategory": "Add category",
     "addPage": "Add page",
     "deletePage": "Delete",
     "editPage": "Edit",
     "actions": "Actions",
-
     "needHelp": "Still need help?",
     "getInTouch": "Get in touch!"
   },
-
   "search": {
     "resultsFor": "Search results for",
     "noResultsFor": "Nothing found for"

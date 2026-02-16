@@ -7,27 +7,29 @@
     "save": "Guardar",
     "close": "Cerrar",
     "lastUpdated": "Actualizado",
-
     "pageName": "Nombre de la página",
     "addPage": "Añadir página",
     "reallyDeletePage": "¿Está seguro de que desea borrar esta página?",
     "mainArticles": "Artículos principales",
     "editor": "Editor"
   },
-
   "api": {
     "loginSuccessful": "Login Correcto",
     "invalidCredentials": "Combinación Nombre de Usuario/Password inválida",
+    "invalidFile": "Invalid file path",
+    "invalidCategory": "Invalid category path",
     "pageSaved": "Página Guardada",
+    "pageNotSaved": "Error saving page",
     "pageDeleted": "Página Borrada",
+    "pageNotDeleted": "Error deleting page",
     "categoryCreated": "Categoría Creada",
-    "pageCreated": "Página Creada"
+    "categoryNotCreated": "Error creating category",
+    "pageCreated": "Página Creada",
+    "pageNotCreated": "Error creating page"
   },
-
   "error": {
     "404": "Whoops. Parece que esta página no existe."
   },
-
   "edit": {
     "preview": "Vista Previa",
     "editor": "Editor",
@@ -35,32 +37,30 @@
     "pageSaveError": "Error Guardando la Página",
     "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Título",
+    "labelMetaTitle": "Título",
     "lableMetaDescription": "Descripción",
-    "lableMetaSort": "Orden"
+    "labelMetaDescription": "Descripción",
+    "lableMetaSort": "Orden",
+    "labelMetaSort": "Orden"
   },
-
   "home": {
     "searchKnowledgeBase": "Busca en la base de conocimiento"
   },
-
   "login": {
     "login": "Login",
     "logout": "Logout",
     "username": "Nombre de Usuario",
     "password": "Password"
   },
-
   "page": {
     "addCategory": "Añadir categoría",
     "addPage": "Añadir página",
     "deletePage": "Borrar",
     "editPage": "Editar",
     "actions": "Acciones",
-
     "needHelp": "¿Todavía necesita ayuda?",
     "getInTouch": "Póngase en contacto!"
   },
-
   "search": {
     "resultsFor": "Buscar",
     "noResultsFor": "Ninguna coincidencia para"

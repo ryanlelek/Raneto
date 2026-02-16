@@ -7,27 +7,29 @@
     "save": "Speichern",
     "close": "Schließen",
     "lastUpdated": "Zuletzt aktualisiert am",
-
     "pageName": "Artikelname",
     "addPage": "Artikel hinzufügen",
     "reallyDeletePage": "Sind Sie sicher, dass Sie diesen Artikel löschen möchten?",
     "mainArticles": "Hauptartikel",
     "editor": "Editor"
   },
-
   "api": {
     "loginSuccessful": "Anmeldung erfolgreich",
     "invalidCredentials": "Ungültige Zugangsdaten",
+    "invalidFile": "Invalid file path",
+    "invalidCategory": "Invalid category path",
     "pageSaved": "Artikel gespeichert",
+    "pageNotSaved": "Error saving page",
     "pageDeleted": "Seite gelöscht",
+    "pageNotDeleted": "Error deleting page",
     "categoryCreated": "Kategorie angelegt",
-    "pageCreated": "Artikel angelegt"
+    "categoryNotCreated": "Error creating category",
+    "pageCreated": "Artikel angelegt",
+    "pageNotCreated": "Error creating page"
   },
-
   "error": {
     "404": "Ups. Sieht so aus als würde diese Seite nicht existieren."
   },
-
   "edit": {
     "preview": "Vorschau",
     "editor": "Editor",
@@ -35,32 +37,30 @@
     "pageSaveError": "Fehler beim Speichern des Artikels",
     "headerMetaInfo": "Metadata",
     "lableMetaTitle": "Titel",
+    "labelMetaTitle": "Titel",
     "lableMetaDescription": "Beschreibung",
-    "lableMetaSort": "Sortierung"
+    "labelMetaDescription": "Beschreibung",
+    "lableMetaSort": "Sortierung",
+    "labelMetaSort": "Sortierung"
   },
-
   "home": {
     "searchKnowledgeBase": "Suchbegriff eingeben..."
   },
-
   "login": {
     "login": "Anmelden",
     "logout": "Abmelden",
     "username": "Benutzername",
     "password": "Passwort"
   },
-
   "page": {
     "addCategory": "Kategorie hinzufügen",
     "addPage": "Artikel hinzufügen",
     "deletePage": "Löschen",
     "editPage": "Bearbeiten",
     "actions": "Aktionen",
-
     "needHelp": "Brauchen Sie weitere Hilfe?",
     "getInTouch": "Schreiben Sie uns!"
   },
-
   "search": {
     "resultsFor": "Suchergebnisse für",
     "noResultsFor": "Keine Ergebnisse für"
