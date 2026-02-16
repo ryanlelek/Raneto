@@ -11,6 +11,7 @@
 - **[Fix]** Search ReDoS with lunr
 - **[Fix]** Login password comparison
 - **[Fix]** Path traversal outside of content directory
+- **[Fix]** Explicitly specify "Lax" for cookies
 - **[Add]** Rate Limiting (200 req/min)
 - **[Add]** Configuration verification function (only checks config.secret for now)
 - **[Edit]** Refactoring (simplify, use native functions)

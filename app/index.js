@@ -162,6 +162,7 @@ function initialize(config) {
           maxAge: 86400000,
           secure: process.env.NODE_ENV === 'production',
           httpOnly: true,
+          sameSite: 'Lax',
         },
       }),
     );
