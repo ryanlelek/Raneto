@@ -1,8 +1,7 @@
 // Sanitize Markdown content
-// Removes problematic characters not in the Markdown spec
-// https://www.markdownguide.org/cheat-sheet/
+// Normalizes line endings to ensure consistent storage
 function sanitizeMarkdown(str) {
-  return str.replace(/</g, '&lt;').replace(/(\s)&(\s)/g, ' &amp; ');
+  return str.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 }
 
 // Exports

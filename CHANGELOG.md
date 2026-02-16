@@ -13,6 +13,7 @@
 - **[Fix]** Path traversal outside of content directory
 - **[Fix]** Authentication redirect continues with flow
 - **[Fix]** Prevent error details leakage
+- **[Fix]** Editor escaping Markdown content and base_url
 - **[Fix]** Ensure redirect "return" is relative path only
 - **[Fix]** Using callback for logout
 - **[Fix]** Explicitly specify "Lax" for cookies

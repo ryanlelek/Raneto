@@ -79,7 +79,6 @@ function routeWildcard(config) {
 
       // Content
       content = content_processors.stripMeta(content);
-      content = content_processors.processVars(content, config);
 
       const template = meta.template || 'page';
       let render = template;
@@ -96,6 +95,9 @@ function routeWildcard(config) {
         }
         render = 'edit';
       } else {
+        // Replace variables only for rendering, not for editing
+        content = content_processors.processVars(content, config);
+
         // Render Table of Contents
         if (config.table_of_contents) {
           const tableOfContents = toc(

@@ -37,7 +37,8 @@ If a file cannot be found the `error.html` template will be shown.
 ## File Markup
 
 Pages are created using Markdown. If you are new to Markdown please refer to the
-[syntax guide](https://daringfireball.net/projects/markdown/syntax) for more information.  
+[syntax guide](https://daringfireball.net/projects/markdown/syntax) or the
+[Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/) for more information.
 Pages can also contain regular HTML.
 
 At the top of a page you can place a block comment to specify certain attributes of the page. For example

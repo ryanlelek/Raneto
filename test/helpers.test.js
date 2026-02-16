@@ -136,25 +136,19 @@ describe('#sanitize()', () => {
 });
 
 describe('#sanitizeMarkdown()', () => {
-  it('escapes < to &lt;', () => {
+  it('preserves < characters in markdown source', () => {
     const result = sanitizeMarkdown('<script>alert("xss")</script>');
-    expect(result).toContain('&lt;');
-    expect(result).not.toContain('<');
+    expect(result).toBe('<script>alert("xss")</script>');
   });
 
-  it('escapes standalone & to &amp;', () => {
+  it('preserves & characters in markdown source', () => {
     const result = sanitizeMarkdown('foo & bar');
-    expect(result).toBe('foo &amp; bar');
+    expect(result).toBe('foo & bar');
   });
 
-  it('does not escape & in the middle of words', () => {
+  it('preserves & in the middle of words', () => {
     const result = sanitizeMarkdown('AT&T');
     expect(result).toBe('AT&T');
-  });
-
-  it('does not escape & at start/end without surrounding spaces', () => {
-    const result = sanitizeMarkdown('&test');
-    expect(result).toBe('&test');
   });
 
   it('handles string with no special characters', () => {
@@ -162,8 +156,18 @@ describe('#sanitizeMarkdown()', () => {
     expect(result).toBe('plain text');
   });
 
-  it('handles multiple < characters', () => {
+  it('normalizes CRLF line endings to LF', () => {
+    const result = sanitizeMarkdown('line1\r\nline2\r\nline3');
+    expect(result).toBe('line1\nline2\nline3');
+  });
+
+  it('normalizes CR line endings to LF', () => {
+    const result = sanitizeMarkdown('line1\rline2\rline3');
+    expect(result).toBe('line1\nline2\nline3');
+  });
+
+  it('preserves HTML tags in markdown source', () => {
     const result = sanitizeMarkdown('<div><span>text</span></div>');
-    expect(result).not.toContain('<');
+    expect(result).toBe('<div><span>text</span></div>');
   });
 });

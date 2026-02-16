@@ -40,7 +40,10 @@ function routePageEdit(config) {
       req.body.meta_description,
       req.body.meta_sort,
     );
-    const sanitizedContent = meta + sanitizeMarkdown(req.body.content);
+    let sanitizedContent = meta + sanitizeMarkdown(req.body.content);
+    if (!sanitizedContent.endsWith('\n')) {
+      sanitizedContent += '\n';
+    }
 
     try {
       await fs.writeFile(filepath, sanitizedContent);

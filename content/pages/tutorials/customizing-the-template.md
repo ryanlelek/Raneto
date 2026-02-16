@@ -1,7 +1,6 @@
 ---
 Title: Customizing the Template
 ---
-
 Templating in Raneto is powered by [Mustache](https://mustache.github.io/). All of the template views can
 be found in the `themes/default/` folder. Feel free to customize the template as you wish. The template structure
 is as follows:

@@ -64,7 +64,7 @@ describe('page edit route', () => {
     expect(saved).toContain('New Title');
   });
 
-  it('sanitizes body content but not meta title', async () => {
+  it('preserves special characters in body content', async () => {
     const filePath = path.join(tmpDir, 'sanitize-test.md');
     await fs.writeFile(filePath, '');
 
@@ -77,11 +77,10 @@ describe('page edit route', () => {
     await handler(req, res);
 
     const saved = await fs.readFile(filePath, 'utf8');
-    // Body should have < escaped
-    expect(saved).toContain('&lt;');
-    // Body should have & escaped (when surrounded by spaces)
-    expect(saved).toContain('Tom &amp; Jerry');
-    // But meta title should NOT have & escaped
+    // Body should preserve < and & as-is (valid Markdown characters)
+    expect(saved).toContain('x < y');
+    expect(saved).toContain('Tom & Jerry');
+    // Meta title should also be preserved
     const meta = content_processors.processMeta(saved);
     expect(meta.title).toBe('Tom & Jerry');
   });
@@ -157,6 +156,22 @@ describe('page edit route', () => {
     expect(saved).toContain('Appended ext content');
   });
 
+  it('ensures saved content ends with a trailing newline', async () => {
+    const filePath = path.join(tmpDir, 'trailing-nl.md');
+    await fs.writeFile(filePath, '');
+
+    const handler = route_page_edit(config);
+    const req = createReq('trailing-nl', 'Content without trailing newline', {
+      title: 'Test',
+    });
+    const res = createRes();
+
+    await handler(req, res);
+
+    const saved = await fs.readFile(filePath, 'utf8');
+    expect(saved.endsWith('\n')).toBe(true);
+  });
+
   it('does not double-escape on repeated save cycles', async () => {
     const filePath = path.join(tmpDir, 'double-escape.md');
     await fs.writeFile(filePath, '');
@@ -170,15 +185,11 @@ describe('page edit route', () => {
     await handler(req1, createRes());
     const saved1 = await fs.readFile(filePath, 'utf8');
 
-    // Simulate browser load: entities in file get decoded by browser
-    // Then user saves again without changes
+    // Second save: content loaded from file is sent back as-is
     const body = content_processors.stripMeta(saved1);
-    // Browser decodes &lt; → < and &amp; → &
-    const browserDecoded = body.replace(/&lt;/g, '<').replace(/&amp;/g, '&');
-
     const meta = content_processors.processMeta(saved1);
 
-    const req2 = createReq('double-escape', browserDecoded, {
+    const req2 = createReq('double-escape', body, {
       title: meta.title,
     });
     await handler(req2, createRes());
