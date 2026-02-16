@@ -3,6 +3,7 @@
 ## UNRELEASED / v0.18.1
 
 - **[BREAKING]** Minimum Node.js is v24.x LTS
+- **[Fix]** Filepath location for language translations
 
 ## 2025.09.15 / v0.18.0
 
