@@ -15,7 +15,7 @@
 - **[Fix]** Prevent error details leakage
 - **[Fix]** Explicitly specify "Lax" for cookies
 - **[Add]** Rate Limiting (200 req/min)
-- **[Add]** Configuration verification function (only checks config.secret for now)
+- **[Add]** Configuration verification function
 - **[Edit]** Refactoring (simplify, use native functions)
 - **[Deps]** Upgrading marked from v16.4.2 to v17.0.2
 
