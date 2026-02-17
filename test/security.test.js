@@ -5,7 +5,7 @@ import path from 'node:path';
 import os from 'node:os';
 import utils from '../app/core/utils.js';
 import route_wildcard from '../app/routes/wildcard.route.js';
-import { createConfig } from './config-helpers.js';
+import { createConfig } from './configHelpers.js';
 
 const config = createConfig();
 

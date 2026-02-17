@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import getFilepath, {
   resolveFilepath,
   parseFileParam,
-} from '../functions/get_filepath.js';
+} from '../functions/getFilepath.js';
 
 function routePageDelete(config) {
   return async function (req, res) {

@@ -4,7 +4,7 @@ import { glob } from 'glob';
 import _ from 'lodash';
 import yaml from 'js-yaml';
 import utils from './utils.js';
-import content_processors from '../functions/content_processors.js';
+import content_processors from '../functions/contentProcessors.js';
 
 const metaBool = (value, fallback) => (value ? value === 'true' : fallback);
 

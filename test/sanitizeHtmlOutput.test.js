@@ -1,6 +1,6 @@
-import sanitize from '../app/functions/sanitize_html_output.js';
+import sanitize from '../app/functions/sanitizeHtmlOutput.js';
 
-describe('sanitize_html_output', () => {
+describe('sanitizeHtmlOutput', () => {
   it('allows standard markdown HTML tags', () => {
     const html =
       '<h1>Title</h1><p>Text with <strong>bold</strong> and <em>italic</em></p>';

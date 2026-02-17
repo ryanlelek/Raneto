@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import moment from 'moment';
-import content_processors from '../app/functions/content_processors.js';
+import content_processors from '../app/functions/contentProcessors.js';
 import utils from '../app/core/utils.js';
-import { createConfig } from './config-helpers.js';
+import { createConfig } from './configHelpers.js';
 
 const config = createConfig();
 

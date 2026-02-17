@@ -1,5 +1,5 @@
 import path from 'node:path';
-import validateConfig from '../app/core/config_validation.js';
+import validateConfig from '../app/core/configValidation.js';
 import languageLoad from '../app/core/language.js';
 
 const validBase = {

@@ -3,9 +3,9 @@ import fs from 'fs-extra';
 import getFilepath, {
   resolveFilepath,
   parseFileParam,
-} from '../functions/get_filepath.js';
-import createMetaInfo from '../functions/create_meta_info.js';
-import sanitizeMarkdown from '../functions/sanitize_markdown.js';
+} from '../functions/getFilepath.js';
+import createMetaInfo from '../functions/createMetaInfo.js';
+import sanitizeMarkdown from '../functions/sanitizeMarkdown.js';
 
 function routePageEdit(config) {
   return async function (req, res) {

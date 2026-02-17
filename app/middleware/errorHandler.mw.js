@@ -1,5 +1,5 @@
 // Error-Handling Middleware
-import getAuthContext from '../functions/get_auth_context.js';
+import getAuthContext from '../functions/getAuthContext.js';
 
 function errorHandler(config) {
   return function (err, req, res, _next) {

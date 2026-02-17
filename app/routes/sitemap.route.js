@@ -3,7 +3,7 @@ import { Readable } from 'node:stream';
 import path from 'node:path';
 import fs from 'fs-extra';
 import { SitemapStream, streamToPromise } from 'sitemap';
-import content_processors from '../functions/content_processors.js';
+import content_processors from '../functions/contentProcessors.js';
 import utils from '../core/utils.js';
 
 function routeSitemap(config) {

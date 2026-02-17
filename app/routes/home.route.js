@@ -1,9 +1,9 @@
 // Modules
 import fs from 'fs-extra';
-import buildNestedPages from '../functions/build_nested_pages.js';
-import getFilepath from '../functions/get_filepath.js';
-import excludeImageDirectory from '../functions/exclude_image_directory.js';
-import getAuthContext from '../functions/get_auth_context.js';
+import buildNestedPages from '../functions/buildNestedPages.js';
+import getFilepath from '../functions/getFilepath.js';
+import excludeImageDirectory from '../functions/excludeImageDirectory.js';
+import getAuthContext from '../functions/getAuthContext.js';
 import contents_handler from '../core/contents.js';
 import utils from '../core/utils.js';
 

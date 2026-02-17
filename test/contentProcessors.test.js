@@ -1,8 +1,8 @@
 import { jest } from '@jest/globals';
 import path from 'node:path';
-import content_processors from '../app/functions/content_processors.js';
+import content_processors from '../app/functions/contentProcessors.js';
 import page_handler from '../app/core/page.js';
-import { createConfig } from './config-helpers.js';
+import { createConfig } from './configHelpers.js';
 
 const config = createConfig();
 

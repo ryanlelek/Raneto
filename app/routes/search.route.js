@@ -1,8 +1,8 @@
 // Modules
 import sanitizeHtml from 'sanitize-html';
-import excludeImageDirectory from '../functions/exclude_image_directory.js';
+import excludeImageDirectory from '../functions/excludeImageDirectory.js';
 import sanitize from '../functions/sanitize.js';
-import getAuthContext from '../functions/get_auth_context.js';
+import getAuthContext from '../functions/getAuthContext.js';
 import search_handler from '../core/search.js';
 import contents_handler from '../core/contents.js';
 

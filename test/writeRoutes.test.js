@@ -2,11 +2,11 @@ import { jest } from '@jest/globals';
 import fs from 'fs-extra';
 import path from 'node:path';
 import os from 'node:os';
-import route_page_edit from '../app/routes/page.edit.route.js';
-import route_page_delete from '../app/routes/page.delete.route.js';
-import route_page_create from '../app/routes/page.create.route.js';
-import route_category_create from '../app/routes/category.create.route.js';
-import getFilepath from '../app/functions/get_filepath.js';
+import route_page_edit from '../app/routes/pageEdit.route.js';
+import route_page_delete from '../app/routes/pageDelete.route.js';
+import route_page_create from '../app/routes/pageCreate.route.js';
+import route_category_create from '../app/routes/categoryCreate.route.js';
+import getFilepath from '../app/functions/getFilepath.js';
 
 let tmpDir;
 let config;
@@ -105,9 +105,9 @@ describe('getFilepath - path traversal prevention', () => {
   });
 });
 
-// page.edit.route - path traversal
+// pageEdit.route - path traversal
 
-describe('page.edit.route - path traversal prevention', () => {
+describe('pageEdit.route - path traversal prevention', () => {
   it('rejects file path that resolves to content dir', async () => {
     const handler = route_page_edit(config);
     const req = { body: { file: '..', content: 'test' } };
@@ -148,9 +148,9 @@ describe('page.edit.route - path traversal prevention', () => {
   });
 });
 
-// page.delete.route - path traversal (the critical one)
+// pageDelete.route - path traversal (the critical one)
 
-describe('page.delete.route - path traversal prevention', () => {
+describe('pageDelete.route - path traversal prevention', () => {
   it('rejects file path that resolves to content dir', async () => {
     const handler = route_page_delete(config);
     const req = { body: { file: '..' } };
@@ -200,9 +200,9 @@ describe('page.delete.route - path traversal prevention', () => {
   });
 });
 
-// page.create.route - path traversal
+// pageCreate.route - path traversal
 
-describe('page.create.route - path traversal prevention', () => {
+describe('pageCreate.route - path traversal prevention', () => {
   it('sanitizes .. in name to a safe filename', async () => {
     // ".." + ".md" = "...md" which sanitizeFilename keeps (not a reserved name)
     // The file is created inside content_dir, which is safe
@@ -249,9 +249,9 @@ describe('page.create.route - path traversal prevention', () => {
   });
 });
 
-// category.create.route - path traversal
+// categoryCreate.route - path traversal
 
-describe('category.create.route - path traversal prevention', () => {
+describe('categoryCreate.route - path traversal prevention', () => {
   it('rejects category that resolves to content dir', async () => {
     const handler = route_category_create(config);
     const req = { body: { category: '..' } };

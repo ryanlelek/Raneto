@@ -1,8 +1,8 @@
 import path from 'node:path';
-import createMetaInfo from '../app/functions/create_meta_info.js';
-import getFilepath from '../app/functions/get_filepath.js';
+import createMetaInfo from '../app/functions/createMetaInfo.js';
+import getFilepath from '../app/functions/getFilepath.js';
 import sanitize from '../app/functions/sanitize.js';
-import sanitizeMarkdown from '../app/functions/sanitize_markdown.js';
+import sanitizeMarkdown from '../app/functions/sanitizeMarkdown.js';
 
 describe('#createMetaInfo()', () => {
   it('returns YAML with title only', () => {

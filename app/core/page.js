@@ -4,8 +4,8 @@ import unescape from 'lodash/unescape.js';
 import sanitizeHtml from 'sanitize-html';
 import { marked } from 'marked';
 import utils from './utils.js';
-import content_processors from '../functions/content_processors.js';
-import sanitizeHtmlOutput from '../functions/sanitize_html_output.js';
+import content_processors from '../functions/contentProcessors.js';
+import sanitizeHtmlOutput from '../functions/sanitizeHtmlOutput.js';
 
 async function handler(filePath, config) {
   const contentDir = utils.normalizeDir(path.normalize(config.content_dir));

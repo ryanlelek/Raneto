@@ -2,8 +2,8 @@ import { jest } from '@jest/globals';
 import fs from 'fs-extra';
 import path from 'node:path';
 import os from 'node:os';
-import route_page_edit from '../app/routes/page.edit.route.js';
-import content_processors from '../app/functions/content_processors.js';
+import route_page_edit from '../app/routes/pageEdit.route.js';
+import content_processors from '../app/functions/contentProcessors.js';
 
 let tmpDir;
 let config;
