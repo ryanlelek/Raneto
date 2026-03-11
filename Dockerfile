@@ -1,8 +1,8 @@
-FROM --platform=$TARGETPLATFORM node:24.14.0-alpine
+FROM node:24.14.0-alpine
 
-ENV HOST 0.0.0.0
-ENV PORT 8080
-ENV NODE_ENV production
+ENV HOST=0.0.0.0
+ENV PORT=8080
+ENV NODE_ENV=production
 
 WORKDIR /opt/raneto
 RUN chown node:node /opt/raneto
