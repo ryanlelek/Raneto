@@ -1,6 +1,6 @@
 # Raneto Changelog
 
-## UNRELEASED / v0.18.1
+## 2026.03.10 / v0.18.1
 
 - **[BREAKING]** Minimum Node.js is v24.x LTS
 - **[Fix]** Filepath location for language translations
