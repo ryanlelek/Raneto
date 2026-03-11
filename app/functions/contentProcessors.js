@@ -65,13 +65,18 @@ function processMeta(markdownContent) {
     const metaString = metaArr?.[1]?.trim() ?? '';
 
     if (metaString) {
-      const metas = metaString.match(/^([^:\n]+): (.+)/gm);
-      metas.forEach((item) => {
-        const parts = item.split(': ');
-        if (parts[0] && parts[1]) {
-          meta[cleanString(parts[0], true)] = parts[1].trim();
+      const lines = metaString.split('\n');
+      for (const line of lines) {
+        const colonIndex = line.indexOf(': ');
+        if (colonIndex <= 0) {
+          continue;
         }
-      });
+        const key = line.substring(0, colonIndex).trim();
+        const value = line.substring(colonIndex + 2).trim();
+        if (key && value) {
+          meta[cleanString(key, true)] = value;
+        }
+      }
     }
     return meta;
   }
