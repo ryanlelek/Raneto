@@ -43,8 +43,8 @@
     "prettier:fix": "prettier --write ."
   },
   "engines": {
-    "node": ">=23.13.1",
-    "npm": ">=11.8.0"
+    "node": ">=23.14.0",
+    "npm": ">=11.9.0"
   },
   "prettier": {
     "singleQuote": true,
