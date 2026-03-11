@@ -35,7 +35,10 @@ async function handler(filePath, config) {
     const maxLength = config.excerpt_length || 400;
     const excerpt =
       cleanText.length > maxLength
-        ? cleanText.slice(0, maxLength).trimEnd().replace(/\S*$/, '') + '...'
+        ? cleanText
+            .slice(0, maxLength)
+            .trimEnd()
+            .replace(/\s\S+$/, '') + '...'
         : cleanText;
 
     return {

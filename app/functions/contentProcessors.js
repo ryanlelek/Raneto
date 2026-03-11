@@ -65,7 +65,7 @@ function processMeta(markdownContent) {
     const metaString = metaArr?.[1]?.trim() ?? '';
 
     if (metaString) {
-      const metas = metaString.match(/(.*): (.*)/gi);
+      const metas = metaString.match(/^([^:\n]+): (.+)/gm);
       metas.forEach((item) => {
         const parts = item.split(': ');
         if (parts[0] && parts[1]) {
