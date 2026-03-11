@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/checkout
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       # https://github.com/marketplace/actions/setup-node-js-environment
       - name: Use Node.js 24.x
-        uses: actions/setup-node@v6.2.0
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: 24.x
           #cache: 'npm'
@@ -32,11 +32,11 @@ jobs:
       - run: npm run unit
       # https://github.com/marketplace/actions/codecov
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5.5.2
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       # https://github.com/marketplace/actions/official-fossa-action
       - name: Upload to FOSSA
-        uses: fossas/fossa-action@v1.8.0
+        uses: fossas/fossa-action@c414b9ad82eaad041e47a7cf62a4f02411f427a0 # v1.8.0
         with:
           api-key: ${{ secrets.FOSSA_API_KEY }}
