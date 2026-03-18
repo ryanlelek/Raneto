@@ -47,6 +47,11 @@ function validateConfig(config) {
     );
   }
 
+  // CSP nonce type
+  if (config.csp_nonce !== undefined && typeof config.csp_nonce !== 'boolean') {
+    errors.push('config.csp_nonce must be a boolean');
+  }
+
   // Credentials when authentication is enabled
   if (config.authentication === true && config.googleoauth !== true) {
     if (!Array.isArray(config.credentials) || config.credentials.length === 0) {

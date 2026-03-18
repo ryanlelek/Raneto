@@ -111,7 +111,10 @@ function initialize(config) {
 
   // Generate CSP nonce per request
   app.use((req, res, next) => {
-    res.locals.csp_nonce = crypto.randomBytes(16).toString('base64');
+    res.locals.csp_nonce =
+      config.csp_nonce !== false
+        ? crypto.randomBytes(16).toString('base64')
+        : '';
     next();
   });
 

@@ -83,6 +83,9 @@ const config = {
   // Google Analytics 4 measurement ID (e.g. 'G-XXXXXXXXXX'). Leave empty to disable.
   google_analytics_id: '',
 
+  // Set to false to disable CSP nonces on inline scripts and styles.
+  csp_nonce: true,
+
   // Set to true to enable the web editor
   allow_editing: true,
 
