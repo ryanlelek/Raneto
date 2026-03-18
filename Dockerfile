@@ -5,7 +5,7 @@ ENV PORT=8080
 ENV NODE_ENV=production
 
 WORKDIR /opt/raneto
-RUN chown node:node /opt/raneto
+RUN mkdir -p /opt/raneto/content && chown -R node:node /opt/raneto
 
 # User node (Group node 1000)
 USER 1000

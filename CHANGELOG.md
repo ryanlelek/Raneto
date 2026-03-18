@@ -1,5 +1,11 @@
 # Raneto Changelog
 
+## UNRELEASED / v0.18.2
+
+- **[Fix]** Support editing pages in nested subcategories
+  - contributed by **@dkuhlman** in #407 fixes #406
+- **[Fix]** Container no longer packages "content" directory
+
 ## 2026.03.10 / v0.18.1
 
 - **[BREAKING]** Minimum Node.js is v24.x LTS
