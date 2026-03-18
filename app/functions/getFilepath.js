@@ -8,9 +8,11 @@ function getFilepath(p) {
   // Default
   let filepath = p.content;
 
-  // Add Category
+  // Add Category - support multi-level paths (e.g. 'projects/Tasks')
   if (p.category) {
-    filepath += `/${sanitizeFilename(sanitize(p.category))}`;
+    for (const part of p.category.split('/')) {
+      filepath += `/${sanitizeFilename(sanitize(part))}`;
+    }
   }
 
   // Add File Name
@@ -42,9 +44,15 @@ function parseFileParam(fileParam) {
   if (!fileParam || fileParam.trim() === '') {
     return null;
   }
-  const parts = fileParam.split('/');
+  const parts = fileParam.split('/').filter((p) => p.length > 0);
+  if (parts.length === 0) {
+    return null;
+  }
   if (parts.length > 1) {
-    return { category: parts[0], filename: parts[1] };
+    return {
+      category: parts.slice(0, -1).join('/'),
+      filename: parts[parts.length - 1],
+    };
   }
   return { category: '', filename: parts[0] };
 }

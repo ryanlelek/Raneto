@@ -146,6 +146,29 @@ describe('pageEdit.route - path traversal prevention', () => {
 
     expect(res._json.status).toBe(0);
   });
+
+  it('allows editing a file nested two levels deep (category/subdir/file)', async () => {
+    const subDir = path.join(tmpDir, 'projects', 'Tasks');
+    await fs.mkdirp(subDir);
+    await fs.writeFile(path.join(subDir, 'Todo.md'), '');
+    const handler = route_page_edit(config);
+    const req = {
+      body: {
+        file: 'projects/Tasks/Todo',
+        content: 'Nested content',
+        meta_title: 'Todo',
+        meta_description: '',
+        meta_sort: '',
+      },
+    };
+    const res = createRes();
+
+    await handler(req, res);
+
+    expect(res._json.status).toBe(0);
+    const saved = await fs.readFile(path.join(subDir, 'Todo.md'), 'utf8');
+    expect(saved).toContain('Nested content');
+  });
 });
 
 // pageDelete.route - path traversal (the critical one)
