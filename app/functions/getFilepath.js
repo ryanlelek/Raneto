@@ -11,7 +11,13 @@ function getFilepath(p) {
   // Add Category - support multi-level paths (e.g. 'projects/Tasks')
   if (p.category) {
     for (const part of p.category.split('/')) {
-      filepath += `/${sanitizeFilename(sanitize(part))}`;
+      const clean = sanitizeFilename(sanitize(part));
+      // Reject traversal sequences and empty parts (defense-in-depth ahead of
+      // the path.resolve check below, which is the authoritative guard)
+      if (!clean || clean === '.' || clean === '..') {
+        return null;
+      }
+      filepath += `/${clean}`;
     }
   }
 
@@ -23,7 +29,8 @@ function getFilepath(p) {
   // Normalize
   filepath = path.normalize(filepath);
 
-  // Ensure resolved path is strictly inside the content directory
+  // Authoritative path traversal guard — resolved path must be strictly inside
+  // the content directory regardless of what sanitization passed through
   const resolved = path.resolve(filepath);
   const contentRoot = path.resolve(p.content);
   if (!resolved.startsWith(contentRoot + path.sep)) {

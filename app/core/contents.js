@@ -36,9 +36,9 @@ async function handler(activePageSlug, config) {
   );
 
   for (const result of results) {
-    if (result && result.is_directory) {
+    if (result?.is_directory) {
       filesProcessed.push(result);
-    } else if (result && result.is_directory === false) {
+    } else if (result?.is_directory === false) {
       const dirSlug = path.dirname(result.slug);
       const parent = filesProcessed.find((item) => item.slug === dirSlug);
       if (parent) {
@@ -125,7 +125,7 @@ async function processDirectory(
   if ((config.category_sort || false) && !dirMetadata.sort) {
     try {
       const sortFile = await fs.readFile(path.join(dirPath, 'sort'), 'utf8');
-      sort = parseInt(sortFile, 10);
+      sort = Number.parseInt(sortFile, 10);
     } catch (e) {
       if (config.debug) {
         console.log('No sort file for', dirPath, e.message);
@@ -137,7 +137,7 @@ async function processDirectory(
     slug: fileSlug,
     title:
       dirMetadata.title ||
-      _.startCase(path.basename(shortPath).replace(/[-_]/g, ' ')),
+      _.startCase(path.basename(shortPath).replaceAll(/[-_]/g, ' ')),
     show_on_home: metaBool(
       dirMetadata.show_on_home,
       config.show_on_home_default,
@@ -171,15 +171,15 @@ async function processMarkdownFile(
     let pageSort = 0;
 
     if (fileSlug.includes('index.md')) {
-      slug = slug.replace('index.md', '');
+      slug = slug.replaceAll('index.md', '');
     }
 
-    slug = slug.replace('.md', '').trim();
+    slug = slug.replaceAll('.md', '').trim();
 
     const meta = content_processors.processMeta(file);
 
     if (pageSortMeta && meta[pageSortMeta]) {
-      pageSort = parseInt(meta[pageSortMeta], 10);
+      pageSort = Number.parseInt(meta[pageSortMeta], 10);
     }
 
     return {

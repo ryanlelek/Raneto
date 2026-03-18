@@ -30,7 +30,7 @@ function routeWildcard(config) {
     const contentDirResolved = path.resolve(config.content_dir);
     let filePath = path
       .resolve(config.content_dir, slug.replace(/^\//, ''))
-      .replace(/\/$|\\$/g, '');
+      .replaceAll(/\/$|\\$/g, '');
     const filePathOrig = filePath;
 
     // Remove "/edit" suffix

@@ -14,9 +14,9 @@ function routeSitemap(config) {
     try {
       const allFiles = await listFiles(contentDir);
       const files = allFiles.filter((file) => file.endsWith('.md'));
-      const filePaths = files.map((file) => file.replace(contentDir, ''));
+      const filePaths = files.map((file) => file.replaceAll(contentDir, ''));
       const urls = filePaths.map(
-        (file) => `/${file.replace('.md', '').replace(/\\/g, '/')}`,
+        (file) => `/${file.replaceAll('.md', '').replaceAll(/\\/g, '/')}`,
       );
 
       const links = [];
@@ -65,7 +65,7 @@ async function listFiles(dir) {
   );
 
   // Return the flattened array
-  return paths.reduce((list, subPaths) => list.concat(subPaths), []);
+  return paths.flat();
 }
 
 // Exports

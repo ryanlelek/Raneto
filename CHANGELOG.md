@@ -8,6 +8,7 @@
 - **[Fix]** Container no longer packages "content" directory
 - **[Edit]** Improving default configuration and validation
 - **[Add]** config.csp_nonce boolean
+- **[Misc]** Linting / Prettier
 
 ## 2026.03.10 / v0.18.1
 

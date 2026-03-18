@@ -57,7 +57,7 @@ describe('utils.getLastModified - path traversal prevention', () => {
   });
 
   it('rejects backslash-based traversal', async () => {
-    const file_path = 'test\\content\\..\\..\\package.json';
+    const file_path = String.raw`test\content\..\..\package.json`;
     // On Windows, backslashes are path separators so this resolves outside
     // content_dir and triggers "Access denied". On Unix, backslashes are
     // literal filename characters so this triggers ENOENT. Either way, the
@@ -174,33 +174,33 @@ describe('utils.getLastModified - symlink prevention', () => {
   });
 });
 
+function createMockReq(urlPath) {
+  return {
+    params: [urlPath],
+    protocol: 'http',
+    get: () => 'localhost',
+    originalUrl: urlPath,
+    session: {},
+  };
+}
+
+function createMockRes() {
+  const res = {
+    _rendered: null,
+    _redirected: null,
+    render: jest.fn((template, data) => {
+      res._rendered = { template, data };
+    }),
+    redirect: jest.fn((url) => {
+      res._redirected = url;
+    }),
+  };
+  return res;
+}
+
 // wildcard route path traversal
 
 describe('wildcard route - path traversal prevention', () => {
-  function createMockReq(urlPath) {
-    return {
-      params: [urlPath],
-      protocol: 'http',
-      get: () => 'localhost',
-      originalUrl: urlPath,
-      session: {},
-    };
-  }
-
-  function createMockRes() {
-    const res = {
-      _rendered: null,
-      _redirected: null,
-      render: jest.fn((template, data) => {
-        res._rendered = { template, data };
-      }),
-      redirect: jest.fn((url) => {
-        res._redirected = url;
-      }),
-    };
-    return res;
-  }
-
   const routeConfig = createConfig({
     path_prefix: '',
     table_of_contents: false,
@@ -309,7 +309,7 @@ describe('wildcard route - path traversal prevention', () => {
 
   it('returns 404 for backslash-based traversal', async () => {
     const handler = route_wildcard(routeConfig);
-    const req = createMockReq('/..\\..\\etc\\passwd');
+    const req = createMockReq(String.raw`/..\..\etc\passwd`);
     const res = createMockRes();
     const next = jest.fn();
 
@@ -417,27 +417,27 @@ describe('wildcard route - path traversal prevention', () => {
 describe('sitemap route - backslash replacement', () => {
   it('replaces all backslashes in file paths, not just the first', () => {
     // Simulating the logic from sitemap.route.js line 24
-    const filePath = 'sub\\sub2\\page';
-    const result = `/${filePath.replace('.md', '').replace(/\\/g, '/')}`;
+    const filePath = String.raw`sub\sub2\page`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
     expect(result).toBe('/sub/sub2/page');
     expect(result).not.toContain('\\');
   });
 
   it('handles paths with no backslashes', () => {
     const filePath = 'sub/page';
-    const result = `/${filePath.replace('.md', '').replace(/\\/g, '/')}`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
     expect(result).toBe('/sub/page');
   });
 
   it('handles paths with many backslashes', () => {
-    const filePath = 'a\\b\\c\\d\\e';
-    const result = `/${filePath.replace('.md', '').replace(/\\/g, '/')}`;
+    const filePath = String.raw`a\b\c\d\e`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
     expect(result).toBe('/a/b/c/d/e');
   });
 
   it('strips .md extension and replaces backslashes together', () => {
-    const filePath = 'category\\subcategory\\page.md';
-    const result = `/${filePath.replace('.md', '').replace(/\\/g, '/')}`;
+    const filePath = String.raw`category\subcategory\page.md`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
     expect(result).toBe('/category/subcategory/page');
   });
 });

@@ -33,7 +33,7 @@ Environment variables take the highest priority and override values set in `conf
 | `SITE_TITLE`          | `site_title`          | String  | Site title shown in the browser and header                                  |
 | `GOOGLE_ANALYTICS_ID` | `google_analytics_id` | String  | Google Analytics 4 measurement ID (e.g. `G-XXXXXXXXXX`)                     |
 | `LOCALE`              | `locale`              | String  | Locale code for UI translations (e.g. `en`, `fr`)                           |
-| `AUTHENTICATION`      | `authentication`      | Boolean | Set to `true` to enable authentication                                 |
+| `AUTHENTICATION`      | `authentication`      | Boolean | Set to `true` to enable authentication                                      |
 | `ALLOW_EDITING`       | `allow_editing`       | Boolean | Set to `true` to enable the web editor                                      |
 | `ADDRESS`             | _(server)_            | String  | IP address to listen on (default: `127.0.0.1`)                              |
 | `PORT`                | _(server)_            | Number  | Port to listen on (default: `8080`)                                         |

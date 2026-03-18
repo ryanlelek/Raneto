@@ -14,7 +14,7 @@ function createMetaInfo(metaTitle, metaDescription, metaSort) {
       yamlDocument.Description = metaDescription;
     }
     if (metaSort) {
-      yamlDocument.Sort = parseInt(metaSort, 10);
+      yamlDocument.Sort = Number.parseInt(metaSort, 10);
     }
 
     return `---\n${yaml.dump(yamlDocument)}---\n`;

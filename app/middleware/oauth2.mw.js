@@ -142,8 +142,7 @@ function router(config) {
     // it after authorization
     (req, res, next) => {
       if (
-        req.query.return &&
-        req.query.return.startsWith('/') &&
+        req.query.return?.startsWith('/') &&
         !req.query.return.startsWith('//')
       ) {
         req.session.oauth2return = req.query.return;

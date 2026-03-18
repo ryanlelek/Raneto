@@ -79,14 +79,13 @@ describe('#getFilepath()', () => {
     expect(result).toBeNull();
   });
 
-  it('sanitizes category names by stripping path separators', () => {
+  it('returns null for category containing .. segments', () => {
     const result = getFilepath({
       content: '/var/content',
       category: '../etc',
       filename: 'page.md',
     });
-    expect(result).not.toContain('../');
-    expect(result).not.toContain('..\\');
+    expect(result).toBeNull();
   });
 
   it('sanitizes filename', () => {

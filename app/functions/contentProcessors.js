@@ -22,7 +22,7 @@ const META_REGEX_YAML = /^\uFEFF?---([\s\S]*?)---/i;
 
 function cleanString(str, useUnderscore) {
   const u = useUnderscore || false;
-  str = str.replace(/\//g, ' ').trim();
+  str = str.replaceAll(/\//g, ' ').trim();
   if (u) {
     return snakeCase(str);
   }
@@ -42,8 +42,8 @@ function cleanObjectStrings(obj) {
 
 // Convert a slug to a title
 function slugToTitle(slug) {
-  slug = slug.replace('.md', '').trim();
-  return startCase(path.basename(slug).replace(/[-_]/g, ' '));
+  slug = slug.replaceAll('.md', '').trim();
+  return startCase(path.basename(slug).replaceAll(/[-_]/g, ' '));
 }
 
 // Strip meta from Markdown content
@@ -95,17 +95,23 @@ function processMeta(markdownContent) {
 function processVars(markdownContent, config) {
   if (config.variables && Array.isArray(config.variables)) {
     config.variables.forEach((v) => {
-      markdownContent = markdownContent.replace(
+      markdownContent = markdownContent.replaceAll(
         new RegExp(`%${v.name}%`, 'g'),
         v.content,
       );
     });
   }
   if (config.base_url !== undefined) {
-    markdownContent = markdownContent.replace(/%base_url%/g, config.base_url);
+    markdownContent = markdownContent.replaceAll(
+      /%base_url%/g,
+      config.base_url,
+    );
   }
   if (config.image_url !== undefined) {
-    markdownContent = markdownContent.replace(/%image_url%/g, config.image_url);
+    markdownContent = markdownContent.replaceAll(
+      /%image_url%/g,
+      config.image_url,
+    );
   }
   return markdownContent;
 }
@@ -115,7 +121,7 @@ async function extractDocument(contentDir, filePath, debug) {
     const file = await fs.readFile(filePath, 'utf8');
     const meta = processMeta(file);
 
-    const id = filePath.replace(contentDir, '').trim();
+    const id = filePath.replaceAll(contentDir, '').trim();
     const title = meta.title ? meta.title : slugToTitle(id);
     const body = file;
 

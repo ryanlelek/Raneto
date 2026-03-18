@@ -15,9 +15,9 @@ async function handler(filePath, config) {
     let slug = utils.getSlug(filePath, contentDir);
 
     if (slug.includes('index.md')) {
-      slug = slug.replace('index.md', '');
+      slug = slug.replaceAll('index.md', '');
     }
-    slug = slug.replace('.md', '').trim();
+    slug = slug.replaceAll('.md', '').trim();
 
     const meta = content_processors.processMeta(file);
     const content = content_processors.processVars(

@@ -26,8 +26,8 @@ async function handler(query, config) {
 
   // Strip lunr query operators to prevent DoS (e.g. ~999999 causes hang)
   const cleanQuery = query
-    .replace(/[~*+\-^:]/g, ' ')
-    .replace(/\s+/g, ' ')
+    .replaceAll(/[~*+\-^:]/g, ' ')
+    .replaceAll(/\s+/g, ' ')
     .trim();
 
   if (!cleanQuery) {
@@ -80,8 +80,8 @@ async function processSearchResult(contentDir, config, query, result) {
   const parts = page.slug.split('/');
   page.category = parts.length > 1 ? parts[0] : null;
   if (page.excerpt) {
-    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    page.excerpt = page.excerpt.replace(
+    const escaped = query.replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    page.excerpt = page.excerpt.replaceAll(
       new RegExp(`(${escaped})`, 'gim'),
       '<span class="search-query">$1</span>',
     );

@@ -68,13 +68,16 @@ describe('getFilepath - path traversal prevention', () => {
       category: '..',
       filename: 'evil.md',
     });
-    // After sanitizeFilename strips "..", the path resolves to content dir
-    // with just the filename — which is valid (inside content dir)
-    // The category component becomes empty, not ".."
-    if (result) {
-      const resolved = path.resolve(result);
-      expect(resolved.startsWith(path.resolve(content) + path.sep)).toBe(true);
-    }
+    expect(result).toBeNull();
+  });
+
+  it('returns null when category contains only .. segments', () => {
+    expect(
+      getFilepath({ content, category: '../..', filename: 'file.md' }),
+    ).toBeNull();
+    expect(
+      getFilepath({ content, category: '..', filename: 'file.md' }),
+    ).toBeNull();
   });
 
   it('returns null when both category and filename sanitize to empty', () => {
@@ -168,6 +171,18 @@ describe('pageEdit.route - path traversal prevention', () => {
     expect(res._json.status).toBe(0);
     const saved = await fs.readFile(path.join(subDir, 'Todo.md'), 'utf8');
     expect(saved).toContain('Nested content');
+  });
+
+  it('rejects multi-level traversal via nested category (projects/../../etc/passwd)', async () => {
+    const handler = route_page_edit(config);
+    const req = {
+      body: { file: 'projects/../../etc/passwd', content: 'evil' },
+    };
+    const res = createRes();
+
+    await handler(req, res);
+
+    expect(res._json.status).toBe(1);
   });
 });
 

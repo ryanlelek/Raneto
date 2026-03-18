@@ -3,12 +3,12 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import moment from 'moment';
 
-const normalizeDir = (dir) => dir.replace(/\\/g, '/');
+const normalizeDir = (dir) => dir.replaceAll(/\\/g, '/');
 const getSlug = (filePath, contentDir) =>
-  normalizeDir(filePath).replace(normalizeDir(contentDir), '').trim();
+  normalizeDir(filePath).replaceAll(normalizeDir(contentDir), '').trim();
 
 async function getLastModified(config, meta, filePath) {
-  if (typeof meta.modified !== 'undefined') {
+  if (meta.modified !== undefined) {
     return moment(meta.modified).format(config.datetime_format);
   }
 
