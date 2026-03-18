@@ -9,6 +9,13 @@ function validateConfig(config) {
     }
   }
 
+  // Removed fields
+  if (config.analytics !== undefined) {
+    errors.push(
+      'config.analytics has been removed; use config.google_analytics_id with a GA4 measurement ID (e.g. "G-XXXXXXXXXX") instead',
+    );
+  }
+
   // Secret
   if (!config.secret || config.secret === '' || config.secret.length < 16) {
     errors.push('config.secret must be at least 16 characters');
@@ -28,6 +35,16 @@ function validateConfig(config) {
   // Base URL must be a string (can be empty)
   if (config.base_url === undefined || config.base_url === null) {
     errors.push('config.base_url is required (use empty string for root)');
+  }
+
+  // Google Analytics 4 ID format
+  if (
+    config.google_analytics_id &&
+    !/^G-[A-Z0-9]+$/.test(config.google_analytics_id)
+  ) {
+    warnings.push(
+      `config.google_analytics_id "${config.google_analytics_id}" does not look like a valid GA4 measurement ID (expected format: G-XXXXXXXXXX)`,
+    );
   }
 
   // Credentials when authentication is enabled

@@ -2,6 +2,7 @@
 
 ## UNRELEASED / v0.18.2
 
+- **[BREAKING]** Replacing config "analytics" with "google_analytics_id"
 - **[Fix]** Support editing pages in nested subcategories
   - contributed by **@dkuhlman** in #407 fixes #406
 - **[Fix]** Container no longer packages "content" directory

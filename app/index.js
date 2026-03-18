@@ -115,21 +115,33 @@ function initialize(config) {
     next();
   });
 
+  const cspNonce = (req, res) => `'nonce-${res.locals.csp_nonce}'`;
+
+  const cspDirectives = {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", 'https://cdnjs.cloudflare.com'],
+    styleSrc: ["'self'"],
+    imgSrc: ["'self'", 'data:', 'https:'],
+    fontSrc: ["'self'", 'data:'],
+    connectSrc: ["'self'"],
+    frameSrc: ["'none'"],
+    objectSrc: ["'none'"],
+    upgradeInsecureRequests: [],
+  };
+
+  if (config.google_analytics_id) {
+    cspDirectives.scriptSrc.push('https://www.googletagmanager.com');
+    cspDirectives.connectSrc.push('https://www.google-analytics.com');
+  }
+
+  if (config.csp_nonce !== false) {
+    cspDirectives.scriptSrc.push(cspNonce);
+    cspDirectives.styleSrc.push(cspNonce);
+  }
+
   app.use(
     helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", 'https://cdnjs.cloudflare.com'],
-          styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.csp_nonce}'`],
-          imgSrc: ["'self'", 'data:', 'https:'],
-          fontSrc: ["'self'", 'data:'],
-          connectSrc: ["'self'"],
-          frameSrc: ["'none'"],
-          objectSrc: ["'none'"],
-          upgradeInsecureRequests: [],
-        },
-      },
+      contentSecurityPolicy: { directives: cspDirectives },
       crossOriginEmbedderPolicy: false,
     }),
   );

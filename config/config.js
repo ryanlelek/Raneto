@@ -80,8 +80,8 @@ const config = {
   // (can use %image_url% in Markdown files)
   image_url: '/images',
 
-  // Add your analytics tracking code (including script tags)
-  analytics: '',
+  // Google Analytics 4 measurement ID (e.g. 'G-XXXXXXXXXX'). Leave empty to disable.
+  google_analytics_id: '',
 
   // Set to true to enable the web editor
   allow_editing: true,
