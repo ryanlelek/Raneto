@@ -20,10 +20,9 @@ import yaml from 'js-yaml';
 const META_REGEX = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
 const META_REGEX_YAML = /^\uFEFF?---([\s\S]*?)---/i;
 
-function cleanString(str, useUnderscore) {
-  const u = useUnderscore || false;
-  str = str.replaceAll(/\//g, ' ').trim();
-  if (u) {
+function cleanString(str, useUnderscore = false) {
+  str = str.replaceAll('/', ' ').trim();
+  if (useUnderscore) {
     return snakeCase(str);
   }
   return trim(kebabCase(str), '-');
@@ -102,14 +101,11 @@ function processVars(markdownContent, config) {
     });
   }
   if (config.base_url !== undefined) {
-    markdownContent = markdownContent.replaceAll(
-      /%base_url%/g,
-      config.base_url,
-    );
+    markdownContent = markdownContent.replaceAll('%base_url%', config.base_url);
   }
   if (config.image_url !== undefined) {
     markdownContent = markdownContent.replaceAll(
-      /%image_url%/g,
+      '%image_url%',
       config.image_url,
     );
   }

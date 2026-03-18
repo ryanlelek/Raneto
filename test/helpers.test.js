@@ -2,7 +2,7 @@ import path from 'node:path';
 import createMetaInfo from '../app/functions/createMetaInfo.js';
 import getFilepath from '../app/functions/getFilepath.js';
 import sanitize from '../app/functions/sanitize.js';
-import sanitizeMarkdown from '../app/functions/sanitizeMarkdown.js';
+import normalizeLineEndings from '../app/functions/normalizeLineEndings.js';
 
 describe('#createMetaInfo()', () => {
   it('returns YAML with title only', () => {
@@ -134,39 +134,39 @@ describe('#sanitize()', () => {
   });
 });
 
-describe('#sanitizeMarkdown()', () => {
+describe('#normalizeLineEndings()', () => {
   it('preserves < characters in markdown source', () => {
-    const result = sanitizeMarkdown('<script>alert("xss")</script>');
+    const result = normalizeLineEndings('<script>alert("xss")</script>');
     expect(result).toBe('<script>alert("xss")</script>');
   });
 
   it('preserves & characters in markdown source', () => {
-    const result = sanitizeMarkdown('foo & bar');
+    const result = normalizeLineEndings('foo & bar');
     expect(result).toBe('foo & bar');
   });
 
   it('preserves & in the middle of words', () => {
-    const result = sanitizeMarkdown('AT&T');
+    const result = normalizeLineEndings('AT&T');
     expect(result).toBe('AT&T');
   });
 
   it('handles string with no special characters', () => {
-    const result = sanitizeMarkdown('plain text');
+    const result = normalizeLineEndings('plain text');
     expect(result).toBe('plain text');
   });
 
   it('normalizes CRLF line endings to LF', () => {
-    const result = sanitizeMarkdown('line1\r\nline2\r\nline3');
+    const result = normalizeLineEndings('line1\r\nline2\r\nline3');
     expect(result).toBe('line1\nline2\nline3');
   });
 
   it('normalizes CR line endings to LF', () => {
-    const result = sanitizeMarkdown('line1\rline2\rline3');
+    const result = normalizeLineEndings('line1\rline2\rline3');
     expect(result).toBe('line1\nline2\nline3');
   });
 
   it('preserves HTML tags in markdown source', () => {
-    const result = sanitizeMarkdown('<div><span>text</span></div>');
+    const result = normalizeLineEndings('<div><span>text</span></div>');
     expect(result).toBe('<div><span>text</span></div>');
   });
 });

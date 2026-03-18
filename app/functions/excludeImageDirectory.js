@@ -1,5 +1,5 @@
 function excludeImageDirectory(config, pageList) {
-  const imageSlug = config.image_url.replaceAll(/\//g, '');
+  const imageSlug = config.image_url.replaceAll('/', '');
   return pageList.filter((page) => page.slug !== imageSlug);
 }
 

@@ -3,7 +3,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import moment from 'moment';
 
-const normalizeDir = (dir) => dir.replaceAll(/\\/g, '/');
+const normalizeDir = (dir) => dir.replaceAll('\\', '/');
 const getSlug = (filePath, contentDir) =>
   normalizeDir(filePath).replaceAll(normalizeDir(contentDir), '').trim();
 

@@ -5,7 +5,7 @@ import getFilepath, {
   parseFileParam,
 } from '../functions/getFilepath.js';
 import createMetaInfo from '../functions/createMetaInfo.js';
-import sanitizeMarkdown from '../functions/sanitizeMarkdown.js';
+import normalizeLineEndings from '../functions/normalizeLineEndings.js';
 
 function routePageEdit(config) {
   return async function (req, res) {
@@ -40,7 +40,7 @@ function routePageEdit(config) {
       req.body.meta_description,
       req.body.meta_sort,
     );
-    let sanitizedContent = meta + sanitizeMarkdown(req.body.content);
+    let sanitizedContent = meta + normalizeLineEndings(req.body.content);
     if (!sanitizedContent.endsWith('\n')) {
       sanitizedContent += '\n';
     }

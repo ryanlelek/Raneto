@@ -49,7 +49,7 @@ describe('utils.getLastModified - path traversal prevention', () => {
   });
 
   it('rejects deeply nested traversal sequences', async () => {
-    const traversal = Array(20).fill('..').join(path.sep);
+    const traversal = new Array(20).fill('..').join(path.sep);
     const file_path = path.join('test', 'content', traversal, 'etc', 'passwd');
     await expect(utils.getLastModified(config, {}, file_path)).rejects.toThrow(
       'Access denied',
@@ -323,7 +323,7 @@ describe('wildcard route - path traversal prevention', () => {
 
   it('returns 404 for deeply nested traversal', async () => {
     const handler = route_wildcard(routeConfig);
-    const traversal = Array(20).fill('..').join('/');
+    const traversal = new Array(20).fill('..').join('/');
     const req = createMockReq(`/${traversal}/etc/passwd`);
     const res = createMockRes();
     const next = jest.fn();
@@ -418,26 +418,26 @@ describe('sitemap route - backslash replacement', () => {
   it('replaces all backslashes in file paths, not just the first', () => {
     // Simulating the logic from sitemap.route.js line 24
     const filePath = String.raw`sub\sub2\page`;
-    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll('\\', '/')}`;
     expect(result).toBe('/sub/sub2/page');
     expect(result).not.toContain('\\');
   });
 
   it('handles paths with no backslashes', () => {
     const filePath = 'sub/page';
-    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll('\\', '/')}`;
     expect(result).toBe('/sub/page');
   });
 
   it('handles paths with many backslashes', () => {
     const filePath = String.raw`a\b\c\d\e`;
-    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll('\\', '/')}`;
     expect(result).toBe('/a/b/c/d/e');
   });
 
   it('strips .md extension and replaces backslashes together', () => {
     const filePath = String.raw`category\subcategory\page.md`;
-    const result = `/${filePath.replaceAll('.md', '').replaceAll(/\\/g, '/')}`;
+    const result = `/${filePath.replaceAll('.md', '').replaceAll('\\', '/')}`;
     expect(result).toBe('/category/subcategory/page');
   });
 });

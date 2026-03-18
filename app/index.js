@@ -119,9 +119,9 @@ function initialize(config) {
   // Generate CSP nonce per request
   app.use((req, res, next) => {
     res.locals.csp_nonce =
-      config.csp_nonce !== false
-        ? crypto.randomBytes(16).toString('base64')
-        : '';
+      config.csp_nonce === false
+        ? ''
+        : crypto.randomBytes(16).toString('base64');
     next();
   });
 
@@ -144,7 +144,7 @@ function initialize(config) {
     cspDirectives.connectSrc.push('https://www.google-analytics.com');
   }
 
-  if (config.csp_nonce !== false) {
+  if (config.csp_nonce === true) {
     cspDirectives.scriptSrc.push(cspNonce);
     cspDirectives.styleSrc.push(cspNonce);
   }

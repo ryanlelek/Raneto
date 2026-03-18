@@ -16,7 +16,7 @@ function routeSitemap(config) {
       const files = allFiles.filter((file) => file.endsWith('.md'));
       const filePaths = files.map((file) => file.replaceAll(contentDir, ''));
       const urls = filePaths.map(
-        (file) => `/${file.replaceAll('.md', '').replaceAll(/\\/g, '/')}`,
+        (file) => `/${file.replaceAll('.md', '').replaceAll('\\', '/')}`,
       );
 
       const links = [];

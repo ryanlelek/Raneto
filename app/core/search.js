@@ -80,7 +80,7 @@ async function processSearchResult(contentDir, config, query, result) {
   const parts = page.slug.split('/');
   page.category = parts.length > 1 ? parts[0] : null;
   if (page.excerpt) {
-    const escaped = query.replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escaped = query.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
     page.excerpt = page.excerpt.replaceAll(
       new RegExp(`(${escaped})`, 'gim'),
       '<span class="search-query">$1</span>',
