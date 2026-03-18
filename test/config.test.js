@@ -3,29 +3,39 @@ import validateConfig from '../app/core/configValidation.js';
 import languageLoad from '../app/core/language.js';
 
 const validBase = {
-  secret: 'a-valid-secret-1234',
+  session_secret: 'a-valid-session-secret-for-testing-purposes',
   content_dir: path.join(import.meta.dirname, '..', 'content'),
   image_url: '/images',
   base_url: '',
 };
 
 describe('#validateConfig()', () => {
-  // Secret
+  // Session secret
 
-  it('throws when secret is missing', () => {
-    expect(() => validateConfig({})).toThrow('config.secret');
+  it('throws when session_secret is missing', () => {
+    expect(() => validateConfig({})).toThrow('config.session_secret');
   });
 
-  it('throws when secret is empty string', () => {
-    expect(() => validateConfig({ ...validBase, secret: '' })).toThrow(
-      'config.secret',
+  it('throws when session_secret is empty string', () => {
+    expect(() => validateConfig({ ...validBase, session_secret: '' })).toThrow(
+      'config.session_secret',
     );
   });
 
-  it('throws when secret is too short', () => {
-    expect(() => validateConfig({ ...validBase, secret: 'short' })).toThrow(
-      'config.secret',
-    );
+  it('throws when session_secret is too short', () => {
+    expect(() =>
+      validateConfig({ ...validBase, session_secret: 'short' }),
+    ).toThrow('config.session_secret');
+  });
+
+  it('warns but accepts deprecated config.secret and copies to session_secret', () => {
+    const config = {
+      ...validBase,
+      session_secret: undefined,
+      secret: 'a-valid-session-secret-for-testing-purposes',
+    };
+    expect(() => validateConfig(config)).not.toThrow();
+    expect(config.session_secret).toBe(config.secret);
   });
 
   it('does not throw for valid config', () => {
@@ -68,20 +78,18 @@ describe('#validateConfig()', () => {
 
   // Credentials
 
-  it('throws when authentication enabled without credentials', () => {
-    expect(() =>
-      validateConfig({ ...validBase, authentication: true }),
-    ).toThrow('config.credentials');
+  it('generates credentials when authentication enabled without credentials', () => {
+    const config = { ...validBase, authentication: true };
+    expect(() => validateConfig(config)).not.toThrow();
+    expect(Array.isArray(config.credentials)).toBe(true);
+    expect(config.credentials.length).toBe(1);
+    expect(config.credentials[0].username).toMatch(/^raneto_/);
   });
 
-  it('throws when credentials array is empty', () => {
-    expect(() =>
-      validateConfig({
-        ...validBase,
-        authentication: true,
-        credentials: [],
-      }),
-    ).toThrow('config.credentials');
+  it('generates credentials when credentials array is empty', () => {
+    const config = { ...validBase, authentication: true, credentials: [] };
+    expect(() => validateConfig(config)).not.toThrow();
+    expect(config.credentials.length).toBe(1);
   });
 
   it('throws when credential is missing username', () => {
@@ -109,7 +117,7 @@ describe('#validateConfig()', () => {
       validateConfig({
         ...validBase,
         authentication: true,
-        credentials: [{ username: 'admin', password: 'password123' }],
+        credentials: [{ username: 'admin', password: 'StrongPassword123!' }],
       }),
     ).not.toThrow();
   });
@@ -198,7 +206,7 @@ describe('#validateConfig()', () => {
     try {
       validateConfig({});
     } catch (e) {
-      expect(e.message).toContain('config.secret');
+      expect(e.message).toContain('config.session_secret');
       expect(e.message).toContain('config.content_dir');
       expect(e.message).toContain('config.image_url');
       expect(e.message).toContain('config.base_url');

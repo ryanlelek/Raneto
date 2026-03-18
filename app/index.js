@@ -13,6 +13,7 @@ import session from 'express-session';
 import FileStore from 'session-file-store';
 import passport from 'passport';
 import validateConfig from './core/configValidation.js';
+import applyEnvOverrides from './core/envOverrides.js';
 import languageLoad from './core/language.js';
 import authenticate from './middleware/authenticate.mw.js';
 import authReadonly from './middleware/authenticateReadAccess.mw.js';
@@ -38,6 +39,9 @@ const SESSION_REAP_INTERVAL_SECONDS = 3600; // 1 hour
 const COOKIE_MAX_AGE_MS = 86400000; // 24 hours
 
 function initialize(config) {
+  // Apply environment variable overrides (highest priority)
+  applyEnvOverrides(config);
+
   // Validate configuration
   validateConfig(config);
 
@@ -70,7 +74,10 @@ function initialize(config) {
   const router = express.Router();
 
   // Set IP Address and Port
-  app.set('host', process.env.HOST || '127.0.0.1');
+  if (process.env.HOST) {
+    console.warn('HOST is deprecated; use ADDRESS instead');
+  }
+  app.set('host', process.env.ADDRESS || process.env.HOST || '127.0.0.1');
   app.set('port', process.env.PORT || 8080);
 
   // set locale as date and time format
@@ -181,7 +188,7 @@ function initialize(config) {
           retries: 0,
           reapInterval: SESSION_REAP_INTERVAL_SECONDS,
         }),
-        secret: config.secret,
+        secret: config.session_secret,
         name: 'raneto.sid',
         resave: false,
         saveUninitialized: false,

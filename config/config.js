@@ -111,7 +111,9 @@ const config = {
     callback: 'http://localhost:8080/auth/google/callback',
     hostedDomain: 'google.com',
   },
-  secret: process.env.SESSION_SECRET,
+  // Session secret — set via SESSION_SECRET env var.
+  // Must be at least 32 random characters. Generate with: openssl rand -base64 32
+  // session_secret: 'your-secret-here',
 
   // ##### WARNING #####
   // You MUST change the username and password for security
@@ -121,16 +123,13 @@ const config = {
   // If you absolutely must use an online tool, here are some suggestions
   // https://bitwarden.com/password-generator/
   // https://www.grc.com/passwords.htm
-  credentials: [
-    {
-      username: 'admin',
-      password: 'password',
-    },
-    {
-      username: 'admin2',
-      password: 'password',
-    },
-  ],
+  // If omitted, random credentials will be generated and printed to the log on startup.
+  // credentials: [
+  //   {
+  //     username: 'myuser',
+  //     password: 'mypassword',
+  //   },
+  // ],
 
   locale: 'en',
 

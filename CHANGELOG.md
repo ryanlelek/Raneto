@@ -6,6 +6,7 @@
 - **[Fix]** Support editing pages in nested subcategories
   - contributed by **@dkuhlman** in #407 fixes #406
 - **[Fix]** Container no longer packages "content" directory
+- **[Edit]** Improving default configuration and validation
 - **[Add]** config.csp_nonce boolean
 
 ## 2026.03.10 / v0.18.1
