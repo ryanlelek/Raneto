@@ -71,7 +71,8 @@ const config = {
 
     // Specify the path of your content folder where all your '.md' files are located
     // Fix: Cannot be an absolute path
-    content_dir: path.join(__dirname, '..', 'content', 'pages'),
+    // content_dir: path.join(__dirname, '..', 'content', 'pages'),
+    content_dir: "/mnt/wind/chris/etc/task/check",
 
     // Where is the public directory or document root?
     public_dir: path.join(theme_dir, theme_name, 'public'),
