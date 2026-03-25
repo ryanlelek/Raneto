@@ -19,6 +19,7 @@ import yaml from 'js-yaml';
 // TODO: DEPRECATED Non-YAML
 const META_REGEX = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
 const META_REGEX_YAML = /^\uFEFF?---([\s\S]*?)---/i;
+const META_REGEX_YAML_TITLE = /^\uFEFF?---([\s\S]*?)---\n# (.*)/i;
 
 function cleanString(str, useUnderscore = false) {
   str = str.replaceAll('/', ' ').trim();
@@ -84,6 +85,10 @@ function processMeta(markdownContent) {
     const metaArr = markdownContent.match(META_REGEX_YAML);
     const metaString = metaArr?.[1]?.trim() ?? '';
     const yamlObject = yaml.load(metaString);
+    if (!("Title" in yamlObject && markdownContent.test(META_REGEX_YAML_TITLE))) {
+      const title = markdownContent.match(META_REGEX_YAML_TITLE)[2];
+      yamlObject.Title = title;
+    }
     return cleanObjectStrings(yamlObject);
   }
 
