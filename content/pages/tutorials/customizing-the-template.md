@@ -2,9 +2,9 @@
 Title: Customizing the Template
 ---
 
-Templating in Raneto is powered by [Mustache](https://mustache.github.io/). All of the template views can
-be found in the `themes/default/` folder. Feel free to customize the template as you wish. The template structure
-is as follows:
+Templating in Raneto is powered by [Mustache](https://mustache.github.io/). 
+
+Feel free to customize the template as you wish. The template structure is as follows:
 
 - `layout.html`: The parent template. You'll probably want to customize this first
 - `home.html`: The homepage template. Shown if you don't have an [index.md](%base_url%/usage/custom-homepage)
@@ -13,6 +13,19 @@ is as follows:
 - `error.html`: Shown when Raneto encounters an error or can't find a page
 
 Remember you will need to restart the app after changing the template.
+
+## Previous way of installing a custom theme
+
+Templates can either be put in the application directory under `config.theme_dir` (which you can set to `/themes` for example). You choose the theme you wish with `config.theme_name` that corresponds to the sub-folder in the `config.theme_dir`.
+
+## New, better way of installing a custom theme
+
+The default theme is available under `@raneto/theme-default` on <https://github.com/raneto/theme-default>. 
+
+- Fork this module: https://github.com/raneto/theme-default
+- Publish your package with changes, whether public on GitHub or using a private NPM registry
+- install the module with npm install mytheme or similar `npm install @me/my-raneto-theme`
+- update the config file with your theme module name
 
 ## Enable Features on Pages by Altering Config Settings
 

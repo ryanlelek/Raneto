@@ -6,6 +6,7 @@ import kebabCase from 'lodash/kebabCase.js';
 import startCase from 'lodash/startCase.js';
 import trim from 'lodash/trim.js';
 import yaml from 'js-yaml';
+import { error } from 'node:console';
 
 // Regex for page meta (considers Byte Order Mark \uFEFF in case there's one)
 // Look for the the following header formats at the beginning of the file:
@@ -17,8 +18,9 @@ import yaml from 'js-yaml';
 // {header string}
 // ---
 // TODO: DEPRECATED Non-YAML
-const META_REGEX = /^\uFEFF?\/\*([\s\S]*?)\*\//i;
-const META_REGEX_YAML = /^\uFEFF?---([\s\S]*?)---/i;
+const META_REGEX = /^\uFEFF?\/\*([\s\S]*)\*\//i;
+const META_REGEX_YAML = /^\uFEFF?---\n([\s\S]*)\n---\n/i;
+const META_REGEX_MARKDOWN_TITLE = /^\uFEFF?(---[\s\S]*---\n)?\# ([^\n]+)/i;
 
 function cleanString(str, useUnderscore = false) {
   str = str.replaceAll('/', ' ').trim();
@@ -58,36 +60,54 @@ function stripMeta(markdownContent) {
 
 // Get metadata from Markdown content
 function processMeta(markdownContent) {
-  if (META_REGEX.test(markdownContent)) {
-    const meta = {};
-    const metaArr = markdownContent.match(META_REGEX);
-    const metaString = metaArr?.[1]?.trim() ?? '';
+  let ret = {};
+  let metaString = '';
+  let meta = {};
+  let metaArr = {};
 
-    if (metaString) {
-      const lines = metaString.split('\n');
-      for (const line of lines) {
-        const colonIndex = line.indexOf(': ');
-        if (colonIndex <= 0) {
-          continue;
-        }
-        const key = line.substring(0, colonIndex).trim();
-        const value = line.substring(colonIndex + 2).trim();
-        if (key && value) {
-          meta[cleanString(key, true)] = value;
+  if (META_REGEX.test(markdownContent)) {
+    metaArr = markdownContent.match(META_REGEX);
+    if (metaArr !== null && metaArr[1] !== null) {
+      metaString = metaArr[1].trim();
+      if (metaString) {
+        const lines = metaString.split('\n');
+        for (const line of lines) {
+          const colonIndex = line.indexOf(': ');
+          if (colonIndex <= 0) {
+            continue; 
+          }
+          const key = line.substring(0, colonIndex).trim();
+          const value = line.substring(colonIndex + 2).trim();
+          if (key && value) {
+            meta[cleanString(key, true)] = value;
+          }
         }
       }
+      ret = meta;
     }
-    return meta;
   }
 
+  try {
   if (META_REGEX_YAML.test(markdownContent)) {
-    const metaArr = markdownContent.match(META_REGEX_YAML);
-    const metaString = metaArr?.[1]?.trim() ?? '';
-    const yamlObject = yaml.load(metaString);
-    return cleanObjectStrings(yamlObject);
+    // metaArr = markdownContent.match(META_REGEX_YAML);
+    // if (metaArr !== null && metaArr[1] !== null) {
+      metaString = markdownContent.match(META_REGEX_YAML)[1].trim();
+      const yamlObject = yaml.load(metaString);
+      ret = cleanObjectStrings(yamlObject);
+    // }
   }
-
-  return {};
+  } catch (e) {
+    console.error(e);
+  }
+  try {
+    if (!("Title" in ret) && META_REGEX_MARKDOWN_TITLE.test(markdownContent)) {
+      const title = markdownContent.match(META_REGEX_MARKDOWN_TITLE)[2];
+      ret.title = title;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  return ret;
 }
 
 // Replace content variables in Markdown content
@@ -121,7 +141,11 @@ async function extractDocument(contentDir, filePath, debug) {
     const title = meta.title ? meta.title : slugToTitle(id);
     const body = file;
 
-    return { id, title, body };
+    return {
+      id,
+      title,
+      body
+    };
   } catch (e) {
     if (debug) {
       console.log(e);
