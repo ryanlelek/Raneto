@@ -62,7 +62,7 @@ function processMeta(markdownContent) {
     if (META_REGEX.test(markdownContent)) {
         const meta = {};
         const metaArr = markdownContent.match(META_REGEX);
-        if (metaArr == null || metaArr[1] == null) {
+        if (metaArr === null || metaArr[1] === null) {
             return {}
         }
         const metaString = metaArr[1].trim();
@@ -86,12 +86,12 @@ function processMeta(markdownContent) {
 
     if (META_REGEX_YAML.test(markdownContent)) {
         const metaArr = markdownContent.match(META_REGEX_YAML);
-        if (metaArr == null || metaArr[1] == null) {
+        if (metaArr === null || metaArr[1] === null) {
             return {}
         }
         const metaString = metaArr[1].trim();
         const yamlObject = yaml.load(metaString);
-        if (!"Title" in yamlObject && markdownContent.test(META_REGEX_YAML_TITLE)) {
+        if (!("Title" in yamlObject) && markdownContent.test(META_REGEX_YAML_TITLE)) {
             const title = markdownContent.match(META_REGEX_YAML_TITLE)[2];
             yamlObject.Title = title;
         }
