@@ -71,6 +71,10 @@ function initialize(config) {
 
   // New Express App
   const app = express();
+  // Allow trust proxy to be configured for reverse proxy deployments (e.g. nginx, NPM)
+  if (config.trust_proxy !== undefined) {
+    app.set('trust proxy', config.trust_proxy);
+  }
   const router = express.Router();
 
   // Set IP Address and Port

@@ -31,6 +31,14 @@ const config = {
   base_url: '',
   nowrap: true,
 
+  // Trust Proxy
+  // Set this when Raneto is deployed behind a reverse proxy (e.g. nginx, Nginx Proxy Manager).
+  // This allows express-rate-limit to read real client IPs from X-Forwarded-For headers
+  // and silences the "trust proxy is not set" startup warning.
+  // Set to 1 if there is one proxy; 2 if there are two; or true to trust any proxy.
+  // Leave undefined (omit this line) if not behind a reverse proxy.
+  // trust_proxy: 1,
+
   // Path Prefix
   // If you are running Raneto on a subpath of your domain, add it here
   // Leave it blank if you are not sure
