@@ -155,8 +155,9 @@ function initialize(config) {
       crossOriginEmbedderPolicy: false,
     }),
   );
-  app.use(body_parser.json());
-  app.use(body_parser.urlencoded({ extended: false }));
+  // Maximum body request size 5mb. Anything above throws 'PayLoadTooLarge' error.
+  app.use(body_parser.json({ limit: '5000kb' }));
+  app.use(body_parser.urlencoded({ limit: '5000kb', extended: false }));
   app.use(cookie_parser());
   app.use(express.static(config.public_dir));
   if (config.theme_dir !== path.join(__dirname, '..', 'themes')) {
