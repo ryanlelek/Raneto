@@ -4,6 +4,8 @@ const allowedTags = sanitizeHtml.defaults.allowedTags.concat([
   'img',
   'input',
   'del',
+  'details',
+  'summary',
 ]);
 
 const allowedAttributes = {
@@ -19,6 +21,7 @@ const allowedAttributes = {
   span: ['class'],
   code: ['class'],
   pre: ['class'],
+  details: ['open'],
 };
 
 function sanitizeHtmlOutput(html) {
