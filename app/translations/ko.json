@@ -1,0 +1,68 @@
+{
+  "global": {
+    "yes": "예",
+    "no": "아니오",
+    "search": "검색",
+    "cancel": "취소",
+    "save": "저장",
+    "close": "닫기",
+    "lastUpdated": "마지막 수정일",
+    "pageName": "페이지 이름",
+    "addPage": "페이지 추가",
+    "reallyDeletePage": "정말로 이 페이지를 삭제하시겠습니까?",
+    "mainArticles": "주요 문서",
+    "editor": "편집기"
+  },
+  "api": {
+    "loginSuccessful": "로그인되었습니다",
+    "invalidCredentials": "아이디 또는 비밀번호가 올바르지 않습니다",
+    "invalidFile": "잘못된 파일 경로입니다",
+    "invalidCategory": "잘못된 카테고리 경로입니다",
+    "pageSaved": "페이지가 저장되었습니다",
+    "pageNotSaved": "페이지 저장 중 오류가 발생했습니다",
+    "pageDeleted": "페이지가 삭제되었습니다",
+    "pageNotDeleted": "페이지 삭제 중 오류가 발생했습니다",
+    "categoryCreated": "카테고리가 생성되었습니다",
+    "categoryNotCreated": "카테고리 생성 중 오류가 발생했습니다",
+    "pageCreated": "페이지가 생성되었습니다",
+    "pageNotCreated": "페이지 생성 중 오류가 발생했습니다"
+  },
+  "error": {
+    "404": "이런, 요청하신 페이지가 존재하지 않는 것 같습니다."
+  },
+  "edit": {
+    "preview": "미리보기",
+    "editor": "편집기",
+    "pageSaved": "페이지가 성공적으로 저장되었습니다",
+    "pageSaveError": "페이지 저장 중 오류가 발생했습니다",
+    "headerMetaInfo": "메타데이터",
+    "lableMetaTitle": "제목",
+    "labelMetaTitle": "제목",
+    "lableMetaDescription": "설명",
+    "labelMetaDescription": "설명",
+    "lableMetaSort": "정렬 순서",
+    "labelMetaSort": "정렬 순서"
+  },
+  "home": {
+    "searchKnowledgeBase": "지식 베이스 검색"
+  },
+  "login": {
+    "login": "로그인",
+    "logout": "로그아웃",
+    "username": "아이디",
+    "password": "비밀번호"
+  },
+  "page": {
+    "addCategory": "카테고리 추가",
+    "addPage": "페이지 추가",
+    "deletePage": "삭제",
+    "editPage": "편집",
+    "actions": "작업",
+    "needHelp": "더 도움이 필요하신가요?",
+    "getInTouch": "문의하기!"
+  },
+  "search": {
+    "resultsFor": "검색 결과",
+    "noResultsFor": "검색 결과가 없습니다"
+  }
+}
