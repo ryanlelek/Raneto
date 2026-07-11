@@ -11,7 +11,7 @@
     "addPage": "페이지 추가",
     "reallyDeletePage": "정말로 이 페이지를 삭제하시겠습니까?",
     "mainArticles": "주요 문서",
-    "editor": "편집자"
+    "editor": "편집기"
   },
   "api": {
     "loginSuccessful": "로그인되었습니다",
@@ -62,7 +62,7 @@
     "getInTouch": "문의하기!"
   },
   "search": {
-    "resultsFor": "검색 결과:",
-    "noResultsFor": "검색 결과가 없습니다:"
+    "resultsFor": "검색 결과",
+    "noResultsFor": "검색 결과가 없습니다"
   }
 }
